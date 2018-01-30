@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Route, Link, Switch } from 'react-router-dom'
-import LeaderBoard from '../components/LeaderBoard'
-import LiveQuestions from '../components/LiveQuestions'
-import Footer from '../components/footer'
-import NotFound from '../components/NotFound'
+import LeaderBoard from 'Components/LeaderBoard'
+import LiveQuestions from 'Components/LiveQuestions'
+import Footer from 'Components/Footer'
+import NotFound from 'Components/NotFound'
 import Nav from './Nav'
 
 const App = () => (
