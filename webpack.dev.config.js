@@ -12,9 +12,10 @@ module.exports = {
   ],
   resolve: {
     alias: {
-      Images: path.resolve(__dirname, 'src/static/images/'),
+      Ajax: path.resolve(__dirname, 'src/ajax/'),
       Components: path.resolve(__dirname, 'src/components/'),
-      Containers: path.resolve(__dirname, 'src/containers')
+      Containers: path.resolve(__dirname, 'src/containers'),
+      Images: path.resolve(__dirname, 'src/static/images/')
     }
   },
   devtool: 'eval',
