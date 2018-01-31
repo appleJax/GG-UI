@@ -7,15 +7,21 @@ const path = require('path');
 
 module.exports = {
   entry: [
+    'babel-polyfill',
     'react-hot-loader/patch',
     './src/index.js'
   ],
   resolve: {
     alias: {
+      Actions: path.resolve(__dirname, 'src/actions/'),
       Ajax: path.resolve(__dirname, 'src/ajax/'),
       Components: path.resolve(__dirname, 'src/components/'),
       Containers: path.resolve(__dirname, 'src/containers'),
-      Images: path.resolve(__dirname, 'src/static/images/')
+      Images: path.resolve(__dirname, 'src/static/images/'),
+      Reducers: path.resolve(__dirname, 'src/reducers/'),
+      Styles: path.resolve(__dirname, 'src/styles/'),
+      Src: path.resolve(__dirname, 'src/'),
+      Utils: path.resolve(__dirname, 'src/utils/')
     }
   },
   devtool: 'eval',
@@ -32,7 +38,10 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
+            presets: [
+              '@babel/preset-react',
+              '@babel/preset-env'
+            ]
           }
         }
       },
