@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import { fetchScoreboard } from 'Actions/async'
-import { tryCatch } from 'Utils'
 import styles from './index.sass'
 
-
-export default class ScoreBoard extends Component {
+class Scoreboard extends Component {
 
   componentWillMount() {
-    fetchScoreboard()
+    this.props.fetchScoreboard()
   }
 
   render() {
@@ -21,18 +18,18 @@ export default class ScoreBoard extends Component {
     } = this.props
 
     const userScores = (users.length === 0)
-      ? <tr><td>N/A</td><td>N/A</td></tr>
+      ? <tr><td>Loading...</td></tr>
       : users.map(({userId, name, handle, avatar, score}) => (
         <tr
           className='score-board__row'
           key={userId}
-          onClick={() => history.push(`/users/${userId}`)}
+          onClick={() => history.push(`/stats/${handle}`)}
         >
-            <td>
-              <img src={avatar} alt={name} />
-              <div className='handle'>{handle}</div>
-            </td>
-            <td className='score'>{score}</td>
+          <td>
+            <img src={avatar} alt={name} />
+            <div className='handle'>{handle}</div>
+          </td>
+          <td className='score'>{score}</td>
         </tr>
       ))
 
@@ -42,13 +39,13 @@ export default class ScoreBoard extends Component {
           className='scoreboard__searchbox'
           type='text'
           value={search}
-          placeholder='@username'
+          placeholder='Search @username'
           onChange={(e) => setSearchQuery(e.target.value)}
         />
         <table className='score-board'>
           <thead>
             <tr>
-              <th>Player</th> <th>Score</th>
+              <th>Player</th><th>Score</th>
             </tr>
           </thead>
           <tbody>
@@ -60,3 +57,5 @@ export default class ScoreBoard extends Component {
   }
 
 }
+
+export default Scoreboard

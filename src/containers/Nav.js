@@ -1,8 +1,8 @@
 import React from 'react'
-import Logo from 'Images/mzm.png'
+import AppBar from 'material-ui/AppBar'
 
 export default () => (
-  <nav>
-    <img src={Logo} />
-  </nav>
+  <AppBar title='GameGogakuen'>
+    <h2>GameGogakuen</h2>
+  </AppBar>
 )

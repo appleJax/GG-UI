@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
+import { fetchScoreboard } from 'Actions/async'
 import { setSearchQuery } from 'Actions/sync'
-import Scoreboard from 'Components/Scoreboard'
-
+import Scoreboard from './component'
 
 const mapStateToProps = (state) => ({
   users: state.users,
@@ -9,10 +9,11 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
+  fetchScoreboard,
   setSearchQuery
 }
 
-export default ScoreboardContainer = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Scoreboard)

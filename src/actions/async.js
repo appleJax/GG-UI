@@ -1,9 +1,23 @@
 import { ajax } from 'Utils'
-import { populateScoreboard } from 'Actions/sync'
+import {
+  populateScore,
+  populateScoreboard
+} from 'Actions/sync'
+
 
 export const fetchScoreboard = (board) =>
-  dispatch => {
+  dispatch =>
     ajax.get('/scores')
-      .then(users => dispatch(populateScoreboard(users)))
-      .catch(console.error)
-  }
+        .then(({ data: users }) =>
+          dispatch(populateScoreboard(users))
+        )
+        .catch(console.error)
+
+
+export const fetchScore = (handle) =>
+  dispatch =>
+    ajax.get(`/score/${handle}`)
+        .then(({ data: user }) =>
+          dispatch(populateScore(user))
+        )
+        .catch(console.error)

@@ -1,7 +1,6 @@
 import React from 'react'
+import BottomNavigation from 'material-ui/BottomNavigation'
 
 export default () => (
-  <footer>
-    © 2018 GameGogakuen
-  </footer>
+  <BottomNavigation label='© 2018 GameGogakuen' />
 )

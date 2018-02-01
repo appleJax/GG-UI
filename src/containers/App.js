@@ -1,36 +1,27 @@
-import 'normalize-scss/sass/_normalize.scss'
 import 'Src/index.sass'
+import React from 'react'
+import { Route, Link, Switch } from 'react-router-dom'
 
-import React, { Component } from 'react'
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch
-} from 'react-router-dom'
-import { Provider } from 'react-redux'
-import configureStore from 'Src/configureStore'
+import AppBar from 'material-ui/AppBar'
+import BottomNavigation from 'material-ui/BottomNavigation'
+
 import Nav from 'Containers/Nav'
-import LeaderBoard from 'Components/LeaderBoard'
 import LiveQuestions from 'Components/LiveQuestions'
+import Scoreboard from 'Containers/Scoreboard'
+import User from 'Containers/User'
 import Footer from 'Components/Footer'
-import NotFound from 'Components/NotFound'
+import NotFound404 from 'Components/NotFound404'
 
-const preloadedState = JSON.parse(
-  window.__PRELOADED_STATE__ || {}
-)
-const store = configureStore(preloadedState)
-
-export default App = () => (
-  <Provider store={store}>
-    <Router>
-      <Nav />
-      <Switch>
-        <Route exact path='/' component={LiveQuestions} />
-        <Route path='/stats' component={LeaderBoard} />
-        <Route component={NotFound} />
-      </Switch>
-      <Footer />
-    </Router>
-  </Provider>
+// App
+export default () => (
+  <div>
+    <AppBar children='GameGogakuen' />
+    <Switch>
+      <Route exact path='/' component={LiveQuestions} />
+      <Route exact path='/stats' component={Scoreboard} />
+      <Route path='/stats/:handle' component={User} />
+      <Route component={NotFound404} />
+    </Switch>
+    <BottomNavigation children='© 2018 GameGogakuen' />
+  </div>
 )
