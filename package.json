@@ -52,6 +52,7 @@
       "^Containers/(.*)$": "<rootDir>/src/containers/$1",
       "^Images/(.*)$": "<rootDir>/src/static/images/$1",
       "^Reducers/(.*)$": "<rootDir>/src/reducers/$1",
+      "^UI/(.*)$": "<rootDir/node_modules/material-ui/$1",
       "^Utils$": "<rootDir>/src/utils/"
     }
   }

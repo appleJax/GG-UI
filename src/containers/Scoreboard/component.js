@@ -1,61 +1,71 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import styles from './index.sass'
+import { array, func, object, string } from 'prop-types'
+import { withStyles } from 'material-ui/styles'
+import Avatar from 'material-ui/Avatar'
+import AutoComplete from 'material-ui/AutoComplet'
+import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table'
+import Paper from 'material-ui/Paper'
+import styles from './styles'
 
-class Scoreboard extends Component {
 
-  componentWillMount() {
-    this.props.fetchScoreboard()
-  }
+function Scoreboard(props) {
+  const {
+    classes,
+    history,
+    match,
+    search,
+    setSearchQuery,
+    users
+  } = props
 
-  render() {
-    const {
-      match,
-      history,
-      users,
-      search,
-      setSearchQuery
-    } = this.props
+  const userScores = (users.length === 0)
+    ? <TableRow><TableCell>Loading...</TableCell></TableRow>
+    : users.map(({userId, name, handle, avatar, score}) => (
+      <TableRow
+        key={userId}
+        onClick={() => history.push(`/stats/${handle}`)}
+      >
+        <TableCell>
+          <Avatar src={avatar} alt={name} />
+          <div>{handle}</div>
+        </TableCell>
+        <TableCell numeric>{score}</TableCell>
+      </TableRow>
+    ))
 
-    const userScores = (users.length === 0)
-      ? <tr><td>Loading...</td></tr>
-      : users.map(({userId, name, handle, avatar, score}) => (
-        <tr
-          className='score-board__row'
-          key={userId}
-          onClick={() => history.push(`/stats/${handle}`)}
-        >
-          <td>
-            <img src={avatar} alt={name} />
-            <div className='handle'>{handle}</div>
-          </td>
-          <td className='score'>{score}</td>
-        </tr>
-      ))
-
-    return (
-      <div>
-        <input
-          className='scoreboard__searchbox'
-          type='text'
-          value={search}
-          placeholder='Search @username'
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-        <table className='score-board'>
-          <thead>
-            <tr>
-              <th>Player</th><th>Score</th>
-            </tr>
-          </thead>
-          <tbody>
-          { userScores }
-          </tbody>
-        </table>
-      </div>
-    )
-  }
-
+  return (
+    <div>
+      <AutoComplete
+        floatingLabelText='Search @username'
+        filter={AutoComplete.caseInsensitiveFilter}
+        dataSource={users}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+      <Paper className={classes.root}>
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow>
+              <TableCell>Player</TableCell>
+              <TableCell numeric>Score</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            { userScores }
+          </TableBody>
+        </Table>
+      </Paper>
+    </div>
+  )
 }
 
-export default Scoreboard
+Scoreboard.propTypes = {
+  classes: object.isRequired,
+  history: object.isRequired,
+  match: object.isRequired,
+  search: string.isRequired,
+  setSearchQuery: func.isRequired,
+  users: array.isRequired
+}
+
+export default withStyles(styles)(Scoreboard)

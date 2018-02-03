@@ -21,6 +21,7 @@ module.exports = {
       Reducers: path.resolve(__dirname, 'src/reducers/'),
       Styles: path.resolve(__dirname, 'src/styles/'),
       Src: path.resolve(__dirname, 'src/'),
+      UI: 'material-ui',
       Utils: path.resolve(__dirname, 'src/utils/')
     }
   },
