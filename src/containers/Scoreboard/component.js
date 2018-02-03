@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { array, func, object, string } from 'prop-types'
-import { withStyles } from 'UI/styles'
 import Avatar from 'UI/Avatar'
-import AutoComplete from 'UI/AutoComplete'
+import Input, { InputAdornment } from 'UI/Input';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'UI/Table'
 import Paper from 'UI/Paper'
-import styles from './styles'
 
 
 function Scoreboard(props) {
@@ -36,11 +34,12 @@ function Scoreboard(props) {
 
   return (
     <div>
-      <AutoComplete
-        floatingLabelText='Search @username'
-        filter={AutoComplete.caseInsensitiveFilter}
-        dataSource={users}
+      <Input
+        type='text'
+        placeholder='@username'
+        value={search}
         onChange={(e) => setSearchQuery(e.target.value)}
+        startAdornment={<InputAdornment position="start">🔎</InputAdornment>}
       />
       <Paper className={classes.root}>
         <Table className={classes.table}>
@@ -68,4 +67,4 @@ Scoreboard.propTypes = {
   users: array.isRequired
 }
 
-export default withStyles(styles)(Scoreboard)
+export default Scoreboard

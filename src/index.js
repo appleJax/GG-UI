@@ -4,10 +4,10 @@ import { Provider } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { AppContainer } from 'react-hot-loader'
 
-import Reboot from 'material-ui/Reboot'
-import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
-import purple from 'material-ui/colors/purple'
-import green from 'material-ui/colors/green'
+import Reboot from 'UI/Reboot'
+import { MuiThemeProvider, createMuiTheme } from 'UI/styles'
+import purple from 'UI/colors/purple'
+import green from 'UI/colors/green'
 
 import configureStore from 'Src/configureStore'
 import App from 'Containers/App'
@@ -16,6 +16,7 @@ const preloadedState = JSON.parse(
   window.__PRELOADED_STATE__ || '{}'
 )
 const store = configureStore(preloadedState)
+
 
 const theme = createMuiTheme({
   palette: {

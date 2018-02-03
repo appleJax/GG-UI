@@ -46,16 +46,11 @@ module.exports = {
           }
         }
       },
-      { test: /\.s[ac]ss$/,
+      { test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
-            { loader: 'css-loader' },
-            { loader: 'sass-loader',
-              options: {
-                includePaths: ["node_modules/normalize-scss/sass"]
-              }
-            }
+            { loader: 'css-loader' }
           ]
         }),
       },

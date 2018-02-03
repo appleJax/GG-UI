@@ -1,8 +1,10 @@
 import React, { Component }  from 'react'
 import { connect } from 'react-redux'
+import { withStyles } from 'UI/styles'
 import { fetchScoreboard } from 'Actions/async'
 import { setSearchQuery } from 'Actions/sync'
 import Scoreboard from './component'
+import styles from './styles'
 
 const mapStateToProps = (state) => ({
   users: state.users,
@@ -28,4 +30,4 @@ class Container extends Component {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Container)
+)(withStyles(styles)(Container))
