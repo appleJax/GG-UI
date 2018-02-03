@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { array, func, object, string } from 'prop-types'
-import { withStyles } from 'material-ui/styles'
-import Avatar from 'material-ui/Avatar'
-import AutoComplete from 'material-ui/AutoComplet'
-import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table'
-import Paper from 'material-ui/Paper'
+import { withStyles } from 'UI/styles'
+import Avatar from 'UI/Avatar'
+import AutoComplete from 'UI/AutoComplete'
+import Table, { TableBody, TableCell, TableHead, TableRow } from 'UI/Table'
+import Paper from 'UI/Paper'
 import styles from './styles'
 
 

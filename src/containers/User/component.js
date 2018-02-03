@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { object } from 'prop-types'
-import styles from './index.sass'
+import styles from './styles'
 
 class User extends Component {
 
