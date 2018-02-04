@@ -1,10 +1,9 @@
 import React, { Component }  from 'react'
 import { connect } from 'react-redux'
-import { withStyles } from 'UI/styles'
 import { fetchScoreboard } from 'Actions/async'
 import { setSearchQuery } from 'Actions/sync'
-import Scoreboard from './component'
-import styles from './styles'
+import Scoreboard from 'Components/Scoreboard'
+import User from 'Components/User'
 
 const mapStateToProps = (state) => ({
   users: state.users,
@@ -22,12 +21,24 @@ class Container extends Component {
   }
 
   render() {
-    const { fetchScoreboard, ...props } = this.props
-    return <Scoreboard {...props} />
+    const {
+      fetchScoreboard,
+      match: { params: { handle } },
+      ...props
+    } = this.props
+
+    let user
+    if (handle)
+      user = props.users.find(userObj => userObj.handle === handle)
+
+
+    return (handle)
+      ? <User user={user} {...props} />
+      : <Scoreboard {...props} />
   }
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withStyles(styles)(Container))
+)(Container)

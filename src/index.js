@@ -6,8 +6,7 @@ import { AppContainer } from 'react-hot-loader'
 
 import Reboot from 'UI/Reboot'
 import { MuiThemeProvider, createMuiTheme } from 'UI/styles'
-import purple from 'UI/colors/purple'
-import green from 'UI/colors/green'
+import cyan from 'UI/colors/cyan'
 
 import configureStore from 'Src/configureStore'
 import App from 'Containers/App'
@@ -21,16 +20,15 @@ const store = configureStore(preloadedState)
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: purple[300],
-      main: purple[500],
-      dark: purple[700],
+      main: '#2A93D4'
     },
     secondary: {
-      light: green[300],
-      main: green[500],
-      dark: green[700],
-    },
+      main: '#fff',
+    }
   },
+  typography: {
+    fontSize: '24'
+  }
 })
 
 const render = (Component) =>
