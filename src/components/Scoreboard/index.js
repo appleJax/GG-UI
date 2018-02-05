@@ -46,10 +46,10 @@ function Scoreboard(props) {
         let displayScore = score
         switch (scoreView) {
           case 0:
-            score = weeklyScore
+            displayScore = weeklyScore
             break
           case 1:
-            score = monthlyScore
+            displayScore = monthlyScore
             break
           default:
             break
