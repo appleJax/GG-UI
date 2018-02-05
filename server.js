@@ -6,7 +6,7 @@ app.set('port', (process.env.PORT || 3000));
 app.use(express.static(path.resolve(__dirname, 'dist')));
 
 app.get('*', (req, res) =>
-  res.sendFile(index.html)
+  res.sendFile('index.html')
 );
 
 app.listen(app.get('port'), () =>
