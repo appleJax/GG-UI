@@ -67,7 +67,12 @@ module.exports = {
       template: __dirname + '/src/static/index.html',
       inject: 'body'
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+         API_URL: process.env.API_URL
+      }
+    })
   ],
   output: {
     filename: 'bundle.js',

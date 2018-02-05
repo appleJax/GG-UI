@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const ajax = axios.create({
-  baseURL: 'http://localhost:3000/api'
+  baseURL: process.env.API_URL
 })
 
 export function tryCatch(promise) {

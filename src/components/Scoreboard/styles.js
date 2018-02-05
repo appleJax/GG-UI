@@ -25,10 +25,19 @@ export default (theme) => ({
       background: theme.palette.primary.light
     }
   },
-  center: {
-    textAlign: 'center'
+  nameCell: {
+    fontWeight: 'bold',
+    fontSize: '18px',
+    textAlign: 'left'
+  },
+  numberCell: {
+    fontFamily: 'Rammetto One'
   },
   searchInput: {
     marginTop: '25px'
+  },
+  tabs: {
+    background: theme.palette.primary.light,
+    fontSize: '24px'
   }
 })

@@ -27,7 +27,31 @@ const theme = createMuiTheme({
     }
   },
   typography: {
-    fontSize: '24'
+    fontSize: '24px'
+  },
+  overrides: {
+    MuiAvatar: {
+      root: {
+        height: '50px',
+        width: '50px'
+      }
+    },
+    MuiTab: {
+      label: {
+        fontSize: '24px'
+      }
+    },
+    MuiTableCell: {
+      root: {
+        textAlign: 'center'
+      },
+      typeBody: {
+        fontSize: '20px'
+      },
+      typeHead: {
+        fontSize: '20px'
+      }
+    }
   }
 })
 
