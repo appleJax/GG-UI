@@ -1,6 +1,7 @@
 const merge = require('webpack-merge')
 const webpack = require('webpack');
 const common = require('./webpack.common')
+const { API_URL } = require('./.env')
 
 module.exports = merge(common, {
   entry: [
@@ -16,5 +17,11 @@ module.exports = merge(common, {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+         API_URL: JSON.stringify(API_URL),
+         NODE_ENV: JSON.stringify('dev')
+      }
+    })
   ]
 });
