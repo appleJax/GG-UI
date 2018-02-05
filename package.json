@@ -9,7 +9,7 @@
     "build": "webpack --config webpack.dev.js",
     "deploy": "webpack --config webpack.prod.js",
     "start": "webpack-dev-server --config webpack.dev.js --hot",
-    "heroku-start": "npm run deploy && node server.js",
+    "heroku-start": "npm run build && node server.js",
     "test": "jest"
   },
   "dependencies": {
