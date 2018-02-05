@@ -6,7 +6,7 @@
   "author": "appleJax <appleJax@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "build": "./node_modules/bin/webpack --config webpack.dev.js",
+    "build": "webpack --config webpack.dev.js",
     "deploy": "webpack --config webpack.prod.js",
     "start": "webpack-dev-server --config webpack.dev.js --hot",
     "heroku-start": "npm run build && node server.js",

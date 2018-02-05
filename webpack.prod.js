@@ -12,7 +12,8 @@ module.exports = merge(common, {
     new UglifyJSPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-         API_URL: process.env.API_URL
+         API_URL: process.env.API_URL,
+         NODE_ENV: JSON.stringify('production')
       }
     })
   ]

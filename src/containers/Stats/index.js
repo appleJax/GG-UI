@@ -29,6 +29,9 @@ class Container extends Component {
       ...props
     } = this.props
 
+    if (!users)
+      return <h1>Loading...</h1>
+
     if (handle) {
       const user = props.users.find(userObj => userObj.handle === handle)
       return <User user={user} {...props} />
