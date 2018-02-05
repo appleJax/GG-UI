@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "cbbed54b3767fa909448"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "364474bf4efe45a2598c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -6248,7 +6248,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.tryCatch = tryCatch;\nexports.ajax = void 0;\n\nvar _axios = _interopRequireDefault(__webpack_require__(861));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar ajax = _axios.default.create({\n  baseURL: \"https://videogame-translation.herokuapp.com\"\n});\n\nexports.ajax = ajax;\n\nfunction tryCatch(promise) {\n  return promise.then(function (data) {\n    return data;\n  }).catch(function (err) {\n    console.error(err);\n    return [];\n  });\n}\n\n;\n\nvar _temp = function () {\n  if (typeof __REACT_HOT_LOADER__ === 'undefined') {\n    return;\n  }\n\n  __REACT_HOT_LOADER__.register(ajax, \"ajax\", \"/Users/admin/Dev/JavaScript/GameGogakuen/GG-UI/src/utils/index.js\");\n\n  __REACT_HOT_LOADER__.register(tryCatch, \"tryCatch\", \"/Users/admin/Dev/JavaScript/GameGogakuen/GG-UI/src/utils/index.js\");\n}();\n\n;\n\n//////////////////\n// WEBPACK FOOTER\n// ./src/utils/index.js\n// module id = 860\n// module chunks = 0\n\n//# sourceURL=webpack:///./src/utils/index.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.tryCatch = tryCatch;\nexports.ajax = void 0;\n\nvar _axios = _interopRequireDefault(__webpack_require__(861));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar ajax = _axios.default.create({\n  baseURL: \"https://videogame-translation.herokuapp.com/api\"\n});\n\nexports.ajax = ajax;\n\nfunction tryCatch(promise) {\n  return promise.then(function (data) {\n    return data;\n  }).catch(function (err) {\n    console.error(err);\n    return [];\n  });\n}\n\n;\n\nvar _temp = function () {\n  if (typeof __REACT_HOT_LOADER__ === 'undefined') {\n    return;\n  }\n\n  __REACT_HOT_LOADER__.register(ajax, \"ajax\", \"/Users/admin/Dev/JavaScript/GameGogakuen/GG-UI/src/utils/index.js\");\n\n  __REACT_HOT_LOADER__.register(tryCatch, \"tryCatch\", \"/Users/admin/Dev/JavaScript/GameGogakuen/GG-UI/src/utils/index.js\");\n}();\n\n;\n\n//////////////////\n// WEBPACK FOOTER\n// ./src/utils/index.js\n// module id = 860\n// module chunks = 0\n\n//# sourceURL=webpack:///./src/utils/index.js?");
 
 /***/ }),
 /* 861 */
