@@ -1,7 +1,7 @@
 const merge = require('webpack-merge')
 const webpack = require('webpack');
 const common = require('./webpack.common')
-const { API_URL } = require('./.env')
+const { API_URL } = require('./.env').dev
 
 module.exports = merge(common, {
   entry: [

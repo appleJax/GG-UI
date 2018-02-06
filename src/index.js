@@ -38,12 +38,15 @@ const theme = createMuiTheme({
     },
     MuiTab: {
       label: {
-        fontSize: '24px'
+        fontSize: '20px'
       }
     },
     MuiTableCell: {
       root: {
         textAlign: 'center'
+      },
+      paddingDefault: {
+        padding: '5px'
       },
       typeBody: {
         fontSize: '20px'

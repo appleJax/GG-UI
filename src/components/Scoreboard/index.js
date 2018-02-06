@@ -13,14 +13,14 @@ import styles from './styles'
 function Scoreboard(props) {
   const {
     classes: {
-      cellPadding,
       container,
       hover,
-      root,
       headerCell,
       nameCell,
-      numberCell,
+      rankNumber,
+      root,
       searchInput,
+      smallNumber,
       tabs
     },
     history,
@@ -62,12 +62,14 @@ function Scoreboard(props) {
             hover={true}
             onClick={() => history.push(`/stats/${handle}`)}
           >
-            <TableCell classes={{typeBody: numberCell}}>{rank}</TableCell>
-            <TableCell className={nameCell} classes={{paddingDefault: cellPadding}}>
-              <Avatar src={avatar} alt={name} />
-              <div>@{handle}</div>
+            <TableCell classes={{typeBody: rankNumber}}>{rank}</TableCell>
+            <TableCell classes={{root: nameCell}}>
+              <div>
+                <Avatar src={avatar} alt={name} />
+                @{handle}
+              </div>
             </TableCell>
-            <TableCell numeric classes={{typeBody: numberCell}}>{displayScore}</TableCell>
+            <TableCell numeric classes={{typeBody: smallNumber}}>{displayScore}</TableCell>
           </TableRow>
         )
   })
