@@ -1,8 +1,14 @@
 import axios from 'axios'
 
-export const ajax = axios.create({
+const axiosObject = axios.create({
   baseURL: process.env.API_URL
 })
+
+export const ajax = {
+  get(url, config) {
+    return axiosObject.get(url, config).then(({data}) => data)
+  }
+}
 
 export function tryCatch(promise) {
   return promise

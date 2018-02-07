@@ -6,6 +6,7 @@ import Avatar from 'UI/Avatar'
 import Input, { InputAdornment } from 'UI/Input';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'UI/Table'
 import Tabs, { Tab } from 'UI/Tabs'
+import Typography from 'UI/Typography'
 import Paper from 'UI/Paper'
 import styles from './styles'
 
@@ -66,7 +67,9 @@ function Scoreboard(props) {
             <TableCell classes={{root: nameCell}}>
               <div>
                 <Avatar src={avatar} alt={name} />
-                @{handle}
+                <Typography variant='subheading'>
+                  @{handle}
+                </Typography>
               </div>
             </TableCell>
             <TableCell numeric classes={{typeBody: smallNumber}}>{displayScore}</TableCell>
@@ -91,6 +94,7 @@ function Scoreboard(props) {
           onChange={(e, value) => setScoreView(value)}
           indicatorColor='secondary'
           textColor='secondary'
+          centered
           fullWidth
         >
           <Tab label='WEEKLY' />

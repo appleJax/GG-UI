@@ -1,17 +1,19 @@
 import React, { Component }  from 'react'
 import { connect } from 'react-redux'
-import { fetchScoreboard } from 'Actions/async'
+import { fetchScoreboard, fetchFocusedUser } from 'Actions/async'
 import { setScoreView, setSearchQuery } from 'Actions/sync'
 import Scoreboard from 'Components/Scoreboard'
 import User from 'Components/User'
 
 const mapStateToProps = (state) => ({
-  users: state.users,
+  focusedUser: state.focusedUser,
   scoreView: state.scoreView,
-  search: state.search
+  search: state.search,
+  users: state.users
 })
 
 const mapDispatchToProps = {
+  fetchFocusedUser,
   fetchScoreboard,
   setScoreView,
   setSearchQuery
@@ -25,6 +27,8 @@ class Container extends Component {
   render() {
     const {
       match: { params: { handle } },
+      fetchFocusedUser,
+      focusedUser,
       users,
       ...props
     } = this.props
@@ -33,20 +37,28 @@ class Container extends Component {
       return <h1>Loading...</h1>
 
     if (handle) {
-      const user = users.find(userObj => userObj.handle === handle)
-      return <User user={user} {...props} />
+      if (!focusedUser) {
+        const user = users.find(userObj => userObj.handle === handle)
+        if (!user)
+          return <h1>`User @${handle} Not Found`</h1>
+
+        fetchFocusedUser(user)
+        return <h1>Loading...</h1>
+      }
+
+      return <User user={focusedUser} {...props} />
     }
 
     let filteredUsers = users
     let { search, scoreView } = this.props
     switch (scoreView) {
       case 0:
-        filteredUsers.sort((a, b) => b.weeklyScore - a.weeklyScore)
         break
       case 1:
         filteredUsers.sort((a, b) => b.monthlyScore - a.monthlyScore)
         break
       default:
+        filteredUsers.sort((a, b) => b.score - a.score)
         break
     }
 

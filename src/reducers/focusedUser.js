@@ -1,9 +1,9 @@
-import { POPULATE_SCORE } from 'Actions/sync'
+import { SET_FOCUSED_USER } from 'Actions/sync'
 
-// user reducer
+// focusedUser reducer
 export default (state = null, action) => {
     switch (action.type) {
-      case POPULATE_SCORE:
+      case SET_FOCUSED_USER:
         return action.user
 
       default:

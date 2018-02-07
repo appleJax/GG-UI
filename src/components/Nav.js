@@ -1,22 +1,38 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import { object } from 'prop-types'
 import classNames from 'classnames'
 import { withStyles } from 'UI/styles'
+import { navHeight } from 'Styles/variables'
 import AppBar from 'UI/AppBar'
 import Typography from 'UI/Typography'
 
 const styles = {
   root: {
-    width: '100%',
+    height: navHeight,
+    width: '100%'
   },
   appBar: {
     padding: '20px',
     width: '100%'
+  },
+  logo: {
+    fontFamily: 'Cabin Sketch',
+    '&:hover': {
+      cursor: 'pointer'
+    }
   }
 }
 
 function Nav(props) {
-  const { appBar, root } = props.classes
+  const {
+    classes: {
+      appBar,
+      logo,
+      root
+    },
+    history
+  } = props
 
   return (
     <div className={root}>
@@ -25,7 +41,7 @@ function Nav(props) {
         color="primary"
         className={appBar}
       >
-        <Typography type="title" color="inherit">
+        <Typography onClick={() => history.push(`/`)} className={logo} variant="title" color="inherit">
           GameGogakuen
         </Typography>
       </AppBar>
@@ -37,4 +53,4 @@ Nav.propTypes = {
   classes: object.isRequired
 }
 
-export default withStyles(styles)(Nav)
+export default withRouter(withStyles(styles)(Nav))
