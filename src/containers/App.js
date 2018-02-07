@@ -4,7 +4,7 @@ import { Route, Link, Switch } from 'react-router-dom'
 import { withStyles } from 'UI/styles'
 import { navHeight } from 'Styles/variables'
 import Nav from 'Components/Nav'
-import LiveQuestions from 'Components/LiveQuestions'
+import LiveQuestions from 'Containers/LiveQuestions'
 import Stats from 'Containers/Stats'
 import NotFound404 from 'Components/NotFound404'
 
