@@ -11,7 +11,10 @@ function User(props) {
     classes: {
       avatarRoot,
       banner,
-      userIdentity
+      statBox,
+      userBar,
+      userIdentity,
+      userStats
     },
     user
   } = props
@@ -36,14 +39,32 @@ function User(props) {
         className={banner}
         style={{background: `url(${profileBanner})`}}
       ></header>
-      <Avatar
-        alt='user avatar'
-        classes={{root: avatarRoot}}
-        src={avatar}
-      />
-      <div className={userIdentity}>
-        <Typography variant='title'>{name}</Typography>
-        <Typography variant='subheading'>{`@${handle}`}</Typography>
+      <div className={userBar}>
+        <div>
+          <Avatar
+            alt='user avatar'
+            classes={{root: avatarRoot}}
+            src={avatar}
+          />
+          <div className={userIdentity}>
+            <Typography variant='title'>{name}</Typography>
+            <Typography variant='subheading'>{`@${handle}`}</Typography>
+          </div>
+        </div>
+        <div className={userStats}>
+          <div className={statBox}>
+            <Typography variant='subheading'>WEEKLY</Typography>
+            <Typography variant='subheading'>{weeklyScore}</Typography>
+          </div>
+          <div className={statBox}>
+            <Typography variant='subheading'>MONTHLY</Typography>
+            <Typography variant='subheading'>{monthlyScore}</Typography>
+          </div>
+          <div className={statBox}>
+            <Typography variant='subheading'>ALL TIME</Typography>
+            <Typography variant='subheading'>{score}</Typography>
+          </div>
+        </div>
       </div>
       <CardReviewer cards={earnedCards} />
     </div>

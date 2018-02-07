@@ -40,7 +40,7 @@ class Container extends Component {
       if (!focusedUser) {
         const user = users.find(userObj => userObj.handle === handle)
         if (!user)
-          return <h1>`User @${handle} Not Found`</h1>
+          return <h1>User @{handle} Not Found</h1>
 
         fetchFocusedUser(user)
         return <h1>Loading...</h1>

@@ -15,6 +15,9 @@ const styles = (theme) => ({
       alignItems: 'left'
     }
   },
+  imgCard: {
+    boxShadow: '0 0 10px rgba(0, 0, 0, 0.4)'
+  },
   row: {
     display: 'flex',
     flexWrap: 'wrap'
@@ -36,6 +39,7 @@ function CardReviewer({
   cards,
   classes: {
     cardList,
+    imgCard,
     row,
     subHeader,
     title
@@ -53,6 +57,7 @@ function CardReviewer({
         <div className={row} key={i}>
           { card.mediaUrls.map((mediaUrl, index) =>
               <img
+                className={imgCard}
                 key={`${i}-${index}`}
                 height='160'
                 width='240'
