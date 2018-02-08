@@ -10,10 +10,17 @@ export default (theme) => ({
     height: '200px'
   },
   statBox: {
+    margin: '0 5px',
     textAlign: 'center',
     width: '100px'
   },
+  timePeriod: {
+    background: theme.palette.primary.main,
+    color: theme.palette.secondary.main
+  },
   userBar: {
+    background: theme.palette.primary.light,
+    color: theme.palette.primary.dark,
     display: 'flex',
     [theme.breakpoints.only('xs')]: {
       flexDirection: 'column'

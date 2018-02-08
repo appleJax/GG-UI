@@ -55,10 +55,10 @@ class Container extends Component {
       case 0:
         break
       case 1:
-        filteredUsers.sort((a, b) => b.monthlyScore - a.monthlyScore)
+        filteredUsers.sort((a, b) => b.monthlyStats.score - a.monthlyStats.score)
         break
       default:
-        filteredUsers.sort((a, b) => b.score - a.score)
+        filteredUsers.sort((a, b) => b.allTimeStats.score - a.allTimeStats.score)
         break
     }
 

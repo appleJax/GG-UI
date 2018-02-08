@@ -5,32 +5,33 @@ import Avatar from 'UI/Avatar'
 import Typography from 'UI/Typography'
 import CardReviewer from 'Components/CardReviewer'
 import styles from './styles'
+import { formatAccuracy } from 'Utils'
 
-function User(props) {
-  const {
-    classes: {
-      avatarRoot,
-      banner,
-      statBox,
-      userBar,
-      userIdentity,
-      userStats
-    },
-    user
-  } = props
+function User({
+  classes: {
+    avatarRoot,
+    banner,
+    statBox,
+    timePeriod,
+    userBar,
+    userIdentity,
+    userStats
+  },
+  user
+}) {
 
   if (!user)
     return <h2>Loading...</h2>
 
   const {
+    allTimeStats,
     avatar,
     earnedCards,
     handle,
-    monthlyScore,
+    monthlyStats,
     name,
     profileBanner,
-    score,
-    weeklyScore
+    weeklyStats
   } = user
 
   return (
@@ -44,7 +45,7 @@ function User(props) {
           <Avatar
             alt='user avatar'
             classes={{root: avatarRoot}}
-            src={avatar}
+            src={avatar.replace('_normal.', '_400x400.')}
           />
           <div className={userIdentity}>
             <Typography variant='title'>{name}</Typography>
@@ -53,16 +54,19 @@ function User(props) {
         </div>
         <div className={userStats}>
           <div className={statBox}>
-            <Typography variant='subheading'>WEEKLY</Typography>
-            <Typography variant='subheading'>{weeklyScore}</Typography>
+            <Typography className={timePeriod} variant='subheading'>WEEKLY</Typography>
+            <Typography variant='subheading'>Score: {weeklyStats.score}</Typography>
+            <Typography variant='body1'>({formatAccuracy(weeklyStats)} correct)</Typography>
           </div>
           <div className={statBox}>
-            <Typography variant='subheading'>MONTHLY</Typography>
-            <Typography variant='subheading'>{monthlyScore}</Typography>
+            <Typography className={timePeriod} variant='subheading'>MONTHLY</Typography>
+            <Typography variant='subheading'>Score: {monthlyStats.score}</Typography>
+            <Typography variant='body1'>({formatAccuracy(monthlyStats)} correct)</Typography>
           </div>
           <div className={statBox}>
-            <Typography variant='subheading'>ALL TIME</Typography>
-            <Typography variant='subheading'>{score}</Typography>
+            <Typography className={timePeriod} variant='subheading'>ALL TIME</Typography>
+            <Typography variant='subheading'>Score: {allTimeStats.score}</Typography>
+            <Typography variant='body1'>({formatAccuracy(allTimeStats)} correct)</Typography>
           </div>
         </div>
       </div>

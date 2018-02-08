@@ -24,7 +24,7 @@ export const fetchScoreboard = (board) =>
 
 export const fetchFocusedUser = (user) =>
   dispatch => {
-    const earnedCards = user.correctAnswers.map(obj => obj.cardId)
+    const earnedCards = user.allTimeStats.correct.map(obj => obj.cardId)
     const params = {
       params: {
         ids: earnedCards

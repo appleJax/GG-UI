@@ -38,3 +38,12 @@ export function calculateTimeRemaining(time) {
 export function formatQuestionText(questionText) {
   return questionText.split('\n').slice(0, -1).map(line => <p>{line}</p>)
 }
+
+export function formatAccuracy({ correct, attempts }) {
+  if (Array.isArray(correct))
+    correct = correct.length
+  const percent = Math.floor(
+    (correct / attempts) * 100
+  )
+  return `${percent}%`
+}

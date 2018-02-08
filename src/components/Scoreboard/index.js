@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import { array, func, object, string } from 'prop-types'
+import { array, func, number, object, string } from 'prop-types'
 import { withStyles } from 'UI/styles'
 import Avatar from 'UI/Avatar'
 import Input, { InputAdornment } from 'UI/Input';
@@ -35,22 +35,22 @@ function Scoreboard(props) {
   const userScores = (users.length === 0)
     ? <TableRow><TableCell>Loading...</TableCell></TableRow>
     : users.map(({
+        allTimeStats,
         avatar,
         handle,
-        monthlyScore,
+        monthlyStats,
         name,
         rank,
-        score,
         userId,
-        weeklyScore
+        weeklyStats
       }) => {
-        let displayScore = score
+        let displayScore = allTimeStats.score
         switch (scoreView) {
           case 0:
-            displayScore = weeklyScore
+            displayScore = weeklyStats.score
             break
           case 1:
-            displayScore = monthlyScore
+            displayScore = monthlyStats.score
             break
           default:
             break
@@ -127,6 +127,8 @@ function Scoreboard(props) {
 Scoreboard.propTypes = {
   classes: object.isRequired,
   history: object.isRequired,
+  scoreView: number.isRequired,
+  setScoreView: func.isRequired,
   search: string.isRequired,
   setSearchQuery: func.isRequired,
   users: array.isRequired
