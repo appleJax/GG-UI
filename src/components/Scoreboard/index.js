@@ -14,6 +14,7 @@ import styles from './styles'
 function Scoreboard(props) {
   const {
     classes: {
+      avatarRoot,
       container,
       hover,
       headerCell,
@@ -66,7 +67,7 @@ function Scoreboard(props) {
             <TableCell classes={{typeBody: rankNumber}}>{rank}</TableCell>
             <TableCell classes={{root: nameCell}}>
               <div>
-                <Avatar src={avatar} alt={name} />
+                <Avatar classes={{root: avatarRoot}} src={avatar} alt={name} />
                 <Typography variant='subheading'>
                   @{handle}
                 </Typography>

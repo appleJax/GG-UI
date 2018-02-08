@@ -20,6 +20,10 @@ const styles = (theme) => ({
       flexDirection: 'column'
     }
   },
+  liveTitle: {
+    marginTop: '15px',
+    textShadow: '0 3px 15px rgba(0,0,0,0.5)'
+  },
   questionCard: {
     alignItems: 'center',
     display: 'flex',

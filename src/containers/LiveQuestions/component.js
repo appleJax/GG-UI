@@ -10,6 +10,7 @@ function LiveQuestions({
     captionText,
     container,
     imageDiv,
+    liveTitle,
     questionCard
   },
   liveQuestions
@@ -19,7 +20,7 @@ function LiveQuestions({
 
   return (
     <div className={container}>
-      <Typography>Live Questions</Typography>
+      <Typography className={liveTitle} variant='display1'>Live Questions</Typography>
 
       { liveQuestions.map((question, index) => {
           const { questionText, questionPostedAt, mediaUrls } = question

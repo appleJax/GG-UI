@@ -19,7 +19,8 @@ export default (theme) => ({
     color: theme.palette.secondary.main
   },
   userBar: {
-    background: theme.palette.primary.light,
+    //background: theme.palette.primary.light,
+    background: theme.palette.grey[200],
     color: theme.palette.primary.dark,
     display: 'flex',
     [theme.breakpoints.only('xs')]: {

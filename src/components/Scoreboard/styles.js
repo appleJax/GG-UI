@@ -7,6 +7,10 @@ export default (theme) => ({
       width: '60%'
     },
   },
+  avatarRoot: {
+    height: '48px',
+    width: '48px'
+  },
   container: {
     alignItems: 'center',
     display: 'flex',
