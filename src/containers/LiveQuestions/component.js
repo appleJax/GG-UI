@@ -31,7 +31,7 @@ function LiveQuestions({
           return (
             <a key={index}
                className={cardLink}
-               href={`https://twitter.com/statuses/${questionId}`}
+               href={`https://twitter.com/devtest222/status/${questionId}?ref_src=twcamp%5Eshare%7Ctwsrc%5Em5%7Ctwgr%5Eemail%7Ctwcon%5E7046%7Ctwterm%5E1`}
                target='_blank'
             >
               <Paper key={index} classes={{root: questionCard}}>
