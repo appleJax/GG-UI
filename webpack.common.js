@@ -11,6 +11,7 @@ module.exports = {
       Ajax: path.resolve(__dirname, 'src/ajax/'),
       Components: path.resolve(__dirname, 'src/components/'),
       Containers: path.resolve(__dirname, 'src/containers'),
+      Icons: 'material-ui-icons',
       Images: path.resolve(__dirname, 'src/static/images/'),
       Reducers: path.resolve(__dirname, 'src/reducers/'),
       Styles: path.resolve(__dirname, 'src/styles/'),

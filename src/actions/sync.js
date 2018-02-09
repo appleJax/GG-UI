@@ -1,4 +1,6 @@
 export const ADD_CARDS_TO_CACHE = 'ADD_CARDS_TO_CACHE'
+export const OPEN_NAV_OPTIONS = 'OPEN_NAV_OPTIONS'
+export const CLOSE_NAV_OPTIONS = 'CLOSE_NAV_OPTIONS'
 export const POPULATE_LIVE_QUESTIONS = 'POPULATE_LIVE_QUESTIONS'
 export const POPULATE_SCOREBOARD = 'POPULATE_SCOREBOARD'
 export const SET_FOCUSED_USER = 'SET_FOCUSED_USER'
@@ -9,6 +11,15 @@ export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY'
 export const addCardsToCache = (cards) => ({
   type: ADD_CARDS_TO_CACHE,
   cards
+})
+
+export const openNavOptions = (anchorElement) => ({
+  type: OPEN_NAV_OPTIONS,
+  anchorElement
+})
+
+export const closeNavOptions = () => ({
+  type: CLOSE_NAV_OPTIONS
 })
 
 export const populateLiveQuestions = (liveQuestions) => ({

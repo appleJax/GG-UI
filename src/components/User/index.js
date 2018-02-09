@@ -53,21 +53,20 @@ function User({
           </div>
         </div>
         <div className={userStats}>
-          <div className={statBox}>
-            <Typography className={timePeriod} variant='subheading'>WEEKLY</Typography>
-            <Typography variant='subheading'>Score: {weeklyStats.score}</Typography>
-            <Typography variant='body1'>({formatAccuracy(weeklyStats)} correct)</Typography>
-          </div>
-          <div className={statBox}>
-            <Typography className={timePeriod} variant='subheading'>MONTHLY</Typography>
-            <Typography variant='subheading'>Score: {monthlyStats.score}</Typography>
-            <Typography variant='body1'>({formatAccuracy(monthlyStats)} correct)</Typography>
-          </div>
-          <div className={statBox}>
-            <Typography className={timePeriod} variant='subheading'>ALL TIME</Typography>
-            <Typography variant='subheading'>Score: {allTimeStats.score}</Typography>
-            <Typography variant='body1'>({formatAccuracy(allTimeStats)} correct)</Typography>
-          </div>
+        {
+          [weeklyStats, monthlyStats, allTimeStats].map((stats, i) => {
+            let label = 'ALL TIME'
+            if (i === 0) label = 'WEEKLY'
+            if (i === 1) label = 'MONTHLY'
+            return (
+              <div key={i} className={statBox}>
+                <Typography className={timePeriod} variant='subheading'>{label}</Typography>
+                <Typography variant='subheading'>Score: {stats.score}</Typography>
+                <Typography variant='body1'>({formatAccuracy(stats)} correct)</Typography>
+              </div>
+            )
+          })
+        }
         </div>
       </div>
       <CardReviewer cards={earnedCards} />

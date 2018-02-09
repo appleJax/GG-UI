@@ -36,7 +36,7 @@ export function calculateTimeRemaining(time) {
 }
 
 export function formatQuestionText(questionText) {
-  return questionText.split('\n').slice(0, -1).map(line => <p>{line}</p>)
+  return questionText.split('\n').slice(0, -1).map((line, i) => <p key={i}>{line}</p>)
 }
 
 export function formatAccuracy({ correct, attempts }) {

@@ -1,1 +1,1 @@
-export const navHeight = '64px'
+export const navHeight = '88px'

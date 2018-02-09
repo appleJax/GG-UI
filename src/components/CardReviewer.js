@@ -6,8 +6,16 @@ import Typography from 'UI/Typography'
 import { withStyles } from 'UI/styles'
 
 const styles = (theme) => ({
-  caption: {
+  cardAnswer: {
+    background: 'rgba(255,255,255,0.2)',
+    color: theme.palette.primary.dark,
+    marginTop: '-5px',
     padding: '5px'
+  },
+  cardHeader: {
+    color: 'white',
+    padding: '5px',
+    textShadow: `1px 1px 3px ${theme.palette.primary.dark}`
   },
   cardList: {
     alignItems: 'flex-end',
@@ -19,6 +27,7 @@ const styles = (theme) => ({
     width: '100%'
   },
   imgCard: {
+    background: theme.palette.primary.light,
     marginBottom: '20px',
     width: '240px'
   },
@@ -41,8 +50,9 @@ const styles = (theme) => ({
 function CardReviewer({
   cards,
   classes: {
+    cardAnswer,
     cardList,
-    caption,
+    cardHeader,
     container,
     imgCard,
     row,
@@ -61,7 +71,7 @@ function CardReviewer({
       <div className={cardList}>
       { cards.map(({questionText, mediaUrl, answers}, i) =>
         <Paper className={imgCard} key={i}>
-          <Typography className={caption} variant='caption'>
+          <Typography className={cardHeader} variant='body1'>
             {questionText}
           </Typography>
           <img
@@ -71,7 +81,7 @@ function CardReviewer({
             src={mediaUrl.image}
             alt={mediaUrl.altText}
           />
-          <Typography className={caption} variant='caption'>
+          <Typography className={cardAnswer} variant='caption'>
             {answers}
           </Typography>
         </Paper>

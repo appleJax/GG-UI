@@ -11,6 +11,7 @@ function LiveQuestions({
     container,
     imageDiv,
     liveTitle,
+    timeLeftText,
     questionCard
   },
   liveQuestions
@@ -28,13 +29,13 @@ function LiveQuestions({
           const text = formatQuestionText(questionText)
           return (
             <Paper key={index} classes={{root: questionCard}}>
-              <Typography className={captionText} variant='caption'>
+              <Typography className={captionText} color='secondary' variant='body2'>
                 {text}
               </Typography>
               <div className={imageDiv}>
-              { mediaUrls.map((mediaUrl, index) =>
+              { mediaUrls.map((mediaUrl, innerIndex) =>
                   <img
-                    key={index}
+                    key={`${index}-${innerIndex}`}
                     height='160'
                     width='240'
                     src={mediaUrl.image}
@@ -42,7 +43,7 @@ function LiveQuestions({
                   />
               )}
               </div>
-              <Typography className={captionText} variant='caption'>
+              <Typography className={timeLeftText} color='secondary' variant='caption'>
                 Time Remaining: {timeRemaining}
               </Typography>
             </Paper>
