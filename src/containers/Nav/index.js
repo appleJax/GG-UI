@@ -12,7 +12,7 @@ const styles = (theme) => ({
     width: '100%'
   },
   followButton: {
-    margin: '0 0 -60px 15px'
+    margin: '0 0 -45px 15px'
   },
   logo: {
     fontFamily: 'Cabin Sketch',

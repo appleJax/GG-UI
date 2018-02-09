@@ -40,7 +40,7 @@ export default (theme) => ({
     fontSize: '14px'
   },
   searchInput: {
-    marginTop: '25px'
+    marginTop: '30px'
   },
   tabs: {
     background: theme.palette.primary.light,

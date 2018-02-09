@@ -26,7 +26,7 @@ const styles = (theme) => ({
     }
   },
   liveTitle: {
-    margin: '25px 0 15px',
+    margin: '30px 0 15px',
     textShadow: '0 3px 15px rgba(0,0,0,0.5)'
   },
   questionCard: {
