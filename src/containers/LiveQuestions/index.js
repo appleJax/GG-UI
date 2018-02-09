@@ -5,6 +5,10 @@ import { fetchLiveQuestions } from 'Actions/async'
 import LiveQuestions from './component'
 
 const styles = (theme) => ({
+  cardLink: {
+    margin: '10px 0',
+    textDecoration: 'none'
+  },
   captionText: {
     margin: '5px',
     textShadow: `1px 1px 3px ${theme.palette.primary.dark}`
@@ -21,22 +25,21 @@ const styles = (theme) => ({
       flexDirection: 'column'
     }
   },
-  timeLeftText: {
-    background: 'rgba(255,255,255,0.2)',
-    color: theme.palette.primary.dark,
-    padding: '3px 8px',
-    textShadow: '1px 1px rgba(255,255,255,0.2)'
-  },
   liveTitle: {
-    margin: '40px 0 15px',
+    margin: '25px 0 15px',
     textShadow: '0 3px 15px rgba(0,0,0,0.5)'
   },
   questionCard: {
     alignItems: 'center',
     background: theme.palette.primary.light,
     display: 'flex',
-    flexDirection: 'column',
-    margin: '10px 0'
+    flexDirection: 'column'
+  },
+  timeLeftText: {
+    background: 'rgba(255,255,255,0.2)',
+    color: theme.palette.primary.dark,
+    padding: '3px 8px',
+    textShadow: '1px 1px rgba(255,255,255,0.2)'
   }
 })
 

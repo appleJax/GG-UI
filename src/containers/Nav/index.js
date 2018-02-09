@@ -7,13 +7,12 @@ import { openNavOptions, closeNavOptions } from 'Actions/sync'
 import Nav from './component'
 
 const styles = (theme) => ({
-  root: {
-    height: navHeight,
-    width: '100%'
-  },
   appBar: {
     padding: '20px',
     width: '100%'
+  },
+  followButton: {
+    margin: '0 0 -60px 15px'
   },
   logo: {
     fontFamily: 'Cabin Sketch',

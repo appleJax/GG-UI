@@ -7,6 +7,7 @@ import { calculateTimeRemaining, formatQuestionText } from 'Utils'
 
 function LiveQuestions({
   classes: {
+    cardLink,
     captionText,
     container,
     imageDiv,
@@ -24,29 +25,35 @@ function LiveQuestions({
       <Typography className={liveTitle} variant='display1'>Live Questions</Typography>
 
       { liveQuestions.map((question, index) => {
-          const { questionText, questionPostedAt, mediaUrls } = question
+          const { questionId, questionText, questionPostedAt, mediaUrls } = question
           const timeRemaining = calculateTimeRemaining(questionPostedAt)
           const text = formatQuestionText(questionText)
           return (
-            <Paper key={index} classes={{root: questionCard}}>
-              <Typography className={captionText} color='secondary' variant='body2'>
-                {text}
-              </Typography>
-              <div className={imageDiv}>
-              { mediaUrls.map((mediaUrl, innerIndex) =>
-                  <img
-                    key={`${index}-${innerIndex}`}
-                    height='160'
-                    width='240'
-                    src={mediaUrl.image}
-                    alt={mediaUrl.altText}
-                  />
-              )}
-              </div>
-              <Typography className={timeLeftText} color='secondary' variant='caption'>
-                Time Remaining: {timeRemaining}
-              </Typography>
-            </Paper>
+            <a key={index}
+               className={cardLink}
+               href={`https://twitter.com/statuses/${questionId}`}
+               target='_blank'
+            >
+              <Paper key={index} classes={{root: questionCard}}>
+                <Typography className={captionText} color='secondary' variant='body2'>
+                  {text}
+                </Typography>
+                <div className={imageDiv}>
+                { mediaUrls.map((mediaUrl, innerIndex) =>
+                    <img
+                      key={`${index}-${innerIndex}`}
+                      height='160'
+                      width='240'
+                      src={mediaUrl.image}
+                      alt={mediaUrl.altText}
+                    />
+                )}
+                </div>
+                <Typography className={timeLeftText} color='secondary' variant='caption'>
+                  Time Remaining: {timeRemaining}
+                </Typography>
+              </Paper>
+            </a>
           )
       })}
     </div>
