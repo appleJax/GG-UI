@@ -9,6 +9,18 @@ export default (theme) => ({
   banner: {
     height: '200px'
   },
+  label: {
+    textTransform: 'none'
+  },
+  followButton: {
+    height: '20px',
+    margin: '8px 0',
+    padding: '0 12px 0 5px'
+  },
+  followImage: {
+    borderRadius: '50%',
+    marginRight: '3px'
+  },
   statBox: {
     margin: '0 5px',
     textAlign: 'center',

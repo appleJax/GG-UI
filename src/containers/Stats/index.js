@@ -51,16 +51,10 @@ class Container extends Component {
 
     let filteredUsers = users
     let { search, scoreView } = this.props
-    switch (scoreView) {
-      case 0:
-        break
-      case 1:
+    if (scoreView === 1)
         filteredUsers.sort((a, b) => b.monthlyStats.score - a.monthlyStats.score)
-        break
-      default:
+    if (scoreView === 2)
         filteredUsers.sort((a, b) => b.allTimeStats.score - a.allTimeStats.score)
-        break
-    }
 
     search = search.replace(/@/g, '').trim()
     const regExp = new RegExp(search, 'i')

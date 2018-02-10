@@ -20,11 +20,15 @@ const store = configureStore(preloadedState)
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#2A93D4'
+      main: '#1DA1F2'
     },
     secondary: {
       main: '#fff',
-    }
+    },
+    contrastThreshold: 2
+  },
+  text: {
+    primary: 'rgba(255,255,255,0.87)'
   },
   typography: {
     fontSize: '24px'

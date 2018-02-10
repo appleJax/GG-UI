@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { object } from 'prop-types'
 import { withStyles } from 'UI/styles'
 import Avatar from 'UI/Avatar'
+import Button from 'UI/Button'
 import Typography from 'UI/Typography'
 import CardReviewer from 'Components/CardReviewer'
 import styles from './styles'
@@ -11,6 +12,9 @@ function User({
   classes: {
     avatarRoot,
     banner,
+    followButton,
+    followImage,
+    label,
     statBox,
     timePeriod,
     userBar,
@@ -50,6 +54,24 @@ function User({
           <div className={userIdentity}>
             <Typography variant='title'>{name}</Typography>
             <Typography variant='subheading'>{`@${handle}`}</Typography>
+            <Button
+              classes={{label}}
+              color='primary'
+              className={followButton}
+              href={`https://twitter.com/intent/follow?screen_name=${handle}`}
+              target='_blank'
+              size='small'
+              variant='raised'
+            >
+              <img
+                alt={`Follow @${handle}`}
+                className={followImage}
+                height='25'
+                width='25'
+                src='/images/Twitter_Logo_WhiteOnBlue.svg'
+              />
+              Follow
+            </Button>
           </div>
         </div>
         <div className={userStats}>
