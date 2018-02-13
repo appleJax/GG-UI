@@ -2,7 +2,9 @@ export const ADD_CARDS_TO_CACHE = 'ADD_CARDS_TO_CACHE'
 export const OPEN_NAV_OPTIONS = 'OPEN_NAV_OPTIONS'
 export const CLOSE_NAV_OPTIONS = 'CLOSE_NAV_OPTIONS'
 export const POPULATE_LIVE_QUESTIONS = 'POPULATE_LIVE_QUESTIONS'
-export const POPULATE_SCOREBOARD = 'POPULATE_SCOREBOARD'
+export const POPULATE_ALLTIME_STATS = 'POPULATE_ALLTIME_STATS'
+export const POPULATE_MONTHLY_STATS = 'POPULATE_MONTHLY_STATS'
+export const POPULATE_WEEKLY_STATS = 'POPULATE_WEEKLY_STATS'
 export const SET_FOCUSED_USER = 'SET_FOCUSED_USER'
 export const SET_SCORE_VIEW = 'SET_SCORE_VIEW'
 export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY'
@@ -27,8 +29,18 @@ export const populateLiveQuestions = (liveQuestions) => ({
   liveQuestions
 })
 
-export const populateScoreboard = (users) => ({
-  type: POPULATE_SCOREBOARD,
+export const populateWeeklyStats = (users) => ({
+  type: POPULATE_WEEKLY_STATS,
+  users
+})
+
+export const populateMonthlyStats = (users) => ({
+  type: POPULATE_MONTHLY_STATS,
+  users
+})
+
+export const populateAllTimeStats = (users) => ({
+  type: POPULATE_ALLTIME_STATS,
   users
 })
 

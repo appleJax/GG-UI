@@ -49,11 +49,11 @@ module.exports = {
     ]
   },
   plugins: [
-    new CopyWebpackPlugin([ { from: 'src/static' } ]),
+    new CopyWebpackPlugin([ { from: 'static' } ]),
     new CleanWebpackPlugin(__dirname + '/dist'),
     new ExtractTextPlugin('bundle.css'),
     new HtmlWebpackPlugin({
-      template: __dirname + '/src/static/index.html',
+      template: __dirname + '/static/index.html',
       inject: 'body'
     })
   ],

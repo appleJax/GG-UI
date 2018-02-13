@@ -8,54 +8,44 @@ import Table, { TableBody, TableCell, TableHead, TableRow } from 'UI/Table'
 import Tabs, { Tab } from 'UI/Tabs'
 import Typography from 'UI/Typography'
 import Paper from 'UI/Paper'
+import SearchIcon from 'Icons/Search'
 import styles from './styles'
 
+function Scoreboard({
+  classes: {
+    avatarRoot,
+    container,
+    hover,
+    headerCell,
+    nameCell,
+    rankNumber,
+    root,
+    searchInput,
+    smallNumber,
+    tabs
+  },
+  history,
+  scoreView,
+  search,
+  changeScoreView,
+  fetchQuery,
+  users
+}) {
 
-function Scoreboard(props) {
-  const {
-    classes: {
-      avatarRoot,
-      container,
-      hover,
-      headerCell,
-      nameCell,
-      rankNumber,
-      root,
-      searchInput,
-      smallNumber,
-      tabs
-    },
-    history,
-    scoreView,
-    search,
-    setScoreView,
-    setSearchQuery,
-    users
-  } = props
+  const tabValue =
+      (scoreView === 'weeklyStats' ) ? 0
+    : (scoreView === 'monthlyStats') ? 1
+    :                                  2
 
   const userScores = (users.length === 0)
     ? <TableRow><TableCell>Loading...</TableCell></TableRow>
-    : users.map(({
-        allTimeStats,
-        avatar,
-        handle,
-        monthlyStats,
-        name,
-        rank,
-        userId,
-        weeklyStats
-      }) => {
-        let displayScore = allTimeStats.score
-        switch (scoreView) {
-          case 0:
-            displayScore = weeklyStats.score
-            break
-          case 1:
-            displayScore = monthlyStats.score
-            break
-          default:
-            break
-        }
+    : users.map(user => {
+        const {
+          avatar,
+          handle,
+          name,
+          userId
+        } = user
 
         return (
           <TableRow
@@ -64,16 +54,24 @@ function Scoreboard(props) {
             hover={true}
             onClick={() => history.push(`/stats/${handle}`)}
           >
-            <TableCell classes={{typeBody: rankNumber}}>{rank}</TableCell>
+            <TableCell classes={{typeBody: rankNumber}}>
+              {user[scoreView].rank}
+            </TableCell>
             <TableCell classes={{root: nameCell}}>
               <div>
-                <Avatar classes={{root: avatarRoot}} src={avatar} alt={name} />
+                <Avatar
+                  alt={name}
+                  classes={{root: avatarRoot}}
+                  src={avatar}
+                />
                 <Typography variant='subheading'>
                   @{handle}
                 </Typography>
               </div>
             </TableCell>
-            <TableCell numeric classes={{typeBody: smallNumber}}>{displayScore}</TableCell>
+            <TableCell numeric classes={{typeBody: smallNumber}}>
+              {user[scoreView].score}
+            </TableCell>
           </TableRow>
         )
   })
@@ -85,14 +83,17 @@ function Scoreboard(props) {
         placeholder='@username'
         value={search}
         classes={{root: searchInput}}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        startAdornment={<InputAdornment position="start">🔎</InputAdornment>}
+        onChange={(e) => fetchQuery(e.target.value)}
+        startAdornment={<InputAdornment position="start"
+      >
+        <SearchIcon color='disabled' />
+      </InputAdornment>}
       />
       <Paper className={root}>
         <Tabs
           classes={{root: tabs}}
-          value={scoreView}
-          onChange={(e, value) => setScoreView(value)}
+          value={tabValue}
+          onChange={(e, value) => changeScoreView(value)}
           indicatorColor='secondary'
           textColor='secondary'
           centered
@@ -128,10 +129,10 @@ function Scoreboard(props) {
 Scoreboard.propTypes = {
   classes: object.isRequired,
   history: object.isRequired,
-  scoreView: number.isRequired,
-  setScoreView: func.isRequired,
+  scoreView: string.isRequired,
+  changeScoreView: func.isRequired,
   search: string.isRequired,
-  setSearchQuery: func.isRequired,
+  fetchQuery: func.isRequired,
   users: array.isRequired
 }
 

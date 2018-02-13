@@ -47,3 +47,18 @@ export function formatAccuracy({ correct, attempts }) {
   )
   return `${percent}%`
 }
+
+export function debounce(fn, wait) {
+  let timeout
+  return function() {
+    const args = arguments
+    const context = this
+    const exec = function() {
+      timeout = null
+      fn.apply(context, args)
+    }
+
+    clearTimeout(timeout)
+    timeout = setTimeout(exec, wait)
+  }
+}

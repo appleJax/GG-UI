@@ -1,9 +1,9 @@
-import { POPULATE_SCOREBOARD } from 'Actions/sync'
+import { POPULATE_ALLTIME_STATS } from 'Actions/sync'
 
-// users reducer
+// users.allTimeStats reducer
 export default (state = [], action) => {
     switch (action.type) {
-      case POPULATE_SCOREBOARD:
+      case POPULATE_ALLTIME_STATS:
         return action.users
 
       default:
