@@ -3,10 +3,10 @@ const app = express();
 const path = require('path');
 
 app.set('port', (process.env.PORT || 3000));
-app.use(express.static(path.resolve(__dirname, 'dist')));
+app.use(express.static(path.resolve(__dirname)));
 
 app.get('*', (req, res) =>
-  res.sendFile(__dirname + '/dist/index.html')
+  res.sendFile(__dirname + '/index.html')
 );
 
 app.listen(app.get('port'), () =>
