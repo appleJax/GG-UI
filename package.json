@@ -2,7 +2,6 @@
   "name": "GameGogakuen-UI",
   "version": "1.0.0",
   "description": "UI for Viewing GameGogakuen Stats",
-  "main": "index.js",
   "author": "appleJax <appleJax@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
