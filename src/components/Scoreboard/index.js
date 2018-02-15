@@ -38,47 +38,51 @@ function Scoreboard({
     : (scoreView === 'monthlyStats') ? 1
     :                                  2
 
-  const userScores = (users.length === 0)
-    ? <TableRow><TableCell>Loading...</TableCell></TableRow>
-    : users.map(user => {
-        const {
-          avatar,
-          handle,
-          name,
-          userId
-        } = user
+  let userScores
+  if (!users)
+    userScores = <TableRow><TableCell>Not Found...</TableCell></TableRow>
+  else if (users.length === 0)
+    userScores = <TableRow><TableCell>Loading...</TableCell></TableRow>
+  else
+    userScores =  users.map(user => {
+      const {
+        avatar,
+        handle,
+        name,
+        userId
+      } = user
 
-        return (
-          <TableRow
-            key={userId}
-            classes={{hover}}
-            hover={true}
-            onClick={() => {
-              setFocusedUser(user)
-              history.push(`/stats/${handle}`)
-            }}
-          >
-            <TableCell classes={{typeBody: rankNumber}}>
-              {user[scoreView].rank}
-            </TableCell>
-            <TableCell classes={{root: nameCell}}>
-              <div>
-                <Avatar
-                  alt={name}
-                  classes={{root: avatarRoot}}
-                  src={avatar}
-                />
-                <Typography variant='subheading'>
-                  @{handle}
-                </Typography>
-              </div>
-            </TableCell>
-            <TableCell numeric classes={{typeBody: smallNumber}}>
-              {user[scoreView].score}
-            </TableCell>
-          </TableRow>
-        )
-  })
+      return (
+        <TableRow
+          key={userId}
+          classes={{hover}}
+          hover={true}
+          onClick={() => {
+            setFocusedUser(user)
+            history.push(`/stats/${handle}`)
+          }}
+        >
+          <TableCell classes={{typeBody: rankNumber}}>
+            {user[scoreView].rank}
+          </TableCell>
+          <TableCell classes={{root: nameCell}}>
+            <div>
+              <Avatar
+                alt={name}
+                classes={{root: avatarRoot}}
+                src={avatar}
+              />
+              <Typography variant='subheading'>
+                @{handle}
+              </Typography>
+            </div>
+          </TableCell>
+          <TableCell numeric classes={{typeBody: smallNumber}}>
+            {user[scoreView].score}
+          </TableCell>
+        </TableRow>
+      )
+    })
 
   return (
     <div className={container}>
@@ -137,7 +141,7 @@ Scoreboard.propTypes = {
   changeScoreView: func.isRequired,
   search: string.isRequired,
   fetchQuery: func.isRequired,
-  users: array.isRequired
+  users: array
 }
 
 export default withStyles(styles)(Scoreboard)

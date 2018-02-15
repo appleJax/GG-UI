@@ -71,6 +71,9 @@ export const fetchQuery = (search) =>
     debouncedFetchQuery(dispatch, getState)
   }
 
+
+// private functions
+
 function fetchQueryNaive(dispatch, getState) {
   const { search, scoreView: view } = getState()
   const params = {
