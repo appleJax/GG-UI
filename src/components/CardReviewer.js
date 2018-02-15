@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { array, object } from 'prop-types'
 import Paper from 'UI/Paper'
 import Subheader from 'UI/List/ListSubheader'
@@ -94,7 +94,7 @@ function CardReviewer({
 }
 
 CardReviewer.propTypes = {
-  cards: array,
+  cards:   array,
   classes: object.isRequired
 }
 

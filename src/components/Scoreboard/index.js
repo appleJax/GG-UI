@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { array, func, number, object, string } from 'prop-types'
 import { withStyles } from 'UI/styles'
@@ -135,13 +135,13 @@ function Scoreboard({
 }
 
 Scoreboard.propTypes = {
-  classes: object.isRequired,
-  history: object.isRequired,
-  scoreView: string.isRequired,
+  classes:         object.isRequired,
+  history:         object.isRequired,
+  scoreView:       string.isRequired,
   changeScoreView: func.isRequired,
-  search: string.isRequired,
-  fetchQuery: func.isRequired,
-  users: array
+  search:          string.isRequired,
+  fetchQuery:      func.isRequired,
+  users:           array
 }
 
 export default withStyles(styles)(Scoreboard)

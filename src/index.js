@@ -6,7 +6,6 @@ import { AppContainer } from 'react-hot-loader'
 
 import Reboot from 'UI/Reboot'
 import { MuiThemeProvider, createMuiTheme } from 'UI/styles'
-import cyan from 'UI/colors/cyan'
 
 import configureStore from 'Src/configureStore'
 import App from 'Containers/App'

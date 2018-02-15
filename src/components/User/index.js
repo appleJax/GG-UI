@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { object } from 'prop-types'
 import { withStyles } from 'UI/styles'
 import Avatar from 'UI/Avatar'
@@ -114,7 +114,7 @@ function User({
 
 User.propTypes = {
   classes: object.isRequired,
-  user: object
+  user:    object
 }
 
 export default withStyles(styles)(User)

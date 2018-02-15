@@ -115,11 +115,11 @@ function Nav(props) {
 }
 
 Nav.propTypes = {
-  classes: object.isRequired,
-  history: object.isRequired,
-  location: object.isRequired,
-  navOptions: object,
-  openNavOptions: func.isRequired,
+  classes:         object.isRequired,
+  history:         object.isRequired,
+  location:        object.isRequired,
+  navOptions:      object,
+  openNavOptions:  func.isRequired,
   closeNavOptions: func.isRequired
 }
 
