@@ -1,6 +1,13 @@
 import React, { Component }  from 'react'
 import { connect } from 'react-redux'
-import { changeScoreView, fetchFocusedUser, fetchQuery, fetchStats } from 'Actions/async'
+import { setFocusedUser } from 'Actions/sync'
+import {
+  changeScoreView,
+  fetchEarnedCards,
+  fetchFocusedUser,
+  fetchQuery,
+  fetchStats
+} from 'Actions/async'
 import Scoreboard from 'Components/Scoreboard'
 import User from 'Components/User'
 
@@ -12,15 +19,20 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
+  changeScoreView,
+  fetchEarnedCards,
   fetchFocusedUser,
   fetchStats,
-  changeScoreView,
-  fetchQuery
+  fetchQuery,
+  setFocusedUser
 }
 
 class Container extends Component {
   componentWillMount() {
+    const handle = this.props.match.params.handle
     this.props.fetchStats(this.props.scoreView)
+    if (handle)
+      this.props.fetchFocusedUser(handle)
   }
 
   render() {
@@ -33,24 +45,10 @@ class Container extends Component {
     } = this.props
 
     if (handle) {
-      if (!focusedUser || focusedUser.handle !== handle) {
-        fetchFocusedUser(handle)
-        return <h1>Loading...</h1>
-      }
-
-      return <User user={focusedUser} {...props} />
+      return <User user={focusedUser} handleParam={handle} {...props} />
     }
 
-    if (!users[this.props.scoreView])
-      return <h1>Loading...</h1>
-
-    let filteredUsers = users[this.props.scoreView]
-
-    // TODO: query database w/ regex
-    let { search } = this.props
-    search = search.replace(/@/g, '').trim()
-
-    return <Scoreboard users={filteredUsers} {...props} />
+    return <Scoreboard users={users[this.props.scoreView]} {...props} />
   }
 }
 

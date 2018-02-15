@@ -10,14 +10,23 @@ export default (theme) => ({
     height: '200px'
   },
   label: {
-    textTransform: 'none'
+    color: theme.palette.primary.main,
+    padding: '5px 12px 5px 5px',
+    textTransform: 'none',
+    '&:hover': {
+      color: theme.palette.secondary.main
+    }
   },
   followButton: {
     height: '20px',
     margin: '8px 0',
-    padding: '0 12px 0 5px'
+    padding: '0',
+    '&:hover': {
+      background: theme.palette.primary.light,
+    }
   },
   followImage: {
+    background: theme.palette.secondary.main,
     borderRadius: '50%',
     marginRight: '3px'
   },
@@ -31,10 +40,9 @@ export default (theme) => ({
     color: theme.palette.secondary.main
   },
   userBar: {
-    //background: theme.palette.primary.light,
-    background: theme.palette.grey[200],
     color: theme.palette.primary.dark,
     display: 'flex',
+    paddingBottom: '3px',
     [theme.breakpoints.only('xs')]: {
       flexDirection: 'column'
     }

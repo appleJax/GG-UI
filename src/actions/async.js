@@ -1,5 +1,6 @@
 import { ajax, debounce } from 'Utils'
 import {
+  setEarnedCards,
   setFocusedUser,
   setScoreView,
   setSearchQuery,
@@ -36,6 +37,18 @@ export const fetchFocusedUser = (handle) =>
           dispatch(setFocusedUser(user))
         ).catch(console.error)
   }
+
+export const fetchEarnedCards = (ids) =>
+  dispatch => {
+    const params = {
+      params: { ids }
+    }
+    ajax.get('/cards/earned', params)
+        .then(cards =>
+          dispatch(setEarnedCards(cards))
+        ).catch(console.error)
+  }
+
 
 export function changeScoreView(view) {
   if (view === 0) view = 'weeklyStats'

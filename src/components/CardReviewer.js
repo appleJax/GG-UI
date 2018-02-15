@@ -65,26 +65,28 @@ function CardReviewer({
     <div className={container}>
       <Subheader classes={{root: subHeader}} component='div'>
         <Typography className={title} variant='subheading'>
-          FlashCards Earned: {cards.length}
+          FlashCards Earned: {cards ? cards.length : '???'}
         </Typography>
       </Subheader>
       <div className={cardList}>
-      { cards.map(({questionText, mediaUrl, answers}, i) =>
-        <Paper className={imgCard} key={i}>
-          <Typography className={cardHeader} variant='body1'>
-            {questionText}
-          </Typography>
-          <img
-            key={i}
-            height='160'
-            width='240'
-            src={mediaUrl.image}
-            alt={mediaUrl.altText}
-          />
-          <Typography className={cardAnswer} variant='caption'>
-            {answers}
-          </Typography>
-        </Paper>
+      { !cards
+        ? <h2>Loading...</h2>
+        : cards.map(({questionText, mediaUrl, answers}, i) =>
+            <Paper className={imgCard} key={i}>
+              <Typography className={cardHeader} variant='body1'>
+                {questionText}
+              </Typography>
+              <img
+                key={i}
+                height='160'
+                width='240'
+                src={mediaUrl.image}
+                alt={mediaUrl.altText}
+              />
+              <Typography className={cardAnswer} variant='caption'>
+                {answers}
+              </Typography>
+            </Paper>
       )}
       </div>
     </div>
@@ -92,7 +94,7 @@ function CardReviewer({
 }
 
 CardReviewer.propTypes = {
-  cards: array.isRequired,
+  cards: array,
   classes: object.isRequired
 }
 

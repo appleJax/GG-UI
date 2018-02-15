@@ -21,15 +21,21 @@ function User({
     userIdentity,
     userStats
   },
+  handleParam,
+  fetchEarnedCards,
   user
 }) {
 
   if (!user)
+    return <h2>User @{handleParam} not found...</h2>
+
+  if (user.handle !== handleParam)
     return <h2>Loading...</h2>
 
   const {
     allTimeStats,
     avatar,
+    dailyStats,
     earnedCards,
     handle,
     monthlyStats,
@@ -37,6 +43,11 @@ function User({
     profileBanner,
     weeklyStats
   } = user
+
+  if (!earnedCards) {
+    const ids = allTimeStats.correct.map(card => card.cardId)
+    fetchEarnedCards(ids)
+  }
 
   return (
     <div>
@@ -56,7 +67,7 @@ function User({
             <Typography variant='subheading'>{`@${handle}`}</Typography>
             <Button
               classes={{label}}
-              color='primary'
+              color='secondary'
               className={followButton}
               href={`https://twitter.com/intent/follow?screen_name=${handle}`}
               target='_blank'
@@ -68,7 +79,7 @@ function User({
                 className={followImage}
                 height='25'
                 width='25'
-                src='/images/Twitter_Logo_WhiteOnBlue.svg'
+                src='/images/Twitter_Logo_Blue.svg'
               />
               Follow
             </Button>
@@ -85,6 +96,11 @@ function User({
                 <Typography className={timePeriod} variant='subheading'>{label}</Typography>
                 <Typography variant='subheading'>Score: {stats.score}</Typography>
                 <Typography variant='body1'>({formatAccuracy(stats)} correct)</Typography>
+                <Typography variant='body2'>Rank: {stats.rank}</Typography>
+                { stats.average
+                  ? <Typography variant='caption'>Average Score: {stats.average.value}</Typography>
+                  : <Typography variant='caption'>Daily Average: {dailyStats.average.value}</Typography>
+                }
               </div>
             )
           })

@@ -25,6 +25,9 @@ const theme = createMuiTheme({
     secondary: {
       main: '#fff',
     },
+    background: {
+      default: 'aliceblue'
+    },
     contrastThreshold: 2
   },
   text: {

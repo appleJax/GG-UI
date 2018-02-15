@@ -17,7 +17,6 @@ const styles = {
   }
 }
 
-// App
 function App(props) {
   const { appContainer } = props.classes
 

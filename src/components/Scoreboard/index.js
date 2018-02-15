@@ -24,11 +24,12 @@ function Scoreboard({
     smallNumber,
     tabs
   },
+  changeScoreView,
+  fetchQuery,
   history,
   scoreView,
   search,
-  changeScoreView,
-  fetchQuery,
+  setFocusedUser,
   users
 }) {
 
@@ -52,7 +53,10 @@ function Scoreboard({
             key={userId}
             classes={{hover}}
             hover={true}
-            onClick={() => history.push(`/stats/${handle}`)}
+            onClick={() => {
+              setFocusedUser(user)
+              history.push(`/stats/${handle}`)
+            }}
           >
             <TableCell classes={{typeBody: rankNumber}}>
               {user[scoreView].rank}

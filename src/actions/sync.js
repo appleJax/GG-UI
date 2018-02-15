@@ -5,6 +5,7 @@ export const POPULATE_LIVE_QUESTIONS = 'POPULATE_LIVE_QUESTIONS'
 export const POPULATE_ALLTIME_STATS = 'POPULATE_ALLTIME_STATS'
 export const POPULATE_MONTHLY_STATS = 'POPULATE_MONTHLY_STATS'
 export const POPULATE_WEEKLY_STATS = 'POPULATE_WEEKLY_STATS'
+export const SET_EARNED_CARDS = 'SET_EARNED_CARDS'
 export const SET_FOCUSED_USER = 'SET_FOCUSED_USER'
 export const SET_SCORE_VIEW = 'SET_SCORE_VIEW'
 export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY'
@@ -42,6 +43,11 @@ export const populateMonthlyStats = (users) => ({
 export const populateAllTimeStats = (users) => ({
   type: POPULATE_ALLTIME_STATS,
   users
+})
+
+export const setEarnedCards = (cards) => ({
+  type: SET_EARNED_CARDS,
+  cards
 })
 
 export const setFocusedUser = (user) => ({
