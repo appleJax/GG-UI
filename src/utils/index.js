@@ -32,10 +32,10 @@ export function calculateTimeRemaining(time) {
   )
   const minuteString = `${minutes}min`
   const hourString = (hours > 1)
-    ? `${hours}hrs`
-    : `${hours}hr`
+    ? `${hours}hrs `
+    : `${hours}hr `
 
-  return `${hours ? hourString : ''} ${minutes ? minuteString : ''}`
+  return `${hours ? hourString : ''}${minutes ? minuteString : ''}`
 }
 
 export function formatQuestionText(questionText) {

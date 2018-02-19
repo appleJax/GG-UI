@@ -5,64 +5,16 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { AppContainer } from 'react-hot-loader'
 
 import Reboot from 'UI/Reboot'
-import { MuiThemeProvider, createMuiTheme } from 'UI/styles'
+import { MuiThemeProvider } from 'UI/styles'
 
 import configureStore from 'Src/configureStore'
+import theme from 'Styles/muiTheme'
 import App from 'Containers/App'
 
 const preloadedState = JSON.parse(
   window.__PRELOADED_STATE__ || '{}'
 )
 const store = configureStore(preloadedState)
-
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#1DA1F2'
-    },
-    secondary: {
-      main: '#fff',
-    },
-    background: {
-      default: 'aliceblue'
-    },
-    contrastThreshold: 2
-  },
-  text: {
-    primary: 'rgba(255,255,255,0.87)'
-  },
-  typography: {
-    fontSize: '24px'
-  },
-  overrides: {
-    MuiAvatar: {
-      root: {
-        height: '50px',
-        width: '50px'
-      }
-    },
-    MuiTab: {
-      label: {
-        fontSize: '20px'
-      }
-    },
-    MuiTableCell: {
-      root: {
-        textAlign: 'center'
-      },
-      paddingDefault: {
-        padding: '5px'
-      },
-      typeBody: {
-        fontSize: '20px'
-      },
-      typeHead: {
-        fontSize: '20px'
-      }
-    }
-  }
-})
 
 const render = (Component) =>
   ReactDOM.render(
