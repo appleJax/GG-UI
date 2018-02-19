@@ -35,7 +35,7 @@ export function calculateTimeRemaining(time) {
     ? `${hours}hrs`
     : `${hours}hr`
 
-  return `${hours && hourString} ${minutes && minuteString}`
+  return `${hours ? hourString : ''} ${minutes ? minuteString : ''}`
 }
 
 export function formatQuestionText(questionText) {
