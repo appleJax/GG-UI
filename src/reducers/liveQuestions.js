@@ -1,19 +1,18 @@
 import payloadStates from 'Constants/PayloadStates'
 import actionTypes   from 'Constants/ActionTypes'
 
-const {
+const [{
   INITIAL_STATE,
   FETCHING,
   RESOLVED,
   NOT_FOUND,
   ERROR_FETCHING
-} = payloadStates
-const {
+}, {
   FETCHING_LIVE_QUESTIONS,
-  POPULATE_LIVE_QUESTIONS,
+  SET_LIVE_QUESTIONS,
   NOT_FOUND_LIVE_QUESTIONS,
   ERROR_FETCHING_LIVE_QUESTIONS
-} = actionTypes
+}] = [ payloadStates, actionTypes ]
 
 const init = {
   state: INITIAL_STATE,
@@ -30,7 +29,7 @@ export default (state = init, action) => {
           error: null
         }
 
-      case POPULATE_LIVE_QUESTIONS:
+      case SET_LIVE_QUESTIONS:
         return {
           state: RESOLVED,
           data: action.liveQuestions,

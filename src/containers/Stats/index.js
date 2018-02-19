@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import payloadStates from 'Constants/PayloadStates'
-import syncActions  from 'Actions/sync'
 import asyncActions from 'Actions/async'
+import syncActions  from 'Actions/sync'
 import Scoreboard from 'Components/Scoreboard'
 import User       from 'Components/User'
 

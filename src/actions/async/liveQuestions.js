@@ -3,7 +3,7 @@ import syncActions from 'Actions/sync'
 
 const {
   fetchingLiveQuestions,
-  populateLiveQuestions,
+  setLiveQuestions,
   notFoundLiveQuestions,
   errorFetchingLiveQuestions,
 } = syncActions
@@ -16,7 +16,7 @@ export default ({
       ajax.get('/live')
           .then(liveQuestions =>
             liveQuestions
-              ? dispatch(populateLiveQuestions(liveQuestions))
+              ? dispatch(setLiveQuestions(liveQuestions))
               : dispatch(notFoundLiveQuestions())
           ).catch(error =>
             dispatch(errorFetchingLiveQuestions(error))

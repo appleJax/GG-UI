@@ -1,19 +1,18 @@
 import payloadStates from 'Constants/PayloadStates'
 import actionTypes   from 'Constants/ActionTypes'
 
-const {
+const [{
   INITIAL_STATE,
   FETCHING,
   RESOLVED,
   NOT_FOUND,
   ERROR_FETCHING
-} = payloadStates
-const {
+}, {
   FETCHING_MONTHLY_STATS,
-  POPULATE_MONTHLY_STATS,
+  SET_MONTHLY_STATS,
   NOT_FOUND_MONTHLY_STATS,
   ERROR_FETCHING_MONTHLY_STATS
-} = actionTypes
+}] = [ payloadStates, actionTypes ]
 
 const init = {
   state: INITIAL_STATE,
@@ -31,7 +30,7 @@ export default (state = init, action) => {
           error: null
         }
 
-      case POPULATE_MONTHLY_STATS:
+      case SET_MONTHLY_STATS:
         return {
           state: RESOLVED,
           data: action.users,

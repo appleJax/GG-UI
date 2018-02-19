@@ -6,7 +6,7 @@ export default ({
     (dispatch, getState) => {
         const { search } = getState()
         const params = {
-          params: { page, view, search }
+          params: { page, search, view }
         }
         getScores(dispatch, params, view)
     }

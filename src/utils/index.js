@@ -30,9 +30,12 @@ export function calculateTimeRemaining(time) {
   const minutes = Math.floor(
     (millisRemaining % HOURS) / 60000
   )
-  const s = hours > 1 ? 's' : ''
+  const minuteString = `${minutes}min`
+  const hourString = (hours > 1)
+    ? `${hours}hrs`
+    : `${hours}hr`
 
-  return `${hours}hr${s} ${minutes}min`
+  return `${hours && hourString} ${minutes && minuteString}`
 }
 
 export function formatQuestionText(questionText) {

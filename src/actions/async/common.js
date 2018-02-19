@@ -3,7 +3,7 @@ import syncActions from 'Actions/sync'
 
 const {
   fetchingStats,
-  populateStats,
+  setStats,
   errorFetchingStats
 } = syncActions
 
@@ -13,7 +13,7 @@ export const getScores = (dispatch, params, view) => {
 
     ajax.get('/scores', params)
         .then(users => {
-          dispatch(populateStats(users, view))
+          dispatch(setStats(users, view))
         })
         .catch(error =>
           dispatch(errorFetchingStats(error, view))

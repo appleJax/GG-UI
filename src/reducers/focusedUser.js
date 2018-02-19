@@ -1,14 +1,13 @@
 import payloadStates from 'Constants/PayloadStates'
 import actionTypes   from 'Constants/ActionTypes'
 
-const {
+const [{
   INITIAL_STATE,
   FETCHING,
   RESOLVED,
   NOT_FOUND,
   ERROR_FETCHING
-} = payloadStates
-const {
+}, {
   FETCHING_FOCUSED_USER,
   SET_FOCUSED_USER,
   NOT_FOUND_FOCUSED_USER,
@@ -17,7 +16,7 @@ const {
   FETCHING_EARNED_CARDS,
   SET_EARNED_CARDS,
   ERROR_FETCHING_EARNED_CARDS
-} = actionTypes
+}] = [ payloadStates, actionTypes ]
 
 const init = {
   state: INITIAL_STATE,

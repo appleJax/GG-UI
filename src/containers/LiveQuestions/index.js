@@ -1,13 +1,15 @@
 import React, { Component }  from 'react'
 import { connect } from 'react-redux'
-import { RESOLVED } from 'Constants/PayloadStates'
 import { withStyles } from 'UI/styles'
-import styles from './styles'
+import payloadStates from 'Constants/PayloadStates'
 import asyncActions from 'Actions/async'
+import styles from './styles'
 import LiveQuestions from './component'
 
-
-const { fetchLiveQuestions } = asyncActions
+const [
+  { RESOLVED },
+  { fetchLiveQuestions }
+] = [ payloadStates, asyncActions ]
 
 const mapStateToProps = (state) => ({
   liveQuestions: state.liveQuestions

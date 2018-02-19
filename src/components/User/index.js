@@ -105,8 +105,8 @@ function User({
                 <Typography variant='body1'>({formatAccuracy(stats)} correct)</Typography>
                 <Typography variant='body2'>Rank: {stats.rank}</Typography>
                 { stats.average
-                  ? <Typography variant='caption'>Average: {stats.average.value}</Typography>
-                  : <Typography variant='caption'>Daily Average: {dailyStats.average.value}</Typography>
+                  ? <Typography variant='caption'>Average: {stats.average.value || stats.score}</Typography>
+                  : <Typography variant='caption'>Daily Average: {dailyStats.average.value || stats.score}</Typography>
                 }
               </div>
             )

@@ -1,11 +1,11 @@
 import React from 'react'
 import { array, object, string } from 'prop-types'
 import payloadStates from 'Constants/PayloadStates'
+import { withStyles } from 'UI/styles'
 import styles from './styles'
 import Paper from 'UI/Paper'
 import Subheader from 'UI/List/ListSubheader'
 import Typography from 'UI/Typography'
-import { withStyles } from 'UI/styles'
 
 const {
   INITIAL_STATE,

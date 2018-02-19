@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { array, func, number, object, string } from 'prop-types'
 import payloadStates from 'Constants/PayloadStates'
 import { withStyles } from 'UI/styles'
+import styles from './styles'
 import Avatar from 'UI/Avatar'
 import Input, { InputAdornment } from 'UI/Input';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'UI/Table'
@@ -10,7 +11,6 @@ import Tabs, { Tab } from 'UI/Tabs'
 import Typography from 'UI/Typography'
 import Paper from 'UI/Paper'
 import SearchIcon from 'Icons/Search'
-import styles from './styles'
 
 const {
   FETCHING,
