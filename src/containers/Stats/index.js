@@ -59,7 +59,7 @@ class Container extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-
+    return true
   }
 
   render() {
