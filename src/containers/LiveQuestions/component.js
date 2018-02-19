@@ -1,9 +1,16 @@
 import React from 'react'
 import { array, object } from 'prop-types'
+import payloadStates from 'Constants/PayloadStates'
 import Paper from 'UI/Paper'
 import Typography from 'UI/Typography'
 import { calculateTimeRemaining, formatQuestionText } from 'Utils'
 
+const {
+  FETCHING,
+  NOT_FOUND,
+  RESOLVED,
+  ERROR_FETCHING
+} = payloadStates
 
 function LiveQuestions({
   classes: {
@@ -17,14 +24,20 @@ function LiveQuestions({
   },
   liveQuestions
 }) {
-  if (liveQuestions.length === 0)
+  if (!liveQuestions || liveQuestions.state === FETCHING)
     return <h1>Loading...</h1>
+
+  if (liveQuestions.state === ERROR_FETCHING)
+    return <h1>Error loading...</h1>
+
+  if (liveQuestions.state === NOT_FOUND)
+    return <h1>No Live Questions</h1>
 
   return (
     <div className={container}>
       <Typography className={liveTitle} variant='display1'>Live Questions</Typography>
 
-      { liveQuestions.map((question, index) => {
+      { liveQuestions.data.map((question, index) => {
           const { questionId, questionText, questionPostedAt, mediaUrls } = question
           const timeRemaining = calculateTimeRemaining(questionPostedAt)
           const text = formatQuestionText(questionText)
@@ -61,8 +74,8 @@ function LiveQuestions({
 }
 
 LiveQuestions.propTypes = {
-  classes: object.isRequired,
-  liveQuestions: array.isRequired
+  classes:       object.isRequired,
+  liveQuestions: object.isRequired
 }
 
 export default LiveQuestions

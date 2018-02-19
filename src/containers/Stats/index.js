@@ -1,15 +1,21 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setFocusedUser } from 'Actions/sync'
-import {
+import payloadStates from 'Constants/PayloadStates'
+import syncActions  from 'Actions/sync'
+import asyncActions from 'Actions/async'
+import Scoreboard from 'Components/Scoreboard'
+import User       from 'Components/User'
+
+const { INITIAL_STATE, RESOLVED } = payloadStates
+const { setFocusedUser } = syncActions
+const {
   changeScoreView,
   fetchEarnedCards,
   fetchFocusedUser,
   fetchQuery,
   fetchStats
-} from 'Actions/async'
-import Scoreboard from 'Components/Scoreboard'
-import User from 'Components/User'
+} = asyncActions
+
 
 const mapStateToProps = (state) => ({
   focusedUser: state.focusedUser,
@@ -38,6 +44,22 @@ class Container extends Component {
 
     fetchStats(scoreView)
     if (handle) fetchFocusedUser(handle)
+  }
+
+  componentWillReceiveProps({
+    match: { params: { handle } },
+    fetchEarnedCards,
+    focusedUser,
+    focusedUser: { earnedCardsState, state: userState }
+  }) {
+    if (handle && userState === RESOLVED && earnedCardsState === INITIAL_STATE) {
+      const ids = focusedUser.data.allTimeStats.correct.map(card => card.cardId)
+      fetchEarnedCards(ids)
+    }
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+
   }
 
   render() {

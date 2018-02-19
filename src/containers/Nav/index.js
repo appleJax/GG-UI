@@ -2,8 +2,11 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { withStyles } from 'UI/styles'
 import { navHeight } from 'Styles/variables'
-import { openNavOptions, closeNavOptions } from 'Actions/sync'
+import syncActions from 'Actions/sync'
 import Nav from './component'
+
+const { openNavOptions, closeNavOptions } = syncActions
+
 
 const styles = (theme) => ({
   appBar: {

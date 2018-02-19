@@ -1,10 +1,55 @@
-import { POPULATE_WEEKLY_STATS } from 'Actions/sync'
+import payloadStates from 'Constants/PayloadStates'
+import actionTypes   from 'Constants/ActionTypes'
+
+const {
+  INITIAL_STATE,
+  FETCHING,
+  RESOLVED,
+  NOT_FOUND,
+  ERROR_FETCHING
+} = payloadStates
+const {
+  FETCHING_WEEKLY_STATS,
+  POPULATE_WEEKLY_STATS,
+  NOT_FOUND_WEEKLY_STATS,
+  ERROR_FETCHING_WEEKLY_STATS
+} = actionTypes
+
+const init = {
+  state: INITIAL_STATE,
+  data: [],
+  error: null
+}
 
 // users.weeklyStats reducer
-export default (state = [], action) => {
+export default (state = init, action) => {
     switch (action.type) {
+      case FETCHING_WEEKLY_STATS:
+        return {
+          state: FETCHING,
+          data: [],
+          error: null
+        }
+
       case POPULATE_WEEKLY_STATS:
-        return action.users
+        return {
+          state: RESOLVED,
+          data: action.users,
+          error: null
+        }
+
+      case NOT_FOUND_WEEKLY_STATS:
+        return {
+          state: NOT_FOUND,
+          data: null
+        }
+
+      case ERROR_FETCHING_WEEKLY_STATS:
+        return {
+          state: ERROR_FETCHING,
+          data: [],
+          error: action.message
+        }
 
       default:
         return state

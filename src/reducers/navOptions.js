@@ -1,4 +1,7 @@
-import { OPEN_NAV_OPTIONS, CLOSE_NAV_OPTIONS } from 'Actions/sync'
+import actionTypes from 'Constants/ActionTypes'
+
+const { OPEN_NAV_OPTIONS, CLOSE_NAV_OPTIONS } = actionTypes
+
 
 export default (state = null, action) => {
     switch (action.type) {

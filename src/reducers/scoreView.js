@@ -1,4 +1,6 @@
-import { SET_SCORE_VIEW, } from 'Actions/sync'
+import actionTypes from 'Constants/ActionTypes'
+
+const { SET_SCORE_VIEW } = actionTypes
 
 export default (state = 'weeklyStats', action) => {
     switch (action.type) {

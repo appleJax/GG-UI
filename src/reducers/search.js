@@ -1,4 +1,6 @@
-import { SET_SEARCH_QUERY, } from 'Actions/sync'
+import actionTypes from 'Constants/ActionTypes'
+
+const { SET_SEARCH_QUERY, } = actionTypes
 
 export default (state = '', action) => {
     switch (action.type) {

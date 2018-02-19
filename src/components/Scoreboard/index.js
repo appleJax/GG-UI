@@ -1,6 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { array, func, number, object, string } from 'prop-types'
+import payloadStates from 'Constants/PayloadStates'
 import { withStyles } from 'UI/styles'
 import Avatar from 'UI/Avatar'
 import Input, { InputAdornment } from 'UI/Input';
@@ -10,6 +11,14 @@ import Typography from 'UI/Typography'
 import Paper from 'UI/Paper'
 import SearchIcon from 'Icons/Search'
 import styles from './styles'
+
+const {
+  FETCHING,
+  INITIAL_STATE,
+  NOT_FOUND,
+  RESOLVED,
+  ERROR_FETCHING
+} = payloadStates
 
 function Scoreboard({
   classes: {
@@ -38,13 +47,16 @@ function Scoreboard({
     : (scoreView === 'monthlyStats') ? 1
     :                                  2
 
+  const usersState = users.state
   let userScores
-  if (!users)
+  if (usersState === NOT_FOUND)
     userScores = <TableRow><TableCell>Not Found...</TableCell></TableRow>
-  else if (users.length === 0)
+  else if (usersState === FETCHING || usersState === INITIAL_STATE)
     userScores = <TableRow><TableCell>Loading...</TableCell></TableRow>
-  else
-    userScores =  users.map(user => {
+  else if (usersState === ERROR_FETCHING)
+    userScores = <TableRow><TableCell>Error loading...</TableCell></TableRow>
+  else if (usersState === RESOLVED)
+    userScores =  users.data.map(user => {
       const {
         avatar,
         handle,
@@ -141,7 +153,7 @@ Scoreboard.propTypes = {
   changeScoreView: func.isRequired,
   search:          string.isRequired,
   fetchQuery:      func.isRequired,
-  users:           array
+  users:           object
 }
 
 export default withStyles(styles)(Scoreboard)

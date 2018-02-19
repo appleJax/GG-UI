@@ -7,17 +7,18 @@ const path = require('path');
 module.exports = {
   resolve: {
     alias: {
-      Actions: path.resolve(__dirname, 'src/actions/'),
-      Ajax: path.resolve(__dirname, 'src/ajax/'),
-      Components: path.resolve(__dirname, 'src/components/'),
+      Actions: path.resolve(__dirname, 'src/actions'),
+      Ajax: path.resolve(__dirname, 'src/ajax'),
+      Components: path.resolve(__dirname, 'src/components'),
+      Constants: path.resolve(__dirname, 'src/constants'),
       Containers: path.resolve(__dirname, 'src/containers'),
       Icons: 'material-ui-icons',
-      Images: path.resolve(__dirname, 'src/static/images/'),
-      Reducers: path.resolve(__dirname, 'src/reducers/'),
-      Styles: path.resolve(__dirname, 'src/styles/'),
-      Src: path.resolve(__dirname, 'src/'),
+      Images: path.resolve(__dirname, 'src/static/images'),
+      Reducers: path.resolve(__dirname, 'src/reducers'),
+      Styles: path.resolve(__dirname, 'src/styles'),
+      Src: path.resolve(__dirname, 'src'),
       UI: 'material-ui',
-      Utils: path.resolve(__dirname, 'src/utils/')
+      Utils: path.resolve(__dirname, 'src/utils')
     }
   },
   module: {

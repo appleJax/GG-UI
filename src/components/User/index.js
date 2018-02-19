@@ -1,5 +1,6 @@
 import React from 'react'
 import { object } from 'prop-types'
+import payloadStates from 'Constants/PayloadStates'
 import { withStyles } from 'UI/styles'
 import Avatar from 'UI/Avatar'
 import Button from 'UI/Button'
@@ -7,6 +8,14 @@ import Typography from 'UI/Typography'
 import CardReviewer from 'Components/CardReviewer'
 import styles from './styles'
 import { formatAccuracy } from 'Utils'
+
+const {
+  INITIAL_STATE,
+  FETCHING,
+  NOT_FOUND,
+  RESOLVED,
+  ERROR_FETCHING
+} = payloadStates
 
 function User({
   classes: {
@@ -26,11 +35,14 @@ function User({
   user
 }) {
 
-  if (!user)
+  if (user.state === NOT_FOUND)
     return <h2>User @{handleParam} not found...</h2>
 
-  if (user.handle !== handleParam)
+  if (user.data.handle !== handleParam || user.state === FETCHING)
     return <h2>Loading...</h2>
+
+  if (user.state === ERROR_FETCHING)
+    return <h2>Error loading...</h2>
 
   const {
     allTimeStats,
@@ -42,12 +54,7 @@ function User({
     name,
     profileBanner,
     weeklyStats
-  } = user
-
-  if (!earnedCards) {
-    const ids = allTimeStats.correct.map(card => card.cardId)
-    fetchEarnedCards(ids)
-  }
+  } = user.data
 
   return (
     <div>
@@ -98,7 +105,7 @@ function User({
                 <Typography variant='body1'>({formatAccuracy(stats)} correct)</Typography>
                 <Typography variant='body2'>Rank: {stats.rank}</Typography>
                 { stats.average
-                  ? <Typography variant='caption'>Average Score: {stats.average.value}</Typography>
+                  ? <Typography variant='caption'>Average: {stats.average.value}</Typography>
                   : <Typography variant='caption'>Daily Average: {dailyStats.average.value}</Typography>
                 }
               </div>
@@ -107,7 +114,10 @@ function User({
         }
         </div>
       </div>
-      <CardReviewer cards={earnedCards} />
+      <CardReviewer
+        cards={earnedCards}
+        cardsState={user.earnedCardsState}
+      />
     </div>
   )
 }

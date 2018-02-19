@@ -52,6 +52,7 @@
       "^Actions/(.*)$": "<rootDir>/src/actions/$1",
       "^Ajax$": "<rootDir>/src/ajax/'",
       "^Components/(.*)$": "<rootDir>/src/components/$1",
+      "^Constants/(.*)$": "<rootDir>/src/constants/$1",
       "^Containers/(.*)$": "<rootDir>/src/containers/$1",
       "^Icons/(.*)$": "<rootDir/node_modules/material-ui-icons/$1",
       "^Images/(.*)$": "<rootDir>/src/static/images/$1",
