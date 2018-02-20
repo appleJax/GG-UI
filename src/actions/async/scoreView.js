@@ -12,11 +12,11 @@ export default ({
 
     return (dispatch, getState) => {
       dispatch(setScoreView(view))
-      const { search } = getState()
+      const { search, users } = getState()
       const params = {
         params: { search, view }
       }
-      getScores(dispatch, params, view)
+      getScores(dispatch, params, view, search, users)
     }
   }
 

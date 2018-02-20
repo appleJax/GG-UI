@@ -27,6 +27,7 @@ export default (state = init, action) => {
         return {
           state: FETCHING,
           data: [],
+          search: action.search,
           error: null
         }
 
@@ -34,6 +35,7 @@ export default (state = init, action) => {
         return {
           state: RESOLVED,
           data: action.users,
+          search: action.search,
           error: null
         }
 

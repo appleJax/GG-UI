@@ -19,7 +19,7 @@ const {
 
 export default ({
 
-  fetchingStats: (view) => {
+  fetchingStats: (view, search) => {
     let type
     if (view === 'weeklyStats')
       type = FETCHING_WEEKLY_STATS
@@ -30,10 +30,10 @@ export default ({
     if (view === 'allTimeStats')
       type = FETCHING_ALLTIME_STATS
 
-    return { type }
+    return { type, search }
   },
 
-  setStats: (users, view) => {
+  setStats: (users, view, search) => {
     let type
     if (view === 'weeklyStats')
       type = (users)
@@ -50,7 +50,7 @@ export default ({
         ? SET_ALLTIME_STATS
         : NOT_FOUND_ALLTIME_STATS
 
-    return { type, users }
+    return { type, users, search }
   },
 
   errorFetchingStats: (message) => {
