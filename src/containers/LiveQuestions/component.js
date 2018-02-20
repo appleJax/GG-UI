@@ -6,6 +6,7 @@ import Typography from 'UI/Typography'
 import { calculateTimeRemaining, formatQuestionText } from 'Utils'
 
 const {
+  INITIAL_STATE,
   FETCHING,
   NOT_FOUND,
   RESOLVED,
@@ -24,8 +25,10 @@ function LiveQuestions({
   },
   liveQuestions
 }) {
-  if (!liveQuestions || liveQuestions.state === FETCHING)
-    return <h1>Loading...</h1>
+  if (
+    liveQuestions.state === INITIAL_STATE ||
+    liveQuestions.state === FETCHING
+  ) return <h1>Loading...</h1>
 
   if (liveQuestions.state === ERROR_FETCHING)
     return <h1>Error loading...</h1>
@@ -35,7 +38,9 @@ function LiveQuestions({
 
   return (
     <div className={container}>
-      <Typography className={liveTitle} variant='display1'>Live Questions</Typography>
+      <Typography className={liveTitle} variant='display1'>
+        Live Questions
+      </Typography>
 
       { liveQuestions.data.map((question, index) => {
           const { questionId, questionText, questionPostedAt, mediaUrls } = question

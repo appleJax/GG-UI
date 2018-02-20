@@ -16,9 +16,9 @@ module.exports = {
       Reducers:   path.resolve(__dirname, 'src/reducers'),
       Styles:     path.resolve(__dirname, 'src/styles'),
       Src:        path.resolve(__dirname, 'src'),
-      Utils:      path.resolve(__dirname, 'src/utils')
+      Utils:      path.resolve(__dirname, 'src/utils'),
       Icons:      'material-ui-icons',
-      UI:         'material-ui',
+      UI:         'material-ui'
     }
   },
   module: {
