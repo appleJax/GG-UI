@@ -1,5 +1,5 @@
 import React from 'react'
-import { array, object } from 'prop-types'
+import { object } from 'prop-types'
 import payloadStates from 'Constants/PayloadStates'
 import Paper from 'UI/Paper'
 import Typography from 'UI/Typography'

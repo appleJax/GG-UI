@@ -6,6 +6,7 @@ import styles from './styles'
 import Paper from 'UI/Paper'
 import Subheader from 'UI/List/ListSubheader'
 import Typography from 'UI/Typography'
+import AnswerCard from 'Components/AnswerCard'
 
 const {
   INITIAL_STATE,
@@ -19,11 +20,8 @@ function CardReviewer({
   cards,
   cardsState,
   classes: {
-    cardAnswer,
     cardList,
-    cardHeader,
     container,
-    imgCard,
     row,
     subHeader,
     title
@@ -39,23 +37,7 @@ function CardReviewer({
     cardDisplay = <h2>Error loading...</h2>
   } else if (cardsState === RESOLVED) {
     cardCount = cards.length
-    cardDisplay = cards.map(({questionText, mediaUrl, answers}, i) => (
-        <Paper className={imgCard} key={i}>
-          <Typography className={cardHeader} variant='body1'>
-            {questionText}
-          </Typography>
-          <img
-            key={i}
-            height='160'
-            width='240'
-            src={mediaUrl.image}
-            alt={mediaUrl.altText}
-          />
-          <Typography className={cardAnswer} variant='caption'>
-            {answers}
-          </Typography>
-        </Paper>
-      ))
+    cardDisplay = cards.map((card, i) => <AnswerCard key={i} card={card} />)
   }
 
   return (

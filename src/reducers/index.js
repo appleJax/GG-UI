@@ -2,15 +2,17 @@ import { combineReducers } from 'redux'
 import focusedUser   from 'Reducers/focusedUser'
 import liveQuestions from 'Reducers/liveQuestions'
 import navOptions    from 'Reducers/navOptions'
-import users         from 'Reducers/users'
+import recentAnswers from 'Reducers/recentAnswers'
 import scoreView     from 'Reducers/scoreView'
 import search        from 'Reducers/search'
+import users         from 'Reducers/users'
 
 export default combineReducers({
   focusedUser,
   liveQuestions,
   navOptions,
-  users,
+  recentAnswers,
   scoreView,
-  search
+  search,
+  users
 })
