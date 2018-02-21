@@ -1,9 +1,9 @@
 export default ({
 
   INITIAL_STATE:  'INITIAL_STATE',
-  RESOLVED:       'RESOLVED',
-  NOT_FOUND:      'NOT_FOUND',
   FETCHING:       'FETCHING',
+  NOT_FOUND:      'NOT_FOUND',
+  RESOLVED:       'RESOLVED',
   ERROR_FETCHING: 'ERROR_FETCHING'
 
 })
