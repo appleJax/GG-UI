@@ -1,7 +1,13 @@
 export default (theme) => ({
   cardLink: {
-    margin: '10px 0',
+    margin: '10px 5px',
     textDecoration: 'none'
+  },
+  cardList: {
+    alignItems: 'flex-end',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around'
   },
   captionText: {
     margin: '5px',

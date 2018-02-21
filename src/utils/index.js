@@ -1,8 +1,10 @@
 import React from 'react'
 import axios from 'axios'
 
+const { API_URL, TWITTER_ACCOUNT } = process.env
+
 const axiosObject = axios.create({
-  baseURL: process.env.API_URL
+  baseURL: API_URL
 })
 
 export const HOURS = 3600000
@@ -87,6 +89,9 @@ export function tryCatch(promise) {
       return []
     })
 }
+
+export const tweetLink = (tweetId) =>
+  `https://twitter.com/${TWITTER_ACCOUNT}/status/${tweetId}?ref_src=twcamp%5Eshare%7Ctwsrc%5Em5%7Ctwgr%5Eemail%7Ctwcon%5E7046%7Ctwterm%5E1`
 
 
 // private functions

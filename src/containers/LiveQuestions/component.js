@@ -3,7 +3,11 @@ import { object } from 'prop-types'
 import payloadStates from 'Constants/PayloadStates'
 import Paper from 'UI/Paper'
 import Typography from 'UI/Typography'
-import { calculateTimeRemaining, formatQuestionText } from 'Utils'
+import {
+  calculateTimeRemaining,
+  formatQuestionText,
+  tweetLink
+} from 'Utils'
 
 const {
   INITIAL_STATE,
@@ -16,6 +20,7 @@ const {
 function LiveQuestions({
   classes: {
     cardLink,
+    cardList,
     captionText,
     container,
     imageDiv,
@@ -42,24 +47,25 @@ function LiveQuestions({
         Live Questions
       </Typography>
 
-      { liveQuestions.data.map((question, index) => {
+      <div className={cardList}>
+      { liveQuestions.data.map((question, i) => {
           const { questionId, questionText, questionPostedAt, mediaUrls } = question
           const timeRemaining = calculateTimeRemaining(questionPostedAt)
           const text = formatQuestionText(questionText)
           return (
-            <a key={index}
+            <a key={i}
                className={cardLink}
-               href={`https://twitter.com/devtest222/status/${questionId}?ref_src=twcamp%5Eshare%7Ctwsrc%5Em5%7Ctwgr%5Eemail%7Ctwcon%5E7046%7Ctwterm%5E1`}
+               href={tweetLink(questionId)}
                target='_blank'
             >
-              <Paper key={index} classes={{root: questionCard}}>
+              <Paper classes={{root: questionCard}}>
                 <Typography className={captionText} color='secondary' variant='body2'>
                   {text}
                 </Typography>
                 <div className={imageDiv}>
                 { mediaUrls.map((mediaUrl, innerIndex) =>
                     <img
-                      key={`${index}-${innerIndex}`}
+                      key={`${i}-${innerIndex}`}
                       height='160'
                       width='240'
                       src={mediaUrl.image}
@@ -74,6 +80,7 @@ function LiveQuestions({
             </a>
           )
       })}
+      </div>
     </div>
   )
 }

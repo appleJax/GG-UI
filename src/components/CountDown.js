@@ -23,7 +23,8 @@ const styles = (theme) => ({
 
 class CountDown extends Component {
 
-  componentWillMount() {
+  constructor(props) {
+    super(props)
     this.state = {
       seconds: getTimeTilNextTweet()
     }

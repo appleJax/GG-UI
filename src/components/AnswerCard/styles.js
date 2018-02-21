@@ -10,9 +10,12 @@ export default (theme) => ({
     padding: '5px',
     textShadow: `1px 1px 3px ${theme.palette.primary.dark}`
   },
+  cardLink: {
+    margin: '10px 5px',
+    textDecoration: 'none'
+  },
   imgCard: {
     background: theme.palette.primary.light,
-    marginBottom: '20px',
     width: '240px'
   }
 })

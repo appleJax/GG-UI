@@ -3,7 +3,8 @@ export default (theme) => ({
     alignItems: 'flex-end',
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'space-around'
+    justifyContent: 'center',
+    width: '100%'
   },
   container: {
     alignItems: 'center',
