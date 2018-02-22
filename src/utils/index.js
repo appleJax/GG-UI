@@ -78,7 +78,7 @@ export function formatQuestionText(questionText) {
 export function getTimeTilNextTweet() {
   const startTimes = [ 2, 8, 14, 20 ].map(getTimeUntil)
   const millisUntilTweet = Math.min(...startTimes)
-  return millisUntilTweet / 1000
+  return Math.floor(millisUntilTweet / 1000)
 }
 
 export function tryCatch(promise) {

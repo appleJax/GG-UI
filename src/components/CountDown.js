@@ -6,16 +6,22 @@ import { TWEET_INTERVAL, formatHMS, getTimeTilNextTweet } from 'Utils'
 const styles = (theme) => ({
   container: {
     alignItems: 'center',
+    background: 'rgba(29,161,242, 0.1)',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    padding: '15px 0 10px'
   },
   countdown: {
-    font: 'Monospace',
+    color: theme.palette.primary.dark,
+    textShadow: '1px 1px rgba(255,255,255,0.6)'
   },
   label: {
+    color: theme.palette.primary.dark,
+    font: 'small-caps bold 1em',
     margin: '10px',
-    textShadow: '0 3px 15px rgba(0,0,0,0.5)'
+    opacity: '0.6',
+    textShadow: '1px 1px rgba(255,255,255,0.6)'
   }
 })
 
@@ -32,7 +38,7 @@ class CountDown extends Component {
   }
 
   update() {
-    if (this.state.seconds === 0)
+    if (this.state.seconds <= 0)
       this.setState({seconds: TWEET_INTERVAL})
     else
       this.setState({seconds: this.state.seconds - 1})
@@ -49,7 +55,7 @@ class CountDown extends Component {
 
     return (
       <div className={container}>
-        <Typography className={label} variant='display1'>
+        <Typography className={label} variant='button'>
           Next Question:
         </Typography>
         <Typography className={countdown} variant='display1'>
