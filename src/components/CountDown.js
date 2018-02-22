@@ -3,7 +3,6 @@ import { withStyles } from 'UI/styles'
 import Typography from 'UI/Typography'
 import { TWEET_INTERVAL, formatHMS, getTimeTilNextTweet } from 'Utils'
 
-
 const styles = (theme) => ({
   container: {
     alignItems: 'center',
@@ -33,12 +32,10 @@ class CountDown extends Component {
   }
 
   update() {
-    const { history } = this.props
-    if (this.state.seconds === 0) {
-      history.push('/')
-      return
-    }
-    this.setState({seconds: this.state.seconds - 1})
+    if (this.state.seconds === 0)
+      this.setState({seconds: TWEET_INTERVAL})
+    else
+      this.setState({seconds: this.state.seconds - 1})
   }
 
   render() {

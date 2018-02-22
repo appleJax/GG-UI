@@ -9,7 +9,7 @@ const axiosObject = axios.create({
 
 export const HOURS = 3600000
 
-export const TWEET_INTERVAL = 6*HOURS
+export const TWEET_INTERVAL = 6*HOURS / 1000
 
 export const ajax = {
   get(url, config) {
