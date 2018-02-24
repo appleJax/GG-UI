@@ -53,7 +53,7 @@ export default ({
     return { type, users, search }
   },
 
-  errorFetchingStats: (message) => {
+  errorFetchingStats: (message, view) => {
     let type
     if (view === 'weeklyStats')
       type = ERROR_FETCHING_WEEKLY_STATS

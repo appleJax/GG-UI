@@ -31,7 +31,6 @@ function User({
     userStats
   },
   handleParam,
-  fetchEarnedCards,
   user
 }) {
 
