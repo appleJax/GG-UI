@@ -51,9 +51,13 @@ export function debounce(fn, wait) {
 export function formatAccuracy({ correct, attempts }) {
   if (Array.isArray(correct))
     correct = correct.length
-  const percent = Math.floor(
-    (correct / attempts) * 100
-  )
+
+  const percent = (attempts > 0)
+    ? Math.floor(
+        (correct / attempts) * 100
+      )
+    : 0
+
   return `${percent}%`
 }
 

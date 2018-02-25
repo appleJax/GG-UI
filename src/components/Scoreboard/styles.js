@@ -16,6 +16,13 @@ export default (theme) => ({
     display: 'flex',
     flexDirection: 'column'
   },
+  emptyScores: {
+    background: '#f8f8f8',
+    color: 'rgba(0, 0, 0, 0.4)',
+    fontWeight: 'bold',
+    padding: '20px 0',
+    textShadow: '1px 1px #fff'
+  },
   headerCell: {
     background: theme.palette.primary.main,
     color: 'white'
@@ -32,8 +39,17 @@ export default (theme) => ({
     paddingLeft: '10%',
     textAlign: 'left'
   },
+  playerColumn: {
+    width: '398px'
+  },
+  rankColumn: {
+    width: '105px'
+  },
   rankNumber: {
     fontFamily: 'Rammetto One',
+  },
+  scoreColumnn: {
+    width: '156px'
   },
   smallNumber: {
     fontFamily: 'Rammetto One',

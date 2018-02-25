@@ -24,11 +24,15 @@ function Scoreboard({
   classes: {
     avatarRoot,
     container,
+    emptyScores,
     hover,
     headerCell,
     nameCell,
+    playerColumn,
+    rankColumn,
     rankNumber,
     root,
+    scoreColumnn,
     searchInput,
     smallNumber,
     tabs
@@ -49,8 +53,22 @@ function Scoreboard({
 
   const usersState = users.state
   let userScores
-  if (usersState === NOT_FOUND)
-    userScores = <TableRow><TableCell>Not Found...</TableCell></TableRow>
+  if (usersState === NOT_FOUND && search.length > 0)
+    userScores = (
+      <TableRow>
+        <TableCell colspan='3' className={emptyScores}>
+          Not Found
+        </TableCell>
+      </TableRow>
+    )
+  else if (usersState === NOT_FOUND)
+    userScores = (
+      <TableRow>
+        <TableCell colspan='3' className={emptyScores}>
+          No Scores. Be the First!
+        </TableCell>
+      </TableRow>
+    )
   else if (usersState === FETCHING || usersState === INITIAL_STATE)
     userScores = <TableRow><TableCell>Loading...</TableCell></TableRow>
   else if (usersState === ERROR_FETCHING)
@@ -126,13 +144,13 @@ function Scoreboard({
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell classes={{root: headerCell}}>
+              <TableCell className={rankColumn} classes={{root: headerCell}}>
                 Rank
               </TableCell>
-              <TableCell classes={{root: headerCell}}>
+              <TableCell className={playerColumn} classes={{root: headerCell}}>
                 Player
               </TableCell>
-              <TableCell classes={{root: headerCell}}>
+              <TableCell className={scoreColumnn} classes={{root: headerCell}}>
                 Score
               </TableCell>
             </TableRow>

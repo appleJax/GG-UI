@@ -102,7 +102,7 @@ function User({
                 <Typography className={timePeriod} variant='subheading'>{label}</Typography>
                 <Typography variant='subheading'>Score: {stats.score}</Typography>
                 <Typography variant='body1'>({formatAccuracy(stats)} correct)</Typography>
-                <Typography variant='body2'>Rank: {stats.rank}</Typography>
+                <Typography variant='body2'>Rank: {stats.rank || 'N/A'}</Typography>
                 { stats.average
                   ? <Typography variant='caption'>Average: {stats.average.value || stats.score}</Typography>
                   : <Typography variant='caption'>Daily Average: {dailyStats.average.value || stats.score}</Typography>
