@@ -7,6 +7,7 @@ import Paper from 'UI/Paper'
 import Subheader from 'UI/List/ListSubheader'
 import Typography from 'UI/Typography'
 import AnswerCard from 'Components/AnswerCard'
+import Spinner from 'Components/Spinner'
 
 const {
   INITIAL_STATE,
@@ -31,7 +32,7 @@ function CardReviewer({
   let cardCount, cardDisplay
   if (!cards || cardsState === FETCHING || cardsState === INITIAL_STATE) {
     cardCount = '???'
-    cardDisplay = <h2>Loading...</h2>
+    cardDisplay = <Spinner />
   } else if (cardsState === ERROR_FETCHING) {
     cardCount = 'error...';
     cardDisplay = <h2>Error loading...</h2>

@@ -39,9 +39,7 @@ class Container extends Component {
     clearInterval(this._timer)
   }
 
-  update(props) {
-    console.log('Props:', this.props)
-
+  update() {
     const {
       countdown,
       decrementCountdown,
@@ -54,11 +52,19 @@ class Container extends Component {
       decrementCountdown()
   }
 
-  render() { return <Countdown {...this.props} /> }
+  render() {
+    const {
+      decrementCountdown,
+      resetCountdown,
+      ...props
+    } = this.props
+
+    return <Countdown {...props} />
+  }
 
 }
 
 export default connect(
-  (state) => ({ countdown: state.countdown }),
+  ({ countdown }) => ({ countdown }),
   { decrementCountdown, resetCountdown }
 )(withStyles(styles)(Container))

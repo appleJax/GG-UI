@@ -11,6 +11,7 @@ import Tabs, { Tab } from 'UI/Tabs'
 import Typography from 'UI/Typography'
 import Paper from 'UI/Paper'
 import SearchIcon from 'Icons/Search'
+import Spinner from 'Components/Spinner'
 
 const {
   FETCHING,
@@ -56,7 +57,7 @@ function Scoreboard({
   if (usersState === NOT_FOUND && search.length > 0)
     userScores = (
       <TableRow>
-        <TableCell colspan='3' className={emptyScores}>
+        <TableCell colSpan='3' className={emptyScores}>
           Not Found
         </TableCell>
       </TableRow>
@@ -64,13 +65,19 @@ function Scoreboard({
   else if (usersState === NOT_FOUND)
     userScores = (
       <TableRow>
-        <TableCell colspan='3' className={emptyScores}>
-          No Scores. Be the First!
+        <TableCell colSpan='3' className={emptyScores}>
+          No Leaders. Be the First!
         </TableCell>
       </TableRow>
     )
   else if (usersState === FETCHING || usersState === INITIAL_STATE)
-    userScores = <TableRow><TableCell>Loading...</TableCell></TableRow>
+    userScores = (
+      <TableRow>
+        <TableCell colSpan='3'>
+          <Spinner />
+        </TableCell>
+      </TableRow>
+    )
   else if (usersState === ERROR_FETCHING)
     userScores = <TableRow><TableCell>Error loading...</TableCell></TableRow>
   else if (usersState === RESOLVED)

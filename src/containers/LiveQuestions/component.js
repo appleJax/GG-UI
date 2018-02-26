@@ -3,6 +3,7 @@ import { object } from 'prop-types'
 import payloadStates from 'Constants/PayloadStates'
 import Paper from 'UI/Paper'
 import Typography from 'UI/Typography'
+import Spinner from 'Components/Spinner'
 import {
   calculateTimeRemaining,
   formatQuestionText,
@@ -30,16 +31,48 @@ function LiveQuestions({
   },
   liveQuestions
 }) {
+  let cardDisplay
   if (
     liveQuestions.state === INITIAL_STATE ||
     liveQuestions.state === FETCHING
-  ) return <h1>Loading...</h1>
-
-  if (liveQuestions.state === ERROR_FETCHING)
+  ) cardDisplay = <Spinner color='purple' />
+  else if (liveQuestions.state === ERROR_FETCHING)
     return <h1>Error loading...</h1>
-
-  if (liveQuestions.state === NOT_FOUND)
+  else if (liveQuestions.state === NOT_FOUND)
     return <h1>No Live Questions</h1>
+  else
+    cardDisplay = liveQuestions.data.map((question, i) => {
+      const { questionId, questionText, questionPostedAt, mediaUrls } = question
+      const timeRemaining = calculateTimeRemaining(questionPostedAt)
+      const text = formatQuestionText(questionText)
+      return (
+        <a key={i}
+           className={cardLink}
+           href={tweetLink(questionId)}
+           target='_blank'
+        >
+          <Paper classes={{root: questionCard}}>
+            <Typography className={captionText} color='secondary' variant='body2'>
+              {text}
+            </Typography>
+            <div className={imageDiv}>
+            { mediaUrls.map((mediaUrl, innerIndex) =>
+                <img
+                  key={`${i}-${innerIndex}`}
+                  height='160'
+                  width='240'
+                  src={mediaUrl.image}
+                  alt={mediaUrl.altText}
+                />
+            )}
+            </div>
+            <Typography className={timeLeftText} color='secondary' variant='caption'>
+              Time Remaining: {timeRemaining}
+            </Typography>
+          </Paper>
+        </a>
+      )
+    })
 
   return (
     <div className={container}>
@@ -48,38 +81,7 @@ function LiveQuestions({
       </Typography>
 
       <div className={cardList}>
-      { liveQuestions.data.map((question, i) => {
-          const { questionId, questionText, questionPostedAt, mediaUrls } = question
-          const timeRemaining = calculateTimeRemaining(questionPostedAt)
-          const text = formatQuestionText(questionText)
-          return (
-            <a key={i}
-               className={cardLink}
-               href={tweetLink(questionId)}
-               target='_blank'
-            >
-              <Paper classes={{root: questionCard}}>
-                <Typography className={captionText} color='secondary' variant='body2'>
-                  {text}
-                </Typography>
-                <div className={imageDiv}>
-                { mediaUrls.map((mediaUrl, innerIndex) =>
-                    <img
-                      key={`${i}-${innerIndex}`}
-                      height='160'
-                      width='240'
-                      src={mediaUrl.image}
-                      alt={mediaUrl.altText}
-                    />
-                )}
-                </div>
-                <Typography className={timeLeftText} color='secondary' variant='caption'>
-                  Time Remaining: {timeRemaining}
-                </Typography>
-              </Paper>
-            </a>
-          )
-      })}
+        { cardDisplay }
       </div>
     </div>
   )

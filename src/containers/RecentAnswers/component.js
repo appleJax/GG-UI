@@ -4,6 +4,7 @@ import payloadStates from 'Constants/PayloadStates'
 import Paper from 'UI/Paper'
 import Typography from 'UI/Typography'
 import AnswerCard from 'Components/AnswerCard'
+import Spinner from 'Components/Spinner'
 
 const {
   INITIAL_STATE,
@@ -21,12 +22,19 @@ function RecentAnswers({
   },
   recentAnswers
 }) {
-
+  let cardDisplay
   if (recentAnswers.state === ERROR_FETCHING)
     return <h1>Error loading...</h1>
 
   if (recentAnswers.state === NOT_FOUND)
-    return ''
+    return <h1>N/A</h1>
+
+  if (recentAnswers.state === FETCHING)
+    cardDisplay = <Spinner />
+  else
+    cardDisplay = recentAnswers.data.map(
+      (card, i) => <AnswerCard key={i} card={card} />
+    )
 
   return (
     <div className={container}>
@@ -35,11 +43,7 @@ function RecentAnswers({
       </Typography>
 
       <div className={cardList}>
-      { recentAnswers.data.map(
-          (card, i) =>
-            <AnswerCard key={i} card={card} />
-        )
-      }
+        { cardDisplay }
       </div>
     </div>
   )
