@@ -24,10 +24,10 @@ function RecentAnswers({
 }) {
   let cardDisplay
   if (recentAnswers.state === ERROR_FETCHING)
-    return <h1>Error loading...</h1>
+    cardDisplay = <h1>Error loading...</h1>
 
   if (recentAnswers.state === NOT_FOUND)
-    return <h1>N/A</h1>
+    cardDisplay = <h1>N/A</h1>
 
   if (recentAnswers.state === FETCHING)
     cardDisplay = <Spinner />

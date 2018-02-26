@@ -37,9 +37,9 @@ function LiveQuestions({
     liveQuestions.state === FETCHING
   ) cardDisplay = <Spinner color='purple' />
   else if (liveQuestions.state === ERROR_FETCHING)
-    return <h1>Error loading...</h1>
+    cardDisplay = <h1>Error loading...</h1>
   else if (liveQuestions.state === NOT_FOUND)
-    return <h1>No Live Questions</h1>
+    cardDisplay = <h1>No Live Questions</h1>
   else
     cardDisplay = liveQuestions.data.map((question, i) => {
       const { questionId, questionText, questionPostedAt, mediaUrls } = question
