@@ -19,7 +19,6 @@ export const ajax = {
 
 export function calculateTimeRemaining(time) {
   const now = new Date().getTime()
-  time = new Date(time).getTime()
   const millisRemaining  = (time + 24*HOURS) - now
   const hours = Math.floor(millisRemaining / HOURS)
   const minutes = Math.floor(
