@@ -1,5 +1,8 @@
 export default ({
 
+  DECREMENT_COUNTDOWN:           'DECREMENT_COUNTDOWN',
+  RESET_COUNTDOWN:               'RESET_COUNTDOWN',
+
   OPEN_NAV_OPTIONS:              'OPEN_NAV_OPTIONS',
   CLOSE_NAV_OPTIONS:             'CLOSE_NAV_OPTIONS',
 
