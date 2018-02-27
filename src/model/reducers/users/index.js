@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import weeklyStats  from './weeklyStats'
-import monthlyStats from './monthlyStats'
 import allTimeStats from './allTimeStats'
+import monthlyStats from './monthlyStats'
+import weeklyStats  from './weeklyStats'
 
 export default combineReducers({
-  weeklyStats,
+  allTimeStats,
   monthlyStats,
-  allTimeStats
+  weeklyStats
 })

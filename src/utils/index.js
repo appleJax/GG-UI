@@ -34,14 +34,8 @@ export function calculateTimeRemaining(time) {
 
 export function debounce(fn, wait) {
   let timeout
-  return function() {
-    const args = arguments
-    const context = this
-    const exec = function() {
-      timeout = null
-      fn.apply(context, args)
-    }
-
+  return function(...args) {
+    const exec = () => fn.apply(this, args)
     clearTimeout(timeout)
     timeout = setTimeout(exec, wait)
   }

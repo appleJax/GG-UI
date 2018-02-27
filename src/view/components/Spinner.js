@@ -13,15 +13,15 @@ const styles = (theme) => ({
   },
   blue: {
     borderBottom: `8px solid rgba(29,161,242,0.7)`,
-    borderTop: `8px solid rgba(29,161,242,0.7)`
+    borderTop:    `8px solid rgba(29,161,242,0.7)`
   },
   purple: {
     borderBottom: `8px solid rgba(121,75,196,0.7)`,
-    borderTop: `8px solid rgba(121,75,196,0.7)`
+    borderTop:    `8px solid rgba(121,75,196,0.7)`
   },
   '@keyframes spin': {
-    from: { transform: 'rotate(0deg)' },
-    to: { transform: 'rotate(360deg)' }
+    from: { transform: 'rotate(0deg)'   },
+    to:   { transform: 'rotate(360deg)' }
   }
 })
 
