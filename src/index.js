@@ -1,15 +1,15 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
+import React                       from 'react'
+import ReactDOM                    from 'react-dom'
+import { Provider }                from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { AppContainer } from 'react-hot-loader'
+import { AppContainer }            from 'react-hot-loader'
 
-import Reboot from 'UI/Reboot'
-import { MuiThemeProvider } from 'UI/styles'
+import Reboot                      from 'UI/Reboot'
+import { MuiThemeProvider }        from 'UI/styles'
 
-import configureStore from 'Src/configureStore'
-import theme from 'Styles/muiTheme'
-import App from 'Containers/App'
+import configureStore              from 'Src/configureStore'
+import theme                       from 'Styles/muiTheme'
+import App                         from 'Containers/App'
 
 const preloadedState = JSON.parse(
   window.__PRELOADED_STATE__ || '{}'
