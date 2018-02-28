@@ -20,8 +20,8 @@ const {
 
 function LiveQuestions({
   classes: {
-    cardLink,
     cardList,
+    cardLink,
     captionText,
     container,
     imageDiv,
@@ -35,7 +35,7 @@ function LiveQuestions({
   if (
     liveQuestions.state === INITIAL_STATE ||
     liveQuestions.state === FETCHING
-  ) cardDisplay = <Spinner color='purple' />
+  ) cardDisplay = <Spinner color='live' />
   else if (liveQuestions.state === ERROR_FETCHING)
     cardDisplay = <h1>Error loading...</h1>
   else if (liveQuestions.state === NOT_FOUND)

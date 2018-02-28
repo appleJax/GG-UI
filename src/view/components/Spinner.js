@@ -15,7 +15,11 @@ const styles = (theme) => ({
     borderBottom: `8px solid rgba(29,161,242,0.7)`,
     borderTop:    `8px solid rgba(29,161,242,0.7)`
   },
-  purple: {
+  deck: {
+    borderBottom: `8px solid rgba(63,81,181,0.7)`,
+    borderTop:    `8px solid rgba(63,81,181,0.7)`
+  },
+  live: {
     borderBottom: `8px solid rgba(121,75,196,0.7)`,
     borderTop:    `8px solid rgba(121,75,196,0.7)`
   },
@@ -25,8 +29,25 @@ const styles = (theme) => ({
   }
 })
 
-const Spinner = ({ classes: { spinner, blue, purple }, color }) =>
-  <div className={classNames(spinner, blue, {[purple]: color})} />
+const Spinner = ({
+  classes: {
+    spinner,
+    blue,
+    deck,
+    live
+  },
+  color
+}) =>
+  <div
+    className={
+      classNames(
+        spinner,
+        blue,
+        {[live]: color === 'live'},
+        {[deck]: color === 'deck'}
+      )
+    }
+  />
 
 
 export default withStyles(styles)(Spinner)

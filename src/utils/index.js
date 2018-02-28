@@ -88,12 +88,15 @@ export function tryCatch(promise) {
 }
 
 export const tweetLink = (tweetId) =>
-  `https://twitter.com/${TWITTER_ACCOUNT}/status/${tweetId}?ref_src=twcamp%5Eshare%7Ctwsrc%5Em5%7Ctwgr%5Eemail%7Ctwcon%5E7046%7Ctwterm%5E1`
+  'https://twitter.com/' +
+  `${TWITTER_ACCOUNT}/status/${tweetId}` +
+  '?ref_src=twcamp%5Eshare%7Ctwsrc%5Em5%7Ctwgr%5Eemail%7Ctwcon%5E7046%7Ctwterm%5E1'
 
 
 // private functions
 
 function getTimeUntil(hour) {
+  // UTC offset: +6
   hour = (hour + 6) % 24
   const now = new Date()
   const utcNow = now.getTime()

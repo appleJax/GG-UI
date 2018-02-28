@@ -85,7 +85,7 @@ function User({
                 className={followImage}
                 height='25'
                 width='25'
-                src='/images/Twitter_Logo_Blue.svg'
+                src='/images/twitter/Twitter_Logo_Blue.svg'
               />
               Follow
             </Button>

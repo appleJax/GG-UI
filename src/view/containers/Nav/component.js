@@ -88,7 +88,7 @@ function Nav(props) {
                 alt='Follow @GameGogakuen'
                 height='50'
                 width='50'
-                src='/images/Twitter_Logo_Blue.svg'
+                src='/images/twitter/Twitter_Logo_Blue.svg'
               />
             </Button>
           </div>

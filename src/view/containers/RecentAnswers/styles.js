@@ -1,11 +1,8 @@
+import { classes }   from 'Styles/common'
+const { cardList } = classes
+
 export default (theme) => ({
-  cardList: {
-    alignItems: 'flex-end',
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    width: '100%'
-  },
+  cardList,
   container: {
     alignItems: 'center',
     display: 'flex',

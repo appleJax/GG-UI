@@ -10,16 +10,16 @@ const {
 
 export default ({
 
-  fetchDeck: (game) =>
+  fetchDeck: (gameSlug) =>
     dispatch => {
-      dispatch(fetchingDeck(game))
-      ajax.get(`/decks/${game}`)
+      dispatch(fetchingDeck(gameSlug))
+      ajax.get(`/deck/${gameSlug}`)
           .then(deck =>
             deck
-              ? dispatch(addDeck(deck, game))
-              : dispatch(notFoundDeck(game))
+              ? dispatch(addDeck(deck, gameSlug))
+              : dispatch(notFoundDeck(gameSlug))
           ).catch(error =>
-            dispatch(errorFetchingDeck(game, error))
+            dispatch(errorFetchingDeck(gameSlug, error))
           )
     }
 

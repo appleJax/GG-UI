@@ -1,14 +1,10 @@
 import React, { Component } from 'react'
 import { connect }          from 'react-redux'
-import payloadStates        from 'Constants/PayloadStates'
 import asyncActions         from 'Actions/async'
 import Deck                 from 'Components/Deck'
 import GameTitles           from 'Components/GameTitles'
 
-const [
-  { INITIAL_STATE, FETCHING, RESOLVED, ERROR_FETCHING, NOT_FOUND },
-  { fetchDeck, fetchGameTitles }
-] = [ payloadStates, asyncActions ]
+const { fetchDeck, fetchGameTitles } = asyncActions
 
 const mapStateToProps = (state) => ({
   gameTitles: state.gameTitles,
@@ -45,15 +41,18 @@ class Container extends Component {
   render() {
     const {
       decks,
-      gameTitles,
       fetchDeck,
+      gameTitles,
       match: { params: { game } },
       ...props
     } = this.props
 
-    return (game)
-      ? <Deck deck={decks[game]} {...props} />
-      : <GameTitles gameTitles={gameTitles} {...props} />
+    if (game) {
+      const titleScreen = gameTitles.data.find(title => title.slug === game)
+      return <Deck deck={decks[game]} game={titleScreen} {...props} />
+    }
+
+    return <GameTitles gameTitles={gameTitles} {...props} />
   }
 }
 

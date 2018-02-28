@@ -1,4 +1,8 @@
+import { classes } from 'Styles/common'
+const { cardList } = classes
+
 export default (theme) => ({
+  cardList,
   cardAnswer: {
     background: 'rgba(255,255,255,0.2)',
     color: theme.palette.primary.dark,
@@ -9,12 +13,6 @@ export default (theme) => ({
     color: 'white',
     padding: '5px',
     textShadow: `1px 1px 3px ${theme.palette.primary.dark}`
-  },
-  cardList: {
-    alignItems: 'flex-end',
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center'
   },
   container: {
     width: '100%'

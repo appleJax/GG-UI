@@ -1,13 +1,11 @@
+import { classes }   from 'Styles/common'
+const { cardList } = classes
+
 export default (theme) => ({
+  cardList,
   cardLink: {
     margin: '10px 5px',
     textDecoration: 'none'
-  },
-  cardList: {
-    alignItems: 'flex-end',
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center'
   },
   captionText: {
     margin: '5px',

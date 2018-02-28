@@ -49,7 +49,7 @@ function CardReviewer({
         </Typography>
       </Subheader>
       <div className={cardList}>
-      { cardDisplay }
+        { cardDisplay }
       </div>
     </div>
   )

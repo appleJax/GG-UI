@@ -1,7 +1,7 @@
 import { connect }    from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { withStyles } from 'UI/styles'
-import { navHeight }  from 'Styles/variables'
+import { navHeight }  from 'Styles/common'
 import syncActions    from 'Actions/sync'
 import Nav            from './component'
 
