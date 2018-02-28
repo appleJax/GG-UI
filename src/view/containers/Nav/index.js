@@ -2,9 +2,11 @@ import { connect }    from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { withStyles } from 'UI/styles'
 import { navHeight }  from 'Styles/common'
+import asyncActions   from 'Actions/async'
 import syncActions    from 'Actions/sync'
 import Nav            from './component'
 
+const { login } = asyncActions
 const { openNavOptions, closeNavOptions } = syncActions
 
 
@@ -38,8 +40,9 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
+  closeNavOptions,
   openNavOptions,
-  closeNavOptions
+  login
 }
 
 export default connect(

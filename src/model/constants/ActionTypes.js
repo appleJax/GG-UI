@@ -1,5 +1,9 @@
 export default ({
 
+  LOGIN:                         'LOGIN',
+  LOGIN_ERROR:                   'LOGIN_ERROR',
+  LOGOUT:                        'LOGOUT',
+
   DECREMENT_COUNTDOWN:           'DECREMENT_COUNTDOWN',
   RESET_COUNTDOWN:               'RESET_COUNTDOWN',
 

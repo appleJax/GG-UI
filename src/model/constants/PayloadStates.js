@@ -4,6 +4,7 @@ export default ({
   FETCHING:       'FETCHING',
   NOT_FOUND:      'NOT_FOUND',
   RESOLVED:       'RESOLVED',
+  ERROR:          'ERROR',
   ERROR_FETCHING: 'ERROR_FETCHING'
 
 })

@@ -8,7 +8,7 @@ const styles = (theme) => ({
   cardLink: {
     background: '#3F51B5',
     margin: '10px',
-    width: '240px',
+    textAlign: 'center',
     '&:hover': {
       cursor: 'pointer'
     }
@@ -37,7 +37,6 @@ const TitleCard = ({
     </Typography>
     <img
       height='160'
-      width='240'
       src={`/images/gameTitles/${game.slug}.png`}
       alt={`${game.fullTitle} Title Screen`}
     />

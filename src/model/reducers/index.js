@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import auth          from 'Reducers/auth'
 import countdown     from 'Reducers/countdown'
 import decks         from 'Reducers/decks'
 import focusedUser   from 'Reducers/focusedUser'
@@ -11,6 +12,7 @@ import search        from 'Reducers/search'
 import users         from 'Reducers/users'
 
 export default combineReducers({
+  auth,
   countdown,
   decks,
   focusedUser,

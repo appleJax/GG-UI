@@ -30,7 +30,6 @@ const AnswerCard = ({
       </Typography>
       <img
         height='160'
-        width='240'
         src={mediaUrl.image}
         alt={mediaUrl.altText}
       />

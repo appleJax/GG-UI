@@ -31,10 +31,18 @@ function Nav(props) {
     history.push(path)
   }
 
+  options.push(
+      <MenuItem key={0}>
+        <a href='http://127.0.0.1:3000/login'>
+          Sign In
+        </a>
+      </MenuItem>
+    )
+
   if (location.pathname !== '/')
     options.push(
       <MenuItem
-        key={0}
+        key={1}
         onClick={() => go('/')}
       >
         Live Questions
@@ -44,7 +52,7 @@ function Nav(props) {
   if (location.pathname !== '/stats')
     options.push(
       <MenuItem
-        key={1}
+        key={2}
         onClick={() => go('/stats')}
       >
         LeaderBoard
@@ -54,7 +62,7 @@ function Nav(props) {
   if (location.pathname !== '/decks')
     options.push(
       <MenuItem
-        key={2}
+        key={3}
         onClick={() => go('/decks')}
       >
         All Decks

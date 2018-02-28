@@ -4,36 +4,13 @@ import payloadStates  from 'Constants/PayloadStates'
 import AnswerCard     from 'Components/AnswerCard'
 import Spinner        from 'Components/Spinner'
 import Typography     from 'UI/Typography'
-import { classes }    from 'Styles/common'
+import styles         from './styles'
 
-const { cardList } = classes
 const {
   FETCHING,
   RESOLVED,
   ERROR_FETCHING
 } = payloadStates
-
-const styles = (theme) => ({
-  cardList,
-  emptyDeck: {
-    background: 'rgba(0,0,0,0.1)',
-    borderRadius: '5px',
-    marginTop: '20px',
-    padding: '15px',
-    textShadow: '1px 1px #eee'
-  },
-  header: {
-    alignItems: 'center',
-    background: 'rgba(29,161,242,0.1)',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    padding: '25px 0 10px',
-  },
-  titleScreen: {
-    boxShadow: '0 0 15px rgba(0,0,0,0.7)'
-  }
-})
 
 const Deck = ({
   classes: {
@@ -70,7 +47,6 @@ const Deck = ({
         <img
           className={titleScreen}
           height='160'
-          width='240'
           src={`/images/gameTitles/${game.slug}.png`}
           alt={`${game.fullTitle} Title Screen`}
         />
