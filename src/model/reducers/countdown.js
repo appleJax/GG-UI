@@ -1,5 +1,5 @@
 import actionTypes from 'Constants/ActionTypes'
-import { TWEET_INTERVAL, getTimeTilNextTweet } from 'Utils'
+import { getTimeTilNextTweet } from 'Utils'
 
 const { DECREMENT_COUNTDOWN, RESET_COUNTDOWN } = actionTypes
 
@@ -11,7 +11,7 @@ export default (state = timeToNextQuestion, action) => {
         return state - 1
 
       case RESET_COUNTDOWN:
-        return TWEET_INTERVAL
+        return getTimeTilNextTweet()
 
       default:
         return state

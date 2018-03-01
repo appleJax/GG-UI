@@ -2,8 +2,8 @@ import React          from 'react'
 import { withStyles } from 'UI/styles'
 import payloadStates  from 'Constants/PayloadStates'
 import AnswerCard     from 'Components/AnswerCard'
+import EmptyMessage   from 'Components/EmptyMessage'
 import Spinner        from 'Components/Spinner'
-import Typography     from 'UI/Typography'
 import styles         from './styles'
 
 const {
@@ -15,7 +15,6 @@ const {
 const Deck = ({
   classes: {
     cardList,
-    emptyDeck,
     header,
     titleScreen
   },
@@ -28,13 +27,7 @@ const Deck = ({
   else if (deck.state === ERROR_FETCHING)
     cardDisplay = <h2>Error Loading...</h2>
   else if (deck.data.length === 0)
-    cardDisplay = (
-      <Typography
-        className={emptyDeck}
-        variant='display1'
-      >
-        No Cards Tweeted Yet
-      </Typography>)
+    cardDisplay = <EmptyMessage message='No Answers Tweeted Yet' />
   else
     cardDisplay = deck.data.map((card, i) =>
       <AnswerCard key={i} card={card} />

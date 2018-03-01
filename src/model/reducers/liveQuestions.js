@@ -25,7 +25,7 @@ export default (state = init, action) => {
       case FETCHING_LIVE_QUESTIONS:
         return {
           state: FETCHING,
-          data: [],
+          data: state.data,
           error: null
         }
 

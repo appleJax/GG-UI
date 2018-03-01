@@ -4,6 +4,7 @@ import payloadStates from 'Constants/PayloadStates'
 import Paper         from 'UI/Paper'
 import Typography    from 'UI/Typography'
 import AnswerCard    from 'Components/AnswerCard'
+import EmptyMessage  from 'Components/EmptyMessage'
 import Spinner       from 'Components/Spinner'
 
 const {
@@ -27,7 +28,7 @@ function RecentAnswers({
     cardDisplay = <h1>Error loading...</h1>
 
   if (recentAnswers.state === NOT_FOUND)
-    cardDisplay = <h1>N/A</h1>
+    cardDisplay = <EmptyMessage message='No Recent Answers. Check Back Soon!' />
 
   if (recentAnswers.state === FETCHING)
     cardDisplay = <Spinner />

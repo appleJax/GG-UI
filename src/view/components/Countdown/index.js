@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import { connect }          from 'react-redux'
 import { withStyles }       from 'UI/styles'
+import asyncActions         from 'Actions/async'
 import syncActions          from 'Actions/sync'
 import Countdown            from './component'
 
-const { decrementCountdown, resetCountdown } = syncActions
+const [
+  { fetchLiveQuestions },
+  { decrementCountdown, resetCountdown }
+] = [ asyncActions, syncActions ]
 
 const styles = (theme) => ({
   container: {
@@ -39,6 +43,13 @@ class Container extends Component {
     clearInterval(this._timer)
   }
 
+  componentWillReceiveProps({ countdown, fetchLiveQuestions, resetCountdown }) {
+    if (Math.abs(countdown % 60) === 0) {
+      resetCountdown()
+      setTimeout(fetchLiveQuestions, 5000)
+    }
+  }
+
   update() {
     const {
       countdown,
@@ -46,10 +57,7 @@ class Container extends Component {
       resetCountdown
     } = this.props
 
-    if (countdown <= 0)
-      resetCountdown()
-    else
-      decrementCountdown()
+    decrementCountdown()
   }
 
   render() {
@@ -66,5 +74,5 @@ class Container extends Component {
 
 export default connect(
   ({ countdown }) => ({ countdown }),
-  { decrementCountdown, resetCountdown }
+  { decrementCountdown, resetCountdown, fetchLiveQuestions }
 )(withStyles(styles)(Container))

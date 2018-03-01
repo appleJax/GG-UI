@@ -3,6 +3,7 @@ import { object }    from 'prop-types'
 import payloadStates from 'Constants/PayloadStates'
 import Paper         from 'UI/Paper'
 import Typography    from 'UI/Typography'
+import EmptyMessage  from 'Components/EmptyMessage'
 import Spinner       from 'Components/Spinner'
 import {
   calculateTimeRemaining,
@@ -34,12 +35,13 @@ function LiveQuestions({
   let cardDisplay
   if (
     liveQuestions.state === INITIAL_STATE ||
-    liveQuestions.state === FETCHING
+    liveQuestions.state === FETCHING &&
+    liveQuestions.data.length === 0
   ) cardDisplay = <Spinner color='live' />
   else if (liveQuestions.state === ERROR_FETCHING)
     cardDisplay = <h1>Error loading...</h1>
   else if (liveQuestions.state === NOT_FOUND)
-    cardDisplay = <h1>No Live Questions</h1>
+    cardDisplay = <EmptyMessage message='No Live Questions. Check Back Soon!' />
   else
     cardDisplay = liveQuestions.data.map((question, i) => {
       const { questionId, questionText, questionPostedAt, mediaUrls } = question
