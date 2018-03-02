@@ -5,8 +5,10 @@ import { withStyles } from 'UI/styles'
 import { navHeight }  from 'Styles/common'
 import asyncActions   from 'Actions/async'
 import syncActions    from 'Actions/sync'
+import payloadStates  from 'Constants/PayloadStates'
 import Nav            from './component'
 
+const { LOGGED_IN } = payloadStates
 const { fetchCurrentUser, requestLogout } = asyncActions
 const { authTransition, openNavOptions, closeNavOptions } = syncActions
 
@@ -17,6 +19,7 @@ const styles = (theme) => ({
     width: '100%'
   },
   avatarRoot: {
+    boxShadow: '2px 2px 5px rgba(0,0,0,0.5)',
     height: '44px',
     width: '44px'
   },
@@ -26,6 +29,13 @@ const styles = (theme) => ({
   link: {
     outline: 'none',
     textDecoration: 'none'
+  },
+  loggedInIcon: {
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    position: 'absolute',
+    right: '0'
   },
   logo: {
     fontFamily: 'Cabin Sketch',
@@ -43,15 +53,15 @@ const styles = (theme) => ({
     }
   },
   userHandle: {
-    color: 'rgba(0,0,0,0.4)',
-    marginRight: '5px',
-    textShadow: '1px 1px #ddd'
+    color: 'rgba(0,0,0,0.6)',
+    textShadow: '1px 1px rgba(255,255,255,0.3)'
   }
 })
 
 class Container extends Component {
   componentWillMount() {
-    this.props.fetchCurrentUser()
+    if (this.props.auth.state !== LOGGED_IN)
+      this.props.fetchCurrentUser()
   }
 
   render() {

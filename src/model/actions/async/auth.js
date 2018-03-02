@@ -14,6 +14,7 @@ export default ({
 
   fetchCurrentUser: () =>
     dispatch => {
+      dispatch(closeNavOptions())
       dispatch(authTransition())
       fetch('/user', { credentials: 'include' })
         .then(res => res.json())

@@ -20,6 +20,7 @@ function Nav(props) {
       appBar,
       avatarRoot,
       followButton,
+      loggedInIcon,
       logo,
       link,
       navContainer,
@@ -47,11 +48,16 @@ function Nav(props) {
   if (auth.state === LOGGED_IN) {
     const user = auth.data
     menuIcon = (
-      <Avatar
-        alt={user.name}
-        classes={{root: avatarRoot}}
-        src={user.avatar}
-      />
+      <div className={loggedInIcon}>
+        <Avatar
+          alt={user.name}
+          classes={{root: avatarRoot}}
+          src={user.avatar}
+        />
+        <Typography className={userHandle} variant='caption'>
+          {`@${user.handle}`}
+        </Typography>
+      </div>
     )
 
     options.push(
