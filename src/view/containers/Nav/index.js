@@ -19,7 +19,7 @@ const styles = (theme) => ({
     width: '100%'
   },
   avatarRoot: {
-    boxShadow: '2px 2px 5px rgba(0,0,0,0.5)',
+    boxShadow: '2px 2px 3px rgba(0,0,0,0.5)',
     height: '44px',
     width: '44px'
   },
@@ -53,7 +53,7 @@ const styles = (theme) => ({
     }
   },
   userHandle: {
-    color: 'rgba(0,0,0,0.6)',
+    color: 'rgba(0,0,0,0.5)',
     marginTop: '5px',
     textShadow: '1px 1px rgba(255,255,255,0.3)'
   }

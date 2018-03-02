@@ -48,7 +48,7 @@ export default (theme) => ({
     }
   },
   userIdentity: {
-    marginLeft: leftMargin
+    margin: `8px 0 0 ${leftMargin}`
   },
   userStats: {
     display: 'flex',
