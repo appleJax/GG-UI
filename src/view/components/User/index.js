@@ -10,6 +10,7 @@ import styles             from './styles'
 import { formatAccuracy } from 'Utils'
 
 const {
+  LOGGED_IN,
   INITIAL_STATE,
   FETCHING,
   NOT_FOUND,
@@ -21,7 +22,7 @@ function User({
   classes: {
     avatarRoot,
     banner,
-    followButton,
+    follow,
     followImage,
     label,
     statBox,
@@ -30,6 +31,7 @@ function User({
     userIdentity,
     userStats
   },
+  auth,
   handleParam,
   user
 }) {
@@ -42,6 +44,34 @@ function User({
 
   if (user.state === ERROR_FETCHING)
     return <h2>Error loading...</h2>
+
+  let followButton
+
+  if (
+    auth.state       !== LOGGED_IN ||
+    auth.data.userId !== user.data.userId
+  ) {
+    followButton = (
+      <Button
+        classes={{label}}
+        color='secondary'
+        className={follow}
+        href={`https://twitter.com/intent/follow?screen_name=${handle}`}
+        target='_blank'
+        size='small'
+        variant='raised'
+      >
+        <img
+          alt={`Follow @${handle}`}
+          className={followImage}
+          height='25'
+          width='25'
+          src='/images/twitter/Twitter_Logo_Blue.svg'
+        />
+        Follow
+      </Button>
+    )
+  }
 
   const {
     allTimeStats,
@@ -71,24 +101,7 @@ function User({
           <div className={userIdentity}>
             <Typography variant='title'>{name}</Typography>
             <Typography variant='subheading'>{`@${handle}`}</Typography>
-            <Button
-              classes={{label}}
-              color='secondary'
-              className={followButton}
-              href={`https://twitter.com/intent/follow?screen_name=${handle}`}
-              target='_blank'
-              size='small'
-              variant='raised'
-            >
-              <img
-                alt={`Follow @${handle}`}
-                className={followImage}
-                height='25'
-                width='25'
-                src='/images/twitter/Twitter_Logo_Blue.svg'
-              />
-              Follow
-            </Button>
+            { followButton }
           </div>
         </div>
         <div className={userStats}>

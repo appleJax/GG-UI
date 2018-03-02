@@ -31,14 +31,14 @@ function CardReviewer({
 }) {
 
   let cardCount, cardDisplay
-  if (!cards || cardsState === FETCHING || cardsState === INITIAL_STATE) {
+  if (cardsState === FETCHING || cardsState === INITIAL_STATE) {
     cardCount = '???'
     cardDisplay = <Spinner />
   } else if (cardsState === ERROR_FETCHING) {
     cardCount = 'error...';
     cardDisplay = <h2>Error loading...</h2>
   } else if (cardsState === NOT_FOUND) {
-    cardCount = cards.length
+    cardCount = 0
     cardDisplay = <EmptyMessage message='Answer Questions to Earn Cards!' />
   } else {
     cardCount = cards.length

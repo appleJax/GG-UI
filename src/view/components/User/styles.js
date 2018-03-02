@@ -17,7 +17,7 @@ export default (theme) => ({
       color: theme.palette.secondary.main
     }
   },
-  followButton: {
+  follow: {
     height: '20px',
     margin: '8px 0',
     padding: '0',

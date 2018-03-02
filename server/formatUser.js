@@ -16,6 +16,7 @@ export default ({
     attempts: 0,
     correct: [],
     incorrect: [],
+    total: 0,
     score: 0,
     rank: 0
   },

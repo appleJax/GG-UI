@@ -24,7 +24,7 @@ const styles = (theme) => ({
     width: '44px'
   },
   followButton: {
-    margin: '0 0 -45px 15px'
+    margin: '0 0 -45px 18px'
   },
   link: {
     outline: 'none',
