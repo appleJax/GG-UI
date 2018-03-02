@@ -29,15 +29,11 @@ passport.use(
 )
 
 passport.serializeUser(
-  (user, done) => {
-    console.log('Serializing:', user)
-    done(null, user.userId)
-  }
+  (user, done) => done(null, user.userId)
 )
 
 passport.deserializeUser(
   async (userId, done) => {
-    console.log('Deserializing:', userId)
     const user = await tryCatch(
       ajax.get(`/user/${userId}`)
     )

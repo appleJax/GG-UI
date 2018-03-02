@@ -1,5 +1,6 @@
 export default ({
 
+  AUTH_TRANSITION:               'AUTH_TRANSITION',
   LOGIN:                         'LOGIN',
   LOGIN_ERROR:                   'LOGIN_ERROR',
   LOGOUT:                        'LOGOUT',

@@ -2,6 +2,7 @@ import React              from 'react'
 import { func, object }   from 'prop-types'
 import payloadStates      from 'Constants/PayloadStates'
 import classNames         from 'classnames'
+import Loading            from 'Components/Loading'
 import MenuIcon           from 'Icons/Menu'
 import AppBar             from 'UI/AppBar'
 import Avatar             from 'UI/Avatar'
@@ -11,7 +12,7 @@ import Menu, { MenuItem } from 'UI/Menu'
 import Toolbar            from 'UI/Toolbar'
 import Typography         from 'UI/Typography'
 
-const { LOGGED_IN } = payloadStates
+const { FETCHING, LOGGED_IN } = payloadStates
 
 function Nav(props) {
   const {
@@ -25,6 +26,7 @@ function Nav(props) {
       userHandle
     },
     auth,
+    authTransition,
     history,
     location,
     requestLogout,
@@ -65,7 +67,7 @@ function Nav(props) {
          className={link}
          key={1}
       >
-        <MenuItem>
+        <MenuItem onClick={authTransition}>
             Sign In
         </MenuItem>
       </a>
@@ -104,6 +106,7 @@ function Nav(props) {
 
   return (
     <div>
+      { auth.state === FETCHING && <Loading /> }
       <AppBar
         className={appBar}
         color='primary'

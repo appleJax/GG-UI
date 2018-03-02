@@ -1,6 +1,7 @@
 import actionTypes from 'Constants/ActionTypes'
 
 const {
+  AUTH_TRANSITION,
   LOGIN,
   LOGIN_ERROR,
   LOGOUT,
@@ -9,18 +10,30 @@ const {
 
 export default ({
 
-  loginSuccess: (user) => ({
-    type: LOGIN,
-    user
-  }),
+  authTransition: () => {
+    document.body.classList.add('no-scroll')
+    return { type: AUTH_TRANSITION }
+  },
 
-  loginError: (message) => ({
-    type: LOGIN_ERROR,
-    message
-  }),
+  loginSuccess: (user) => {
+    document.body.classList.remove('no-scroll')
+    return {
+      type: LOGIN,
+      user
+    }
+  },
 
-  logout: () => ({
-    type: LOGOUT
-  })
+  loginError: (message) => {
+    document.body.classList.remove('no-scroll')
+    return {
+      type: LOGIN_ERROR,
+      message
+    }
+  },
+
+  logout: () => {
+    document.body.classList.remove('no-scroll')
+    return { type: LOGOUT }
+  }
 
 })

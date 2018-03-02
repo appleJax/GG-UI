@@ -8,7 +8,7 @@ import syncActions    from 'Actions/sync'
 import Nav            from './component'
 
 const { fetchCurrentUser, requestLogout } = asyncActions
-const { openNavOptions, closeNavOptions } = syncActions
+const { authTransition, openNavOptions, closeNavOptions } = syncActions
 
 
 const styles = (theme) => ({
@@ -70,6 +70,7 @@ const mapStateToProps = ({ auth, navOptions }) => ({
 })
 
 const mapDispatchToProps = {
+  authTransition,
   closeNavOptions,
   openNavOptions,
   fetchCurrentUser,

@@ -1,8 +1,17 @@
 import actionTypes   from 'Constants/ActionTypes'
 import payloadStates from 'Constants/PayloadStates'
 
-const { LOGGED_IN, LOGGED_OUT, ERROR } = payloadStates
-const { LOGIN, LOGIN_ERROR, LOGOUT } = actionTypes
+const [{
+  LOGGED_IN,
+  LOGGED_OUT,
+  FETCHING,
+  ERROR
+}, {
+  AUTH_TRANSITION,
+  LOGIN,
+  LOGIN_ERROR,
+  LOGOUT
+}] = [ payloadStates, actionTypes ]
 
 const LOGGED_OUT_USER = {
   state: LOGGED_OUT,
@@ -21,6 +30,13 @@ const init = () => {
 
 export default (state = init(), action) => {
     switch (action.type) {
+      case AUTH_TRANSITION:
+        return {
+          ...state,
+          state: FETCHING
+        }
+
+
       case LOGIN:
         return {
           state: LOGGED_IN,

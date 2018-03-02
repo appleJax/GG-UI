@@ -5,3 +5,7 @@ body {
   min-width: 100vw;
   padding: 0;
 }
+
+.no-scroll {
+  overflow: hidden;
+}
