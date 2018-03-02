@@ -15,6 +15,7 @@ const [{
 
   FETCHING_EARNED_CARDS,
   SET_EARNED_CARDS,
+  NOT_FOUND_EARNED_CARDS,
   ERROR_FETCHING_EARNED_CARDS
 }] = [ payloadStates, actionTypes ]
 
@@ -74,6 +75,12 @@ export default (state = init, action) => {
             earnedCards: action.cards
           },
           earnedCardsState: RESOLVED
+        }
+
+      case NOT_FOUND_EARNED_CARDS:
+        return {
+          ...state,
+          earnedCardsState: NOT_FOUND
         }
 
       case ERROR_FETCHING_EARNED_CARDS:

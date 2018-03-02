@@ -1,34 +1,39 @@
 import { ajax }    from 'Utils'
 import syncActions from 'Actions/sync'
 
-const { loginSuccess, loginError } = syncActions
+const {
+  closeNavOptions,
+  loginSuccess,
+  loginError,
+  logout
+} = syncActions
 
 
 export default ({
 
-  login: () =>
+  fetchCurrentUser: () =>
     dispatch =>
-      ajax.get('/login')
-          .then(user =>
+      fetch('/user', { credentials: 'include' })
+        .then(res => res.json())
+        .then(user => {
+          console.log('User:', user)
+          if (user) {
             dispatch(loginSuccess(user))
-          )
-          .catch(error =>
-            dispatch(loginError())
-          )
+            localStorage.setItem('gg-user', JSON.stringify(user))
+          }
+        })
+        .catch(error =>
+          dispatch(loginError(error))
+        ),
 
-  // ?????
-  // login: (handle) =>
-  //   dispatch => {
-  //     dispatch(fetchingFocusedUser())
-  //     const params = {
-  //       params: { handle }
-  //     }
-  //     ajax.get('/userStats', params)
-  //         .then(user =>
-  //           dispatch(setFocusedUser(user))
-  //         ).catch(error =>
-  //           dispatch(errorFetchingFocusedUser())
-  //         )
-  //   }
+  requestLogout: (history) =>
+    dispatch => {
+      localStorage.removeItem('gg-user')
+      dispatch(logout())
+      dispatch(closeNavOptions())
+      fetch('/logout', { credentials: 'include' })
+        .then(() => history.push('/'))
+        .catch(console.error)
+    }
 
 })

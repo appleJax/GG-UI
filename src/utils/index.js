@@ -14,6 +14,9 @@ export const TWEET_INTERVAL = 6*HOURS / 1000
 export const ajax = {
   get(url, config) {
     return axiosObject.get(url, config).then(({data}) => data)
+  },
+  post(url, config) {
+    return axiosObject.post(url, config).then(({data}) => data)
   }
 }
 
@@ -28,6 +31,9 @@ export function calculateTimeRemaining(time) {
   const hourString = (hours > 1)
     ? `${hours}hrs `
     : `${hours}hr `
+
+  if (!hours && !minutes)
+    return '< 1min'
 
   return `${hours ? hourString : ''}${minutes ? minuteString : ''}`
 }

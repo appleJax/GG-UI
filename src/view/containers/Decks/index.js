@@ -6,9 +6,9 @@ import GameTitles           from 'Components/GameTitles'
 
 const { fetchDeck, fetchGameTitles } = asyncActions
 
-const mapStateToProps = (state) => ({
-  gameTitles: state.gameTitles,
-  decks:      state.decks
+const mapStateToProps = ({ gameTitles, decks }) => ({
+  gameTitles,
+  decks
 })
 
 const mapDispatchToProps = {

@@ -1,23 +1,27 @@
 {
-  "name":        "GameGogakuen-UI",
-  "version":     "1.0.0",
+  "name": "GameGogakuen-UI",
+  "version": "1.0.0",
   "description": "UI for Viewing GameGogakuen Stats",
-  "author":      "appleJax <appleJax@users.noreply.github.com>",
-  "license":     "MIT",
+  "author": "appleJax <appleJax@users.noreply.github.com>",
+  "license": "MIT",
   "scripts": {
-    "build":        "webpack --config webpack.dev.js",
-    "deploy":       "webpack --config webpack.prod.js",
-    "start":        "node ./dist/server.js",
-    "dev-start":    "webpack-dev-server --config webpack.dev.js --hot",
+    "build": "webpack --config webpack.dev.js && webpack --config webpack.server.js && npm start",
+    "deploy": "webpack --config webpack.prod.js && webpack --config webpack.server.js",
+    "build-server": "webpack --config webpack.server.js",
+    "start": "node ./dist/server.js",
+    "dev-start": "webpack-dev-server --config webpack.dev.js --hot",
     "heroku-start": "npm run build && node server.js",
-    "test":         "jest"
+    "test": "jest"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.0.0-beta.40",
     "axios": "^0.17.1",
-    "babel-polyfill": "^6.26.0",
     "express": "^4.16.2",
+    "express-session": "^1.15.6",
     "material-ui": "^1.0.0-beta.33",
     "material-ui-icons": "^1.0.0-beta.17",
+    "passport": "^0.4.0",
+    "passport-twitter": "^1.0.4",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -46,20 +50,21 @@
     "style-loader": "^0.20.1",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1",
-    "webpack-merge": "^4.1.1"
+    "webpack-merge": "^4.1.1",
+    "webpack-node-externals": "^1.6.0"
   },
   "jest": {
     "moduleNameMapper": {
-      "^Actions/(.*)$":    "<rootDir>/src/model/actions/$1",
+      "^Actions/(.*)$": "<rootDir>/src/model/actions/$1",
       "^Components/(.*)$": "<rootDir>/src/view/components/$1",
-      "^Constants/(.*)$":  "<rootDir>/src/model/constants/$1",
+      "^Constants/(.*)$": "<rootDir>/src/model/constants/$1",
       "^Containers/(.*)$": "<rootDir>/src/view/containers/$1",
-      "^Icons/(.*)$":      "<rootDir/node_modules/material-ui-icons/$1",
-      "^Images/(.*)$":     "<rootDir>/src/static/images/$1",
-      "^Reducers/(.*)$":   "<rootDir>/src/model/reducers/$1",
-      "^Root/(.*)$":       "<rootDir>/$1",
-      "^UI/(.*)$":         "<rootDir/node_modules/material-ui/$1",
-      "^Utils$":           "<rootDir>/src/utils/"
+      "^Icons/(.*)$": "<rootDir/node_modules/material-ui-icons/$1",
+      "^Images/(.*)$": "<rootDir>/src/static/images/$1",
+      "^Reducers/(.*)$": "<rootDir>/src/model/reducers/$1",
+      "^Root/(.*)$": "<rootDir>/$1",
+      "^UI/(.*)$": "<rootDir/node_modules/material-ui/$1",
+      "^Utils$": "<rootDir>/src/utils/"
     }
   }
 }

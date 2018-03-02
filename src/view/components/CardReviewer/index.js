@@ -37,7 +37,7 @@ function CardReviewer({
   } else if (cardsState === ERROR_FETCHING) {
     cardCount = 'error...';
     cardDisplay = <h2>Error loading...</h2>
-  } else if (cardsState === RESOLVED && cards.length === 0) {
+  } else if (cardsState === NOT_FOUND) {
     cardCount = cards.length
     cardDisplay = <EmptyMessage message='Answer Questions to Earn Cards!' />
   } else {

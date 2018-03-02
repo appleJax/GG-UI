@@ -4,9 +4,10 @@ import { withStyles }       from 'UI/styles'
 import asyncActions         from 'Actions/async'
 import syncActions          from 'Actions/sync'
 import Countdown            from './component'
+import { TWEET_INTERVAL }   from 'Utils'
 
 const [
-  { fetchLiveQuestions },
+  { fetchLiveQuestions, fetchRecentAnswers },
   { decrementCountdown, resetCountdown }
 ] = [ asyncActions, syncActions ]
 
@@ -43,8 +44,19 @@ class Container extends Component {
     clearInterval(this._timer)
   }
 
-  componentWillReceiveProps({ countdown, fetchLiveQuestions, resetCountdown }) {
-    if (Math.abs(countdown % 60) === 0) {
+  componentWillReceiveProps({
+    countdown,
+    fetchLiveQuestions,
+    fetchRecentAnswers,
+    resetCountdown
+  }) {
+    if (countdown === 0) {
+      resetCountdown(TWEET_INTERVAL)
+      setTimeout(() => {
+        fetchLiveQuestions()
+        fetchRecentAnswers()
+      }, 5000)
+    } else if (Math.abs(countdown % 60) === 0) {
       resetCountdown()
       setTimeout(fetchLiveQuestions, 5000)
     }
@@ -72,7 +84,14 @@ class Container extends Component {
 
 }
 
+const mapDispatchToProps = {
+  decrementCountdown,
+  resetCountdown,
+  fetchLiveQuestions,
+  fetchRecentAnswers
+}
+
 export default connect(
   ({ countdown }) => ({ countdown }),
-  { decrementCountdown, resetCountdown, fetchLiveQuestions }
+  mapDispatchToProps
 )(withStyles(styles)(Container))

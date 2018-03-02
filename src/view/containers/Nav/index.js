@@ -1,3 +1,4 @@
+import React, { Component } from 'react'
 import { connect }    from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { withStyles } from 'UI/styles'
@@ -6,7 +7,7 @@ import asyncActions   from 'Actions/async'
 import syncActions    from 'Actions/sync'
 import Nav            from './component'
 
-const { login } = asyncActions
+const { fetchCurrentUser, requestLogout } = asyncActions
 const { openNavOptions, closeNavOptions } = syncActions
 
 
@@ -15,8 +16,16 @@ const styles = (theme) => ({
     padding: '20px',
     width: '100%'
   },
+  avatarRoot: {
+    height: '44px',
+    width: '44px'
+  },
   followButton: {
     margin: '0 0 -45px 15px'
+  },
+  link: {
+    outline: 'none',
+    textDecoration: 'none'
   },
   logo: {
     fontFamily: 'Cabin Sketch',
@@ -32,20 +41,42 @@ const styles = (theme) => ({
     [theme.breakpoints.up('lg')]: {
       marginLeft: 'calc((100vw - 1230px) / 2)'
     }
+  },
+  userHandle: {
+    color: 'rgba(0,0,0,0.4)',
+    marginRight: '5px',
+    textShadow: '1px 1px #ddd'
   }
 })
 
-const mapStateToProps = (state) => ({
-  navOptions: state.navOptions
+class Container extends Component {
+  componentWillMount() {
+    this.props.fetchCurrentUser()
+  }
+
+  render() {
+    const {
+      fetchCurrentUser,
+      ...props
+    } = this.props
+
+    return <Nav {...props} />
+  }
+}
+
+const mapStateToProps = ({ auth, navOptions }) => ({
+  auth,
+  navOptions
 })
 
 const mapDispatchToProps = {
   closeNavOptions,
   openNavOptions,
-  login
+  fetchCurrentUser,
+  requestLogout
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(withStyles(styles)(Nav)))
+)(withRouter(withStyles(styles)(Container)))

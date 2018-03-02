@@ -4,6 +4,7 @@ import syncActions from 'Actions/sync'
 const {
   fetchingEarnedCards,
   setEarnedCards,
+  notFoundEarnedCards,
   errorFetchingEarnedCards,
 
   fetchingFocusedUser,
@@ -37,8 +38,9 @@ export default ({
         params: { ids }
       }
       ajax.get('/cards/earned', params)
-          .then(cards =>
-            dispatch(setEarnedCards(cards))
+          .then(cards => cards
+            ? dispatch(setEarnedCards(cards))
+            : dispatch(notFoundEarnedCards())
           ).catch(error =>
             dispatch(errorFetchingEarnedCards(error))
           )

@@ -11,7 +11,7 @@ export default (state = timeToNextQuestion, action) => {
         return state - 1
 
       case RESET_COUNTDOWN:
-        return getTimeTilNextTweet()
+        return action.seconds || getTimeTilNextTweet()
 
       default:
         return state

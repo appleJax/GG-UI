@@ -6,7 +6,7 @@ const { API_URL, TWITTER_ACCOUNT } = require('./.env').prod;
 
 module.exports = merge(common, {
   entry: [
-    'babel-polyfill',
+    '@babel/polyfill',
     './src/index.js'
   ],
   plugins: [

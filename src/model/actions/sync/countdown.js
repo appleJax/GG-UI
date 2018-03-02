@@ -12,8 +12,9 @@ export default ({
     type: DECREMENT_COUNTDOWN,
   }),
 
-  resetCountdown: () => ({
-    type: RESET_COUNTDOWN
+  resetCountdown: (seconds) => ({
+    type: RESET_COUNTDOWN,
+    seconds
   })
 
 })

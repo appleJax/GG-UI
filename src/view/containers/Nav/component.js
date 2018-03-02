@@ -1,27 +1,37 @@
 import React              from 'react'
 import { func, object }   from 'prop-types'
+import payloadStates      from 'Constants/PayloadStates'
 import classNames         from 'classnames'
+import MenuIcon           from 'Icons/Menu'
 import AppBar             from 'UI/AppBar'
+import Avatar             from 'UI/Avatar'
 import Button             from 'UI/Button'
 import IconButton         from 'UI/IconButton'
-import MenuIcon           from 'Icons/Menu'
 import Menu, { MenuItem } from 'UI/Menu'
 import Toolbar            from 'UI/Toolbar'
 import Typography         from 'UI/Typography'
+
+const { LOGGED_IN } = payloadStates
 
 function Nav(props) {
   const {
     classes: {
       appBar,
+      avatarRoot,
       followButton,
       logo,
-      navContainer
+      link,
+      navContainer,
+      userHandle
     },
+    auth,
     history,
     location,
+    requestLogout,
     navOptions,
     openNavOptions,
-    closeNavOptions
+    closeNavOptions,
+    requestLogin
   } = props
 
   const open = Boolean(navOptions)
@@ -31,18 +41,41 @@ function Nav(props) {
     history.push(path)
   }
 
-  options.push(
-      <MenuItem key={0}>
-        <a href='http://127.0.0.1:3000/login'>
-          Sign In
-        </a>
-      </MenuItem>
+  let menuIcon
+  if (auth.state === LOGGED_IN) {
+    const user = auth.data
+    menuIcon = (
+      <Avatar
+        alt={user.name}
+        classes={{root: avatarRoot}}
+        src={user.avatar}
+      />
     )
+
+    options.push(
+      <MenuItem key={0} onClick={() => requestLogout(history)}>
+        Sign Out
+      </MenuItem>
+      )
+  } else {
+    menuIcon = <MenuIcon />
+
+    options.push(
+      <a href='/login'
+         className={link}
+         key={1}
+      >
+        <MenuItem>
+            Sign In
+        </MenuItem>
+      </a>
+      )
+  }
 
   if (location.pathname !== '/')
     options.push(
       <MenuItem
-        key={1}
+        key={2}
         onClick={() => go('/')}
       >
         Live Questions
@@ -52,7 +85,7 @@ function Nav(props) {
   if (location.pathname !== '/stats')
     options.push(
       <MenuItem
-        key={2}
+        key={3}
         onClick={() => go('/stats')}
       >
         LeaderBoard
@@ -62,7 +95,7 @@ function Nav(props) {
   if (location.pathname !== '/decks')
     options.push(
       <MenuItem
-        key={3}
+        key={4}
         onClick={() => go('/decks')}
       >
         All Decks
@@ -106,7 +139,7 @@ function Nav(props) {
             color='inherit'
             onClick={(e) => openNavOptions(e.currentTarget)}
           >
-            <MenuIcon />
+            {  menuIcon }
           </IconButton>
           <Menu
             id='menu-appbar'

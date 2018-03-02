@@ -8,6 +8,7 @@ const {
 
   FETCHING_EARNED_CARDS,
   SET_EARNED_CARDS,
+  NOT_FOUND_EARNED_CARDS,
   ERROR_FETCHING_EARNED_CARDS,
 } = actionTypes
 
@@ -41,6 +42,10 @@ export default ({
   setEarnedCards: (cards) => ({
     type: SET_EARNED_CARDS,
     cards
+  }),
+
+  notFoundEarnedCards: () => ({
+    type: NOT_FOUND_EARNED_CARDS
   }),
 
   errorFetchingEarnedCards: (message) => ({

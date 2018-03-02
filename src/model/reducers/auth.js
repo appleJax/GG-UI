@@ -1,14 +1,29 @@
 import actionTypes   from 'Constants/ActionTypes'
 import payloadStates from 'Constants/PayloadStates'
 
-const { RESOLVED, ERROR } = payloadStates
+const { LOGGED_IN, LOGGED_OUT, ERROR } = payloadStates
 const { LOGIN, LOGIN_ERROR, LOGOUT } = actionTypes
 
-export default (state = null, action) => {
+const LOGGED_OUT_USER = {
+  state: LOGGED_OUT,
+  data: null,
+  error: null
+}
+
+const init = () => {
+  if (!localStorage) return LOGGED_OUT_USER
+
+  const user = JSON.parse(localStorage.getItem('gg-user'))
+  return user
+  ? { state: LOGGED_IN,  data: user, error: null }
+  : LOGGED_OUT_USER
+}
+
+export default (state = init(), action) => {
     switch (action.type) {
       case LOGIN:
         return {
-          state: RESOLVED,
+          state: LOGGED_IN,
           data: action.user,
           error: null
         }
@@ -21,7 +36,7 @@ export default (state = null, action) => {
         }
 
       case LOGOUT:
-        return null
+        return LOGGED_OUT_USER
 
       default:
         return state

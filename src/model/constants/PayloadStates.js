@@ -5,6 +5,9 @@ export default ({
   NOT_FOUND:      'NOT_FOUND',
   RESOLVED:       'RESOLVED',
   ERROR:          'ERROR',
-  ERROR_FETCHING: 'ERROR_FETCHING'
+  ERROR_FETCHING: 'ERROR_FETCHING',
+
+  LOGGED_IN:      'LOGGED_IN',
+  LOGGED_OUT:     'LOGGED_OUT'
 
 })

@@ -1,11 +1,11 @@
-const merge = require('webpack-merge');
+const merge   = require('webpack-merge');
 const webpack = require('webpack');
-const common = require('./webpack.common');
+const common  = require('./webpack.common');
 const { API_URL, TWITTER_ACCOUNT } = require('./.env').dev;
 
 module.exports = merge(common, {
   entry: [
-    'babel-polyfill',
+    '@babel/polyfill',
     'react-hot-loader/patch',
     './src/index.js'
   ],
