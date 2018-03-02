@@ -1,13 +1,15 @@
-import React         from 'react'
-import { object }    from 'prop-types'
-import payloadStates from 'Constants/PayloadStates'
-import Paper         from 'UI/Paper'
-import Typography    from 'UI/Typography'
-import AnswerCard    from 'Components/AnswerCard'
-import EmptyMessage  from 'Components/EmptyMessage'
-import Spinner       from 'Components/Spinner'
+import React          from 'react'
+import { object }     from 'prop-types'
+import { cardStatus } from 'Utils'
+import payloadStates  from 'Constants/PayloadStates'
+import Paper          from 'UI/Paper'
+import Typography     from 'UI/Typography'
+import AnswerCard     from 'Components/AnswerCard'
+import EmptyMessage   from 'Components/EmptyMessage'
+import Spinner        from 'Components/Spinner'
 
 const {
+  LOGGED_IN,
   INITIAL_STATE,
   FETCHING,
   NOT_FOUND,
@@ -21,6 +23,7 @@ function RecentAnswers({
     container,
     title
   },
+  auth,
   recentAnswers
 }) {
   let cardDisplay
@@ -32,10 +35,24 @@ function RecentAnswers({
 
   if (recentAnswers.state === FETCHING)
     cardDisplay = <Spinner />
-  else
+
+  if (recentAnswers.data.length > 0) {
+    let userAnswers = { correct: [], incorrect: [] }
+    if (auth.state === LOGGED_IN) {
+      const incorrect = auth.data.allTimeStats.incorrect
+      const correct = auth.data.allTimeStats.correct.map(obj => obj.cardId)
+      userAnswers = { correct, incorrect }
+    }
+
     cardDisplay = recentAnswers.data.map(
-      (card, i) => <AnswerCard key={i} card={card} />
+      (card, i) =>
+        <AnswerCard
+          status={cardStatus(card, userAnswers)}
+          card={card}
+          key={i}
+        />
     )
+  }
 
   return (
     <div className={container}>

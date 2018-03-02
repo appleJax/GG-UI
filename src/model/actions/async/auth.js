@@ -19,7 +19,6 @@ export default ({
       fetch('/user', { credentials: 'include' })
         .then(res => res.json())
         .then(user => {
-          console.log('User:', user)
           if (user) {
             dispatch(loginSuccess(user))
             localStorage.setItem('gg-user', JSON.stringify(user))

@@ -23,6 +23,9 @@ export default (theme) => ({
     padding: '20px 0',
     textShadow: '1px 1px #fff'
   },
+  loggedInRow: {
+    background: '#BBDEFB'
+  },
   headerCell: {
     background: theme.palette.primary.main,
     color: 'white'

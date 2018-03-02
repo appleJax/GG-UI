@@ -1,5 +1,7 @@
 import React          from 'react'
+import classNames     from 'classnames'
 import { object }     from 'prop-types'
+import { noWrap }     from 'Utils'
 import { withStyles } from 'UI/styles'
 import styles         from './styles'
 import Paper          from 'UI/Paper'
@@ -11,20 +13,29 @@ const AnswerCard = ({
     cardAnswer,
     cardHeader,
     cardLink,
-    imgCard
+    imgCard,
+    green,
+    red
   },
   card: {
     answerId,
     answers,
     questionText,
     mediaUrl
-  }
+  },
+  status
 }) => (
   <a className={cardLink}
      href={tweetLink(answerId)}
      target='_blank'
   >
-    <Paper className={imgCard}>
+    <Paper
+      className={classNames(
+          imgCard,
+          { [green]: status === 'correct'   },
+          { [red]:   status === 'incorrect' }
+      )}
+    >
       <Typography className={cardHeader} variant='body1'>
         {questionText}
       </Typography>
@@ -34,7 +45,7 @@ const AnswerCard = ({
         alt={mediaUrl.altText}
       />
       <Typography className={cardAnswer} variant='caption'>
-        {answers}
+        { noWrap(answers) }
       </Typography>
     </Paper>
   </a>

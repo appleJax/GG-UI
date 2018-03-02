@@ -51,7 +51,6 @@ class Container extends Component {
     resetCountdown
   }) {
     if (countdown === 0) {
-      resetCountdown(TWEET_INTERVAL)
       setTimeout(() => {
         fetchLiveQuestions()
         fetchRecentAnswers()

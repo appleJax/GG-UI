@@ -1,4 +1,5 @@
 import React          from 'react'
+import { cardStatus } from 'Utils'
 import { withStyles } from 'UI/styles'
 import payloadStates  from 'Constants/PayloadStates'
 import AnswerCard     from 'Components/AnswerCard'
@@ -7,6 +8,7 @@ import Spinner        from 'Components/Spinner'
 import styles         from './styles'
 
 const {
+  LOGGED_IN,
   FETCHING,
   RESOLVED,
   ERROR_FETCHING
@@ -18,6 +20,7 @@ const Deck = ({
     header,
     titleScreen
   },
+  auth,
   deck,
   game
 }) => {
@@ -26,12 +29,23 @@ const Deck = ({
     cardDisplay = <Spinner />
   else if (deck.state === ERROR_FETCHING)
     cardDisplay = <h2>Error Loading...</h2>
-  else if (deck.data.length === 0)
+  else if (!deck.data || deck.data.length === 0)
     cardDisplay = <EmptyMessage message='No Answers Tweeted Yet' />
-  else
+  else {
+    let userAnswers = { correct: [], incorrect: [] }
+    if (auth.state === LOGGED_IN) {
+      const incorrect = auth.data.allTimeStats.incorrect
+      const correct = auth.data.allTimeStats.correct.map(obj => obj.cardId)
+      userAnswers = { correct, incorrect }
+    }
     cardDisplay = deck.data.map((card, i) =>
-      <AnswerCard key={i} card={card} />
+      <AnswerCard
+        status={cardStatus(card, userAnswers)}
+        card={card}
+        key={i}
+      />
     )
+  }
 
   return (
     <>

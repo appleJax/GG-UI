@@ -54,6 +54,7 @@ const styles = (theme) => ({
   },
   userHandle: {
     color: 'rgba(0,0,0,0.6)',
+    marginTop: '5px',
     textShadow: '1px 1px rgba(255,255,255,0.3)'
   }
 })

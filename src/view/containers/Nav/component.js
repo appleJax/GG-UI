@@ -28,6 +28,7 @@ function Nav(props) {
     },
     auth,
     authTransition,
+    dispatch,
     history,
     location,
     requestLogout,
@@ -73,7 +74,12 @@ function Nav(props) {
          className={link}
          key={1}
       >
-        <MenuItem onClick={authTransition}>
+        <MenuItem
+          onClick={() => {
+            closeNavOptions()
+            authTransition()
+          }}
+        >
             Sign In
         </MenuItem>
       </a>

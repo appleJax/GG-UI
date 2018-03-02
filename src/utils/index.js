@@ -38,6 +38,11 @@ export function calculateTimeRemaining(time) {
   return `${hours ? hourString : ''}${minutes ? minuteString : ''}`
 }
 
+export function cardStatus({ cardId }, { correct, incorrect }) {
+  if (incorrect.includes(cardId)) return 'incorrect'
+  if (correct.includes(cardId))   return 'correct'
+}
+
 export function debounce(fn, wait) {
   let timeout
   return function(...args) {
@@ -82,6 +87,23 @@ export function getTimeTilNextTweet() {
   const startTimes = [ 2, 8, 14, 20 ].map(getTimeUntil)
   const millisUntilTweet = Math.min(...startTimes)
   return Math.floor(millisUntilTweet / 1000)
+}
+
+export const noWrap = (answers) => {
+  const answerArray = answers.split(',')
+  if (answerArray.length < 2)
+    return answers
+
+  return answerArray.map((answer, i, origArr) =>
+    <span
+      style={{ whiteSpace: 'nowrap'}}
+      key={i}
+    >{
+      (i+1 === origArr.length)
+        ?    answer
+        : `${answer},`
+    }</span>
+  )
 }
 
 export function tryCatch(promise) {

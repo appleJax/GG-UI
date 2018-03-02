@@ -25,6 +25,7 @@ import SearchIcon    from 'Icons/Search'
 import Spinner       from 'Components/Spinner'
 
 const {
+  LOGGED_IN,
   FETCHING,
   INITIAL_STATE,
   NOT_FOUND,
@@ -39,6 +40,7 @@ function Scoreboard({
     emptyScores,
     hover,
     headerCell,
+    loggedInRow,
     nameCell,
     playerColumn,
     rankColumn,
@@ -49,6 +51,7 @@ function Scoreboard({
     smallNumber,
     tabs
   },
+  auth,
   changeScoreView,
   fetchQuery,
   history,
@@ -62,6 +65,49 @@ function Scoreboard({
       (scoreView === 'weeklyStats' ) ? 0
     : (scoreView === 'monthlyStats') ? 1
     :                                  2
+
+  let loggedInUser
+
+  if (auth.state === LOGGED_IN) {
+    const user = auth.data
+    const {
+      avatar,
+      handle,
+      userId
+    } = user
+
+    loggedInUser =
+    (<TableRow
+        className={loggedInRow}
+        key={userId}
+        classes={{hover}}
+        hover={true}
+        onClick={() => {
+          setFocusedUser(user)
+          history.push(`/stats/${handle}`)
+        }}
+      >
+        <TableCell classes={{typeBody: rankNumber}}>
+          {user[scoreView].rank}
+        </TableCell>
+        <TableCell classes={{root: nameCell}}>
+          <div>
+            <Avatar
+              alt={name}
+              classes={{root: avatarRoot}}
+              src={avatar}
+            />
+            <Typography variant='subheading'>
+              @{handle}
+            </Typography>
+          </div>
+        </TableCell>
+        <TableCell numeric classes={{typeBody: smallNumber}}>
+          {user[scoreView].score}
+        </TableCell>
+      </TableRow>
+    )
+  }
 
   const usersState = users.state
   let userScores
@@ -99,6 +145,9 @@ function Scoreboard({
         name,
         userId
       } = user
+
+      if (auth.state === LOGGED_IN && userId === auth.data.userId)
+        return
 
       return (
         <TableRow
@@ -174,6 +223,7 @@ function Scoreboard({
             </TableRow>
           </TableHead>
           <TableBody>
+            { loggedInUser }
             { userScores }
           </TableBody>
         </Table>

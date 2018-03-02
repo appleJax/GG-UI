@@ -11,8 +11,9 @@ const [
   { fetchRecentAnswers }
 ] = [ payloadStates, asyncActions ]
 
-const mapStateToProps = (state) => ({
-  recentAnswers: state.recentAnswers
+const mapStateToProps = ({ auth, recentAnswers }) => ({
+  auth,
+  recentAnswers
 })
 
 const mapDispatchToProps = {

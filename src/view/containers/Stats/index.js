@@ -17,11 +17,18 @@ const {
 } = asyncActions
 
 
-const mapStateToProps = (state) => ({
-  focusedUser: state.focusedUser,
-  scoreView:   state.scoreView,
-  search:      state.search,
-  users:       state.users
+const mapStateToProps = ({
+  auth,
+  focusedUser,
+  scoreView,
+  search,
+  users
+}) => ({
+  auth,
+  focusedUser,
+  scoreView,
+  search,
+  users
 })
 
 const mapDispatchToProps = {

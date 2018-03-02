@@ -7,7 +7,7 @@ const {
   SESSION_SECRET,
   API_URL,
   APP_URL
-} = require('./.env').prod;
+} = require('./.env').dev;
 
 module.exports = {
   entry: [
