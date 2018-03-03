@@ -31,7 +31,7 @@ function RecentAnswers({
     cardDisplay = <h1>Error loading...</h1>
 
   if (recentAnswers.state === NOT_FOUND)
-    cardDisplay = <EmptyMessage message='No Recent Answers. Check Back Soon!' />
+    cardDisplay = <EmptyMessage message='No recent answers. Check back soon!' />
 
   if (recentAnswers.state === FETCHING)
     cardDisplay = <Spinner />

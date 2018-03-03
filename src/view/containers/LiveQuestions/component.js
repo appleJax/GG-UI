@@ -43,7 +43,7 @@ function LiveQuestions({
   else if (liveQuestions.state === ERROR_FETCHING)
     cardDisplay = <h1>Error loading...</h1>
   else if (liveQuestions.state === NOT_FOUND)
-    cardDisplay = <EmptyMessage message='No Live Questions. Check Back Soon!' />
+    cardDisplay = <EmptyMessage message='No live questions. Check back soon!' />
   else
     cardDisplay = liveQuestions.data.map((question, i) => {
       const {

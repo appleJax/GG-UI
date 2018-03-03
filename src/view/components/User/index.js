@@ -140,7 +140,7 @@ function User({
                 </div>
                 <div className={classNames(avgTimeDiv, stat)}>
                   <Typography variant='caption'>Average</Typography>
-                  <Typography variant='caption'>Time To Answer:</Typography>
+                  <Typography variant='caption'>Answer Time:</Typography>
                   <Typography variant='caption'>{formatHMS(stats.avgTimeToAnswer)}</Typography>
                 </div>
                 <Typography className={classNames(rankDiv, stat)} variant='body2'>Rank: {stats.rank || 'N/A'}</Typography>

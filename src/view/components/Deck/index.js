@@ -30,7 +30,7 @@ const Deck = ({
   else if (deck.state === ERROR_FETCHING)
     cardDisplay = <h2>Error Loading...</h2>
   else if (!deck.data || deck.data.length === 0)
-    cardDisplay = <EmptyMessage message='No Answers Tweeted Yet' />
+    cardDisplay = <EmptyMessage message='No answers tweeted yet' />
   else {
     let userAnswers = { correct: [], incorrect: [] }
     if (auth.state === LOGGED_IN) {
