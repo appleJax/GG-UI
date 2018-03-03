@@ -1,6 +1,24 @@
 const leftMargin = '30px'
 
 export default (theme) => ({
+  answeredRatioDiv: {
+    background: 'rgba(51,82,225,0.1)'
+  },
+  avgTimeDiv: {
+    background: 'rgba(51,82,225,0.1)'
+  },
+  rankDiv: {
+    background: 'rgba(51,82,225,0.2)'
+  },
+  scoreDiv: {
+    background: 'rgba(150,180,255,0.1)'
+  },
+  stat: {
+    padding: '8px 0'
+  },
+  totalRatioDiv: {
+    background: 'rgba(150,180,255,0.1)'
+  },
   avatarRoot: {
     height: '200px',
     margin: `-125px 0 0 ${leftMargin}`,

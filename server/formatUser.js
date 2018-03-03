@@ -16,34 +16,41 @@ export default ({
     attempts: 0,
     correct: [],
     incorrect: [],
-    total: 0,
+    totalPossible: 0,
+    rank: 0,
     score: 0,
-    rank: 0
+    avgTimeToAnswer: 0
   },
   monthlyStats: {
     attempts: 0,
     correct: 0,
+    totalPossible: 0,
+    rank: 0,
     score: 0,
+    avgTimeToAnswer: 0,
     average: {
       n: 0,
       value: 0
-    },
-    rank: 0
+    }
   },
   weeklyStats: {
     attempts: 0,
     correct: 0,
+    totalPossible: 0,
+    rank: 0,
     score: 0,
+    avgTimeToAnswer: 0,
     average: {
       n: 0,
       value: 0
-    },
-    rank: 0
+    }
   },
   dailyStats: {
     attempts: 0,
     correct: 0,
+    totalPossible: 0,
     score: 0,
+    avgTimeToAnswer: 0,
     average: {
       n: 0,
       value: 0

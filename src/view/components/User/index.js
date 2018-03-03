@@ -1,4 +1,5 @@
 import React              from 'react'
+import classNames         from 'classnames'
 import { object }         from 'prop-types'
 import payloadStates      from 'Constants/PayloadStates'
 import { withStyles }     from 'UI/styles'
@@ -7,7 +8,10 @@ import Button             from 'UI/Button'
 import Typography         from 'UI/Typography'
 import CardReviewer       from 'Components/CardReviewer'
 import styles             from './styles'
-import { formatAccuracy } from 'Utils'
+import {
+  formatHMS,
+  formatRatio
+} from 'Utils'
 
 const {
   LOGGED_IN,
@@ -20,13 +24,19 @@ const {
 
 function User({
   classes: {
+    answeredRatioDiv,
     avatarRoot,
+    avgTimeDiv,
     banner,
     follow,
     followImage,
     label,
+    rankDiv,
+    scoreDiv,
     statBox,
+    stat,
     timePeriod,
+    totalRatioDiv,
     userBar,
     userIdentity,
     userStats
@@ -90,7 +100,7 @@ function User({
       <header
         className={banner}
         style={{background: `url(${profileBanner})`}}
-      ></header>
+      />
       <div className={userBar}>
         <div>
           <Avatar
@@ -113,13 +123,27 @@ function User({
             return (
               <div key={i} className={statBox}>
                 <Typography className={timePeriod} variant='subheading'>{label}</Typography>
-                <Typography variant='subheading'>Score: {stats.score}</Typography>
-                <Typography variant='body1'>({formatAccuracy(stats)} correct)</Typography>
-                <Typography variant='body2'>Rank: {stats.rank || 'N/A'}</Typography>
-                { stats.average
-                  ? <Typography variant='caption'>Average: {stats.average.value || stats.score}</Typography>
-                  : <Typography variant='caption'>Daily Average: {dailyStats.average.value || stats.score}</Typography>
-                }
+                <div className={classNames(scoreDiv, stat)}>
+                  <Typography variant='subheading'>Score: {stats.score}</Typography>
+                  { stats.average
+                    ? <Typography variant='caption'>Average: {stats.average.value || stats.score}</Typography>
+                    : <Typography variant='caption'>Daily Average: {dailyStats.average.value || stats.score}</Typography>
+                  }
+                </div>
+                <div className={classNames(answeredRatioDiv, stat)}>
+                  <Typography variant='body1'>{formatRatio(stats)}</Typography>
+                  <Typography variant='caption'>ANSWERED</Typography>
+                </div>
+                <div className={classNames(totalRatioDiv, stat)}>
+                  <Typography variant='body1'>{formatRatio(stats, true)}</Typography>
+                  <Typography variant='caption'>TOTAL</Typography>
+                </div>
+                <div className={classNames(avgTimeDiv, stat)}>
+                  <Typography variant='caption'>Average</Typography>
+                  <Typography variant='caption'>Time To Answer:</Typography>
+                  <Typography variant='caption'>{formatHMS(stats.avgTimeToAnswer)}</Typography>
+                </div>
+                <Typography className={classNames(rankDiv, stat)} variant='body2'>Rank: {stats.rank || 'N/A'}</Typography>
               </div>
             )
           })

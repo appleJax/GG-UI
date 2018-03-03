@@ -68,7 +68,7 @@ function LiveQuestions({
                 />
             )}
             </div>
-            <Typography className={timeLeftText} color='secondary' variant='caption'>
+            <Typography className={timeLeftText} variant='caption'>
               Time Remaining: {timeRemaining}
             </Typography>
           </Paper>

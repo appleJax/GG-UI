@@ -30,6 +30,10 @@ export default (theme) => ({
     padding: '0',
     width: '100%'
   },
+  tabs: {
+    background: theme.palette.primary.light,
+    fontSize: '20px'
+  },
   title: {
     background: 'rgba(0, 0, 0, 0.6)',
     color: '#eee',

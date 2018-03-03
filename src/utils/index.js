@@ -52,17 +52,21 @@ export function debounce(fn, wait) {
   }
 }
 
-export function formatAccuracy({ correct, attempts }) {
+export function formatRatio({ correct, attempts, totalPossible }, total) {
   if (Array.isArray(correct))
     correct = correct.length
 
-  const percent = (attempts > 0)
+  const denominator = total
+    ? totalPossible
+    : attempts
+
+  const percent = (denominator > 0)
     ? Math.floor(
-        (correct / attempts) * 100
+        (correct / denominator) * 100
       )
     : 0
 
-  return `${percent}%`
+  return `${correct}/${denominator} - ${percent}%`
 }
 
 export function formatHMS(totalSeconds) {

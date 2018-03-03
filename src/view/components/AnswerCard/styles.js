@@ -17,13 +17,13 @@ export default (theme) => ({
     textDecoration: 'none'
   },
   imgCard: {
-    background: theme.palette.primary.light,
+    background: 'rgb(90,125,139)',
     width: '240px'
   },
   green: {
-    background: '#4CAF50'
+    background: 'rgb(47,176,110)'
   },
   red: {
-    background: '#B71C1C'
+    background: 'rgb(222,73,73)'
   }
 })

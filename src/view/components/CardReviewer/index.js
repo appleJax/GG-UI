@@ -5,6 +5,7 @@ import styles                    from './styles'
 import { withStyles }            from 'UI/styles'
 import Paper                     from 'UI/Paper'
 import Subheader                 from 'UI/List/ListSubheader'
+import Tabs, { Tab }             from 'UI/Tabs'
 import Typography                from 'UI/Typography'
 import AnswerCard                from 'Components/AnswerCard'
 import EmptyMessage              from 'Components/EmptyMessage'
@@ -26,6 +27,7 @@ function CardReviewer({
     container,
     row,
     subHeader,
+    tabs,
     title
   }
 }) {
@@ -39,7 +41,7 @@ function CardReviewer({
     cardDisplay = <h2>Error loading...</h2>
   } else if (cardsState === NOT_FOUND) {
     cardCount = 0
-    cardDisplay = <EmptyMessage message='Answer Questions to Earn Cards!' />
+    cardDisplay = <EmptyMessage message='N/A' />
   } else {
     cardCount = cards.length
     cardDisplay = cards.map((card, i) => <AnswerCard key={i} card={card} />)
@@ -49,7 +51,7 @@ function CardReviewer({
     <div className={container}>
       <Subheader classes={{root: subHeader}} component='div'>
         <Typography className={title} variant='subheading'>
-          FlashCards Earned: {cardCount}
+          Flashcard Reviewer
         </Typography>
       </Subheader>
       <div className={cardList}>
@@ -66,3 +68,20 @@ CardReviewer.propTypes = {
 }
 
 export default withStyles(styles)(CardReviewer)
+
+// TODO: add tabs
+/*
+<Tabs
+  classes={{root: tabs}}
+  value={0}
+  onChange={(e, value) => console.log('Implement me!')}
+  indicatorColor='secondary'
+  textColor='secondary'
+  centered
+  fullWidth
+>
+  <Tab label='Incorrectly Answered' />
+  <Tab label='Correctly Answered' />
+  <Tab label='Unanswered' />
+</Tabs>
+*/

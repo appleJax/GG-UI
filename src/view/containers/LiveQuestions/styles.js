@@ -9,7 +9,7 @@ export default (theme) => ({
   },
   captionText: {
     margin: '5px',
-    textShadow: `1px 1px 3px rgb(51,5,126)`
+    textShadow: `1px 1px 3px rgba(0,0,0,0.3)`
   },
   container: {
     alignItems: 'center',
@@ -24,9 +24,9 @@ export default (theme) => ({
     }
   },
   liveTitle: {
-    background: 'rgba(121,75,196, 0.1)',
-    borderLeft: '5px solid rgb(121,75,196)',
-    color: 'rgb(101,55,176)',
+    background: 'rgba(51,82,225,0.1)',
+    borderLeft: '5px solid rgb(51,82,225)',
+    color: 'rgb(51,82,225)',
     margin: '30px 0 15px',
     maxWidth: '100vw',
     padding: '10px 50px',
@@ -34,13 +34,13 @@ export default (theme) => ({
   },
   questionCard: {
     alignItems: 'center',
-    background: 'rgb(121,75,196)',
+    background: 'rgb(51,82,225)',
     display: 'flex',
     flexDirection: 'column'
   },
   timeLeftText: {
     background: 'rgba(255,255,255,0.2)',
-    color: 'rgb(51,5,126)',
+    color: 'rgb(0,30,170)',
     padding: '3px 8px',
     textShadow: '1px 1px rgba(255,255,255,0.2)'
   }
