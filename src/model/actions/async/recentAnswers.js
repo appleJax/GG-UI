@@ -1,6 +1,8 @@
-import { ajax }    from 'Utils'
-import syncActions from 'Actions/sync'
+import { ajax }      from 'Utils'
+import syncActions   from 'Actions/sync'
+import payloadStates from 'Constants/PayloadStates'
 
+const { INITIAL_STATE } = payloadStates
 const {
   fetchingRecentAnswers,
   setRecentAnswers,
@@ -11,8 +13,11 @@ const {
 export default ({
 
   fetchRecentAnswers: () =>
-    dispatch => {
-      dispatch(fetchingRecentAnswers())
+    (dispatch, getState) => {
+      const { recentAnswers } = getState()
+      if (recentAnswers.state === INITIAL_STATE)
+        dispatch(fetchingRecentAnswers())
+
       ajax.get('/recent')
           .then(recentAnswers =>
             recentAnswers

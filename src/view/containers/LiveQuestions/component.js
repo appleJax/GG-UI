@@ -7,8 +7,9 @@ import EmptyMessage  from 'Components/EmptyMessage'
 import Spinner       from 'Components/Spinner'
 import {
   calculateTimeRemaining,
+  formatGameTitle,
   formatQuestionText,
-  tweetLink
+  questionLink
 } from 'Utils'
 
 const {
@@ -28,6 +29,7 @@ function LiveQuestions({
     imageDiv,
     liveTitle,
     timeLeftText,
+    gameTitle,
     questionCard
   },
   liveQuestions
@@ -44,18 +46,28 @@ function LiveQuestions({
     cardDisplay = <EmptyMessage message='No Live Questions. Check Back Soon!' />
   else
     cardDisplay = liveQuestions.data.map((question, i) => {
-      const { questionId, questionText, questionPostedAt, mediaUrls } = question
+      const {
+        game,
+        mediaUrls,
+        questionId,
+        questionPostedAt,
+        questionText
+      } = question
+
       const timeRemaining = calculateTimeRemaining(questionPostedAt)
       const text = formatQuestionText(questionText)
       return (
         <a key={i}
            className={cardLink}
-           href={tweetLink(questionId)}
+           href={questionLink(questionId)}
            target='_blank'
         >
           <Paper classes={{root: questionCard}}>
             <Typography className={captionText} color='secondary' variant='body2'>
               {text}
+            </Typography>
+            <Typography className={gameTitle} variant='body1'>
+              { formatGameTitle(game) }
             </Typography>
             <div className={imageDiv}>
             { mediaUrls.map((mediaUrl, innerIndex) =>

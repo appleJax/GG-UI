@@ -32,6 +32,12 @@ export default (theme) => ({
     padding: '10px 50px',
     textShadow: '0 3px 15px rgba(0,0,0,0.3)'
   },
+  gameTitle: {
+    background: 'rgba(0,0,0,0.2)',
+    color: 'rgba(255,255,255,0.7)',
+    textAlign: 'center',
+    width: '240px'
+  },
   questionCard: {
     alignItems: 'center',
     background: 'rgb(51,82,225)',

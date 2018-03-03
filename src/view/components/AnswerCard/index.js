@@ -6,7 +6,10 @@ import { withStyles } from 'UI/styles'
 import styles         from './styles'
 import Paper          from 'UI/Paper'
 import Typography     from 'UI/Typography'
-import { tweetLink }  from 'Utils'
+import {
+  formatGameTitle,
+  tweetLink
+}  from 'Utils'
 
 const AnswerCard = ({
   classes: {
@@ -14,19 +17,22 @@ const AnswerCard = ({
     cardHeader,
     cardLink,
     imgCard,
+    gameTitle,
     green,
     red
   },
   card: {
     answerId,
     answers,
+    cardId,
+    game,
     questionText,
     mediaUrl
   },
   status
 }) => (
   <a className={cardLink}
-     href={tweetLink(answerId)}
+     href={tweetLink(cardId)}
      target='_blank'
   >
     <Paper
@@ -38,6 +44,9 @@ const AnswerCard = ({
     >
       <Typography className={cardHeader} variant='body1'>
         {questionText}
+      </Typography>
+      <Typography className={gameTitle} variant='body1'>
+        { formatGameTitle(game) }
       </Typography>
       <img
         height='160'

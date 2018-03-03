@@ -20,6 +20,12 @@ export default (theme) => ({
     background: 'rgb(90,125,139)',
     width: '240px'
   },
+  gameTitle: {
+    background: 'rgba(0,0,0,0.2)',
+    color: 'rgba(255,255,255,0.7)',
+    textAlign: 'center',
+    width: '240px'
+  },
   green: {
     background: 'rgb(47,176,110)'
   },

@@ -50,14 +50,14 @@ class Container extends Component {
     fetchRecentAnswers,
     resetCountdown
   }) {
-    if (countdown === 0) {
+
+    if (countdown % 10 === 0) {
       setTimeout(() => {
         fetchLiveQuestions()
         fetchRecentAnswers()
-      }, 5000)
-    } else if (countdown % 10 === 0) {
-      resetCountdown()
-      setTimeout(fetchLiveQuestions, 4000)
+      }, 4000)
+
+      if (countdown !== 0) resetCountdown()
     }
   }
 

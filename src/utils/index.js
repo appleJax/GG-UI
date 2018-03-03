@@ -52,22 +52,8 @@ export function debounce(fn, wait) {
   }
 }
 
-export function formatRatio({ correct, attempts, totalPossible }, total) {
-  if (Array.isArray(correct))
-    correct = correct.length
-
-  const denominator = total
-    ? totalPossible
-    : attempts
-
-  const percent = (denominator > 0)
-    ? Math.floor(
-        (correct / denominator) * 100
-      )
-    : 0
-
-  return `${correct}/${denominator} - ${percent}%`
-}
+export const formatGameTitle = (title) =>
+  title.replace(/\s(ENG|JP)$/, '')
 
 export function formatHMS(totalSeconds) {
   const hours = pad(
@@ -85,6 +71,23 @@ export function formatHMS(totalSeconds) {
 
 export function formatQuestionText(questionText) {
   return questionText.split('\n').slice(0, -1).map((line, i) => <p key={i}>{line}</p>)
+}
+
+export function formatRatio({ correct, attempts, totalPossible }, total) {
+  if (Array.isArray(correct))
+    correct = correct.length
+
+  const denominator = total
+    ? totalPossible
+    : attempts
+
+  const percent = (denominator > 0)
+    ? Math.floor(
+        (correct / denominator) * 100
+      )
+    : 0
+
+  return `${correct}/${denominator} - ${percent}%`
 }
 
 export function getTimeTilNextTweet() {
@@ -119,10 +122,15 @@ export function tryCatch(promise) {
     })
 }
 
-export const tweetLink = (tweetId) =>
+export const questionLink = (tweetId) =>
   'https://twitter.com/' +
   `${TWITTER_ACCOUNT}/status/${tweetId}` +
   '?ref_src=twcamp%5Eshare%7Ctwsrc%5Em5%7Ctwgr%5Eemail%7Ctwcon%5E7046%7Ctwterm%5E1'
+
+export const tweetLink = (cardId) =>
+  'https://twitter.com' +
+  `/search?q=QID${cardId}` +
+  '&ref_src=twcamp%5Eshare%7Ctwsrc%5Em5%7Ctwgr%5Eemail%7Ctwcon%5E7046%7Ctwterm%5E1'
 
 
 // private functions

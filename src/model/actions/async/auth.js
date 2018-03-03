@@ -31,6 +31,19 @@ export default ({
         )
     },
 
+  updateUserDetails: () =>
+    dispatch => {
+      fetch('/user', { credentials: 'include' })
+        .then(res => res.json())
+        .then(user => {
+          if (user) {
+            dispatch(loginSuccess(user))
+            localStorage.setItem('gg-user', JSON.stringify(user))
+          }
+        })
+        .catch(console.error)
+    },
+
   requestLogout: (history) =>
     dispatch => {
       dispatch(closeNavOptions())
