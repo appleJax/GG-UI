@@ -69,9 +69,13 @@ export function formatHMS(totalSeconds) {
   return `${hours}:${minutes}:${seconds}`
 }
 
-export function formatQuestionText(questionText) {
-  return questionText.split('\n').slice(0, -1).map((line, i) => <p key={i}>{line}</p>)
-}
+export const formatQuestionText = (questionText) =>
+  questionText
+    .split('\n')
+    .slice(0, -2)
+    .map((line, i) =>
+      <p style={{margin: '0'}} key={i} >{line}</p>
+    )
 
 export function formatRatio({ correct, attempts, totalPossible }, total) {
   if (Array.isArray(correct))
@@ -129,9 +133,11 @@ export const questionLink = (tweetId) =>
 
 export const tweetLink = (cardId) =>
   'https://twitter.com' +
-  `/search?q=QID${cardId}` +
+  `/search?q=from%3A${TWITTER_ACCOUNT}%20QID${cardId}` +
   '&ref_src=twcamp%5Eshare%7Ctwsrc%5Em5%7Ctwgr%5Eemail%7Ctwcon%5E7046%7Ctwterm%5E1'
 
+export const userHasAnswered = ({ userId }) => (liveQuestion) =>
+  liveQuestion.alreadyAnswered.find(id => id === userId)
 
 // private functions
 

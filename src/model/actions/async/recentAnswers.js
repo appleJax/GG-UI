@@ -1,6 +1,6 @@
 import { ajax }      from 'Utils'
-import syncActions   from 'Actions/sync'
 import payloadStates from 'Constants/PayloadStates'
+import syncActions   from 'Actions/sync'
 
 const { INITIAL_STATE } = payloadStates
 const {

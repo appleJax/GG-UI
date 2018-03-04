@@ -1,6 +1,8 @@
-import { ajax }    from 'Utils'
-import syncActions from 'Actions/sync'
+import { ajax }      from 'Utils'
+import payloadStates from 'Constants/PayloadStates'
+import syncActions   from 'Actions/sync'
 
+const { INITIAL_STATE } = payloadStates
 const {
   fetchingLiveQuestions,
   setLiveQuestions,
@@ -11,8 +13,11 @@ const {
 export default ({
 
   fetchLiveQuestions: () =>
-    dispatch => {
-      dispatch(fetchingLiveQuestions())
+    (dispatch, getState) => {
+      const { liveQuestions } = getState()
+      if (liveQuestions.state === INITIAL_STATE)
+        dispatch(fetchingLiveQuestions())
+
       ajax.get('/live')
           .then(liveQuestions =>
             liveQuestions

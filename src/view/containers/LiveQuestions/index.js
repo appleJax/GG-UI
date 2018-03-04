@@ -11,7 +11,8 @@ const [
   { fetchLiveQuestions }
 ] = [ payloadStates, asyncActions ]
 
-const mapStateToProps = ({ liveQuestions }) => ({
+const mapStateToProps = ({ auth, liveQuestions }) => ({
+  auth,
   liveQuestions
 })
 

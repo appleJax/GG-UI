@@ -2,6 +2,10 @@ import { classes }   from 'Styles/common'
 const { cardList } = classes
 
 export default (theme) => ({
+  answered: {
+    boxShadow: 'none',
+    opacity: '0.6'
+  },
   cardList,
   cardLink: {
     margin: '10px 5px',
