@@ -30,6 +30,9 @@ const styles = (theme) => ({
     height: '44px',
     width: '44px'
   },
+  divider: {
+    marginTop: '10px'
+  },
   followButton: {
     margin: '0 0 -45px 18px'
   },
@@ -58,6 +61,9 @@ const styles = (theme) => ({
     [theme.breakpoints.up('lg')]: {
       marginLeft: 'calc((100vw - 1230px) / 2)'
     }
+  },
+  profileIcon: {
+    margin: '0 5px 0 -10px'
   },
   userHandle: {
     color: 'rgba(0,0,0,0.5)',

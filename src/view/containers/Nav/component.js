@@ -3,10 +3,12 @@ import { func, object }   from 'prop-types'
 import payloadStates      from 'Constants/PayloadStates'
 import classNames         from 'classnames'
 import Loading            from 'Components/Loading'
+import AccountCircle      from 'Icons/AccountCircle'
 import MenuIcon           from 'Icons/Menu'
 import AppBar             from 'UI/AppBar'
 import Avatar             from 'UI/Avatar'
 import Button             from 'UI/Button'
+import Divider            from 'UI/Divider'
 import IconButton         from 'UI/IconButton'
 import Menu, { MenuItem } from 'UI/Menu'
 import Toolbar            from 'UI/Toolbar'
@@ -19,11 +21,13 @@ function Nav(props) {
     classes: {
       appBar,
       avatarRoot,
+      divider,
       followButton,
       loggedInIcon,
       logo,
       link,
       navContainer,
+      profileIcon,
       userHandle
     },
     auth,
@@ -62,7 +66,7 @@ function Nav(props) {
         key={4}
         onClick={() => go('/stats')}
       >
-        LeaderBoard
+        Leaderboard
       </MenuItem>
     )
 
@@ -94,14 +98,17 @@ function Nav(props) {
 
     options.unshift(
       <MenuItem key={0} onClick={() => go(`/stats/${user.handle}`)}>
-        My Profile
+        <AccountCircle className={profileIcon} /> My Profile
       </MenuItem>
     )
 
     options.push(
-      <MenuItem key={1} onClick={() => requestLogout(history)}>
-        Sign Out
-      </MenuItem>
+      <>
+        <Divider className={divider} />
+        <MenuItem key={1} onClick={() => requestLogout(history)}>
+          Sign Out
+        </MenuItem>
+      </>
       )
   } else {
     menuIcon = <MenuIcon />

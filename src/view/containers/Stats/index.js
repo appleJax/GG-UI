@@ -6,7 +6,7 @@ import syncActions          from 'Actions/sync'
 import Scoreboard           from 'Components/Scoreboard'
 import User                 from 'Components/User'
 
-const { INITIAL_STATE, RESOLVED } = payloadStates
+const { LOGGED_IN, INITIAL_STATE, RESOLVED } = payloadStates
 const { setFocusedUser } = syncActions
 const {
   changeScoreView,
@@ -43,6 +43,7 @@ const mapDispatchToProps = {
 class Container extends Component {
   componentWillMount() {
     const {
+      auth,
       fetchFocusedUser,
       fetchStats,
       match: { params: { handle } },
@@ -65,10 +66,6 @@ class Container extends Component {
     }
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return true
-  }
-
   render() {
     const {
       fetchFocusedUser,
@@ -78,10 +75,12 @@ class Container extends Component {
       ...props
     } = this.props
 
-    return (handle)
-      ? <User user={focusedUser} handleParam={handle} {...props} />
-      : <Scoreboard users={users[this.props.scoreView]} {...props} />
+    if (!handle)
+      return <Scoreboard users={users[this.props.scoreView]} {...props} />
+
+    return <User user={focusedUser} handleParam={handle} {...props} />
   }
+
 }
 
 export default connect(
