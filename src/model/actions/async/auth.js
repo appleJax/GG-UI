@@ -1,6 +1,8 @@
-import { ajax }    from 'Utils'
-import syncActions from 'Actions/sync'
+import { ajax }      from 'Utils'
+import syncActions   from 'Actions/sync'
+import payloadStates from 'Constants/PayloadStates'
 
+const { LOGGED_IN } = payloadStates
 const {
   authTransition,
   closeNavOptions,
@@ -13,9 +15,13 @@ const {
 export default ({
 
   fetchCurrentUser: () =>
-    dispatch => {
-      dispatch(closeNavOptions())
-      dispatch(authTransition())
+    (dispatch, getState) => {
+      const { auth } = getState()
+      if (auth.state !== LOGGED_IN) {
+        dispatch(closeNavOptions())
+        dispatch(authTransition())
+      }
+
       fetch('/user', { credentials: 'include' })
         .then(res => res.json())
         .then(user => {

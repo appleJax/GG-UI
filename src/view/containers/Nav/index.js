@@ -8,9 +8,16 @@ import syncActions    from 'Actions/sync'
 import payloadStates  from 'Constants/PayloadStates'
 import Nav            from './component'
 
-const { LOGGED_IN } = payloadStates
-const { fetchCurrentUser, requestLogout } = asyncActions
-const { authTransition, openNavOptions, closeNavOptions } = syncActions
+const { LOGGED_IN, RESOLVED } = payloadStates
+const [{
+  fetchCurrentUser,
+  requestLogout,
+  updateUserDetails
+}, {
+  authTransition,
+  openNavOptions,
+  closeNavOptions
+}] = [ asyncActions, syncActions ]
 
 
 const styles = (theme) => ({
@@ -65,6 +72,33 @@ class Container extends Component {
       this.props.fetchCurrentUser()
   }
 
+  componentWillReceiveProps(nextProps) {
+    // Purpose of this method is to update the loggedIn user's data
+    // in localStorage if there is a NEW recentAnswer
+    //
+    // *** NEEDS TESTED ***
+    //
+    // May need to adjust setTimeout to updateUserDetails() if the new stats
+    // are not available in time
+    const loggedIn = this.props.auth.state === LOGGED_IN
+    const hasRecentAnswers = nextProps.recentAnswers.state === RESOLVED
+
+    if (loggedIn && hasRecentAnswers) {
+      const { recentAnswers, updateUserDetails } = this.props
+      const recentIds = recentAnswers.data
+      if (recentIds.length === 0) {
+        updateUserDetails()
+        return
+      }
+
+      const mostRecentId = recentIds[0].cardId
+      const nextMostRecentId = nextProps.recentAnswers.data[0].cardId
+      if (mostRecentId !== nextMostRecentId)
+        updateUserDetails()
+
+    }
+  }
+
   render() {
     const {
       fetchCurrentUser,
@@ -75,9 +109,10 @@ class Container extends Component {
   }
 }
 
-const mapStateToProps = ({ auth, navOptions }) => ({
+const mapStateToProps = ({ auth, navOptions, recentAnswers }) => ({
   auth,
-  navOptions
+  navOptions,
+  recentAnswers
 })
 
 const mapDispatchToProps = {
@@ -85,7 +120,8 @@ const mapDispatchToProps = {
   closeNavOptions,
   openNavOptions,
   fetchCurrentUser,
-  requestLogout
+  requestLogout,
+  updateUserDetails
 }
 
 export default connect(
