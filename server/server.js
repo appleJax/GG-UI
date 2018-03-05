@@ -25,7 +25,7 @@ app.get('/oauth_callback',
   passport.authenticate('twitter'),
   (req, res) => {
     req.session.user = req.user
-    res.redirect(`/stats/${req.user.handle}`)
+    res.redirect('/')
   }
 )
 

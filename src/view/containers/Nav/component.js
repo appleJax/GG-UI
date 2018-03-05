@@ -39,11 +39,42 @@ function Nav(props) {
   } = props
 
   const open = Boolean(navOptions)
-  const options = []
   const go = (path) => {
     closeNavOptions()
     history.push(path)
   }
+
+  const options = []
+
+  if (location.pathname !== '/')
+    options.push(
+      <MenuItem
+        key={3}
+        onClick={() => go('/')}
+      >
+        Live Questions
+      </MenuItem>
+    )
+
+  if (location.pathname !== '/stats')
+    options.push(
+      <MenuItem
+        key={4}
+        onClick={() => go('/stats')}
+      >
+        LeaderBoard
+      </MenuItem>
+    )
+
+  if (location.pathname !== '/decks')
+    options.push(
+      <MenuItem
+        key={5}
+        onClick={() => go('/decks')}
+      >
+        All Decks
+      </MenuItem>
+    )
 
   let menuIcon
   if (auth.state === LOGGED_IN) {
@@ -61,18 +92,24 @@ function Nav(props) {
       </div>
     )
 
+    options.unshift(
+      <MenuItem key={0} onClick={() => go(`/stats/${user.handle}`)}>
+        My Profile
+      </MenuItem>
+    )
+
     options.push(
-      <MenuItem key={0} onClick={() => requestLogout(history)}>
+      <MenuItem key={1} onClick={() => requestLogout(history)}>
         Sign Out
       </MenuItem>
       )
   } else {
     menuIcon = <MenuIcon />
 
-    options.push(
+    options.unshift(
       <a href='/login'
          className={link}
-         key={1}
+         key={2}
       >
         <MenuItem
           onClick={() => {
@@ -85,36 +122,6 @@ function Nav(props) {
       </a>
       )
   }
-
-  if (location.pathname !== '/')
-    options.push(
-      <MenuItem
-        key={2}
-        onClick={() => go('/')}
-      >
-        Live Questions
-      </MenuItem>
-    )
-
-  if (location.pathname !== '/stats')
-    options.push(
-      <MenuItem
-        key={3}
-        onClick={() => go('/stats')}
-      >
-        LeaderBoard
-      </MenuItem>
-    )
-
-  if (location.pathname !== '/decks')
-    options.push(
-      <MenuItem
-        key={4}
-        onClick={() => go('/decks')}
-      >
-        All Decks
-      </MenuItem>
-    )
 
   return (
     <div>
