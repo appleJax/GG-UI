@@ -74,11 +74,8 @@ class Container extends Component {
 
   componentWillReceiveProps(nextProps) {
     // Purpose of this method is to update the loggedIn user's data
-    // in localStorage if there is a NEW recentAnswer
-    //
-    // *** NEEDS TESTED ***
-    //
-    // May need to adjust setTimeout to updateUserDetails() if the new stats
+    // in localStorage if there is a new recentAnswer
+    // May need to add setTimeout to updateUserDetails() if new stats
     // are not available in time
     const loggedIn = this.props.auth.state === LOGGED_IN
     const hasRecentAnswers = nextProps.recentAnswers.state === RESOLVED

@@ -38,16 +38,17 @@ export default ({
     },
 
   updateUserDetails: () =>
-    dispatch => {
-      fetch('/user', { credentials: 'include' })
-        .then(res => res.json())
-        .then(user => {
-          if (user) {
-            dispatch(loginSuccess(user))
-            localStorage.setItem('gg-user', JSON.stringify(user))
-          }
-        })
-        .catch(console.error)
+    (dispatch, getState) => {
+      const { auth } = getState()
+      if (auth.state === LOGGED_IN)
+        ajax.get(`/user/${auth.data.userId}`)
+            .then(user => {
+              if (user) {
+                dispatch(loginSuccess(user))
+                localStorage.setItem('gg-user', JSON.stringify(user))
+              }
+            })
+            .catch(console.error)
     },
 
   requestLogout: (history) =>

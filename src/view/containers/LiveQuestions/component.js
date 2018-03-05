@@ -104,6 +104,7 @@ function LiveQuestions({
 
   let allAnswered
   if (
+    liveCards.length > 0     &&
     auth.state === LOGGED_IN &&
     liveCards.every(userHasAnswered(auth.data))
   ) allAnswered = <CheckCircle />
