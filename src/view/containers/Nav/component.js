@@ -53,7 +53,7 @@ function Nav(props) {
   if (location.pathname !== '/')
     options.push(
       <MenuItem
-        key={3}
+        key={2}
         onClick={() => go('/')}
       >
         Live Questions
@@ -63,7 +63,7 @@ function Nav(props) {
   if (location.pathname !== '/stats')
     options.push(
       <MenuItem
-        key={4}
+        key={3}
         onClick={() => go('/stats')}
       >
         Leaderboard
@@ -73,7 +73,7 @@ function Nav(props) {
   if (location.pathname !== '/decks')
     options.push(
       <MenuItem
-        key={5}
+        key={4}
         onClick={() => go('/decks')}
       >
         All Decks
@@ -104,8 +104,8 @@ function Nav(props) {
 
     options.push(
       <>
-        <Divider className={divider} />
-        <MenuItem key={1} onClick={() => requestLogout(history)}>
+        <Divider  key={5} className={divider} />
+        <MenuItem key={6} onClick={() => requestLogout(history)}>
           Sign Out
         </MenuItem>
       </>
@@ -116,7 +116,7 @@ function Nav(props) {
     options.unshift(
       <a href='/login'
          className={link}
-         key={2}
+         key={1}
       >
         <MenuItem
           onClick={() => {

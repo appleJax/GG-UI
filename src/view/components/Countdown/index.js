@@ -2,14 +2,10 @@ import React, { Component } from 'react'
 import { connect }          from 'react-redux'
 import { withStyles }       from 'UI/styles'
 import asyncActions         from 'Actions/async'
-import syncActions          from 'Actions/sync'
 import Countdown            from './component'
 import { TWEET_INTERVAL }   from 'Utils'
 
-const [
-  { fetchLiveQuestions, fetchRecentAnswers },
-  { decrementCountdown, resetCountdown }
-] = [ asyncActions, syncActions ]
+const { fetchLiveQuestions, fetchRecentAnswers } = asyncActions
 
 const styles = (theme) => ({
   container: {
@@ -36,45 +32,17 @@ const styles = (theme) => ({
 
 class Container extends Component {
 
-  componentWillMount() {
-    this._timer = setInterval(this.update.bind(this), 1000)
-  }
-
-  componentWillUnmount() {
-    clearInterval(this._timer)
-  }
-
   componentWillReceiveProps({
     countdown,
-    fetchLiveQuestions,
-    fetchRecentAnswers,
-    resetCountdown
+    fetchLiveQuestions
   }) {
-
-    if (countdown % 10 === 0) {
-      setTimeout(() => {
-        fetchLiveQuestions()
-        fetchRecentAnswers()
-      }, 4000)
-
-      if (countdown !== 0) resetCountdown()
-    }
-  }
-
-  update() {
-    const {
-      countdown,
-      decrementCountdown,
-      resetCountdown
-    } = this.props
-
-    decrementCountdown()
+    if (countdown % 10 === 0)
+      setTimeout(fetchLiveQuestions, 4000)
   }
 
   render() {
     const {
-      decrementCountdown,
-      resetCountdown,
+      fetchLiveQuestions,
       ...props
     } = this.props
 
@@ -84,10 +52,7 @@ class Container extends Component {
 }
 
 const mapDispatchToProps = {
-  decrementCountdown,
-  resetCountdown,
-  fetchLiveQuestions,
-  fetchRecentAnswers
+  fetchLiveQuestions
 }
 
 export default connect(

@@ -4,7 +4,7 @@ export default ({
 
   fetchStats: (view = 'weeklyStats', page = 1) =>
     (dispatch, getState) => {
-        const { search, users, scoreView: view } = getState()
+        const { search, users } = getState()
         const params = {
           params: { page, search, view }
         }
