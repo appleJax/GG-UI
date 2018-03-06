@@ -23,6 +23,7 @@ import Typography    from 'UI/Typography'
 import Paper         from 'UI/Paper'
 import SearchIcon    from 'Icons/Search'
 import Spinner       from 'Components/Spinner'
+import { formatHMS } from 'Utils'
 
 const {
   LOGGED_IN,
@@ -176,6 +177,12 @@ function Scoreboard({
           </TableCell>
           <TableCell numeric classes={{typeBody: smallNumber}}>
             {user[scoreView].score}
+            <Typography variant='caption'>
+              Avg Answer Time:
+            </Typography>
+            <Typography variant='caption'>
+              { formatHMS(user[scoreView].avgTimeToAnswer) }
+            </Typography>
           </TableCell>
         </TableRow>
       )
