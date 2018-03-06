@@ -1,6 +1,8 @@
-import { ajax }    from 'Utils'
-import syncActions from 'Actions/sync'
+import { ajax }      from 'Utils'
+import syncActions   from 'Actions/sync'
+import payloadStates from 'Constants/PayloadStates'
 
+const { RESOLVED } = payloadStates
 const {
   fetchingEarnedCards,
   setEarnedCards,
@@ -17,8 +19,11 @@ const {
 export default ({
 
   fetchFocusedUser: (handle) =>
-    dispatch => {
-      dispatch(fetchingFocusedUser())
+    (dispatch, getState) => {
+      const { focusedUser } = getState()
+      if (focusedUser.data === RESOLVED && handle !== focusedUser.data.handle)
+        dispatch(fetchingFocusedUser())
+
       const params = {
         params: { handle }
       }

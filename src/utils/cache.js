@@ -40,10 +40,11 @@ export function refreshCache({
     updateUserDetails()
 
   if (focusedUser.state === RESOLVED)
-    fetchFocusedUser()
+    fetchFocusedUser(focusedUser.data.handle)
 
-  if (allTimeStats.state === RESOLVED)
+  if (allTimeStats.state === RESOLVED) {
     fetchStats('allTimeStats')
+  }
 
   if (monthlyStats.state === RESOLVED)
     fetchStats('monthlyStats')

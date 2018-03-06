@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import { connect }    from 'react-redux'
-import { withRouter } from 'react-router-dom'
-import { withStyles } from 'UI/styles'
-import { navHeight }  from 'Styles/common'
-import asyncActions   from 'Actions/async'
-import syncActions    from 'Actions/sync'
-import payloadStates  from 'Constants/PayloadStates'
-import Nav            from './component'
-import styles         from './styles'
+import { connect }          from 'react-redux'
+import { withRouter }       from 'react-router-dom'
+import { withStyles }       from 'UI/styles'
+import { navHeight }        from 'Styles/common'
+import asyncActions         from 'Actions/async'
+import syncActions          from 'Actions/sync'
+import payloadStates        from 'Constants/PayloadStates'
+import Nav                  from './component'
+import styles               from './styles'
 import {
   isCacheInvalid,
   refreshCache

@@ -9,11 +9,8 @@ const {
 
 
 export const getScores = (dispatch, params, view, search, users) => {
-  // cache users
-  if (users[view].search === search)
-    return
-
-  dispatch(fetchingStats(view, search))
+  if (users[view].search !== search)
+    dispatch(fetchingStats(view, search))
 
   ajax.get('/scores', params)
       .then(users => {
