@@ -44,6 +44,11 @@ export default (theme) => ({
   profileIcon: {
     margin: '0 5px 0 -10px'
   },
+  signInIcon: {
+    height: '25px',
+    margin: '0 5px 0 -8px',
+    width: '25px'
+  },
   userHandle: {
     color: 'rgba(0,0,0,0.5)',
     marginTop: '5px',

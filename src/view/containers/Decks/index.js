@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { connect }          from 'react-redux'
 import asyncActions         from 'Actions/async'
+import payloadStates        from 'Constants/PayloadStates'
 import Deck                 from 'Components/Deck'
 import GameTitles           from 'Components/GameTitles'
 
+const { RESOLVED } = payloadStates
 const { fetchDeck, fetchGameTitles } = asyncActions
 
 const mapStateToProps = ({ auth, gameTitles, decks }) => ({
@@ -49,7 +51,10 @@ class Container extends Component {
     } = this.props
 
     if (game) {
-      const titleScreen = gameTitles.data.find(title => title.slug === game)
+      let titleScreen = null
+      if (gameTitles.state === RESOLVED)
+        titleScreen = gameTitles.data.find(title => title.slug === game)
+
       return <Deck deck={decks[game]} game={titleScreen} {...props} />
     }
 

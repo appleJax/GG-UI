@@ -139,6 +139,7 @@ export const tweetLink = (cardId) =>
 export const userHasAnswered = ({ userId }) => (liveQuestion) =>
   liveQuestion.alreadyAnswered.find(id => id === userId)
 
+
 // private functions
 
 function getTimeUntil(hour) {

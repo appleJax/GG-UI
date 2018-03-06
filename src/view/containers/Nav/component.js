@@ -28,6 +28,7 @@ function Nav(props) {
       link,
       navContainer,
       profileIcon,
+      signInIcon,
       userHandle
     },
     auth,
@@ -124,7 +125,8 @@ function Nav(props) {
             authTransition()
           }}
         >
-            Sign In
+          <img className={signInIcon} src={'/images/twitter/Twitter_Logo_Blue.svg'} />
+          Sign In
         </MenuItem>
       </a>
       )
