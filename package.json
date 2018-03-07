@@ -9,9 +9,10 @@
     "deploy": "webpack --config webpack.prod.js && webpack --config webpack.server.js",
     "build-server": "webpack --config webpack.server.js",
     "start": "node ./dist/server.js",
-    "dev-start": "webpack-dev-server --config webpack.dev.js --hot",
-    "heroku-start": "npm run build && node server.js",
-    "test": "jest"
+    "devStart": "webpack-dev-server --config webpack.dev.js --hot",
+    "herokuStart": "npm run build && node server.js",
+    "test": "jest --watch",
+    "testOnce": "jest"
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0-beta.40",

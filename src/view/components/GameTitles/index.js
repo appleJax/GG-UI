@@ -4,7 +4,7 @@ import payloadStates  from 'Constants/PayloadStates'
 import Typography     from 'UI/Typography'
 import TitleCard      from 'Components/TitleCard'
 import Spinner        from 'Components/Spinner'
-import { classes }    from 'Styles/common'
+import { classes, navHeight }    from 'Styles/common'
 
 const { cardList } = classes
 const {
@@ -14,7 +14,23 @@ const {
 } = payloadStates
 
 const styles = (theme) => ({
+  anki: {
+    alignItems: 'flex-end',
+    background: '#ddd',
+    display: 'flex',
+    flexShrink: '0',
+    padding: '10px'
+  },
+  ankiImg: {
+    marginBottom: '-5px'
+  },
   cardList,
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    flex: 1,
+    minHeight: `calc(100vh - ${navHeight})`
+  },
   header: {
     alignItems: 'center',
     background: 'rgba(63,81,181,0.1)',
@@ -26,14 +42,21 @@ const styles = (theme) => ({
   pageTitle: {
     color: '#3F51B5',
     textShadow: '1px 1px white'
+  },
+  spacer: {
+    flexGrow: 1000
   }
 })
 
 function GameTitles({
   classes: {
+    anki,
+    ankiImg,
     cardList,
+    container,
     header,
-    pageTitle
+    pageTitle,
+    spacer
   },
   gameTitles
 }) {
@@ -50,14 +73,34 @@ function GameTitles({
 
   return (
     <>
+    <div className={container}>
       <div className={header}>
         <Typography className={pageTitle} variant='display1'>
-          Game Decks
+          Flashcard Decks
         </Typography>
       </div>
       <div className={cardList}>
         { titleDisplay }
       </div>
+      <div className={spacer} />
+      <footer className={anki}>
+        <a href='https://apps.ankiweb.net'
+           target='_blank'
+        >
+          <img
+            className={ankiImg}
+            src={'/images/anki-icon.svg'}
+            alt='anki icon'
+          />
+        </a>
+        <Typography variant='caption'>
+          Flashcard decks require Anki (
+          <a href='https://apps.ankiweb.net/docs/beta.html'
+             target='_blank'
+          >2.1 recommended</a>)
+        </Typography>
+      </footer>
+    </div>
     </>
   )
 }

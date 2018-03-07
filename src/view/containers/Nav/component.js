@@ -77,7 +77,7 @@ function Nav(props) {
         key={4}
         onClick={() => go('/decks')}
       >
-        All Decks
+        Flashcard Decks
       </MenuItem>
     )
 
