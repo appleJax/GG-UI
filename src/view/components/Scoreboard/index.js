@@ -105,6 +105,12 @@ function Scoreboard({
         </TableCell>
         <TableCell numeric classes={{typeBody: smallNumber}}>
           {user[scoreView].score}
+          <Typography variant='caption'>
+            Average Time:
+          </Typography>
+          <Typography variant='caption'>
+            { formatHMS(user[scoreView].avgTimeToAnswer) }
+          </Typography>
         </TableCell>
       </TableRow>
     )
@@ -178,7 +184,7 @@ function Scoreboard({
           <TableCell numeric classes={{typeBody: smallNumber}}>
             {user[scoreView].score}
             <Typography variant='caption'>
-              Avg Answer Time:
+              Average Time:
             </Typography>
             <Typography variant='caption'>
               { formatHMS(user[scoreView].avgTimeToAnswer) }
