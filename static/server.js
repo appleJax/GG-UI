@@ -1,5 +1,5 @@
-import express  from 'express'
-import path     from 'path'
+const express = require('express')
+const path = require('path')
 
 const app = express()
 
@@ -14,4 +14,4 @@ app.listen(app.get('port'), () =>
   console.log('Listening on port', app.get('port'))
 )
 
-export default app
+exports = module.exports = app

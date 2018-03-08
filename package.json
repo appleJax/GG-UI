@@ -5,12 +5,10 @@
   "author": "appleJax <appleJax@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "build": "webpack --config webpack.dev.js && webpack --config webpack.server.js && npm start",
-    "deploy": "webpack --config webpack.prod.js && webpack --config webpack.server.js",
-    "build-server": "webpack --config webpack.server.js",
+    "build": "webpack --config webpack.dev.js && npm start",
+    "deploy": "webpack --config webpack.prod.js",
     "start": "node ./dist/server.js",
     "devStart": "webpack-dev-server --config webpack.dev.js --hot",
-    "herokuStart": "npm run build && node server.js",
     "test": "jest --watch",
     "testOnce": "jest"
   },
