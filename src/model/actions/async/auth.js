@@ -22,7 +22,7 @@ export default ({
         dispatch(authTransition())
       }
 
-      ajax.get('/user', { withCredentials: true })
+      ajax.get('/session/user', { withCredentials: true })
           .then(user => {
             if (user) {
               dispatch(loginSuccess(user))
