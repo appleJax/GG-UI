@@ -14,6 +14,8 @@ import Menu, { MenuItem } from 'UI/Menu'
 import Toolbar            from 'UI/Toolbar'
 import Typography         from 'UI/Typography'
 
+const { API_URL } = process.env
+
 const { FETCHING, LOGGED_IN } = payloadStates
 
 function Nav(props) {
@@ -120,7 +122,7 @@ function Nav(props) {
     options.unshift(
       <a
         key={7}
-        href='/login'
+        href={`${API_URL}/login`}
         className={link}
       >
         <MenuItem

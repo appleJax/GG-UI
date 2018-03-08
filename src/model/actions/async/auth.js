@@ -22,20 +22,19 @@ export default ({
         dispatch(authTransition())
       }
 
-      fetch('/user', { credentials: 'include' })
-        .then(res => res.json())
-        .then(user => {
-          if (user) {
-            dispatch(loginSuccess(user))
-            localStorage.setItem('gg-user', JSON.stringify(user))
-          } else {
-            dispatch(logout())
-          }
-        })
-        .catch(error =>
-          dispatch(loginError(error))
-        )
-    },
+      ajax.get('/user', { withCredentials: true })
+          .then(user => {
+            if (user) {
+              dispatch(loginSuccess(user))
+              localStorage.setItem('gg-user', JSON.stringify(user))
+            } else {
+              dispatch(logout())
+            }
+          })
+          .catch(error =>
+            dispatch(loginError(error))
+          )
+      },
 
   updateUserDetails: () =>
     (dispatch, getState) => {
@@ -56,12 +55,8 @@ export default ({
       dispatch(closeNavOptions())
       dispatch(authTransition())
       localStorage.removeItem('gg-user')
-      fetch('/logout', { credentials: 'include' })
-        .then(() => {
-          dispatch(logout())
-          history.push('/')
-        })
-        .catch(console.error)
+      dispatch(logout())
+      history.push('/')
     }
 
 })
