@@ -54,7 +54,7 @@ const Deck = ({
         <img
           className={titleScreen}
           height='160'
-          src={`/images/gameTitles/${game.slug}.png`}
+          src={`/images/deckTitles/${game.slug}.png`}
           alt={`${game.fullTitle} Title Screen`}
         />
       }

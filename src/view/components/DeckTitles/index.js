@@ -19,6 +19,7 @@ const styles = (theme) => ({
     background: '#ddd',
     display: 'flex',
     flexShrink: '0',
+    marginTop: '15px',
     padding: '10px'
   },
   ankiImg: {
@@ -48,7 +49,7 @@ const styles = (theme) => ({
   }
 })
 
-function GameTitles({
+function DeckTitles({
   classes: {
     anki,
     ankiImg,
@@ -58,16 +59,16 @@ function GameTitles({
     pageTitle,
     spacer
   },
-  gameTitles
+  deckTitles
 }) {
 
   let titleDisplay
-  if (gameTitles.state === ERROR_FETCHING)
+  if (deckTitles.state === ERROR_FETCHING)
     titleDisplay = <h2>Error Loading...</h2>
-  else if (gameTitles.state !== RESOLVED)
+  else if (deckTitles.state !== RESOLVED)
     titleDisplay = <Spinner color='deck' />
   else
-    titleDisplay = gameTitles.data.map((title, i) =>
+    titleDisplay = deckTitles.data.map((title, i) =>
       <TitleCard key={i} game={title} />
     )
 
@@ -105,4 +106,4 @@ function GameTitles({
   )
 }
 
-export default withStyles(styles)(GameTitles)
+export default withStyles(styles)(DeckTitles)

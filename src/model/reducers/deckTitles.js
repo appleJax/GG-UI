@@ -7,9 +7,9 @@ const [{
   RESOLVED,
   ERROR_FETCHING
 }, {
-  FETCHING_GAME_TITLES,
-  SET_GAME_TITLES,
-  ERROR_FETCHING_GAME_TITLES
+  FETCHING_DECK_TITLES,
+  SET_DECK_TITLES,
+  ERROR_FETCHING_DECK_TITLES
 }] = [ payloadStates, actionTypes ]
 
 const init = {
@@ -20,21 +20,21 @@ const init = {
 
 export default (state = init, action) => {
     switch (action.type) {
-      case FETCHING_GAME_TITLES:
+      case FETCHING_DECK_TITLES:
         return {
           state: FETCHING,
           data: [],
           error: null
         }
 
-      case SET_GAME_TITLES:
+      case SET_DECK_TITLES:
         return {
           state: RESOLVED,
           data: action.titles,
           error: null
         }
 
-      case ERROR_FETCHING_GAME_TITLES:
+      case ERROR_FETCHING_DECK_TITLES:
         return {
           state: ERROR_FETCHING,
           data: [],

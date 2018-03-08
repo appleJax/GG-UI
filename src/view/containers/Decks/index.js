@@ -3,31 +3,31 @@ import { connect }          from 'react-redux'
 import asyncActions         from 'Actions/async'
 import payloadStates        from 'Constants/PayloadStates'
 import Deck                 from 'Components/Deck'
-import GameTitles           from 'Components/GameTitles'
+import DeckTitles           from 'Components/DeckTitles'
 
 const { RESOLVED } = payloadStates
-const { fetchDeck, fetchGameTitles } = asyncActions
+const { fetchDeck, fetchDeckTitles } = asyncActions
 
-const mapStateToProps = ({ auth, gameTitles, decks }) => ({
+const mapStateToProps = ({ auth, deckTitles, decks }) => ({
   auth,
-  gameTitles,
+  deckTitles,
   decks
 })
 
 const mapDispatchToProps = {
   fetchDeck,
-  fetchGameTitles
+  fetchDeckTitles
 }
 
 class Container extends Component {
   componentWillMount() {
     const {
       fetchDeck,
-      fetchGameTitles,
+      fetchDeckTitles,
       match: { params: { game } }
     } = this.props
 
-    fetchGameTitles()
+    fetchDeckTitles()
     if (game) fetchDeck(game)
   }
 
@@ -45,20 +45,20 @@ class Container extends Component {
     const {
       decks,
       fetchDeck,
-      gameTitles,
+      deckTitles,
       match: { params: { game } },
       ...props
     } = this.props
 
     if (game) {
       let titleScreen = null
-      if (gameTitles.state === RESOLVED)
-        titleScreen = gameTitles.data.find(title => title.slug === game)
+      if (deckTitles.state === RESOLVED)
+        titleScreen = deckTitles.data.find(title => title.slug === game)
 
       return <Deck deck={decks[game]} game={titleScreen} {...props} />
     }
 
-    return <GameTitles gameTitles={gameTitles} {...props} />
+    return <DeckTitles deckTitles={deckTitles} {...props} />
   }
 }
 

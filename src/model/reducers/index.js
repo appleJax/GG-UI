@@ -3,7 +3,7 @@ import auth          from 'Reducers/auth'
 import countdown     from 'Reducers/countdown'
 import decks         from 'Reducers/decks'
 import focusedUser   from 'Reducers/focusedUser'
-import gameTitles    from 'Reducers/gameTitles'
+import deckTitles    from 'Reducers/deckTitles'
 import liveQuestions from 'Reducers/liveQuestions'
 import navOptions    from 'Reducers/navOptions'
 import recentAnswers from 'Reducers/recentAnswers'
@@ -16,7 +16,7 @@ export default combineReducers({
   countdown,
   decks,
   focusedUser,
-  gameTitles,
+  deckTitles,
   liveQuestions,
   navOptions,
   recentAnswers,

@@ -2,7 +2,7 @@ import auth          from './auth'
 import countdown     from './countdown'
 import decks         from './decks'
 import focusedUser   from './focusedUser'
-import gameTitles    from './gameTitles'
+import deckTitles    from './deckTitles'
 import liveQuestions from './liveQuestions'
 import recentAnswers from './recentAnswers'
 import scoreView     from './scoreView'
@@ -14,7 +14,7 @@ export default ({
   ...countdown,
   ...decks,
   ...focusedUser,
-  ...gameTitles,
+  ...deckTitles,
   ...liveQuestions,
   ...recentAnswers,
   ...scoreView,

@@ -37,7 +37,7 @@ const TitleCard = ({
     </Typography>
     <img
       height='160'
-      src={`/images/gameTitles/${game.slug}.png`}
+      src={`/images/deckTitles/${game.slug}.png`}
       alt={`${game.fullTitle} Title Screen`}
     />
   </Paper>

@@ -137,7 +137,9 @@ export const tweetLink = (cardId) =>
   '&ref_src=twcamp%5Eshare%7Ctwsrc%5Em5%7Ctwgr%5Eemail%7Ctwcon%5E7046%7Ctwterm%5E1'
 
 export const userHasAnswered = ({ userId }) => (liveQuestion) =>
-  liveQuestion.alreadyAnswered.find(id => id === userId)
+  liveQuestion.alreadyAnswered
+    ? liveQuestion.alreadyAnswered.find(id => id === userId)
+    : false
 
 
 // private functions
