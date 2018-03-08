@@ -1,7 +1,6 @@
 import passport           from 'passport'
 import { Strategy }       from 'passport-twitter'
 import { ajax, tryCatch } from 'Utils'
-import formatUser         from './formatUser'
 const {
     TWITTER_KEY,
     TWITTER_SECRET,
@@ -15,14 +14,12 @@ passport.use(
     callbackURL: `${APP_URL}/oauth_callback`
   },
   async (token, tokenSecret, profile, done) => {
-    let user = await tryCatch(
-      ajax.get(`/user/${profile.id}`)
-    )
-
-    if (!user) {
-      user = formatUser(profile)
-      ajax.post('/users/new', user)
+    const params = {
+      params: { twitterUser: profile._json }
     }
+    let user = await tryCatch(
+      ajax.get(`/signin/${profile.id}`, params)
+    )
 
     return done(null, user);
   })

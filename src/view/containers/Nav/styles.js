@@ -5,7 +5,7 @@ export default (theme) => ({
     width: '100%'
   },
   avatarRoot: {
-    boxShadow: '1px 1px 2px rgba(255,255,255,0.5)',
+    boxShadow: '1px 1px 2px rgba(0,0,0,0.5)',
     height: '44px',
     width: '44px'
   },

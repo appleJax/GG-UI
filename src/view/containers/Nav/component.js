@@ -54,7 +54,7 @@ function Nav(props) {
   if (location.pathname !== '/')
     options.push(
       <MenuItem
-        key={2}
+        key={1}
         onClick={() => go('/')}
       >
         Live Questions
@@ -64,7 +64,7 @@ function Nav(props) {
   if (location.pathname !== '/stats')
     options.push(
       <MenuItem
-        key={3}
+        key={2}
         onClick={() => go('/stats')}
       >
         Leaderboard
@@ -74,7 +74,7 @@ function Nav(props) {
   if (location.pathname !== '/decks')
     options.push(
       <MenuItem
-        key={4}
+        key={3}
         onClick={() => go('/decks')}
       >
         Flashcard Decks
@@ -91,33 +91,37 @@ function Nav(props) {
           classes={{root: avatarRoot}}
           src={user.avatar}
         />
-        <Typography className={userHandle} variant='caption'>
+        <Typography
+        className={userHandle} variant='caption'>
           {`@${user.handle}`}
         </Typography>
       </div>
     )
 
     options.unshift(
-      <MenuItem key={0} onClick={() => go(`/stats/${user.handle}`)}>
+      <MenuItem key={4} onClick={() => go(`/stats/${user.handle}`)}>
         <AccountCircle className={profileIcon} /> My Profile
       </MenuItem>
     )
 
     options.push(
-      <>
-        <Divider  key={5} className={divider} />
-        <MenuItem key={6} onClick={() => requestLogout(history)}>
-          Sign Out
-        </MenuItem>
-      </>
-      )
+      <Divider key={5} className={divider} />
+    )
+
+    options.push(
+      <MenuItem key={6} onClick={() => requestLogout(history)}>
+        Sign Out
+      </MenuItem>
+    )
+
   } else {
     menuIcon = <MenuIcon />
 
     options.unshift(
-      <a href='/login'
-         className={link}
-         key={1}
+      <a
+        key={7}
+        href='/login'
+        className={link}
       >
         <MenuItem
           onClick={() => {
