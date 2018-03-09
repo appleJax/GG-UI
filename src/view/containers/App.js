@@ -1,4 +1,3 @@
-import 'Root/static/index.css'
 import React                   from 'react'
 import { Route, Link, Switch } from 'react-router-dom'
 import { withStyles }          from 'UI/styles'

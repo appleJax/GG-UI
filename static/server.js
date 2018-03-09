@@ -1,7 +1,9 @@
-const express = require('express')
-const path = require('path')
+const express     = require('express')
+const compression = require('compression')
+const path        = require('path')
 
 const app = express()
+app.use(compression({ level: 4 }))
 
 app.set('port', (process.env.PORT || 8080))
 app.use(express.static(path.resolve(__dirname)))

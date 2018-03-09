@@ -1,6 +1,5 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin  = require('copy-webpack-plugin');
-const ExtractTextPlugin  = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin  = require('html-webpack-plugin');
 const path = require('path');
 
@@ -36,14 +35,6 @@ module.exports = {
           }
         }
       },
-      { test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            { loader: 'css-loader' }
-          ]
-        }),
-      },
       { test: /\.(png|jpg|jpeg)$/,
         use: 'file-loader'
       }
@@ -52,7 +43,6 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin([ { from: 'static' } ]),
     new CleanWebpackPlugin(__dirname + '/dist'),
-    new ExtractTextPlugin('bundle.css'),
     new HtmlWebpackPlugin({
       template: __dirname + '/static/index.html',
       inject: 'body'

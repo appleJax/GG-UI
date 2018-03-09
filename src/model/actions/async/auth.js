@@ -55,7 +55,7 @@ export default ({
       dispatch(closeNavOptions())
       dispatch(authTransition())
       localStorage.removeItem('gg-user')
-      dispatch(logout())
+      setTimeout(() => dispatch(logout()), 500)
       history.push('/')
     }
 

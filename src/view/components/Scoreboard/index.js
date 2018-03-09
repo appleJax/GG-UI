@@ -1,5 +1,6 @@
 import React        from 'react'
 import { Redirect } from 'react-router-dom'
+import classNames   from 'classnames'
 import {
   array,
   func,
@@ -67,55 +68,6 @@ function Scoreboard({
     : (scoreView === 'monthlyStats') ? 1
     :                                  2
 
-  let loggedInUser
-
-  if (auth.state === LOGGED_IN) {
-    const user = auth.data
-    const {
-      avatar,
-      handle,
-      userId
-    } = user
-
-    loggedInUser =
-    (<TableRow
-        className={loggedInRow}
-        key={userId}
-        classes={{hover}}
-        hover={true}
-        onClick={() => {
-          setFocusedUser(user)
-          history.push(`/stats/${handle}`)
-        }}
-      >
-        <TableCell classes={{typeBody: rankNumber}}>
-          {user[scoreView].rank}
-        </TableCell>
-        <TableCell classes={{root: nameCell}}>
-          <div>
-            <Avatar
-              alt={name}
-              classes={{root: avatarRoot}}
-              src={avatar}
-            />
-            <Typography variant='subheading'>
-              @{handle}
-            </Typography>
-          </div>
-        </TableCell>
-        <TableCell numeric classes={{typeBody: smallNumber}}>
-          {user[scoreView].score}
-          <Typography variant='caption'>
-            Average Time:
-          </Typography>
-          <Typography variant='caption'>
-            { formatHMS(user[scoreView].avgTimeToAnswer) }
-          </Typography>
-        </TableCell>
-      </TableRow>
-    )
-  }
-
   const usersState = users.state
   let userScores
   if (usersState === NOT_FOUND && search.length > 0)
@@ -153,12 +105,12 @@ function Scoreboard({
         userId
       } = user
 
-      if (auth.state === LOGGED_IN && userId === auth.data.userId)
-        return
-
       return (
         <TableRow
           key={userId}
+          className={classNames({
+            [loggedInRow]: auth.state === LOGGED_IN && userId === auth.data.userId
+          })}
           classes={{hover}}
           hover={true}
           onClick={() => {
@@ -236,7 +188,6 @@ function Scoreboard({
             </TableRow>
           </TableHead>
           <TableBody>
-            { loggedInUser }
             { userScores }
           </TableBody>
         </Table>
