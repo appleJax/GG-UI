@@ -1,6 +1,5 @@
 import React          from 'react'
 import classNames     from 'classnames'
-import { object }     from 'prop-types'
 import payloadStates  from 'Constants/PayloadStates'
 import { withStyles } from 'UI/styles'
 import Avatar         from 'UI/Avatar'
@@ -10,6 +9,7 @@ import CardReviewer   from 'Components/CardReviewer'
 import EmptyMessage   from 'Components/EmptyMessage'
 import Spinner        from 'Components/Spinner'
 import styles         from './styles'
+import { object, string } from 'prop-types'
 import {
   formatHMS,
   formatRatio
@@ -92,7 +92,6 @@ function User({
     allTimeStats,
     avatar,
     dailyStats,
-    earnedCards,
     handle,
     monthlyStats,
     name,
@@ -155,17 +154,16 @@ function User({
         }
         </div>
       </div>
-      <CardReviewer
-        cards={earnedCards}
-        cardsState={user.earnedCardsState}
-      />
+      <CardReviewer />
     </div>
   )
 }
 
 User.propTypes = {
-  classes: object.isRequired,
-  user:    object
+  classes:     object.isRequired,
+  auth:        object.isRequired,
+  handleParam: string.isRequired,
+  user:        object
 }
 
 export default withStyles(styles)(User)

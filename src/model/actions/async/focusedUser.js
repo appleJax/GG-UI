@@ -4,10 +4,10 @@ import payloadStates from 'Constants/PayloadStates'
 
 const { RESOLVED } = payloadStates
 const {
-  fetchingEarnedCards,
-  setEarnedCards,
-  notFoundEarnedCards,
-  errorFetchingEarnedCards,
+  fetchingCorrectCards,
+  setCorrectCards,
+  notFoundCorrectCards,
+  errorFetchingCorrectCards,
 
   fetchingFocusedUser,
   setFocusedUser,
@@ -38,18 +38,18 @@ export default ({
     },
 
 
-  fetchEarnedCards: (ids) =>
+  fetchCorrectCards: (ids) =>
     dispatch => {
-      dispatch(fetchingEarnedCards())
+      dispatch(fetchingCorrectCards())
       const params = {
         params: { ids }
       }
       ajax.get('/cards/earned', params)
           .then(cards => cards
-            ? dispatch(setEarnedCards(cards))
-            : dispatch(notFoundEarnedCards())
+            ? dispatch(setCorrectCards(cards))
+            : dispatch(notFoundCorrectCards())
           ).catch(error =>
-            dispatch(errorFetchingEarnedCards(error))
+            dispatch(errorFetchingCorrectCards(error))
           )
     }
 

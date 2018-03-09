@@ -1,16 +1,13 @@
 import React, { Component } from 'react'
 import { connect }          from 'react-redux'
-import payloadStates        from 'Constants/PayloadStates'
 import asyncActions         from 'Actions/async'
 import syncActions          from 'Actions/sync'
 import Scoreboard           from 'Components/Scoreboard'
 import User                 from 'Components/User'
 
-const { LOGGED_IN, INITIAL_STATE, RESOLVED } = payloadStates
 const { setFocusedUser } = syncActions
 const {
   changeScoreView,
-  fetchEarnedCards,
   fetchFocusedUser,
   fetchQuery,
   fetchStats
@@ -19,13 +16,13 @@ const {
 
 const mapStateToProps = ({
   auth,
-  focusedUser,
+  focusedUser: { stats },
   scoreView,
   search,
   users
 }) => ({
   auth,
-  focusedUser,
+  userStats: stats,
   scoreView,
   search,
   users
@@ -33,7 +30,6 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = {
   changeScoreView,
-  fetchEarnedCards,
   fetchFocusedUser,
   fetchStats,
   fetchQuery,
@@ -43,7 +39,6 @@ const mapDispatchToProps = {
 class Container extends Component {
   componentWillMount() {
     const {
-      auth,
       fetchFocusedUser,
       fetchStats,
       match: { params: { handle } },
@@ -54,26 +49,10 @@ class Container extends Component {
     if (handle) fetchFocusedUser(handle)
   }
 
-  componentWillReceiveProps({
-    match: { params: { handle } },
-    fetchEarnedCards,
-    focusedUser,
-    focusedUser: { earnedCardsState, state: userState }
-  }) {
-    if (
-      handle &&
-      focusedUser.state === RESOLVED &&
-      earnedCardsState === INITIAL_STATE
-    ) {
-      const ids = focusedUser.data.allTimeStats.correct.map(card => card.cardId)
-      fetchEarnedCards(ids)
-    }
-  }
-
   render() {
     const {
       fetchFocusedUser,
-      focusedUser,
+      userStats,
       match: { params: { handle } },
       users,
       ...props
@@ -82,7 +61,7 @@ class Container extends Component {
     if (!handle)
       return <Scoreboard users={users[this.props.scoreView]} {...props} />
 
-    return <User user={focusedUser} handleParam={handle} {...props} />
+    return <User user={userStats} handleParam={handle} {...props} />
   }
 
 }
