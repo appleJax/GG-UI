@@ -32,6 +32,7 @@ export function refreshCache({
     weeklyStats
   },
   fetchFocusedUser,
+  fetchLiveQuestions,
   fetchStats,
   updateUserDetails
 }) {
@@ -51,6 +52,8 @@ export function refreshCache({
 
   if (weeklyStats.state === RESOLVED)
     fetchStats('weeklyStats')
+
+  fetchLiveQuestions()
 
 }
 

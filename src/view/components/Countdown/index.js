@@ -36,7 +36,7 @@ class Container extends Component {
     countdown,
     fetchLiveQuestions
   }) {
-    if (countdown % 10 === 0)
+    if (countdown === 0)
       setTimeout(fetchLiveQuestions, 4000)
   }
 
