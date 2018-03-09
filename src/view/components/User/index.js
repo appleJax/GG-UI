@@ -1,13 +1,15 @@
-import React              from 'react'
-import classNames         from 'classnames'
-import { object }         from 'prop-types'
-import payloadStates      from 'Constants/PayloadStates'
-import { withStyles }     from 'UI/styles'
-import Avatar             from 'UI/Avatar'
-import Button             from 'UI/Button'
-import Typography         from 'UI/Typography'
-import CardReviewer       from 'Components/CardReviewer'
-import styles             from './styles'
+import React          from 'react'
+import classNames     from 'classnames'
+import { object }     from 'prop-types'
+import payloadStates  from 'Constants/PayloadStates'
+import { withStyles } from 'UI/styles'
+import Avatar         from 'UI/Avatar'
+import Button         from 'UI/Button'
+import Typography     from 'UI/Typography'
+import CardReviewer   from 'Components/CardReviewer'
+import EmptyMessage   from 'Components/EmptyMessage'
+import Spinner        from 'Components/Spinner'
+import styles         from './styles'
 import {
   formatHMS,
   formatRatio
@@ -47,13 +49,16 @@ function User({
 }) {
 
   if (user.state === NOT_FOUND)
-    return <h2>User @{handleParam} not found...</h2>
-
-  if (user.data.handle !== handleParam || user.state === FETCHING)
-    return <h2>Loading...</h2>
+    return <EmptyMessage message={`User @${handleParam} not found...`} />
 
   if (user.state === ERROR_FETCHING)
-    return <h2>Error loading...</h2>
+    return <EmptyMessage error={true} />
+
+  if (
+    user.state === INITIAL_STATE ||
+    user.state === FETCHING ||
+    user.data.handle !== handleParam
+  ) return <Spinner />
 
   let followButton
 

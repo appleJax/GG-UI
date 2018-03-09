@@ -28,7 +28,7 @@ function RecentAnswers({
 }) {
   let cardDisplay
   if (recentAnswers.state === ERROR_FETCHING)
-    cardDisplay = <h1>Error loading...</h1>
+    cardDisplay = <EmptyMessage error={true} />
 
   if (recentAnswers.state === NOT_FOUND)
     cardDisplay = <EmptyMessage message='No recent answers. Check back soon!' />

@@ -1,6 +1,7 @@
 import React          from 'react'
 import { withStyles } from 'UI/styles'
 import payloadStates  from 'Constants/PayloadStates'
+import EmptyMessage   from 'Components/EmptyMessage'
 import Typography     from 'UI/Typography'
 import TitleCard      from 'Components/TitleCard'
 import Spinner        from 'Components/Spinner'
@@ -38,7 +39,8 @@ const styles = (theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    padding: '20px 0 10px',
+    marginBottom: '15px',
+    padding: '20px 0 10px'
   },
   pageTitle: {
     color: '#3F51B5',
@@ -64,7 +66,7 @@ function DeckTitles({
 
   let titleDisplay
   if (deckTitles.state === ERROR_FETCHING)
-    titleDisplay = <h2>Error Loading...</h2>
+    titleDisplay = <EmptyMessage error={true} />
   else if (deckTitles.state !== RESOLVED)
     titleDisplay = <Spinner color='deck' />
   else

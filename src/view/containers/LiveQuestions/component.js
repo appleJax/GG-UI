@@ -46,7 +46,7 @@ function LiveQuestions({
   if (liveQuestions.state === FETCHING)
     cardDisplay = <Spinner color='live' />
   else if (liveQuestions.state === ERROR_FETCHING)
-    cardDisplay = <h1>Error loading...</h1>
+    cardDisplay = <EmptyMessage error={true} />
   else if (liveQuestions.state === NOT_FOUND)
     cardDisplay = <EmptyMessage message='No live questions. Check back soon!' />
   else

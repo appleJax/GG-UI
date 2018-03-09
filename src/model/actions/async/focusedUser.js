@@ -29,7 +29,9 @@ export default ({
       }
       ajax.get('/userStats', params)
           .then(user =>
-            dispatch(setFocusedUser(user))
+            user
+            ? dispatch(setFocusedUser(user))
+            : dispatch(notFoundFocusedUser())
           ).catch(error =>
             dispatch(errorFetchingFocusedUser())
           )

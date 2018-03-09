@@ -9,6 +9,7 @@ export default (theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    marginBottom: '15px',
     padding: '25px 0 10px',
   },
   titleScreen: {

@@ -1,6 +1,24 @@
-import React        from 'react'
-import { Redirect } from 'react-router-dom'
-import classNames   from 'classnames'
+import React                     from 'react'
+import { Redirect }              from 'react-router-dom'
+import classNames                from 'classnames'
+import payloadStates             from 'Constants/PayloadStates'
+import { withStyles }            from 'UI/styles'
+import styles                    from './styles'
+import EmptyMessage              from 'Components/EmptyMessage'
+import Avatar                    from 'UI/Avatar'
+import Input, { InputAdornment } from 'UI/Input';
+import Tabs, { Tab }             from 'UI/Tabs'
+import Typography                from 'UI/Typography'
+import Paper                     from 'UI/Paper'
+import SearchIcon                from 'Icons/Search'
+import Spinner                   from 'Components/Spinner'
+import { formatHMS }             from 'Utils'
+import Table, {
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow
+} from 'UI/Table'
 import {
   array,
   func,
@@ -8,23 +26,6 @@ import {
   object,
   string
 } from 'prop-types'
-import payloadStates             from 'Constants/PayloadStates'
-import { withStyles }            from 'UI/styles'
-import styles                    from './styles'
-import Avatar                    from 'UI/Avatar'
-import Input, { InputAdornment } from 'UI/Input';
-import Table, {
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow
-} from 'UI/Table'
-import Tabs, { Tab } from 'UI/Tabs'
-import Typography    from 'UI/Typography'
-import Paper         from 'UI/Paper'
-import SearchIcon    from 'Icons/Search'
-import Spinner       from 'Components/Spinner'
-import { formatHMS } from 'Utils'
 
 const {
   LOGGED_IN,
@@ -95,7 +96,14 @@ function Scoreboard({
       </TableRow>
     )
   else if (usersState === ERROR_FETCHING)
-    userScores = <TableRow><TableCell>Error loading...</TableCell></TableRow>
+    userScores = (
+      <TableRow>
+        <TableCell colSpan='3' padding='none'>
+          <EmptyMessage error={true} />
+        </TableCell>
+      </TableRow>
+    )
+
   else if (usersState === RESOLVED)
     userScores =  users.data.map(user => {
       const {

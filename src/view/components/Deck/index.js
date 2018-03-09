@@ -28,7 +28,7 @@ const Deck = ({
   if (!deck || deck.state === FETCHING)
     cardDisplay = <Spinner />
   else if (deck.state === ERROR_FETCHING)
-    cardDisplay = <h2>Error Loading...</h2>
+    cardDisplay = <EmptyMessage error={true} />
   else if (!deck.data || deck.data.length === 0)
     cardDisplay = <EmptyMessage message='No answers tweeted yet' />
   else {

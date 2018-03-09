@@ -60,7 +60,11 @@ class Container extends Component {
     focusedUser,
     focusedUser: { earnedCardsState, state: userState }
   }) {
-    if (handle && userState === RESOLVED && earnedCardsState === INITIAL_STATE) {
+    if (
+      handle &&
+      focusedUser.state === RESOLVED &&
+      earnedCardsState === INITIAL_STATE
+    ) {
       const ids = focusedUser.data.allTimeStats.correct.map(card => card.cardId)
       fetchEarnedCards(ids)
     }

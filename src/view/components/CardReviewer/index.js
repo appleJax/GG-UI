@@ -38,7 +38,7 @@ function CardReviewer({
     cardDisplay = <Spinner />
   } else if (cardsState === ERROR_FETCHING) {
     cardCount = 'error...';
-    cardDisplay = <h2>Error loading...</h2>
+    cardDisplay = <EmptyMessage error={true} />
   } else if (cardsState === NOT_FOUND) {
     cardCount = 0
     cardDisplay = <EmptyMessage message='N/A' />
