@@ -5,7 +5,7 @@ const { setScoreView } = syncActions
 
 export default ({
 
-  changeScoreView: (view) => {
+  setScoreView: (view) => {
     if (view === 0) view = 'weeklyStats'
     if (view === 1) view = 'monthlyStats'
     if (view === 2) view = 'allTimeStats'

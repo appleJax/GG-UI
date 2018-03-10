@@ -27,16 +27,24 @@ export default (theme) => ({
     flexWrap: 'wrap'
   },
   subHeader: {
+    backgroundColor: theme.palette.primary,
+    opacity: '1',
     padding: '0',
     width: '100%'
   },
   tabs: {
     background: theme.palette.primary.light,
+    boxShadow: '0 2px 2px rgba(0,0,0,0.3)',
     fontSize: '20px'
   },
+  label: {
+    [theme.breakpoints.down('xs')]: {
+      display: 'none'
+    }
+  },
   title: {
-    background: 'rgba(0, 0, 0, 0.6)',
-    color: '#eee',
+    background: theme.palette.primary.main,
+    color: '#fff',
     padding: '5px',
     paddingLeft: '30px'
   }

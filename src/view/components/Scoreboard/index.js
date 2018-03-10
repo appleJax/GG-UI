@@ -4,13 +4,13 @@ import classNames                from 'classnames'
 import payloadStates             from 'Constants/PayloadStates'
 import { withStyles }            from 'UI/styles'
 import styles                    from './styles'
-import EmptyMessage              from 'Components/EmptyMessage'
 import Avatar                    from 'UI/Avatar'
 import Input, { InputAdornment } from 'UI/Input';
 import Tabs, { Tab }             from 'UI/Tabs'
 import Typography                from 'UI/Typography'
 import Paper                     from 'UI/Paper'
 import SearchIcon                from 'Icons/Search'
+import EmptyMessage              from 'Components/EmptyMessage'
 import Spinner                   from 'Components/Spinner'
 import { formatHMS }             from 'Utils'
 import Table, {
@@ -55,7 +55,7 @@ function Scoreboard({
     tabs
   },
   auth,
-  changeScoreView,
+  setScoreView,
   fetchQuery,
   history,
   scoreView,
@@ -154,6 +154,7 @@ function Scoreboard({
       )
     })
 
+
   return (
     <div className={container}>
       <Input
@@ -171,7 +172,7 @@ function Scoreboard({
         <Tabs
           classes={{root: tabs}}
           value={tabValue}
-          onChange={(e, value) => changeScoreView(value)}
+          onChange={(e, value) => setScoreView(value)}
           indicatorColor='secondary'
           textColor='secondary'
           centered
@@ -208,7 +209,7 @@ Scoreboard.propTypes = {
   classes:         object.isRequired,
   history:         object.isRequired,
   scoreView:       string.isRequired,
-  changeScoreView: func.isRequired,
+  setScoreView: func.isRequired,
   search:          string.isRequired,
   fetchQuery:      func.isRequired,
   users:           object

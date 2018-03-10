@@ -94,6 +94,13 @@ export function formatRatio({ correct, attempts, totalPossible }, total) {
   return `${correct}/${denominator} - ${percent}%`
 }
 
+export function getCardIds(focusedUser, view) {
+  const cards = focusedUser.stats.data.allTimeStats[view] || []
+  return (typeof cards[0] === 'string')
+    ? cards
+    : cards.map(card => card.cardId)
+}
+
 export function getTimeTilNextTweet() {
   const startTimes = [ 2, 8, 14, 20 ].map(getTimeUntil)
   const millisUntilTweet = Math.min(...startTimes)

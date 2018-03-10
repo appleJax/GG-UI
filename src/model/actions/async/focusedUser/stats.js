@@ -4,11 +4,6 @@ import payloadStates from 'Constants/PayloadStates'
 
 const { RESOLVED } = payloadStates
 const {
-  fetchingCorrectCards,
-  setCorrectCards,
-  notFoundCorrectCards,
-  errorFetchingCorrectCards,
-
   fetchingFocusedUser,
   setFocusedUser,
   notFoundFocusedUser,
@@ -21,7 +16,7 @@ export default ({
   fetchFocusedUser: (handle) =>
     (dispatch, getState) => {
       const { focusedUser } = getState()
-      if (focusedUser.data === RESOLVED && handle !== focusedUser.data.handle)
+      if (focusedUser.stats.data === RESOLVED && handle !== focusedUser.stats.data.handle)
         dispatch(fetchingFocusedUser())
 
       const params = {
@@ -34,22 +29,6 @@ export default ({
             : dispatch(notFoundFocusedUser())
           ).catch(error =>
             dispatch(errorFetchingFocusedUser())
-          )
-    },
-
-
-  fetchCorrectCards: (ids) =>
-    dispatch => {
-      dispatch(fetchingCorrectCards())
-      const params = {
-        params: { ids }
-      }
-      ajax.get('/cards/earned', params)
-          .then(cards => cards
-            ? dispatch(setCorrectCards(cards))
-            : dispatch(notFoundCorrectCards())
-          ).catch(error =>
-            dispatch(errorFetchingCorrectCards(error))
           )
     }
 

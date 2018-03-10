@@ -7,7 +7,7 @@ import User                 from 'Components/User'
 
 const { setFocusedUser } = syncActions
 const {
-  changeScoreView,
+  setScoreView,
   fetchFocusedUser,
   fetchQuery,
   fetchStats
@@ -29,7 +29,7 @@ const mapStateToProps = ({
 })
 
 const mapDispatchToProps = {
-  changeScoreView,
+  setScoreView,
   fetchFocusedUser,
   fetchStats,
   fetchQuery,

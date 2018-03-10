@@ -1,87 +1,50 @@
-import React                     from 'react'
-import { array, object, string } from 'prop-types'
-import payloadStates             from 'Constants/PayloadStates'
-import styles                    from './styles'
-import { withStyles }            from 'UI/styles'
-import Paper                     from 'UI/Paper'
-import Subheader                 from 'UI/List/ListSubheader'
-import Tabs, { Tab }             from 'UI/Tabs'
-import Typography                from 'UI/Typography'
-import AnswerCard                from 'Components/AnswerCard'
-import EmptyMessage              from 'Components/EmptyMessage'
-import Spinner                   from 'Components/Spinner'
+import React, { Component } from 'react'
+import { connect }          from 'react-redux'
+import { withStyles }       from 'UI/styles'
+import payloadStates        from 'Constants/PayloadStates'
+import asyncActions         from 'Actions/async'
+import styles               from './styles'
+import CardReviewer         from './component'
 
-const {
-  INITIAL_STATE,
-  FETCHING,
-  NOT_FOUND,
-  RESOLVED,
-  ERROR_FETCHING
-} = payloadStates
+const [
+  { RESOLVED },
+  { fetchCards, setCardView }
+] = [ payloadStates, asyncActions ]
 
-function CardReviewer({
-  cards,
-  cardsState,
-  classes: {
-    cardList,
-    container,
-    row,
-    subHeader,
-    tabs,
-    title
-  }
-}) {
+const mapStateToProps = ({
+  auth,
+  focusedUser
+}) => ({
+  auth,
+  focusedUser
+})
 
-  let cardCount, cardDisplay
-  if (cardsState === FETCHING || cardsState === INITIAL_STATE) {
-    cardCount = '???'
-    cardDisplay = <Spinner />
-  } else if (cardsState === ERROR_FETCHING) {
-    cardCount = 'error...';
-    cardDisplay = <EmptyMessage error={true} />
-  } else if (cardsState === NOT_FOUND) {
-    cardCount = 0
-    cardDisplay = <EmptyMessage message='N/A' />
-  } else {
-    cardCount = cards.length
-    cardDisplay = cards.map((card, i) => <AnswerCard key={i} card={card} />)
-  }
-
-  return (
-    <div className={container}>
-      <Subheader classes={{root: subHeader}} component='div'>
-        <Typography className={title} variant='subheading'>
-          Flashcard Reviewer
-        </Typography>
-      </Subheader>
-      <div className={cardList}>
-        { cardDisplay }
-      </div>
-    </div>
-  )
+const mapDispatchToProps = {
+  fetchCards,
+  setCardView
 }
 
-CardReviewer.propTypes = {
-  cards:      array,
-  cardsState: string.isRequired,
-  classes:    object.isRequired
+class Container extends Component {
+  componentWillMount() {
+    const {
+      fetchCards,
+      focusedUser,
+      focusedUser: {
+        cardView
+      }
+    } = this.props
+
+    if (focusedUser[cardView].state !== RESOLVED)
+      fetchCards(cardView)
+  }
+
+  render() {
+    const { fetchCards, ...props } = this.props
+    return <CardReviewer {...props} />
+  }
 }
 
-export default withStyles(styles)(CardReviewer)
-
-// TODO: add tabs
-/*
-<Tabs
-  classes={{root: tabs}}
-  value={0}
-  onChange={(e, value) => console.log('Implement me!')}
-  indicatorColor='secondary'
-  textColor='secondary'
-  centered
-  fullWidth
->
-  <Tab label='Incorrectly Answered' />
-  <Tab label='Correctly Answered' />
-  <Tab label='Unanswered' />
-</Tabs>
-*/
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyles(styles)(Container))

@@ -6,9 +6,7 @@ import deckTitles    from './deckTitles'
 import liveQuestions from './liveQuestions'
 import navOptions    from './navOptions'
 import recentAnswers from './recentAnswers'
-import scoreView     from './scoreView'
-import searchQuery   from './searchQuery'
-import stats         from './stats'
+import users         from './users'
 
 export default ({
   ...auth,
@@ -19,7 +17,5 @@ export default ({
   ...liveQuestions,
   ...navOptions,
   ...recentAnswers,
-  ...scoreView,
-  ...searchQuery,
-  ...stats
+  ...users
 })
