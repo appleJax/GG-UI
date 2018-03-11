@@ -1,5 +1,6 @@
 import React                    from 'react'
 import { func, object, string } from 'prop-types'
+import classNames               from 'classnames'
 import payloadStates            from 'Constants/PayloadStates'
 import SwipeableViews           from 'react-swipeable-views'
 import Paper                    from 'UI/Paper'
@@ -35,6 +36,7 @@ function CardReviewer({
     cardList,
     container,
     label,
+    reviewer,
     row,
     subHeader,
     tabs,
@@ -62,8 +64,11 @@ function CardReviewer({
       )
   }
   const SwipeableTab = () =>
-    <div className={cardList}>
+    <div className={reviewer}>
+      <div className={cardList}>
       { cardDisplay }
+      </div>
+      <div style={{flexGrow: 1000}} />
     </div>
 
   return (

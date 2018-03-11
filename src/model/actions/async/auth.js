@@ -56,6 +56,7 @@ export default ({
       dispatch(authTransition())
       localStorage.removeItem('gg-user')
       setTimeout(() => dispatch(logout()), 500)
+      ajax.get('/logout', { withCredentials: true })
       history.push('/')
     }
 

@@ -22,6 +22,11 @@ export default (theme) => ({
     marginBottom: '20px',
     width: '240px'
   },
+  reviewer: {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: 'calc(100vh - 106px)',
+  },
   row: {
     display: 'flex',
     flexWrap: 'wrap'
