@@ -19,10 +19,7 @@ export default ({
       if (focusedUser.stats.data === RESOLVED && handle !== focusedUser.stats.data.handle)
         dispatch(fetchingFocusedUser())
 
-      const params = {
-        params: { handle }
-      }
-      ajax.get('/userStats', params)
+      ajax.get(`/userStats/${handle}`)
           .then(user =>
             user
             ? dispatch(setFocusedUser(user))
