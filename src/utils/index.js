@@ -151,22 +151,22 @@ export const userHasAnswered = ({ userId }) => (liveQuestion) =>
 
 // private functions
 
+export function daylightSavings(date) {
+  return date.getTimezoneOffset() < stdTimezoneOffset(date);
+}
+
+function stdTimezoneOffset(date) {
+  const jan = new Date(date.getFullYear(), 0, 1);
+  const jul = new Date(date.getFullYear(), 6, 1);
+  return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
+}
+
 function getTimeUntil(hour) {
   // UTC offset: +6 ... DST +5
 
-  Date.prototype.stdTimezoneOffset = function() {
-    const jan = new Date(this.getFullYear(), 0, 1)
-    const jul = new Date(this.getFullYear(), 6, 1)
-    return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset())
-  }
-
-  Date.prototype.daylightSavings = function () {
-    return this.getTimezoneOffset() < this.stdTimezoneOffset()
-  }
-
   const now = new Date()
   let offset = 6
-  if (now.daylightSavings())
+  if (daylightSavings(now))
     offset--
 
   hour = (hour + offset) % 24
