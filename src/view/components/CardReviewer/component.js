@@ -61,7 +61,7 @@ function CardReviewer({
     cardDisplay = focusedUser[cardView].data.map(
       (card, i) =>
         <AnswerCard key={i} card={card} status={cardView} />
-      )
+    )
   }
   const SwipeableTab = () =>
     <div className={reviewer}>
@@ -86,8 +86,8 @@ function CardReviewer({
         centered
         fullWidth
       >
-        <Tab classes={{label}} label='Correct' icon={<CheckBox />} />
-        <Tab classes={{label}} label='Incorrect' icon={<IndeterminateCheckBox />} />
+        <Tab classes={{label}} label='Correct'    icon={<CheckBox />} />
+        <Tab classes={{label}} label='Incorrect'  icon={<IndeterminateCheckBox />} />
         <Tab classes={{label}} label='Unanswered' icon={<CheckBoxOutlineBlank />} />
       </Tabs>
       </Subheader>
