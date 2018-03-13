@@ -1,6 +1,7 @@
 import React                     from 'react'
 import { Redirect }              from 'react-router-dom'
 import classNames                from 'classnames'
+import SwipeableViews            from 'react-swipeable-views'
 import payloadStates             from 'Constants/PayloadStates'
 import { withStyles }            from 'UI/styles'
 import styles                    from './styles'
@@ -13,12 +14,6 @@ import SearchIcon                from 'Icons/Search'
 import EmptyMessage              from 'Components/EmptyMessage'
 import Spinner                   from 'Components/Spinner'
 import { formatHMS }             from 'Utils'
-import Table, {
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow
-} from 'UI/Table'
 import {
   array,
   func,
@@ -43,15 +38,22 @@ function Scoreboard({
     emptyScores,
     hover,
     headerCell,
+    headerRow,
     loggedInRow,
     nameCell,
     playerColumn,
+    playerHeader,
     rankColumn,
     rankNumber,
     root,
-    scoreColumnn,
+    scoreColumn,
     searchInput,
     smallNumber,
+    stripe,
+    table,
+    tableBody,
+    tableCell,
+    tableRow,
     tabs
   },
   auth,
@@ -73,39 +75,31 @@ function Scoreboard({
   let userScores
   if (usersState === NOT_FOUND && search.length > 0)
     userScores = (
-      <TableRow>
-        <TableCell colSpan='3' className={emptyScores}>
-          Not Found
-        </TableCell>
-      </TableRow>
+      <div className={emptyScores}>
+        Not Found
+      </div>
     )
   else if (usersState === NOT_FOUND)
     userScores = (
-      <TableRow>
-        <TableCell colSpan='3' className={emptyScores}>
-          No Leaders. Be the First!
-        </TableCell>
-      </TableRow>
+      <div className={emptyScores}>
+        No Leaders. Be the First!
+      </div>
     )
   else if (usersState === FETCHING || usersState === INITIAL_STATE)
     userScores = (
-      <TableRow>
-        <TableCell colSpan='3'>
-          <Spinner />
-        </TableCell>
-      </TableRow>
+      <div>
+        <Spinner />
+      </div>
     )
   else if (usersState === ERROR_FETCHING)
     userScores = (
-      <TableRow>
-        <TableCell colSpan='3' padding='none'>
-          <EmptyMessage error={true} />
-        </TableCell>
-      </TableRow>
+      <div style={{padding: 'none'}}>
+        <EmptyMessage error={true} />
+      </div>
     )
 
   else if (usersState === RESOLVED)
-    userScores =  users.data.map(user => {
+    userScores =  users.data.map((user, i) => {
       const {
         avatar,
         handle,
@@ -114,22 +108,25 @@ function Scoreboard({
       } = user
 
       return (
-        <TableRow
+        <div
           key={userId}
-          className={classNames({
-            [loggedInRow]: auth.state === LOGGED_IN && userId === auth.data.userId
-          })}
-          classes={{hover}}
-          hover={true}
+          className={classNames(
+            hover,
+            tableRow,
+            { [loggedInRow]: auth.state === LOGGED_IN &&
+                             userId === auth.data.userId,
+              [stripe]: i % 2 === 1
+            }
+          )}
           onClick={() => {
             setFocusedUser(user)
             history.push(`/stats/${handle}`)
           }}
         >
-          <TableCell classes={{typeBody: rankNumber}}>
+          <div className={classNames(rankColumn, rankNumber, tableCell)}>
             {user[scoreView].rank}
-          </TableCell>
-          <TableCell classes={{root: nameCell}}>
+          </div>
+          <div className={classNames(nameCell, playerColumn, tableCell)}>
             <div>
               <Avatar
                 alt={name}
@@ -140,8 +137,8 @@ function Scoreboard({
                 @{handle}
               </Typography>
             </div>
-          </TableCell>
-          <TableCell numeric classes={{typeBody: smallNumber}}>
+          </div>
+          <div className={classNames(scoreColumn, smallNumber, tableCell)}>
             {user[scoreView].score}
             <Typography variant='caption'>
               Average Time:
@@ -149,11 +146,16 @@ function Scoreboard({
             <Typography variant='caption'>
               { formatHMS(user[scoreView].avgTimeToAnswer) }
             </Typography>
-          </TableCell>
-        </TableRow>
+          </div>
+        </div>
       )
     })
 
+
+  const SwipeableTab = () =>
+    <div className={tableBody}>
+      { userScores }
+    </div>
 
   return (
     <div className={container}>
@@ -182,24 +184,34 @@ function Scoreboard({
           <Tab label='MONTHLY' />
           <Tab label='ALL TIME' />
         </Tabs>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell className={rankColumn} classes={{root: headerCell}}>
+        <div className={table}>
+          <div className={headerRow}>
+            <div className={classNames(rankColumn, headerCell)}>
+              <Typography color='secondary' variant='title'>
                 Rank
-              </TableCell>
-              <TableCell className={playerColumn} classes={{root: headerCell}}>
+              </Typography>
+            </div>
+            <div className={classNames(playerColumn, headerCell, playerHeader)}>
+              <Typography color='secondary' variant='title'>
                 Player
-              </TableCell>
-              <TableCell className={scoreColumnn} classes={{root: headerCell}}>
+              </Typography>
+            </div>
+            <div className={classNames(scoreColumn, headerCell)}>
+              <Typography color='secondary' variant='title'>
                 Score
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            { userScores }
-          </TableBody>
-        </Table>
+              </Typography>
+            </div>
+          </div>
+          <SwipeableViews
+            axis='x'
+            index={tabValue}
+            onChangeIndex={value => setScoreView(value)}
+          >
+            <SwipeableTab />
+            <SwipeableTab />
+            <SwipeableTab />
+          </SwipeableViews>
+        </div>
       </Paper>
     </div>
   )

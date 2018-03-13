@@ -28,7 +28,11 @@ export default (theme) => ({
   },
   headerCell: {
     background: theme.palette.primary.main,
-    color: 'white'
+    padding: '15px 8% 15px'
+  },
+  headerRow: {
+    display: 'flex',
+    flexDirection: 'row'
   },
   hover: {
     '&:hover': {
@@ -43,23 +47,48 @@ export default (theme) => ({
     textAlign: 'left'
   },
   playerColumn: {
-    width: '398px'
+    flexGrow: 2
+  },
+  playerHeader: {
+    textAlign: 'center'
   },
   rankColumn: {
-    width: '105px'
+    flexGrow: 1,
+    maxWidth: '100px'
   },
   rankNumber: {
+    alignItems: 'center',
+    display: 'flex',
     fontFamily: 'Rammetto One',
+    fontSize: '1.2em'
   },
-  scoreColumnn: {
-    width: '156px'
+  scoreColumn: {
+    flexGrow: 1,
+    textAlign: 'right'
+  },
+  searchInput: {
+    marginTop: '30px'
   },
   smallNumber: {
     fontFamily: 'Rammetto One',
     fontSize: '14px'
   },
-  searchInput: {
-    marginTop: '30px'
+  stripe: {
+    background: 'rgba(150,180,255,0.1)'
+  },
+  tableBody: {
+    display: 'flex',
+    flexDirection: 'column',
+    maxHeight: 'calc(100vh - 246px)',
+    maxWidth: '100vw'
+  },
+  tableCell: {
+    padding: '10px 8% 10px'
+  },
+  tableRow: {
+    display: 'flex',
+    minHeight: '82px',
+    flexDirection: 'row'
   },
   tabs: {
     background: theme.palette.primary.light,
