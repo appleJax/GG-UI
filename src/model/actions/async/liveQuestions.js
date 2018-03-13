@@ -1,6 +1,6 @@
-import { ajax }      from 'Utils'
-import payloadStates from 'Constants/PayloadStates'
-import syncActions   from 'Actions/sync'
+import { ajax, debounce } from 'Utils'
+import payloadStates      from 'Constants/PayloadStates'
+import syncActions        from 'Actions/sync'
 
 const { INITIAL_STATE } = payloadStates
 const {
@@ -13,19 +13,25 @@ const {
 export default ({
 
   fetchLiveQuestions: () =>
-    (dispatch, getState) => {
-      const { liveQuestions } = getState()
-      if (liveQuestions.state === INITIAL_STATE)
-        dispatch(fetchingLiveQuestions())
-
-      ajax.get('/live')
-          .then(liveQuestions =>
-            liveQuestions
-              ? dispatch(setLiveQuestions(liveQuestions))
-              : dispatch(notFoundLiveQuestions())
-          ).catch(error =>
-            dispatch(errorFetchingLiveQuestions(error))
-          )
-    }
+    (dispatch, getState) =>
+      debouncedFetchLiveQuestions(dispatch, getState)
 
 })
+
+
+function _fetchLiveQuestions(dispatch, getState) {
+    const { liveQuestions } = getState()
+    if (liveQuestions.state === INITIAL_STATE)
+      dispatch(fetchingLiveQuestions())
+
+    ajax.get('/live')
+        .then(liveQuestions =>
+          liveQuestions
+            ? dispatch(setLiveQuestions(liveQuestions))
+            : dispatch(notFoundLiveQuestions())
+        ).catch(error =>
+          dispatch(errorFetchingLiveQuestions(error))
+        )
+}
+
+const debouncedFetchLiveQuestions = debounce(_fetchLiveQuestions, 1000)

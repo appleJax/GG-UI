@@ -11,8 +11,9 @@ const [
   { fetchLiveQuestions }
 ] = [ payloadStates, asyncActions ]
 
-const mapStateToProps = ({ auth, liveQuestions }) => ({
+const mapStateToProps = ({ auth, countdown, liveQuestions }) => ({
   auth,
+  countdown,
   liveQuestions
 })
 
@@ -24,6 +25,12 @@ class Container extends Component {
   componentWillMount() {
     if (this.props.liveQuestions.state !== RESOLVED)
       this.props.fetchLiveQuestions()
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.countdown % 10 === 0) {
+      nextProps.fetchLiveQuestions()
+    }
   }
 
   render() {

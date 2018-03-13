@@ -1,5 +1,5 @@
-import { ajax }    from 'Utils'
-import syncActions from 'Actions/sync'
+import { ajax, debounce }      from 'Utils'
+import syncActions             from 'Actions/sync'
 import { getTimeTilNextTweet } from 'Utils'
 
 const { resetCountdown } = syncActions
@@ -7,12 +7,17 @@ const { resetCountdown } = syncActions
 export default ({
 
   fetchCountdown: () =>
-    dispatch => {
-      ajax.get('/countdown')
-          .then(({ millis }) => {
-            const seconds = Math.floor(millis / 1000)
-            dispatch(resetCountdown(seconds || getTimeTilNextTweet()))
-          }).catch(console.error)
-    }
+    dispatch =>
+      debouncedFetchCountdown(dispatch)
 
 })
+
+function _fetchCountdown(dispatch) {
+  ajax.get('/countdown')
+      .then(({ millis }) => {
+        const seconds = Math.floor(millis / 1000)
+        dispatch(resetCountdown(seconds || getTimeTilNextTweet()))
+      }).catch(console.error)
+}
+
+const debouncedFetchCountdown = debounce(_fetchCountdown, 1000)
