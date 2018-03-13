@@ -80,6 +80,7 @@ export default (theme) => ({
     display: 'flex',
     flexDirection: 'column',
     height: 'calc(100vh - 276px)',
+    minHeight: 'calc(100vh - 276px)',
     maxWidth: '100vw',
     overflowY: 'scroll'
   },
