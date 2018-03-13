@@ -79,8 +79,9 @@ export default (theme) => ({
   tableBody: {
     display: 'flex',
     flexDirection: 'column',
-    maxHeight: 'calc(100vh - 246px)',
-    maxWidth: '100vw'
+    height: 'calc(100vh - 276px)',
+    maxWidth: '100vw',
+    overflowY: 'scroll'
   },
   tableCell: {
     padding: '10px 8% 10px'
