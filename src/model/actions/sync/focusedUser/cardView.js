@@ -4,9 +4,10 @@ const { SET_CARD_VIEW } = actionTypes
 
 export default ({
 
-  setCardView: (view) => ({
+  setCardView: (view, page = 1) => ({
     type: SET_CARD_VIEW,
-    view
+    view,
+    page
   })
 
 })

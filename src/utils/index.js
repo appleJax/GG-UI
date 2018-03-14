@@ -9,6 +9,10 @@ const axiosObject = axios.create({
 
 export const HOURS = 3600000
 
+export const CARDS_PER_PAGE = 12
+
+export const SCORES_PER_PAGE = 50
+
 export const TWEET_INTERVAL = 6*HOURS / 1000
 
 export const ajax = {
@@ -94,11 +98,24 @@ export function formatRatio({ correct, attempts, totalPossible }, total) {
   return `${correct}/${denominator} - ${percent}%`
 }
 
-export function getCardIds(focusedUser, view) {
+export function getCardIds(
+  focusedUser,
+  view = 'correct',
+  page = 1,
+  itemsPerPage = CARDS_PER_PAGE
+) {
+
   const cards = focusedUser.stats.data.allTimeStats[view] || []
-  return (typeof cards[0] === 'string')
-    ? cards
-    : cards.map(card => card.cardId)
+  const startIndex = (page - 1) * itemsPerPage
+  const endIndex = startIndex + itemsPerPage
+  const visibleCards = cards.slice(startIndex, endIndex)
+  console.log('startIndex:', startIndex)
+  console.log('endIndex:', endIndex)
+  console.log('cards:', visibleCards)
+
+  return (typeof cards[0] === 'object')
+    ? visibleCards.map(card => card.cardId)
+    : visibleCards
 }
 
 export function getTimeTilNextTweet() {

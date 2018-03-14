@@ -2,9 +2,10 @@ import { getScores } from './common'
 
 export default ({
 
-  fetchStats: (view = 'weeklyStats', page = 1) =>
+  fetchStats: (page = 1, view) =>
     (dispatch, getState) => {
-        const { search, users } = getState()
+        const { scoreView, search, users } = getState()
+        if (!view) view = scoreView.view
         const params = {
           params: { page, search, view }
         }

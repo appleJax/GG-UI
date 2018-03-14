@@ -2,11 +2,19 @@ import actionTypes   from 'Constants/ActionTypes'
 
 const { SET_CARD_VIEW } = actionTypes
 
-export default (state = 'correct', action) => {
+const init = {
+  view: 'correct',
+  page: 1
+}
+
+export default (state = init, action) => {
 
   switch (action.type) {
     case SET_CARD_VIEW:
-      return action.view
+      return {
+        view: action.view,
+        page: action.page
+      }
 
     default:
       return state

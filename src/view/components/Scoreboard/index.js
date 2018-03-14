@@ -12,8 +12,14 @@ import Typography                from 'UI/Typography'
 import Paper                     from 'UI/Paper'
 import SearchIcon                from 'Icons/Search'
 import EmptyMessage              from 'Components/EmptyMessage'
+import Pagination                from 'Components/Pagination'
 import Spinner                   from 'Components/Spinner'
-import { formatHMS }             from 'Utils'
+
+import {
+  formatHMS,
+  SCORES_PER_PAGE
+} from 'Utils'
+
 import {
   array,
   func,
@@ -59,6 +65,7 @@ function Scoreboard({
   auth,
   setScoreView,
   fetchQuery,
+  fetchStats,
   history,
   scoreView,
   search,
@@ -67,9 +74,9 @@ function Scoreboard({
 }) {
 
   const tabValue =
-      (scoreView === 'weeklyStats' ) ? 0
-    : (scoreView === 'monthlyStats') ? 1
-    :                                  2
+      (scoreView.view === 'weeklyStats' ) ? 0
+    : (scoreView.view === 'monthlyStats') ? 1
+    :                                       2
 
   const usersState = users.state
   let userScores
@@ -124,7 +131,7 @@ function Scoreboard({
           }}
         >
           <div className={classNames(rankColumn, rankNumber, tableCell)}>
-            {user[scoreView].rank}
+            {user[scoreView.view].rank}
           </div>
           <div className={classNames(nameCell, playerColumn, tableCell)}>
             <div>
@@ -139,12 +146,12 @@ function Scoreboard({
             </div>
           </div>
           <div className={classNames(scoreColumn, smallNumber, tableCell)}>
-            {user[scoreView].score}
+            {user[scoreView.view].score}
             <Typography variant='caption'>
               Average Time:
             </Typography>
             <Typography variant='caption'>
-              { formatHMS(user[scoreView].avgTimeToAnswer) }
+              { formatHMS(user[scoreView.view].avgTimeToAnswer) }
             </Typography>
           </div>
         </div>
@@ -155,6 +162,12 @@ function Scoreboard({
   const SwipeableTab = () =>
     <div className={tableBody}>
       { userScores }
+      <Pagination
+        itemsPerPage={SCORES_PER_PAGE}
+        fetchData={fetchStats}
+        numItems={users.total || 0}
+        page={scoreView.page}
+      />
     </div>
 
   return (
@@ -174,7 +187,7 @@ function Scoreboard({
         <Tabs
           classes={{root: tabs}}
           value={tabValue}
-          onChange={(e, value) => setScoreView(value)}
+          onChange={(e, value) => setScoreView(1, value)}
           indicatorColor='secondary'
           textColor='secondary'
           centered
@@ -205,7 +218,7 @@ function Scoreboard({
           <SwipeableViews
             axis='x'
             index={tabValue}
-            onChangeIndex={value => setScoreView(value)}
+            onChangeIndex={value => setScoreView(1, value)}
           >
             <SwipeableTab />
             <SwipeableTab />
@@ -218,13 +231,13 @@ function Scoreboard({
 }
 
 Scoreboard.propTypes = {
-  classes:         object.isRequired,
-  history:         object.isRequired,
-  scoreView:       string.isRequired,
+  classes:      object.isRequired,
+  history:      object.isRequired,
+  scoreView:    object.isRequired,
   setScoreView: func.isRequired,
-  search:          string.isRequired,
-  fetchQuery:      func.isRequired,
-  users:           object
+  search:       string.isRequired,
+  fetchQuery:   func.isRequired,
+  users:        object
 }
 
 export default withStyles(styles)(Scoreboard)

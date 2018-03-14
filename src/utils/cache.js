@@ -37,6 +37,8 @@ export function refreshCache({
   updateUserDetails
 }) {
 
+  const firstPage = 1
+
   if (auth.state === LOGGED_IN)
     updateUserDetails()
 
@@ -44,14 +46,14 @@ export function refreshCache({
     fetchFocusedUser(focusedUser.stats.data.handle)
 
   if (allTimeStats.state === RESOLVED) {
-    fetchStats('allTimeStats')
+    fetchStats(firstPage, 'allTimeStats')
   }
 
   if (monthlyStats.state === RESOLVED)
-    fetchStats('monthlyStats')
+    fetchStats(firstPage, 'monthlyStats')
 
   if (weeklyStats.state === RESOLVED)
-    fetchStats('weeklyStats')
+    fetchStats(firstPage, 'weeklyStats')
 
   fetchLiveQuestions()
 

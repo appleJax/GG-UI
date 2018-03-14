@@ -11,21 +11,20 @@ const {
 } = syncActions
 
 
-export function getCards(dispatch, getState, view = 'correct') {
+export function getCards(dispatch, getState, view = 'correct', page = 1) {
   const { focusedUser } = getState()
   if (focusedUser[view].state !== RESOLVED)
     dispatch(fetchingCards(view))
 
-  const ids = getCardIds(focusedUser, view)
+  const ids = getCardIds(focusedUser, view, page)
   const params = {
     params: { ids }
   }
   ajax.get('/cards', params)
       .then(cards => {
-        console.log('Received cards:', cards)
         cards
-        ? dispatch(setCards(cards, view))
-        : dispatch(notFoundCards(view))
+          ? dispatch(setCards(cards, view, page))
+          : dispatch(notFoundCards(view))
       }).catch(error =>
         dispatch(errorFetchingCards(error, view))
       )

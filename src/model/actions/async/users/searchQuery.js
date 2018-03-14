@@ -17,11 +17,11 @@ export default ({
 // private functions
 
 function fetchQueryNaive(dispatch, getState) {
-  const { search, users, scoreView: view } = getState()
+  const { search, users, scoreView } = getState()
   const params = {
-    params: { search, view }
+    params: { search, view: scoreView.view }
   }
-  getScores(dispatch, params, view, search, users)
+  getScores(dispatch, params, scoreView.view, search, users)
 }
 
 const debouncedFetchQuery = debounce(fetchQueryNaive, 250)

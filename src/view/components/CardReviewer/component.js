@@ -12,7 +12,9 @@ import IndeterminateCheckBox    from 'Icons/IndeterminateCheckBox'
 import CheckBoxOutlineBlank     from 'Icons/CheckBoxOutlineBlank'
 import AnswerCard               from 'Components/AnswerCard'
 import EmptyMessage             from 'Components/EmptyMessage'
+import Pagination               from 'Components/Pagination'
 import Spinner                  from 'Components/Spinner'
+import { CARDS_PER_PAGE }       from 'Utils'
 
 const {
   INITIAL_STATE,
@@ -23,15 +25,6 @@ const {
 } = payloadStates
 
 function CardReviewer({
-  auth,
-  setCardView,
-  focusedUser,
-  focusedUser: {
-    cardView,
-    correct,
-    incorrect,
-    unanswered
-  },
   classes: {
     cardList,
     container,
@@ -41,15 +34,26 @@ function CardReviewer({
     subHeader,
     tabs,
     title
+  },
+  auth,
+  setCardView,
+  fetchCards,
+  focusedUser,
+  focusedUser: {
+    cardView,
+    correct,
+    incorrect,
+    unanswered
   }
 }) {
 
   const tabValue =
-      (cardView === 'correct' )  ? 0
-    : (cardView === 'incorrect') ? 1
+      (cardView.view === 'correct' )  ? 0
+    : (cardView.view === 'incorrect') ? 1
     :                              2
 
-  const cardsState = focusedUser[cardView].state
+  const cards = focusedUser[cardView.view].data
+  const cardsState = focusedUser[cardView.view].state
   let cardDisplay
   if (cardsState === FETCHING || cardsState === INITIAL_STATE) {
     cardDisplay = <Spinner />
@@ -58,16 +62,27 @@ function CardReviewer({
   } else if (cardsState === NOT_FOUND) {
     cardDisplay = <EmptyMessage message='N/A' />
   } else {
-    cardDisplay = focusedUser[cardView].data.map(
+    cardDisplay = cards.map(
       (card, i) =>
-        <AnswerCard key={i} card={card} status={cardView} />
+        <AnswerCard key={i} card={card} status={cardView.view} />
     )
   }
+  let totalCards = 0
+
+  if (focusedUser.stats.state === RESOLVED)
+    totalCards = focusedUser.stats.data.allTimeStats[cardView.view].length
+
   const SwipeableTab = () =>
     <div className={reviewer}>
       <div className={cardList}>
-      { cardDisplay }
+        { cardDisplay }
       </div>
+      <Pagination
+        itemsPerPage={CARDS_PER_PAGE}
+        fetchData={fetchCards}
+        numItems={totalCards}
+        page={cardView.page}
+      />
       <div style={{flexGrow: 1000}} />
     </div>
 
@@ -107,6 +122,7 @@ function CardReviewer({
 CardReviewer.propTypes = {
   auth:        object.isRequired,
   classes:     object.isRequired,
+  fetchCards:  func.isRequired,
   focusedUser: object.isRequired,
   setCardView: func.isRequired
 }
