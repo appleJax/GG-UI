@@ -14,7 +14,7 @@ export default (theme) => ({
   },
   followButton: {
     height: '50px',
-    margin: '25px 0 0 -120px',
+    margin: '35px 0 0 -130px',
     position: 'absolute',
     width: '50px'
   },
@@ -30,7 +30,9 @@ export default (theme) => ({
     right: '0'
   },
   logo: {
-    font: '1.3em Cabin Sketch'
+    borderRadius: '20px',
+    font: '1.3em Cabin Sketch',
+    padding: '10px'
   },
   navContainer: {
     alignItems: 'center',
