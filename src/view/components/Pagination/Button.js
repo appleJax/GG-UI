@@ -2,6 +2,7 @@ import React            from 'react'
 import { bool, object } from 'prop-types'
 import classNames       from 'classnames'
 import { withStyles }   from 'UI/styles'
+import ButtonBase       from 'UI/ButtonBase'
 import Typography       from 'UI/Typography'
 
 
@@ -60,17 +61,19 @@ function Button({
 }) {
 
   return (
-    <div className={classNames(
-      button,
-      { [activeClass]: active,
-        [disabledClass]: disabled,
-        [clickable]: !active && !disabled
-      }
+    <ButtonBase
+      className={classNames(
+        button,
+        { [activeClass]: active,
+          [disabledClass]: disabled,
+          [clickable]: !active && !disabled
+        }
       )}
       onClick={onClick}
+      disabled={disabled || active}
     >
       { children }
-    </div>
+    </ButtonBase>
   )
 }
 
