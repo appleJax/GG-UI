@@ -4,8 +4,10 @@ import { withStyles } from 'UI/styles'
 import payloadStates  from 'Constants/PayloadStates'
 import AnswerCard     from 'Components/AnswerCard'
 import EmptyMessage   from 'Components/EmptyMessage'
+import Pagination     from 'Components/Pagination'
 import Spinner        from 'Components/Spinner'
 import styles         from './styles'
+import { CARDS_PER_PAGE } from 'Utils'
 
 const {
   LOGGED_IN,
@@ -22,9 +24,11 @@ const Deck = ({
   },
   auth,
   deck,
+  fetchDeck,
+  fetchingDeck,
   game
 }) => {
-  let cardDisplay
+  let cardDisplay, pagination
   if (!deck || deck.state === FETCHING)
     cardDisplay = <Spinner />
   else if (deck.state === ERROR_FETCHING)
@@ -38,11 +42,24 @@ const Deck = ({
       const correct = auth.data.allTimeStats.correct.map(obj => obj.cardId)
       userAnswers = { correct, incorrect }
     }
-    cardDisplay = deck.data.map((card, i) =>
+    const cards = deck.data[deck.data.deckPage]
+    cardDisplay = cards.map((card, i) =>
       <AnswerCard
         status={cardStatus(card, userAnswers)}
         card={card}
         key={i}
+      />
+    )
+
+    const deckPage   = deck.data.deckPage
+    const totalCards = deck.data.totalCards
+    pagination = (
+      <Pagination
+        itemsPerPage={CARDS_PER_PAGE}
+        fetchData={ (page) => fetchDeck(page, game.slug) }
+        numItems={totalCards}
+        page={deckPage}
+        scrollTop={283}
       />
     )
   }
@@ -62,6 +79,7 @@ const Deck = ({
       <div className={cardList}>
         { cardDisplay }
       </div>
+      { pagination }
     </>
   )
 }

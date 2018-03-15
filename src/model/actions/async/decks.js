@@ -2,7 +2,8 @@ import { ajax }    from 'Utils'
 import syncActions from 'Actions/sync'
 
 const {
-  addDeck,
+  addDeckCards,
+  setDeckPage,
   fetchingDeck,
   notFoundDeck,
   errorFetchingDeck
@@ -10,13 +11,16 @@ const {
 
 export default ({
 
-  fetchDeck: (gameSlug) =>
+  fetchDeck: (page = 1, gameSlug) =>
     dispatch => {
       dispatch(fetchingDeck(gameSlug))
-      ajax.get(`/deck/${gameSlug}`)
-          .then(deck =>
-            deck
-              ? dispatch(addDeck(deck, gameSlug))
+      const params = {
+        params: { page }
+      }
+      ajax.get(`/deck/${gameSlug}`, params)
+          .then(({ cards, total }) =>
+            cards
+              ? dispatch(addDeckCards(gameSlug, page, cards, total))
               : dispatch(notFoundDeck(gameSlug))
           ).catch(error =>
             dispatch(errorFetchingDeck(gameSlug, error))

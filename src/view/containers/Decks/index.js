@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { connect }          from 'react-redux'
 import asyncActions         from 'Actions/async'
+import syncActions          from 'Actions/sync'
 import payloadStates        from 'Constants/PayloadStates'
 import Deck                 from 'Components/Deck'
 import DeckTitles           from 'Components/DeckTitles'
 
 const { RESOLVED } = payloadStates
 const { fetchDeck, fetchDeckTitles } = asyncActions
+const { fetchingDeck } = syncActions
 
 const mapStateToProps = ({ auth, deckTitles, decks }) => ({
   auth,
@@ -16,7 +18,8 @@ const mapStateToProps = ({ auth, deckTitles, decks }) => ({
 
 const mapDispatchToProps = {
   fetchDeck,
-  fetchDeckTitles
+  fetchDeckTitles,
+  fetchingDeck
 }
 
 class Container extends Component {
@@ -28,7 +31,8 @@ class Container extends Component {
     } = this.props
 
     fetchDeckTitles()
-    if (game) fetchDeck(game)
+    const firstPage = 1
+    if (game) fetchDeck(firstPage, game)
   }
 
   componentWillReceiveProps({
@@ -37,14 +41,14 @@ class Container extends Component {
     match: { params: { game } }
   }) {
     if (game && !decks[game]) {
-      fetchDeck(game)
+      const firstPage = 1
+      fetchDeck(firstPage, game)
     }
   }
 
   render() {
     const {
       decks,
-      fetchDeck,
       deckTitles,
       match: { params: { game } },
       ...props

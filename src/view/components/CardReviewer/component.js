@@ -74,6 +74,11 @@ function CardReviewer({
   if (focusedUser.stats.state === RESOLVED)
     totalCards = focusedUser.stats.data.allTimeStats[cardView.view].length
 
+  const scrollTop = (window.innerWidth < 600)
+    ? 760
+    : 580
+
+
   const SwipeableTab = () =>
     <div className={reviewer}>
       <div className={cardList}>
@@ -87,6 +92,7 @@ function CardReviewer({
         }}
         numItems={totalCards}
         page={cardView.page}
+        scrollTop={scrollTop}
       />
       <div style={{flexGrow: 1000}} />
     </div>

@@ -31,7 +31,8 @@ function Pagination({
   itemsPerPage,
   fetchData,
   numItems,
-  page
+  page,
+  scrollTop
 }) {
 
   if (numItems < 1)
@@ -41,14 +42,10 @@ function Pagination({
     numItems / itemsPerPage
   )
 
-  const top = window.innerWidth < 600
-    ? 760
-    : 580
-
   const resetScroll = () => setTimeout(
     () =>
       window.scroll({
-        top,
+        top: scrollTop,
         left: 0,
         behavior: 'smooth'
       })

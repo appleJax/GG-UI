@@ -8,7 +8,8 @@ export default ({
   DECREMENT_COUNTDOWN:             'DECREMENT_COUNTDOWN',
   RESET_COUNTDOWN:                 'RESET_COUNTDOWN',
 
-  ADD_DECK:                        'ADD_DECK',
+  ADD_DECK_CARDS:                  'ADD_DECK_CARDS',
+  SET_DECK_PAGE:                   'SET_DECK_PAGE',
   FETCHING_DECK:                   'FETCHING_DECK',
   NOT_FOUND_DECK:                  'NOT_FOUND_DECK',
   ERROR_FETCHING_DECK:             'ERROR_FETCHING_DECK',

@@ -1,7 +1,8 @@
 import actionTypes from 'Constants/ActionTypes'
 
 const {
-  ADD_DECK,
+  ADD_DECK_CARDS,
+  SET_DECK_PAGE,
   FETCHING_DECK,
   NOT_FOUND_DECK,
   ERROR_FETCHING_DECK
@@ -10,10 +11,18 @@ const {
 
 export default ({
 
-  addDeck: (deck, game) => ({
-    type: ADD_DECK,
-    deck,
-    game
+  addDeckCards: (game, page, cards, total) => ({
+    type: ADD_DECK_CARDS,
+    game,
+    page,
+    cards,
+    total
+  }),
+
+  setDeckPage: (game, page) => ({
+    type: SET_DECK_PAGE,
+    game,
+    page
   }),
 
   fetchingDeck: (game) => ({

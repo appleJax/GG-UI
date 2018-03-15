@@ -40,7 +40,7 @@ const styles = (theme) => ({
     background: '#eee',
     color: '#888',
     '&:hover': {
-      cursor: 'not-allowed'
+      cursor: 'default'
     }
   },
 })
