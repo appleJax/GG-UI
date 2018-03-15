@@ -8,6 +8,7 @@ import MenuIcon           from 'Icons/Menu'
 import AppBar             from 'UI/AppBar'
 import Avatar             from 'UI/Avatar'
 import Button             from 'UI/Button'
+import ButtonBase         from 'UI/ButtonBase'
 import Divider            from 'UI/Divider'
 import IconButton         from 'UI/IconButton'
 import Menu, { MenuItem } from 'UI/Menu'
@@ -148,14 +149,12 @@ function Nav(props) {
       >
         <div className={navContainer}>
           <div>
-            <Typography
+            <ButtonBase
               className={logo}
-              color='inherit'
               onClick={() => history.push('/')}
-              variant='title'
             >
               GameGogakuen
-            </Typography>
+            </ButtonBase>
             <Button
               className={followButton}
               href='https://twitter.com/intent/follow?screen_name=devtest222'
@@ -164,8 +163,8 @@ function Nav(props) {
             >
               <img
                 alt='Follow @GameGogakuen'
-                height='50'
-                width='50'
+                height='45'
+                width='45'
                 src='/images/twitter/Twitter_Logo_Blue.svg'
               />
             </Button>

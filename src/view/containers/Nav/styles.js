@@ -13,7 +13,10 @@ export default (theme) => ({
     marginTop: '10px'
   },
   followButton: {
-    margin: '0 0 -45px 18px'
+    height: '50px',
+    margin: '25px 0 0 -120px',
+    position: 'absolute',
+    width: '50px'
   },
   link: {
     outline: 'none',
@@ -27,10 +30,7 @@ export default (theme) => ({
     right: '0'
   },
   logo: {
-    fontFamily: 'Cabin Sketch',
-    '&:hover': {
-      cursor: 'pointer'
-    }
+    font: '1.3em Cabin Sketch'
   },
   navContainer: {
     alignItems: 'center',
