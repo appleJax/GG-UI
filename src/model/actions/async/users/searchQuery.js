@@ -24,4 +24,5 @@ function fetchQueryNaive(dispatch, getState) {
   getScores(dispatch, params, scoreView.view, search, users)
 }
 
-const debouncedFetchQuery = debounce(fetchQueryNaive, 250)
+const delayExecution = true
+const debouncedFetchQuery = debounce(fetchQueryNaive, 250, delayExecution)

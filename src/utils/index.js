@@ -47,12 +47,18 @@ export function cardStatus({ cardId }, { correct, incorrect }) {
   if (correct.includes(cardId))   return 'correct'
 }
 
-export function debounce(fn, wait) {
+export function debounce(fn, wait, isDelayed) {
   let timeout
   return function(...args) {
     const exec = () => fn.apply(this, args)
-    clearTimeout(timeout)
-    timeout = setTimeout(exec, wait)
+    if (isDelayed) {
+      clearTimeout(timeout)
+      timeout = setTimeout(exec, wait)
+
+    } else if (!timeout) {
+      exec()
+      timeout = setTimeout(() => clearTimeout(timeout), wait)
+    }
   }
 }
 
