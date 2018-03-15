@@ -7,6 +7,7 @@ import Button         from 'UI/Button'
 import Typography     from 'UI/Typography'
 import CardReviewer   from 'Components/CardReviewer'
 import EmptyMessage   from 'Components/EmptyMessage'
+import FollowButton   from 'Components/FollowButton'
 import Spinner        from 'Components/Spinner'
 import styles         from './styles'
 import { object, string } from 'prop-types'
@@ -30,9 +31,6 @@ function User({
     avatarRoot,
     avgTimeDiv,
     banner,
-    follow,
-    followImage,
-    label,
     rankDiv,
     scoreDiv,
     statBox,
@@ -43,7 +41,6 @@ function User({
     userIdentity,
     userStats
   },
-  auth,
   handleParam,
   user
 }) {
@@ -60,34 +57,6 @@ function User({
     user.data.handle !== handleParam
   ) return <Spinner />
 
-  let followButton
-
-  if (
-    auth.state       !== LOGGED_IN ||
-    auth.data.userId !== user.data.userId
-  ) {
-    followButton = (
-      <Button
-        classes={{label}}
-        color='secondary'
-        className={follow}
-        href={`https://twitter.com/intent/follow?screen_name=${handle}`}
-        target='_blank'
-        size='small'
-        variant='raised'
-      >
-        <img
-          alt={`Follow @${handle}`}
-          className={followImage}
-          height='25'
-          width='25'
-          src='/images/twitter/Twitter_Logo_Blue.svg'
-        />
-        Follow
-      </Button>
-    )
-  }
-
   const {
     allTimeStats,
     avatar,
@@ -96,6 +65,7 @@ function User({
     monthlyStats,
     name,
     profileBanner,
+    userId,
     weeklyStats
   } = user.data
 
@@ -115,7 +85,7 @@ function User({
           <div className={userIdentity}>
             <Typography variant='title'>{name}</Typography>
             <Typography variant='subheading'>{`@${handle}`}</Typography>
-            { followButton }
+            <FollowButton handle={handle} userId={userId} />
           </div>
         </div>
         <div className={userStats}>
@@ -161,7 +131,6 @@ function User({
 
 User.propTypes = {
   classes:     object.isRequired,
-  auth:        object.isRequired,
   handleParam: string.isRequired,
   user:        object
 }

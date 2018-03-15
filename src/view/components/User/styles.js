@@ -27,27 +27,6 @@ export default (theme) => ({
   banner: {
     height: '200px'
   },
-  label: {
-    color: theme.palette.primary.main,
-    padding: '5px 12px 5px 5px',
-    textTransform: 'none',
-    '&:hover': {
-      color: theme.palette.secondary.main
-    }
-  },
-  follow: {
-    height: '20px',
-    margin: '8px 0',
-    padding: '0',
-    '&:hover': {
-      background: theme.palette.primary.light,
-    }
-  },
-  followImage: {
-    background: theme.palette.secondary.main,
-    borderRadius: '50%',
-    marginRight: '3px'
-  },
   statBox: {
     margin: '0 5px',
     textAlign: 'center',

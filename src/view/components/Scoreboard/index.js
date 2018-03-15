@@ -178,10 +178,11 @@ function Scoreboard({
         value={search}
         classes={{root: searchInput}}
         onChange={(e) => fetchQuery(e.target.value)}
-        startAdornment={<InputAdornment position="start"
-      >
-        <SearchIcon color='disabled' />
-      </InputAdornment>}
+        startAdornment={
+          <InputAdornment position="start">
+            <SearchIcon color='disabled' />
+          </InputAdornment>
+        }
       />
       <Paper className={root}>
         <Tabs

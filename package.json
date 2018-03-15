@@ -57,6 +57,7 @@
       "^Components/(.*)$": "<rootDir>/src/view/components/$1",
       "^Constants/(.*)$": "<rootDir>/src/model/constants/$1",
       "^Containers/(.*)$": "<rootDir>/src/view/containers/$1",
+      "^Data/(.*)$": "<rootDir>/src/view/data/$1",
       "^Icons/(.*)$": "<rootDir/node_modules/material-ui-icons/$1",
       "^Images/(.*)$": "<rootDir>/src/static/images/$1",
       "^Reducers/(.*)$": "<rootDir>/src/model/reducers/$1",

@@ -10,6 +10,7 @@ module.exports = {
       Components: path.resolve(__dirname, 'src/view/components'),
       Constants:  path.resolve(__dirname, 'src/model/constants'),
       Containers: path.resolve(__dirname, 'src/view/containers'),
+      Data:       path.resolve(__dirname, 'src/view/data'),
       Images:     path.resolve(__dirname, 'src/static/images'),
       Reducers:   path.resolve(__dirname, 'src/model/reducers'),
       Root:       __dirname,
