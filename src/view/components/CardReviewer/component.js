@@ -78,22 +78,26 @@ function CardReviewer({
     ? 760
     : 580
 
+  const pagination = (
+    <Pagination
+      itemsPerPage={CARDS_PER_PAGE}
+      fetchData={(page) => {
+        fetchingCards(cardView.view)
+        fetchCards(page)
+      }}
+      numItems={totalCards}
+      page={cardView.page}
+      scrollTop={scrollTop}
+    />
+  )
 
   const SwipeableTab = () =>
     <div className={reviewer}>
+      { pagination }
       <div className={cardList}>
         { cardDisplay }
       </div>
-      <Pagination
-        itemsPerPage={CARDS_PER_PAGE}
-        fetchData={(page) => {
-          fetchingCards(cardView.view)
-          fetchCards(page)
-        }}
-        numItems={totalCards}
-        page={cardView.page}
-        scrollTop={scrollTop}
-      />
+      { pagination }
       <div style={{flexGrow: 1000}} />
     </div>
 

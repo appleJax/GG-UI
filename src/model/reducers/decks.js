@@ -67,7 +67,7 @@ export default (state = {}, action) => {
         ...state,
         [action.game]: {
           state: NOT_FOUND,
-          data:  null,
+          data:  {},
           error: null
         }
       }

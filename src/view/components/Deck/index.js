@@ -13,6 +13,7 @@ const {
   LOGGED_IN,
   FETCHING,
   RESOLVED,
+  NOT_FOUND,
   ERROR_FETCHING
 } = payloadStates
 
@@ -33,7 +34,7 @@ const Deck = ({
     cardDisplay = <Spinner />
   else if (deck.state === ERROR_FETCHING)
     cardDisplay = <EmptyMessage error={true} />
-  else if (!deck.data || deck.data.length === 0)
+  else if (deck.state === NOT_FOUND || !deck.data)
     cardDisplay = <EmptyMessage message='No answers tweeted yet' />
   else {
     let userAnswers = { correct: [], incorrect: [] }
@@ -43,7 +44,8 @@ const Deck = ({
       userAnswers = { correct, incorrect }
     }
 
-    const cards = deck.data[deck.data.deckPage] || []
+    const deckPage = deck.data.deckPage || 1
+    const cards = deck.data[deckPage] || []
     cardDisplay = cards.map((card, i) =>
       <AnswerCard
         status={cardStatus(card, userAnswers)}
@@ -52,7 +54,6 @@ const Deck = ({
       />
     )
 
-    const deckPage   = deck.data.deckPage
     const totalCards = deck.data.totalCards
     pagination = (
       <Pagination
@@ -77,6 +78,7 @@ const Deck = ({
         />
       }
       </div>
+      { pagination }
       <div className={cardList}>
         { cardDisplay }
       </div>
