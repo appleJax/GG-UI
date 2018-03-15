@@ -109,9 +109,6 @@ export function getCardIds(
   const startIndex = (page - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
   const visibleCards = cards.slice(startIndex, endIndex)
-  console.log('startIndex:', startIndex)
-  console.log('endIndex:', endIndex)
-  console.log('cards:', visibleCards)
 
   return (typeof cards[0] === 'object')
     ? visibleCards.map(card => card.cardId)

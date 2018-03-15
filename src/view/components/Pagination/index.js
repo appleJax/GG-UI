@@ -41,6 +41,20 @@ function Pagination({
     numItems / itemsPerPage
   )
 
+  const top = window.innerWidth < 600
+    ? 760
+    : 580
+
+  const resetScroll = () => setTimeout(
+    () =>
+      window.scroll({
+        top,
+        left: 0,
+        behavior: 'smooth'
+      })
+    , 500
+  )
+
   const more = <MoreHoriz className={moreEllipsis} />
 
   const previousPage = (
@@ -49,7 +63,7 @@ function Pagination({
       disabled={ page === 1 }
       onClick={() => {
         if (page !== 1) {
-          setTimeout(resetScroll, 500)
+          resetScroll()
           fetchData(page - 1)
         }
       }}
@@ -64,7 +78,7 @@ function Pagination({
       active={ page === num }
       onClick={() => {
         if (page !== num) {
-          setTimeout(resetScroll, 500)
+          resetScroll()
           fetchData(num)
         }
       }}
@@ -79,7 +93,7 @@ function Pagination({
       disabled={ page === numPages }
       onClick={() => {
         if (page !== numPages) {
-          setTimeout(resetScroll, 500)
+          resetScroll()
           fetchData(page + 1)
         }
       }}
@@ -135,10 +149,6 @@ Pagination.propTypes = {
   fetchData:    func.isRequired,
   numItems:     number.isRequired,
   page:         number.isRequired
-}
-
-function resetScroll() {
-  window.scrollTo(0, 580)
 }
 
 export default withStyles(styles)(Pagination)

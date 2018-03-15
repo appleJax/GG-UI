@@ -4,13 +4,15 @@ import { connect }          from 'react-redux'
 import { withStyles }       from 'UI/styles'
 import payloadStates        from 'Constants/PayloadStates'
 import asyncActions         from 'Actions/async'
+import syncActions          from 'Actions/sync'
 import styles               from './styles'
 import CardReviewer         from './component'
 
 const [
   { RESOLVED },
-  { fetchCards, setCardView }
-] = [ payloadStates, asyncActions ]
+  { fetchCards, setCardView },
+  { fetchingCards }
+] = [ payloadStates, asyncActions, syncActions ]
 
 const mapStateToProps = ({
   auth,
@@ -22,6 +24,7 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = {
   fetchCards,
+  fetchingCards,
   setCardView
 }
 

@@ -24,6 +24,7 @@ const {
   ERROR_FETCHING
 } = payloadStates
 
+
 function CardReviewer({
   classes: {
     cardList,
@@ -38,6 +39,7 @@ function CardReviewer({
   auth,
   setCardView,
   fetchCards,
+  fetchingCards,
   focusedUser,
   focusedUser: {
     cardView,
@@ -79,7 +81,10 @@ function CardReviewer({
       </div>
       <Pagination
         itemsPerPage={CARDS_PER_PAGE}
-        fetchData={fetchCards}
+        fetchData={(page) => {
+          fetchingCards(cardView.view)
+          fetchCards(page)
+        }}
         numItems={totalCards}
         page={cardView.page}
       />
@@ -118,6 +123,7 @@ function CardReviewer({
     </div>
   )
 }
+
 
 CardReviewer.propTypes = {
   auth:        object.isRequired,
