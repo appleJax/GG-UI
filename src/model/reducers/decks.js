@@ -38,6 +38,8 @@ export default (state = {}, action) => {
         }
       }
 
+    // May need for caching deck pages
+    // if not, DELETE this
     case SET_DECK_PAGE:
       return {
         ...state,

@@ -42,7 +42,8 @@ const Deck = ({
       const correct = auth.data.allTimeStats.correct.map(obj => obj.cardId)
       userAnswers = { correct, incorrect }
     }
-    const cards = deck.data[deck.data.deckPage]
+
+    const cards = deck.data[deck.data.deckPage] || []
     cardDisplay = cards.map((card, i) =>
       <AnswerCard
         status={cardStatus(card, userAnswers)}
