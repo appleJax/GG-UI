@@ -14,6 +14,17 @@ const styles = (theme) => ({
       background: theme.palette.primary.light,
     }
   },
+  following: {
+    alignItems: 'center',
+    background: '#fff',
+    borderRadius: '1px',
+    display: 'flex',
+    fontFamily: 'Roboto',
+    justifyContent: 'center',
+    marginTop: '8px',
+    padding: '5px 10px 5px 8px',
+    width: 'fit-content'
+  },
   followImage: {
     background: theme.palette.secondary.main,
     borderRadius: '50%',
@@ -67,13 +78,7 @@ function FollowButton({
 
     if (auth.data.following.find(id => id === userId))
       return (
-        <Button
-          classes={{label}}
-          color='secondary'
-          className={follow}
-          size='small'
-          disabled
-        >
+        <div className={following}>
           <img
             alt={`Following @${handle}`}
             className={followImage}
@@ -82,7 +87,7 @@ function FollowButton({
             src='/images/twitter/Twitter_Logo_Blue.svg'
           />
           Following
-        </Button>
+        </div>
       )
 
     return loggedOutFollow(handle)
