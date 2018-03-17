@@ -41,7 +41,6 @@ function Scoreboard({
   classes: {
     avatarRoot,
     container,
-    emptyScores,
     hover,
     headerCell,
     headerRow,
@@ -74,23 +73,19 @@ function Scoreboard({
 }) {
 
   const tabValue =
-      (scoreView.view === 'weeklyStats' ) ? 0
-    : (scoreView.view === 'monthlyStats') ? 1
+      (scoreView === 'weeklyStats' ) ? 0
+    : (scoreView === 'monthlyStats') ? 1
     :                                       2
 
   const usersState = users.state
   let userScores
   if (usersState === NOT_FOUND && search.length > 0)
     userScores = (
-      <div className={emptyScores}>
-        Not Found
-      </div>
+      <EmptyMessage message='Not Found' />
     )
   else if (usersState === NOT_FOUND)
     userScores = (
-      <div className={emptyScores}>
-        No Leaders. Be the First!
-      </div>
+      <EmptyMessage message='No Leaders. Be the First!' />
     )
   else if (usersState === FETCHING || usersState === INITIAL_STATE)
     userScores = (
@@ -106,7 +101,7 @@ function Scoreboard({
     )
 
   else if (usersState === RESOLVED)
-    userScores =  users.data.map((user, i) => {
+    userScores =  users.data[users.page].map((user, i) => {
       const {
         avatar,
         handle,
@@ -131,7 +126,7 @@ function Scoreboard({
           }}
         >
           <div className={classNames(rankColumn, rankNumber, tableCell)}>
-            {user[scoreView.view].rank}
+            {user[scoreView].rank}
           </div>
           <div className={classNames(nameCell, playerColumn, tableCell)}>
             <div>
@@ -146,28 +141,36 @@ function Scoreboard({
             </div>
           </div>
           <div className={classNames(scoreColumn, smallNumber, tableCell)}>
-            {user[scoreView.view].score}
+            {user[scoreView].score}
             <Typography variant='caption'>
               Average Time:
             </Typography>
             <Typography variant='caption'>
-              { formatHMS(user[scoreView.view].avgTimeToAnswer) }
+              { formatHMS(user[scoreView].avgTimeToAnswer) }
             </Typography>
           </div>
         </div>
       )
     })
 
-
-  const SwipeableTab = () =>
-    <div className={tableBody}>
-      { userScores }
+  const pagination = (
+    <div style={{height: '50px'}}>
       <Pagination
         itemsPerPage={SCORES_PER_PAGE}
         fetchData={fetchStats}
         numItems={users.total || 0}
-        page={scoreView.page}
+        page={users.page || 1}
       />
+    </div>
+  )
+  const showPagination = users.total > SCORES_PER_PAGE
+
+
+  const SwipeableTab = () =>
+    <div className={tableBody}>
+      { showPagination && pagination }
+      { userScores }
+      { showPagination && pagination }
     </div>
 
   return (
@@ -188,7 +191,7 @@ function Scoreboard({
         <Tabs
           classes={{root: tabs}}
           value={tabValue}
-          onChange={(e, value) => setScoreView(1, value)}
+          onChange={(e, value) => setScoreView(value)}
           indicatorColor='secondary'
           textColor='secondary'
           centered
@@ -219,7 +222,7 @@ function Scoreboard({
           <SwipeableViews
             axis='x'
             index={tabValue}
-            onChangeIndex={value => setScoreView(1, value)}
+            onChangeIndex={value => setScoreView(value)}
           >
             <SwipeableTab />
             <SwipeableTab />
@@ -234,7 +237,7 @@ function Scoreboard({
 Scoreboard.propTypes = {
   classes:      object.isRequired,
   history:      object.isRequired,
-  scoreView:    object.isRequired,
+  scoreView:    string.isRequired,
   setScoreView: func.isRequired,
   search:       string.isRequired,
   fetchQuery:   func.isRequired,

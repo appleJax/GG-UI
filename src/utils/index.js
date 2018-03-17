@@ -11,7 +11,7 @@ export const HOURS = 3600000
 
 export const CARDS_PER_PAGE = 12
 
-export const SCORES_PER_PAGE = 50
+export const SCORES_PER_PAGE = 100
 
 export const TWEET_INTERVAL = 6*HOURS / 1000
 

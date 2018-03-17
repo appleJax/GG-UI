@@ -17,11 +17,11 @@ export default ({
 // private functions
 
 function fetchQueryNaive(dispatch, getState) {
-  const { search, users, scoreView } = getState()
+  const { search, users, scoreView: view } = getState()
   const params = {
-    params: { search, view: scoreView.view }
+    params: { search, view }
   }
-  getScores(dispatch, params, scoreView.view, search, users)
+  getScores(dispatch, params, view, search, users)
 }
 
 const delayExecution = true

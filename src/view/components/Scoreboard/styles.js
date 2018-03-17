@@ -16,13 +16,6 @@ export default (theme) => ({
     display: 'flex',
     flexDirection: 'column'
   },
-  emptyScores: {
-    background: '#f8f8f8',
-    color: 'rgba(0, 0, 0, 0.4)',
-    fontWeight: 'bold',
-    padding: '20px 0',
-    textShadow: '1px 1px #fff'
-  },
   loggedInRow: {
     background: '#BBDEFB'
   },

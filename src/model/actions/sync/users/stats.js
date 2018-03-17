@@ -33,24 +33,31 @@ export default ({
     return { type, search }
   },
 
-  setStats: (users, view, search) => {
+  setStats: (page, search, total, users, view) => {
+    const hasUsers = users && users.length > 0
     let type
     if (view === 'weeklyStats')
-      type = (users)
+      type = (hasUsers)
         ? SET_WEEKLY_STATS
         : NOT_FOUND_WEEKLY_STATS
 
     if (view === 'monthlyStats')
-      type = (users)
+      type = (hasUsers)
         ? SET_MONTHLY_STATS
         : NOT_FOUND_MONTHLY_STATS
 
     if (view === 'allTimeStats')
-      type = (users)
+      type = (hasUsers)
         ? SET_ALLTIME_STATS
         : NOT_FOUND_ALLTIME_STATS
 
-    return { type, users, search }
+    return {
+      type,
+      page,
+      search,
+      total,
+      users
+    }
   },
 
   errorFetchingStats: (message, view) => {

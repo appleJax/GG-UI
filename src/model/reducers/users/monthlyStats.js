@@ -14,45 +14,53 @@ const [{
   ERROR_FETCHING_MONTHLY_STATS
 }] = [ payloadStates, actionTypes ]
 
+
 const init = {
   state: INITIAL_STATE,
-  data: [],
+  data: {},
+  page: 1,
+  search: '',
+  total: 0,
   error: null
 }
 
 // users.monthlyStats reducer
 export default (state = init, action) => {
-    switch (action.type) {
-      case FETCHING_MONTHLY_STATS:
-        return {
-          state: FETCHING,
-          data: [],
-          search: action.search,
-          error: null
-        }
+  switch (action.type) {
+    case FETCHING_MONTHLY_STATS:
+      return {
+        ...state,
+        state: FETCHING
+      }
 
-      case SET_MONTHLY_STATS:
-        return {
-          state: RESOLVED,
-          data: action.users,
-          search: action.search,
-          error: null
-        }
+    case SET_MONTHLY_STATS:
+      return {
+        state: RESOLVED,
+        page: action.page,
+        search: action.search,
+        total: action.total,
+        data: {
+          ...state.data,
+          [action.page]: action.users
+        },
+        error: null
+      }
 
-      case NOT_FOUND_MONTHLY_STATS:
-        return {
-          state: NOT_FOUND,
-          data: null
-        }
+    case NOT_FOUND_MONTHLY_STATS:
+      return {
+        ...state,
+        state: NOT_FOUND,
+        error: null
+      }
 
-      case ERROR_FETCHING_MONTHLY_STATS:
-        return {
-          state: ERROR_FETCHING,
-          data: [],
-          error: action.message
-        }
+    case ERROR_FETCHING_MONTHLY_STATS:
+      return {
+        ...state,
+        state: ERROR_FETCHING,
+        error: action.message
+      }
 
-      default:
-        return state
-    }
+    default:
+      return state
   }
+}

@@ -12,7 +12,7 @@ const styles = (theme) => ({
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'center',
-    marginTop: '5px'
+    margin: '5px auto 0'
   },
   moreEllipsis: {
     background: '#fff',

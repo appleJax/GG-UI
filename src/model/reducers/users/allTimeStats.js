@@ -16,7 +16,10 @@ const [{
 
 const init = {
   state: INITIAL_STATE,
-  data: [],
+  data: {},
+  page: 1,
+  search: '',
+  total: 0,
   error: null
 }
 
@@ -25,30 +28,34 @@ export default (state = init, action) => {
     switch (action.type) {
       case FETCHING_ALLTIME_STATS:
         return {
-          state: FETCHING,
-          data: [],
-          search: action.search,
-          error: null
+          ...state,
+          state: FETCHING
         }
 
       case SET_ALLTIME_STATS:
         return {
           state: RESOLVED,
-          data: action.users,
+          page: action.page,
           search: action.search,
+          total: action.total,
+          data: {
+            ...state.data,
+            [action.page]: action.users
+          },
           error: null
         }
 
       case NOT_FOUND_ALLTIME_STATS:
         return {
+          ...state,
           state: NOT_FOUND,
-          data: null
+          error: null
         }
 
       case ERROR_FETCHING_ALLTIME_STATS:
         return {
+          ...state,
           state: ERROR_FETCHING,
-          data: [],
           error: action.message
         }
 

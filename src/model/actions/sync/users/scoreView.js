@@ -4,9 +4,8 @@ const { SET_SCORE_VIEW } = actionTypes
 
 export default ({
 
-  setScoreView: (page, view) => ({
+  setScoreView: (view) => ({
     type: SET_SCORE_VIEW,
-    page,
     view
   })
 

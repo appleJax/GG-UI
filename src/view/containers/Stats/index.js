@@ -46,7 +46,7 @@ class Container extends Component {
     } = this.props
 
     const firstPage = 1
-    fetchStats(firstPage, scoreView.view)
+    fetchStats(firstPage, scoreView)
     if (handle) fetchFocusedUser(handle)
   }
 
@@ -60,7 +60,7 @@ class Container extends Component {
     } = this.props
 
     if (!handle)
-      return <Scoreboard users={users[this.props.scoreView.view]} {...props} />
+      return <Scoreboard users={users[this.props.scoreView]} {...props} />
 
     return <User user={userStats} handleParam={handle} {...props} />
   }
