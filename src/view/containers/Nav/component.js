@@ -43,7 +43,8 @@ function Nav(props) {
     navOptions,
     openNavOptions,
     closeNavOptions,
-    requestLogin
+    requestLogin,
+    setFocusedUser
   } = props
 
   const open = Boolean(navOptions)
@@ -102,7 +103,13 @@ function Nav(props) {
     )
 
     options.unshift(
-      <MenuItem key={4} onClick={() => go(`/stats/${user.handle}`)}>
+      <MenuItem
+        key={4}
+        onClick={() => {
+          setFocusedUser(auth.data)
+          go(`/stats/${user.handle}`)
+        }}
+      >
         <AccountCircle className={profileIcon} /> My Profile
       </MenuItem>
     )

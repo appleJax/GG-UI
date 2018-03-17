@@ -32,8 +32,8 @@ export default (theme) => ({
     flexWrap: 'wrap'
   },
   subHeader: {
-    backgroundColor: theme.palette.primary,
     opacity: '1',
+    marginBottom: '10px',
     padding: '0',
     width: '100%'
   },

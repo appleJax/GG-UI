@@ -25,9 +25,10 @@ const [{
   updateUserDetails
 }, {
   authTransition,
+  closeNavOptions,
   decrementCountdown,
   openNavOptions,
-  closeNavOptions
+  setFocusedUser
 }] = [ asyncActions, syncActions ]
 
 
@@ -108,6 +109,7 @@ const mapDispatchToProps = {
   fetchRecentAnswers,
   fetchStats,
   requestLogout,
+  setFocusedUser,
   updateUserDetails
 }
 
