@@ -1,5 +1,6 @@
 import { getScores } from './common'
 import syncActions   from 'Actions/sync'
+import { SCORES_PER_PAGE } from 'Utils'
 
 const { setScoreView } = syncActions
 
@@ -14,7 +15,7 @@ export default ({
       dispatch(setScoreView(view))
       const { search, users } = getState()
       const params = {
-        params: { search, view }
+        params: { page: users[view].page, search, view, pageSize: SCORES_PER_PAGE }
       }
       getScores(dispatch, params, view, search, users)
     }
