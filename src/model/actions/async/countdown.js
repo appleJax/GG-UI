@@ -20,4 +20,4 @@ function _fetchCountdown(dispatch) {
       }).catch(console.error)
 }
 
-const debouncedFetchCountdown = debounce(_fetchCountdown, 1000)
+const debouncedFetchCountdown = debounce(_fetchCountdown, 500)

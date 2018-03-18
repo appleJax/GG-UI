@@ -45,7 +45,9 @@ class Container extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log('countdown:', nextProps.countdown)
     if (nextProps.countdown % 10 === 0) {
+      console.log('fetching countdown')
       nextProps.fetchCountdown()
       setTimeout(nextProps.fetchRecentAnswers, 4000)
     }

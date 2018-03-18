@@ -56,8 +56,8 @@ export function debounce(fn, wait, isDelayed) {
       timeout = setTimeout(exec, wait)
 
     } else if (!timeout) {
+      timeout = setTimeout(() => timeout = null, wait)
       exec()
-      timeout = setTimeout(() => clearTimeout(timeout), wait)
     }
   }
 }

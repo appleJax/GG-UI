@@ -34,4 +34,4 @@ function _fetchLiveQuestions(dispatch, getState) {
         )
 }
 
-const debouncedFetchLiveQuestions = debounce(_fetchLiveQuestions, 1000)
+const debouncedFetchLiveQuestions = debounce(_fetchLiveQuestions, 500)

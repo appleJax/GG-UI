@@ -33,4 +33,4 @@ function _fetchRecentAnswers(dispatch, getState) {
       )
 }
 
-const debouncedFetchRecentAnswers = debounce(_fetchRecentAnswers, 1000)
+const debouncedFetchRecentAnswers = debounce(_fetchRecentAnswers, 500)
