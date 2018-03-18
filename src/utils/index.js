@@ -62,6 +62,11 @@ export function debounce(fn, wait, isDelayed) {
   }
 }
 
+export const downloadUrl = (title) => {
+  const gameTitle = title.replace(/\s/g, '_')
+  return `https://www.googleapis.com/storage/v1/b/gamegogakuen-jp/o/${gameTitle}.apkg?alt=media`
+}
+
 export const formatGameTitle = (title) =>
   title.replace(/\s(ENG|JP)$/, '')
 
