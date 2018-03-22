@@ -2,6 +2,7 @@ import React          from 'react'
 import { cardStatus } from 'Utils'
 import { withStyles } from 'UI/styles'
 import payloadStates  from 'Constants/PayloadStates'
+import Typography     from 'UI/Typography'
 import AnswerCard     from 'Components/AnswerCard'
 import EmptyMessage   from 'Components/EmptyMessage'
 import Pagination     from 'Components/Pagination'
@@ -20,6 +21,7 @@ const {
 const Deck = ({
   classes: {
     cardList,
+    cardTotals,
     header,
     titleScreen
   },
@@ -29,15 +31,29 @@ const Deck = ({
   fetchingDeck,
   game
 }) => {
-  let cardDisplay, pagination
+  let cardDisplay, deckHeader, pagination
+
   if (!deck || deck.state === FETCHING)
     cardDisplay = <Spinner />
   else if (deck.state === ERROR_FETCHING)
     cardDisplay = <EmptyMessage error={true} />
-  else if (deck.state === NOT_FOUND || !deck.data)
-    cardDisplay = <EmptyMessage message='No answers tweeted yet' />
   else {
     let userAnswers = { correct: [], incorrect: [] }
+
+    deckHeader = (
+      <div className={header}>
+        <img
+          className={titleScreen}
+          height='160'
+          src={`/images/deckTitles/${game.slug}.png`}
+          alt={`${game.fullTitle} Title Screen`}
+        />
+        <Typography variant='title' className={cardTotals}>
+          { deck.data.totalCards || 0 } / { game.totalCards || 0 }
+        </Typography>
+      </div>
+    )
+
     if (auth.state === LOGGED_IN) {
       const incorrect = auth.data.allTimeStats.incorrect
       const correct = auth.data.allTimeStats.correct.map(obj => obj.cardId)
@@ -54,7 +70,11 @@ const Deck = ({
       />
     )
 
-    const totalCards = deck.data.totalCards
+    if (deck.state === NOT_FOUND || !deck.data)
+      cardDisplay = <EmptyMessage message='No answers tweeted yet' />
+
+
+    const totalCards = deck.data.totalCards || 0
     pagination = (
       <Pagination
         itemsPerPage={CARDS_PER_PAGE}
@@ -68,16 +88,7 @@ const Deck = ({
 
   return (
     <>
-      <div className={header}>
-      { game &&
-        <img
-          className={titleScreen}
-          height='160'
-          src={`/images/deckTitles/${game.slug}.png`}
-          alt={`${game.fullTitle} Title Screen`}
-        />
-      }
-      </div>
+      { deckHeader }
       { pagination }
       <div className={cardList}>
         { cardDisplay }

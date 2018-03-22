@@ -3,6 +3,7 @@ import { withRouter }  from 'react-router-dom'
 import { withStyles }  from 'UI/styles'
 import Paper           from 'UI/Paper'
 import Typography      from 'UI/Typography'
+import CheckCircle     from 'Icons/CheckCircle'
 import CloudDownload   from 'Icons/CloudDownload'
 import { downloadUrl } from 'Utils'
 
@@ -17,9 +18,22 @@ const styles = (theme) => ({
       cursor: 'pointer'
     }
   },
+  complete: {
+    color: 'rgba(0,0,0,0.5)',
+    height: '20px',
+    width: '20px'
+  },
+  counts: {
+    color: 'rgba(0,0,0,0.7)',
+    margin: '0 8px'
+  },
   downloadIcon: {
+    alignItems: 'center',
     background: 'rgba(255,255,255,0.1)',
     color: 'rgba(0,0,0,0.5)',
+    display: 'flex',
+    justifyContent: 'center',
+    textDecoration: 'none',
     '&:hover': {
       background: 'rgba(255,255,255,0.2)',
       color: 'rgba(0,0,0,0.8)'
@@ -35,29 +49,45 @@ const styles = (theme) => ({
 const TitleCard = ({
   classes: {
     cardLink,
+    complete,
+    counts,
     downloadIcon,
     label
   },
   game,
   history
-}) =>
-  <Paper
-    className={cardLink}
-  >
-    <div onClick={() => history.push(`decks/${game.slug}`)}>
-      <Typography className={label} variant='subheading'>
-        { game.fullTitle }
-      </Typography>
-      <img
-        height='160'
-        src={`/images/deckTitles/${game.slug}.png`}
-        alt={`${game.fullTitle} Title Screen`}
-      />
-    </div>
-    <a className={downloadIcon} href={downloadUrl(game.fullTitle)} download>
-      <CloudDownload />
-    </a>
-  </Paper>
+}) => {
+  const slug = game.slug || ''
+  const fullTitle = game.fullTitle || ''
+  const tweetedCards = game.tweetedCards || 0
+  const totalCards = game.totalCards || 0
+
+  return (
+    <Paper
+      className={cardLink}
+    >
+      <div onClick={() => history.push(`decks/${slug}`)}>
+        <Typography className={label} variant='subheading'>
+          { fullTitle }
+        </Typography>
+        <img
+          height='160'
+          src={`/images/deckTitles/${slug}.png`}
+          alt={`${fullTitle} Title Screen`}
+        />
+      </div>
+      <a className={downloadIcon} href={downloadUrl(fullTitle)} download>
+        <CloudDownload />
+        <Typography className={counts}>
+          { tweetedCards } / { totalCards }
+        </Typography>
+        { totalCards > 0 && tweetedCards === totalCards &&
+          <CheckCircle className={complete} />
+        }
+      </a>
+    </Paper>
+  )
+}
 
 export default withRouter(
   withStyles(styles)(TitleCard)

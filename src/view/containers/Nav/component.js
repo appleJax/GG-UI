@@ -89,7 +89,7 @@ function Nav(props) {
   if (auth.state === LOGGED_IN) {
     const user = auth.data
     menuIcon = (
-      <div className={loggedInIcon}>
+      <ButtonBase className={loggedInIcon}>
         <Avatar
           alt={user.name}
           classes={{root: avatarRoot}}
@@ -99,7 +99,7 @@ function Nav(props) {
         className={userHandle} variant='caption'>
           {`@${user.handle}`}
         </Typography>
-      </div>
+      </ButtonBase>
     )
 
     options.unshift(
@@ -180,6 +180,7 @@ function Nav(props) {
             aria-owns={open ? 'menu-appbar' : null}
             aria-haspopup='true'
             color='inherit'
+            disableRipple={auth.state === LOGGED_IN}
             onClick={(e) => openNavOptions(e.currentTarget)}
           >
             {  menuIcon }
