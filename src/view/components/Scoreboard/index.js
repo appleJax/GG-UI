@@ -163,14 +163,14 @@ function Scoreboard({
       />
     </div>
   )
-  const showPagination = users.total > SCORES_PER_PAGE
 
+  const showPagination = users.total > SCORES_PER_PAGE
 
   const SwipeableTab = () =>
     <div className={tableBody}>
       { showPagination && pagination }
       { userScores }
-      { showPagination && pagination }
+      { pagination }
     </div>
 
   return (

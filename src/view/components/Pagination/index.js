@@ -101,7 +101,7 @@ function Pagination({
 
   let pageButtons = [ previousPage ]
 
-  if (numPages <= 4) {
+  if (numPages <= 5) {
     for (let i = 1; i <= numPages; i++)
       pageButtons.push(numberedPage(i))
 
