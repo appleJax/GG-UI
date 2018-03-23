@@ -17,7 +17,7 @@ const [{
 
 
 export default (state = {}, action) => {
-  const oldDeck = state[action.game] || {}
+  const oldDeck = state[action.game] || { data: {} }
   const oldCards = oldDeck.data || {}
 
   switch (action.type) {

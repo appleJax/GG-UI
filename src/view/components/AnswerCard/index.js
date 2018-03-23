@@ -27,7 +27,7 @@ const AnswerCard = ({
     cardId,
     game,
     questionText,
-    mediaUrl
+    mediaUrls
   },
   status
 }) => (
@@ -48,11 +48,14 @@ const AnswerCard = ({
       <Typography className={gameTitle} variant='body1'>
         { formatGameTitle(game) }
       </Typography>
-      <img
-        height='160'
-        src={mediaUrl.image}
-        alt={mediaUrl.altText}
-      />
+      { mediaUrls.map(mediaUrl =>
+          <img
+            height='160'
+            src={mediaUrl.image}
+            alt={mediaUrl.altText}
+          />
+        )
+      }
       <Typography className={cardAnswer} variant='caption'>
         { noWrap(answers) }
       </Typography>

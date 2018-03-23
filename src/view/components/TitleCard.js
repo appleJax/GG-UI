@@ -43,6 +43,9 @@ const styles = (theme) => ({
     color: 'white',
     padding: '5px',
     textShadow: '1px 1px 2px #1F3195'
+  },
+  titleImg: {
+    maxHeight: '180px'
   }
 })
 
@@ -52,7 +55,8 @@ const TitleCard = ({
     complete,
     counts,
     downloadIcon,
-    label
+    label,
+    titleImg
   },
   game,
   history
@@ -71,7 +75,7 @@ const TitleCard = ({
           { fullTitle }
         </Typography>
         <img
-          height='160'
+          className={titleImg}
           src={`/images/deckTitles/${slug}.png`}
           alt={`${fullTitle} Title Screen`}
         />

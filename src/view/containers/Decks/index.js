@@ -54,12 +54,18 @@ class Container extends Component {
       ...props
     } = this.props
 
+    const dummyGame = {
+      fullTitle: '',
+      slug: '',
+      totalCards: 0
+    }
+
     if (game) {
       let titleScreen = null
       if (deckTitles.state === RESOLVED)
         titleScreen = deckTitles.data.find(title => title.slug === game)
 
-      return <Deck deck={decks[game]} game={titleScreen} {...props} />
+      return <Deck deck={decks[game]} game={titleScreen || dummyGame} {...props} />
     }
 
     return <DeckTitles deckTitles={deckTitles} {...props} />

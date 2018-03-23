@@ -21,7 +21,7 @@ const styles = (theme) => ({
     display: 'flex',
     fontFamily: 'Roboto',
     justifyContent: 'center',
-    marginTop: '8px',
+    margin: '8px 0',
     padding: '5px 10px 5px 8px',
     width: 'fit-content'
   },

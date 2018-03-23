@@ -32,35 +32,38 @@ const Deck = ({
   game
 }) => {
   let cardDisplay, deckHeader, pagination
+  const tweetedCards = deck && deck.data && deck.data.totalCards || 0
+
+  deckHeader = (
+    <div className={header}>
+      <img
+        className={titleScreen}
+        height='160'
+        src={`/images/deckTitles/${game.slug}.png`}
+        alt={`${game.fullTitle} Title Screen`}
+      />
+      <Typography variant='title' className={cardTotals}>
+        { tweetedCards } / { game.totalCards }
+      </Typography>
+    </div>
+  )
+
+  let userAnswers = { correct: [], incorrect: [] }
+  if (auth.state === LOGGED_IN) {
+    const incorrect = auth.data.allTimeStats.incorrect
+    const correct = auth.data.allTimeStats.correct.map(obj => obj.cardId)
+    userAnswers = { correct, incorrect }
+  }
+
+  const deckPage = deck && deck.data && deck.data.deckPage || 1
 
   if (!deck || deck.state === FETCHING)
     cardDisplay = <Spinner />
   else if (deck.state === ERROR_FETCHING)
     cardDisplay = <EmptyMessage error={true} />
+  else if (deck.state === NOT_FOUND || !deck.data)
+    cardDisplay = <EmptyMessage message='No answers tweeted yet' />
   else {
-    let userAnswers = { correct: [], incorrect: [] }
-
-    deckHeader = (
-      <div className={header}>
-        <img
-          className={titleScreen}
-          height='160'
-          src={`/images/deckTitles/${game.slug}.png`}
-          alt={`${game.fullTitle} Title Screen`}
-        />
-        <Typography variant='title' className={cardTotals}>
-          { deck.data.totalCards || 0 } / { game.totalCards || 0 }
-        </Typography>
-      </div>
-    )
-
-    if (auth.state === LOGGED_IN) {
-      const incorrect = auth.data.allTimeStats.incorrect
-      const correct = auth.data.allTimeStats.correct.map(obj => obj.cardId)
-      userAnswers = { correct, incorrect }
-    }
-
-    const deckPage = deck.data.deckPage || 1
     const cards = deck.data[deckPage] || []
     cardDisplay = cards.map((card, i) =>
       <AnswerCard
@@ -69,22 +72,18 @@ const Deck = ({
         key={i}
       />
     )
-
-    if (deck.state === NOT_FOUND || !deck.data)
-      cardDisplay = <EmptyMessage message='No answers tweeted yet' />
-
-
-    const totalCards = deck.data.totalCards || 0
-    pagination = (
-      <Pagination
-        itemsPerPage={CARDS_PER_PAGE}
-        fetchData={ (page) => fetchDeck(page, game.slug) }
-        numItems={totalCards}
-        page={deckPage}
-        scrollTop={283}
-      />
-    )
   }
+
+
+  pagination = (
+    <Pagination
+      itemsPerPage={CARDS_PER_PAGE}
+      fetchData={ (page) => fetchDeck(page, game.slug) }
+      numItems={tweetedCards}
+      page={deckPage}
+      scrollTop={283}
+    />
+  )
 
   return (
     <>
