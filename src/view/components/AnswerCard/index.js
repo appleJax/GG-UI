@@ -48,8 +48,9 @@ const AnswerCard = ({
       <Typography className={gameTitle} variant='body1'>
         { formatGameTitle(game) }
       </Typography>
-      { mediaUrls.map(mediaUrl =>
+      { mediaUrls.map((mediaUrl, i) =>
           <img
+            key={i}
             height='160'
             src={mediaUrl.image}
             alt={mediaUrl.altText}

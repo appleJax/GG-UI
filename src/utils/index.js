@@ -64,6 +64,7 @@ export function debounce(fn, wait, isDelayed) {
 
 export const downloadUrl = (title) => {
   const gameTitle = title.replace(/\s/g, '_')
+                         .replace(/'/g, '')
   return `https://www.googleapis.com/storage/v1/b/gamegogakuen-jp/o/${gameTitle}.apkg?alt=media`
 }
 
