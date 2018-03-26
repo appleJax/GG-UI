@@ -12,6 +12,9 @@
     "test": "jest --watch",
     "testOnce": "jest"
   },
+  "engines": {
+    "node": "^9.5.0"
+  },
   "dependencies": {
     "@babel/polyfill": "^7.0.0-beta.40",
     "axios": "^0.17.1",
