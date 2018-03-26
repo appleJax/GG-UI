@@ -35,6 +35,7 @@ export default (theme) => ({
     textAlign: 'center',
     width: '240px'
   },
+  imageDiv,
   questionCard: {
     alignItems: 'center',
     background: 'rgb(51,82,225)',
