@@ -45,7 +45,6 @@ export default (theme) => ({
   timeLeftText: {
     background: 'rgba(255,255,255,0.2)',
     color: 'rgb(0,30,170)',
-    marginTop: '-4px',
     padding: '3px 8px',
     textShadow: '1px 1px rgba(255,255,255,0.2)'
   }
