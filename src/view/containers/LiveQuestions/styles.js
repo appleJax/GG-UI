@@ -1,5 +1,5 @@
 import { classes }   from 'Styles/common'
-const { cardList } = classes
+const { cardList, imageDiv } = classes
 
 export default (theme) => ({
   answered: {
@@ -19,13 +19,6 @@ export default (theme) => ({
     alignItems: 'center',
     display: 'flex',
     flexDirection: 'column'
-  },
-  imageDiv: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    [theme.breakpoints.only('xs')]: {
-      flexDirection: 'column'
-    }
   },
   liveTitle: {
     background: 'rgba(51,82,225,0.1)',
@@ -51,6 +44,7 @@ export default (theme) => ({
   timeLeftText: {
     background: 'rgba(255,255,255,0.2)',
     color: 'rgb(0,30,170)',
+    marginTop: '-4px',
     padding: '3px 8px',
     textShadow: '1px 1px rgba(255,255,255,0.2)'
   }

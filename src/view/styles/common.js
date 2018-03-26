@@ -1,3 +1,6 @@
+import theme from './muiTheme'
+
+
 export const navHeight = '88px'
 
 export const classes = {
@@ -6,5 +9,12 @@ export const classes = {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center'
+  },
+  imageDiv: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    [theme.breakpoints.only('xs')]: {
+      flexDirection: 'column'
+    }
   }
 }

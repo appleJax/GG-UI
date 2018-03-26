@@ -82,8 +82,10 @@ export default (theme) => ({
   },
   tableRow: {
     display: 'flex',
+    flexDirection: 'row',
+    maxWidth: '100vw',
     minHeight: '82px',
-    flexDirection: 'row'
+    overflow: 'hidden'
   },
   tabs: {
     background: theme.palette.primary.light,

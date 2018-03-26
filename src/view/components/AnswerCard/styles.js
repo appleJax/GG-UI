@@ -1,11 +1,15 @@
+import { classes } from 'Styles/common'
+const { imageDiv } = classes
+
 export default (theme) => ({
+  imageDiv,
   cardAnswer: {
     background: 'rgba(255,255,255,0.2)',
     color: 'rgba(0,0,0,0.5)',
     display: 'flex',
     flexWrap: 'wrap',
-    marginTop: '-5px',
-    padding: '5px'
+    padding: '5px',
+    width: '100%'
   },
   cardHeader: {
     color: 'white',
@@ -17,7 +21,10 @@ export default (theme) => ({
     textDecoration: 'none'
   },
   imgCard: {
+    alignItems: 'center',
     background: 'rgb(90,125,139)',
+    display: 'flex',
+    flexDirection: 'column',
     width: '240px'
   },
   gameTitle: {

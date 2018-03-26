@@ -88,7 +88,6 @@ function LiveQuestions({
                 <img
                   key={`${i}-${innerIndex}`}
                   height='160'
-                  width='240'
                   src={mediaUrl.image}
                   alt={mediaUrl.altText}
                 />
