@@ -1,4 +1,5 @@
 **/.DS_Store
+**/*.log
 .env.js
 app.yaml
 node_modules
