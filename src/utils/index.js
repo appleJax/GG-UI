@@ -86,12 +86,11 @@ export function formatHMS(totalSeconds) {
 }
 
 export const formatQuestionText = (questionText) =>
-  questionText
-    .split('\n')
-    .slice(0, -2)
-    .map((line, i) =>
-      <p style={{margin: '0'}} key={i} >{line}</p>
-    )
+  questionText.split('\n')
+              .slice(0, -2)
+              .map((line, i) =>
+                <p style={{margin: '0'}} key={i} >{line}</p>
+              )
 
 export function formatRatio({ correct, attempts, totalPossible }, total) {
   if (Array.isArray(correct))
