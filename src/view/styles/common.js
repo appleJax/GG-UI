@@ -13,6 +13,7 @@ export const classes = {
   imageDiv: {
     display: 'flex',
     flexWrap: 'wrap',
+    justifyContent: 'center',
     [theme.breakpoints.only('xs')]: {
       flexDirection: 'column'
     }
