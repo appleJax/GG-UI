@@ -1,13 +1,14 @@
 import React          from 'react'
 import classNames     from 'classnames'
 import { object }     from 'prop-types'
-import { noWrap }     from 'Utils'
 import { withStyles } from 'UI/styles'
 import styles         from './styles'
 import Paper          from 'UI/Paper'
 import Typography     from 'UI/Typography'
 import {
+  formatAnswers,
   formatGameTitle,
+  pluralize,
   tweetLink
 }  from 'Utils'
 
@@ -61,7 +62,7 @@ const AnswerCard = ({
         }
       </div>
       <Typography className={cardAnswer} variant='caption'>
-        { noWrap(answers) }
+        { pluralize(answers, 'Answer') }: { formatAnswers(answers) }
       </Typography>
     </Paper>
   </a>

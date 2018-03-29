@@ -133,22 +133,23 @@ export function getTimeTilNextTweet() {
   return Math.floor(millisUntilTweet / 1000)
 }
 
-export const noWrap = (answers) => {
-  const answerArray = answers.split(',')
-  if (answerArray.length < 2)
-    return answers
-
-  return answerArray.map((answer, i, origArr) =>
+export const formatAnswers = (answers) => {
+  return answers.map((answer, i, origArr) =>
     <span
-      style={{ whiteSpace: 'nowrap'}}
+      style={{ marginLeft: '5px', whiteSpace: 'nowrap'}}
       key={i}
     >{
       (i+1 === origArr.length)
-        ?    answer
-        : `${answer},`
+        ? answer
+        : answer + ','
     }</span>
   )
 }
+
+export const pluralize = (arr, word) =>
+  arr.length < 2
+    ? word
+    : word + 's'
 
 export function tryCatch(promise) {
   return promise
