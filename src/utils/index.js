@@ -68,6 +68,19 @@ export const downloadUrl = (title) => {
   return `https://www.googleapis.com/storage/v1/b/gamegogakuen-jp/o/${gameTitle}.apkg?alt=media`
 }
 
+export const formatAnswers = (answers) => {
+  return answers.map((answer, i, origArr) =>
+    <span
+      style={{ marginLeft: '5px', whiteSpace: 'nowrap'}}
+      key={i}
+    >{
+      (i+1 === origArr.length)
+        ? answer
+        : answer + ','
+    }</span>
+  )
+}
+
 export const formatGameTitle = (title) =>
   title.replace(/\s(ENG|JP)$/, '')
 
@@ -87,7 +100,7 @@ export function formatHMS(totalSeconds) {
 
 export const formatQuestionText = (questionText) =>
   questionText.split('\n')
-              .slice(0, -2)
+              .slice(0, -3)
               .map((line, i) =>
                 <p style={{margin: '0'}} key={i} >{line}</p>
               )
@@ -132,23 +145,15 @@ export function getTimeTilNextTweet() {
   return Math.floor(millisUntilTweet / 1000)
 }
 
-export const formatAnswers = (answers) => {
-  return answers.map((answer, i, origArr) =>
-    <span
-      style={{ marginLeft: '5px', whiteSpace: 'nowrap'}}
-      key={i}
-    >{
-      (i+1 === origArr.length)
-        ? answer
-        : answer + ','
-    }</span>
-  )
-}
-
 export const pluralize = (arr, word) =>
   arr.length < 2
     ? word
     : word + 's'
+
+export const questionLink = (tweetId) =>
+  'https://twitter.com/' +
+  `${TWITTER_ACCOUNT}/status/${tweetId}` +
+  '?ref_src=twcamp%5Eshare%7Ctwsrc%5Em5%7Ctwgr%5Eemail%7Ctwcon%5E7046%7Ctwterm%5E1'
 
 export function tryCatch(promise) {
   return promise
@@ -158,11 +163,6 @@ export function tryCatch(promise) {
       return []
     })
 }
-
-export const questionLink = (tweetId) =>
-  'https://twitter.com/' +
-  `${TWITTER_ACCOUNT}/status/${tweetId}` +
-  '?ref_src=twcamp%5Eshare%7Ctwsrc%5Em5%7Ctwgr%5Eemail%7Ctwcon%5E7046%7Ctwterm%5E1'
 
 export const tweetLink = (cardId) =>
   'https://twitter.com' +

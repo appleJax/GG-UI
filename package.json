@@ -1,5 +1,5 @@
 {
-  "name": "GameGogakuen-UI",
+  "name": "gamegogakuen-ui",
   "version": "1.0.0",
   "description": "UI for Viewing GameGogakuen Stats",
   "author": "appleJax <appleJax@users.noreply.github.com>",
@@ -39,7 +39,8 @@
     "@babel/plugin-transform-react-jsx": "^7.0.0-beta.40",
     "@babel/preset-env": "^7.0.0-beta.40",
     "@babel/preset-react": "^7.0.0-beta.40",
-    "babel-core": "^7.0.0-beta.3",
+    "babel-core": "^7.0.0-0",
+    "babel-jest": "^22.4.3",
     "babel-loader": "8.0.0-beta.0",
     "classnames": "^2.2.5",
     "clean-webpack-plugin": "^0.1.18",

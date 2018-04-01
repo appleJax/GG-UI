@@ -1,4 +1,4 @@
-import { getCardIds } from 'Utils'
+const getCardIds = require('Utils').getCardIds
 
 const focusedUser = {
   cardView: {
@@ -7,9 +7,6 @@ const focusedUser = {
   correct: {
     state: 'RESOLVED',
     data: [
-      { cardId: '1', points: 24 },
-      { cardId: '2', points: 12 },
-      { cardId: '3', points: 4  }
     ]
   },
   incorrect: {
@@ -27,6 +24,18 @@ const focusedUser = {
       '8',
       '9'
     ]
+  },
+  stats: {
+    data: {
+      allTimeStats: {
+        correct: [
+          { cardId: '1', points: 24 },
+          { cardId: '2', points: 12 },
+          { cardId: '3', points: 4  }
+        ],
+        incorrect: ['4', '5']
+      }
+    }
   }
 }
 
