@@ -49,6 +49,8 @@ export default (state = init, action) => {
     case NOT_FOUND_MONTHLY_STATS:
       return {
         ...state,
+        page: 1,
+        total: 0,
         state: NOT_FOUND,
         error: null
       }
@@ -56,6 +58,8 @@ export default (state = init, action) => {
     case ERROR_FETCHING_MONTHLY_STATS:
       return {
         ...state,
+        page: 1,
+        total: 0,
         state: ERROR_FETCHING,
         error: action.message
       }
