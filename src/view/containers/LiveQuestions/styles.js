@@ -8,7 +8,11 @@ export default (theme) => ({
   },
   cardList,
   cardLink: {
-    margin: '10px 5px',
+    position: 'absolute',
+    top: '0',
+    bottom: '0',
+    left: '0',
+    right: '0',
     textDecoration: 'none'
   },
   captionText: {
@@ -40,7 +44,16 @@ export default (theme) => ({
     alignItems: 'center',
     background: 'rgb(51,82,225)',
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    margin: '10px 5px',
+    position: 'relative'
+  },
+  submitAnswerBtn: {
+    background: 'rgba(0,0,0,0.1)',
+    color: 'rgba(255,255,255,0.5)',
+    '&:hover': {
+      background: 'rgba(0,0,0,0.2)'
+    }
   },
   timeLeftText: {
     background: 'rgba(255,255,255,0.2)',

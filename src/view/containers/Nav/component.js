@@ -14,6 +14,9 @@ import IconButton         from 'UI/IconButton'
 import Menu, { MenuItem } from 'UI/Menu'
 import Toolbar            from 'UI/Toolbar'
 import Typography         from 'UI/Typography'
+import {
+  alreadyFollowing
+} from 'Utils'
 
 const { API_URL } = process.env
 
@@ -162,19 +165,21 @@ function Nav(props) {
             >
               GameGogakuen
             </ButtonBase>
-            <Button
-              className={followButton}
-              href='https://twitter.com/intent/follow?screen_name=devtest222'
-              target='_blank'
-              variant='fab'
-            >
-              <img
-                alt='Follow @GameGogakuen'
-                height='45'
-                width='45'
-                src='/images/twitter/Twitter_Logo_Blue.svg'
-              />
-            </Button>
+            { !alreadyFollowing(auth) &&
+              <Button
+                className={followButton}
+                href='https://twitter.com/intent/follow?screen_name=devtest222'
+                target='_blank'
+                variant='fab'
+              >
+                <img
+                  alt='Follow @GameGogakuen'
+                  height='45'
+                  width='45'
+                  src='/images/twitter/Twitter_Logo_Blue.svg'
+                />
+              </Button>
+            }
           </div>
           <IconButton
             aria-owns={open ? 'menu-appbar' : null}

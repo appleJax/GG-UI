@@ -2,12 +2,14 @@ import React         from 'react'
 import { object }    from 'prop-types'
 import payloadStates from 'Constants/PayloadStates'
 import CheckCircle   from 'Icons/CheckCircle'
+import Button        from 'UI/Button'
 import Paper         from 'UI/Paper'
 import Typography    from 'UI/Typography'
 import EmptyMessage  from 'Components/EmptyMessage'
 import Spinner       from 'Components/Spinner'
 import {
   calculateTimeRemaining,
+  dmLink,
   formatGameTitle,
   formatQuestionText,
   questionLink,
@@ -32,9 +34,10 @@ function LiveQuestions({
     container,
     imageDiv,
     liveTitle,
-    timeLeftText,
     gameTitle,
-    questionCard
+    questionCard,
+    submitAnswerBtn,
+    timeLeftText
   },
   auth,
   liveQuestions
@@ -53,6 +56,7 @@ function LiveQuestions({
     cardDisplay = liveCards.map((question, i) => {
       const {
         alreadyAnswered,
+        cardId,
         game,
         mediaUrls,
         questionId,
@@ -68,15 +72,16 @@ function LiveQuestions({
 
       const timeRemaining = calculateTimeRemaining(questionPostedAt)
       return (
-        <a key={i}
-           className={cardLink}
-           href={questionLink(questionId)}
-           target='_blank'
-        >
           <Paper
+            key={i}
             className={ userAnswered ? answered : '' }
             classes={{root: questionCard}}
           >
+            <a
+              className={cardLink}
+              href={questionLink(questionId)}
+              target='_blank'
+            ></a>
             <Typography className={captionText} color='secondary' variant='body2'>
               { formatQuestionText(questionText) }
             </Typography>
@@ -93,11 +98,21 @@ function LiveQuestions({
                 />
             )}
             </div>
+            { !userAnswered &&
+              <Button
+                className={submitAnswerBtn}
+                href={dmLink(cardId)}
+                size='small'
+                target='_blank'
+                variant='flat'
+              >
+                Submit Answer
+              </Button>
+            }
             <Typography className={timeLeftText} variant='caption'>
               Time Remaining: {timeRemaining}
             </Typography>
           </Paper>
-        </a>
       )
     })
 

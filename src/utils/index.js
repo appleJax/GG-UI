@@ -1,7 +1,15 @@
 import React from 'react'
 import axios from 'axios'
+import PayloadStates from 'Constants/PayloadStates'
 
-const { API_URL, TWITTER_ACCOUNT } = process.env
+const { LOGGED_IN } = PayloadStates
+
+const {
+  API_URL,
+  DM_URL,
+  TWITTER_ACCOUNT,
+  TWITTER_ID
+} = process.env
 
 const axiosObject = axios.create({
   baseURL: API_URL
@@ -22,6 +30,10 @@ export const ajax = {
   post(url, config) {
     return axiosObject.post(url, config).then(({data}) => data)
   }
+}
+
+export function alreadyFollowing(auth) {
+  return auth.state === LOGGED_IN && auth.data.following.find(id => id === TWITTER_ID)
 }
 
 export function calculateTimeRemaining(time) {
@@ -61,6 +73,9 @@ export function debounce(fn, wait, isDelayed) {
     }
   }
 }
+
+export const dmLink = (cardId) =>
+  `${DM_URL}${cardId}%20`
 
 export const downloadUrl = (title) => {
   const gameTitle = title.replace(/\s/g, '_')
