@@ -28,6 +28,7 @@ const {
 function LiveQuestions({
   classes: {
     answered,
+    answeredIcon,
     cardList,
     cardLink,
     captionText,
@@ -70,6 +71,35 @@ function LiveQuestions({
         userHasAnswered(auth.data)(question)
       ) userAnswered = true
 
+      const promptToAnswer = (
+        <Button
+          className={submitAnswerBtn}
+          href={dmLink(cardId)}
+          size='small'
+          target='_blank'
+          variant='flat'
+        >
+          Submit Answer
+        </Button>
+      )
+
+      const didAnswer = (
+        <Button
+          className={submitAnswerBtn}
+          size='small'
+          variant='flat'
+          disabled
+        >
+          <CheckCircle className={answeredIcon} />
+          Answered
+        </Button>
+      )
+
+      const answerButton = userAnswered
+        ? didAnswer
+        : promptToAnswer
+        
+
       const timeRemaining = calculateTimeRemaining(questionPostedAt)
       return (
           <Paper
@@ -98,17 +128,7 @@ function LiveQuestions({
                 />
             )}
             </div>
-            { !userAnswered &&
-              <Button
-                className={submitAnswerBtn}
-                href={dmLink(cardId)}
-                size='small'
-                target='_blank'
-                variant='flat'
-              >
-                Submit Answer
-              </Button>
-            }
+            { answerButton }
             <Typography className={timeLeftText} variant='caption'>
               Time Remaining: {timeRemaining}
             </Typography>

@@ -6,6 +6,11 @@ export default (theme) => ({
     boxShadow: 'none',
     opacity: '0.6'
   },
+  answeredIcon: {
+    height: '15px',
+    marginRight: '5px',
+    width: '15px'
+  },
   cardList,
   cardLink: {
     position: 'absolute',
