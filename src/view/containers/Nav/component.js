@@ -92,7 +92,7 @@ function Nav(props) {
   if (auth.state === LOGGED_IN) {
     const user = auth.data
     menuIcon = (
-      <ButtonBase className={loggedInIcon}>
+      <div className={loggedInIcon}>
         <Avatar
           alt={user.name}
           classes={{root: avatarRoot}}
@@ -102,7 +102,7 @@ function Nav(props) {
         className={userHandle} variant='caption'>
           {`@${user.handle}`}
         </Typography>
-      </ButtonBase>
+      </div>
     )
 
     options.unshift(
