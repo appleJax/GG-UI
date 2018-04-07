@@ -6,7 +6,10 @@ import Paper           from 'UI/Paper'
 import Typography      from 'UI/Typography'
 import CheckCircle     from 'Icons/CheckCircle'
 import CloudDownload   from 'Icons/CloudDownload'
-import { downloadUrl } from 'Utils'
+import {
+  downloadUrl,
+  formatGameTitle
+} from 'Utils'
 
 const styles = (theme) => ({
   cardLink: {
@@ -77,7 +80,7 @@ const TitleCard = ({
     >
       <div onClick={ goToDeck }>
         <Typography className={label} variant='subheading'>
-          { fullTitle }
+          { formatGameTitle(fullTitle) }
         </Typography>
         <img
           className={titleImg}
