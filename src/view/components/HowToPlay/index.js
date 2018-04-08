@@ -82,7 +82,7 @@ const HowToPlay = ({
       </Typography>
       <Typography className={text} variant='subheading'>
         <p>
-          To answer a question, click the "Submit Answer" link in the bot's question tweet or on the <a className={link} onClick={() => history.push('/')}><span className={nowrap}>Live Questions</span></a> page here at the GameGogakuen site.
+          To answer a question, click the "Submit Answer" link in the question tweet or on the <a className={link} onClick={() => history.push('/')}><span className={nowrap}>Live Questions</span></a> page here at the GameGogakuen site.
         </p>
         <p>
           If you are logged in to Twitter, this will populate a direct message (DM) to the bot with the question's ID (QID...) and a separating space, leaving you to simply type your answer and hit Send.
@@ -105,7 +105,7 @@ const HowToPlay = ({
           Any DMs received for a QID after that question's answer has been tweeted will also be ignored.
         </p>
         <p>
-          However, since tweet replies will not be counted as answers, feel free to use a question's reply thread to discuss it before making your official guess via DM.
+          Since tweet replies will not be counted as answers, feel free to use a question's reply thread to discuss it before making your official guess via DM.
         </p>
       </Typography>
       <Typography className={heading} variant='headline'>
