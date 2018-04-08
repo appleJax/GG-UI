@@ -1,5 +1,4 @@
 import React              from 'react'
-import { func, object }   from 'prop-types'
 import payloadStates      from 'Constants/PayloadStates'
 import classNames         from 'classnames'
 import Loading            from 'Components/Loading'
@@ -10,10 +9,13 @@ import Avatar             from 'UI/Avatar'
 import Button             from 'UI/Button'
 import ButtonBase         from 'UI/ButtonBase'
 import Divider            from 'UI/Divider'
+import Drawer             from 'UI/Drawer'
 import IconButton         from 'UI/IconButton'
+import List               from 'UI/List'
 import Menu, { MenuItem } from 'UI/Menu'
 import Toolbar            from 'UI/Toolbar'
 import Typography         from 'UI/Typography'
+import { bool, func, object } from 'prop-types'
 import {
   alreadyFollowing
 } from 'Utils'
@@ -43,54 +45,87 @@ function Nav(props) {
     history,
     location,
     requestLogout,
-    navOptions,
+    isNavOptionsOpen,
     openNavOptions,
     closeNavOptions,
     requestLogin,
     setFocusedUser
   } = props
 
-  const open = Boolean(navOptions)
   const go = (path) => {
     closeNavOptions()
     history.push(path)
   }
+  const user = auth.data
 
-  const options = []
-
-  if (location.pathname !== '/')
-    options.push(
+  const menuItems = (
+    <List>
+      { auth.state === LOGGED_IN
+        ? (
+          <MenuItem
+            disabled={location.pathname === `/stats/${user.handle}`}
+            onClick={() => {
+              setFocusedUser(auth.data)
+              go(`/stats/${user.handle}`)
+            }}
+          >
+            <AccountCircle className={profileIcon} /> My Profile
+          </MenuItem>
+        ) 
+        : (
+          <a href={`${API_URL}/login`}
+             className={link}
+          >
+            <MenuItem
+              onClick={() => {
+                closeNavOptions()
+                authTransition()
+              }}
+            >
+              <img className={signInIcon} src={'/images/twitter/Twitter_Logo_Blue.svg'} />
+              Sign In
+            </MenuItem>
+          </a>
+        )
+      }
       <MenuItem
-        key={1}
+        disabled={location.pathname === '/'}
         onClick={() => go('/')}
       >
         Live Questions
       </MenuItem>
-    )
-
-  if (location.pathname !== '/stats')
-    options.push(
       <MenuItem
-        key={2}
+        disabled={location.pathname === '/stats'}
         onClick={() => go('/stats')}
       >
         Leaderboard
       </MenuItem>
-    )
-
-  if (location.pathname !== '/decks')
-    options.push(
       <MenuItem
-        key={3}
+        disabled={location.pathname === '/decks'}
         onClick={() => go('/decks')}
       >
         Flashcard Decks
       </MenuItem>
-    )
+      <MenuItem
+        disabled={location.pathname === '/how-to-play'}
+        onClick={() => go('/how-to-play')}
+      >
+        How to Play
+      </MenuItem>
+      { auth.state === LOGGED_IN &&
+        <>
+        <Divider className={divider} />
+        <MenuItem onClick={() => requestLogout(history)}>
+          Sign Out
+        </MenuItem>
+        </>
+      }
+    </List>
+  )
 
-  let menuIcon
+
+  let menuIcon = <MenuIcon />
   if (auth.state === LOGGED_IN) {
-    const user = auth.data
     menuIcon = (
       <div className={loggedInIcon}>
         <Avatar
@@ -104,49 +139,6 @@ function Nav(props) {
         </Typography>
       </div>
     )
-
-    options.unshift(
-      <MenuItem
-        key={4}
-        onClick={() => {
-          setFocusedUser(auth.data)
-          go(`/stats/${user.handle}`)
-        }}
-      >
-        <AccountCircle className={profileIcon} /> My Profile
-      </MenuItem>
-    )
-
-    options.push(
-      <Divider key={5} className={divider} />
-    )
-
-    options.push(
-      <MenuItem key={6} onClick={() => requestLogout(history)}>
-        Sign Out
-      </MenuItem>
-    )
-
-  } else {
-    menuIcon = <MenuIcon />
-
-    options.unshift(
-      <a
-        key={7}
-        href={`${API_URL}/login`}
-        className={link}
-      >
-        <MenuItem
-          onClick={() => {
-            closeNavOptions()
-            authTransition()
-          }}
-        >
-          <img className={signInIcon} src={'/images/twitter/Twitter_Logo_Blue.svg'} />
-          Sign In
-        </MenuItem>
-      </a>
-      )
   }
 
   return (
@@ -182,30 +174,22 @@ function Nav(props) {
             }
           </div>
           <IconButton
-            aria-owns={open ? 'menu-appbar' : null}
+            aria-owns={isNavOptionsOpen ? 'menu-appbar' : null}
             aria-haspopup='true'
             color='inherit'
             disableRipple={auth.state === LOGGED_IN}
-            onClick={(e) => openNavOptions(e.currentTarget)}
+            onClick={openNavOptions}
           >
             {  menuIcon }
           </IconButton>
-          <Menu
+          <Drawer
             id='menu-appbar'
-            anchorEl={navOptions}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            open={open}
+            anchor='right'
+            open={isNavOptionsOpen}
             onClose={closeNavOptions}
           >
-            {options}
-          </Menu>
+            { menuItems }
+          </Drawer>
         </div>
       </AppBar>
     </div>
@@ -213,12 +197,12 @@ function Nav(props) {
 }
 
 Nav.propTypes = {
-  classes:         object.isRequired,
-  history:         object.isRequired,
-  location:        object.isRequired,
-  navOptions:      object,
-  openNavOptions:  func.isRequired,
-  closeNavOptions: func.isRequired
+  classes:          object.isRequired,
+  history:          object.isRequired,
+  location:         object.isRequired,
+  isNavOptionsOpen: bool.isRequired,
+  openNavOptions:   func.isRequired,
+  closeNavOptions:  func.isRequired
 }
 
 export default Nav

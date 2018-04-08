@@ -8,9 +8,8 @@ const {
 
 export default ({
 
-  openNavOptions: (anchorElement) => ({
-    type: OPEN_NAV_OPTIONS,
-    anchorElement
+  openNavOptions: () => ({
+    type: OPEN_NAV_OPTIONS
   }),
 
   closeNavOptions: () => ({

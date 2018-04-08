@@ -85,14 +85,14 @@ const mapStateToProps = ({
   auth,
   countdown,
   focusedUser,
-  navOptions,
+  isNavOptionsOpen,
   recentAnswers,
   users
 }) => ({
   auth,
   countdown,
   focusedUser,
-  navOptions,
+  isNavOptionsOpen,
   recentAnswers,
   users
 })

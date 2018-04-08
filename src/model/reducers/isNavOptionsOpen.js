@@ -3,13 +3,13 @@ import actionTypes from 'Constants/ActionTypes'
 const { OPEN_NAV_OPTIONS, CLOSE_NAV_OPTIONS } = actionTypes
 
 
-export default (state = null, action) => {
+export default (state = false, action) => {
     switch (action.type) {
       case OPEN_NAV_OPTIONS:
-        return action.anchorElement
+        return true
 
       case CLOSE_NAV_OPTIONS:
-        return null
+        return false
 
       default:
         return state

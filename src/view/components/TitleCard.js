@@ -90,14 +90,14 @@ const TitleCard = ({
       </div>
       <a className={classNames(
            cardFooter,
-           { [downloadable]: tweetedCards > 0 }
+           { [downloadable]: tweetedCards < 0 }
          )}
-         href={ tweetedCards > 0 ? downloadUrl(fullTitle) : undefined }
-         onClick={ tweetedCards === 0 ? goToDeck : undefined }
+         href={ tweetedCards < 0 ? downloadUrl(fullTitle) : undefined }
+         onClick={ tweetedCards >= 0 ? goToDeck : undefined }
          download
          disabled={ tweetedCards === 0 }
       >
-        { tweetedCards > 0 && <CloudDownload /> }
+        { tweetedCards < 0 && <CloudDownload /> }
         <Typography className={counts}>
           { tweetedCards } / { totalCards }
         </Typography>
