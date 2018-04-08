@@ -113,7 +113,7 @@ const HowToPlay = ({
       </Typography>
       <Typography className={text} variant='subheading'>
         <p>
-          Once a question's answer is tweeted by the bot, anywhere from 1 to 24 points will be given for correct guesses depending on how quickly the guess was received.
+          Once a question's answer is tweeted, anywhere from 1 to 24 points will be given for correct guesses depending on how quickly the guess was received.
         </p>
         <p>
           If you guess an answer correctly within the first hour of a question's posting, you will be given the maximum of 24 points for your correct answer.
