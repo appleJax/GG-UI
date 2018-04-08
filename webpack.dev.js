@@ -1,12 +1,15 @@
 const merge   = require('webpack-merge');
 const webpack = require('webpack');
 const common  = require('./webpack.common');
+const ENV     = require('./.env');
+const { API_URL } = ENV.dev;
 const {
-  API_URL,
   DM_URL,
+  FOLLOW_URL,
   TWITTER_ACCOUNT,
   TWITTER_ID
-} = require('./.env').dev;
+} = ENV.common;
+
 
 module.exports = merge(common, {
   entry: [
@@ -26,6 +29,7 @@ module.exports = merge(common, {
       'process.env': {
         API_URL:         JSON.stringify(API_URL),
         DM_URL:          JSON.stringify(DM_URL),
+        FOLLOW_URL:      JSON.stringify(FOLLOW_URL),
         NODE_ENV:        JSON.stringify('dev'),
         TWITTER_ACCOUNT: JSON.stringify(TWITTER_ACCOUNT),
         TWITTER_ID:      JSON.stringify(TWITTER_ID)

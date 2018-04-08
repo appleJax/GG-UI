@@ -20,7 +20,7 @@ import {
   alreadyFollowing
 } from 'Utils'
 
-const { API_URL } = process.env
+const { API_URL, FOLLOW_URL } = process.env
 
 const { FETCHING, LOGGED_IN } = payloadStates
 
@@ -160,7 +160,7 @@ function Nav(props) {
             { !alreadyFollowing(auth) &&
               <Button
                 className={followButton}
-                href='https://twitter.com/intent/follow?screen_name=devtest222'
+                href={FOLLOW_URL}
                 target='_blank'
                 variant='fab'
               >
