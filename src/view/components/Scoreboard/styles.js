@@ -52,8 +52,9 @@ export default (theme) => ({
   rankNumber: {
     alignItems: 'center',
     display: 'flex',
-    fontFamily: 'Rammetto One',
-    fontSize: '1.2em'
+    fontFamily: 'Roboto',
+    fontSize: '1.2em',
+    fontWeight: 'bold'
   },
   scoreColumn: {
     flexGrow: 1,
@@ -63,8 +64,9 @@ export default (theme) => ({
     marginTop: '30px'
   },
   smallNumber: {
-    fontFamily: 'Rammetto One',
-    fontSize: '14px'
+    fontFamily: 'Roboto',
+    fontSize: '14px',
+    fontWeight: 'bold'
   },
   stripe: {
     background: 'rgba(150,180,255,0.1)'

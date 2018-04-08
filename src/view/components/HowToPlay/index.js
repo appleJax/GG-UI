@@ -65,7 +65,7 @@ const HowToPlay = ({
         Hint: [_] [_] [≠や] [≠う]
         </blockquote>
         <p>
-          That means the first and second characters of the answer could be anything, the third character is not や, and the fourth character is not う.
+          That means the first and second characters of the answer could be anything, but the third character is not や, and the fourth character is not う.
         </p>
         <p>
           Thus, the answer cannot be ようやく nor とうとう, both of which can also mean "at last".
@@ -116,10 +116,10 @@ const HowToPlay = ({
           Once a question's answer is tweeted, anywhere from 1 to 24 points will be given for correct guesses depending on how quickly the guess was received.
         </p>
         <p>
-          If you guess an answer correctly within the first hour of a question's posting, you will be given the maximum of 24 points for your correct answer.
+          If you guess an answer correctly within the first hour after a question is posted, you will be given the maximum of 24 points.
         </p>
         <p>
-          For each hour that passes after a question is tweeted, the number of points you can receive for guessing correctly will be reduced by one.
+          For each hour that passes after a question is tweeted, the number of points given for answering correctly will decrease by one.
         </p>
         <p>
           If you guess correctly within the last hour of a question's active period, you will be given 1 point.
@@ -158,10 +158,10 @@ const HowToPlay = ({
           In such a case, please let me know which possibilities I overlooked, and I'll add additional hints to that card in the database.
         </p>
         <p>
-          Even though the opportunity to answer the question correctly will have passed, your feedback will help make the cards as thorough as possible, and it will benefit those studying the Anki flashcard decks that will eventually be available for download.
+          Even though the opportunity to answer the question correctly will have passed, your feedback will help improve the cards, and it will benefit those studying the Anki flashcard decks that will eventually be available for download.
         </p>
         <p>
-          Please understand that in such cases, points will not be assigned manually after the fact, and every player shares that risk when making a guess at the answer.
+          Please understand that in such cases, points will not be assigned manually after the fact.
         </p>
         <p>
           Just make your best guess, and have fun! There is no prize or money at stake.
