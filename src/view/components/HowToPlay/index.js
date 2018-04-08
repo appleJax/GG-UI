@@ -6,7 +6,7 @@ import Error from 'Icons/Error'
 import Info from 'Icons/Info'
 import styles from './styles'
 
-const { FOLLOW_URL } = process.env
+const { FOLLOW_URL, TWITTER_ACCOUNT } = process.env
 
 const HowToPlay = ({
   classes: {
@@ -32,14 +32,14 @@ const HowToPlay = ({
     </div>
     <div className={container}>
       <Typography className={classNames(heading, welcomeMessage)} variant='title'>
-        Welcome to GameGogakuen, the Language Learning Academy!
+        Welcome to GameGogakuen, the Game Language Learning Academy!
       </Typography>
       <Typography className={text} variant='subheading'>
         This is a language quiz game that asks you to fill in the blanks in Japanese text taken from video games.
-        The quiz questions are tweeted every 6 hours from @devtest222, so be sure to <a className={link} target='_blank' href={FOLLOW_URL}>follow</a> the bot or bookmark the <a className={link} onClick={() => history.push('/')}><span className={nowrap}>Live Questions</span></a> page on this site to see the latest questions as soon as they become available.
+        The quiz questions are tweeted every 6 hours from <a className={link} target='_blank' href={`//twitter.com/${TWITTER_ACCOUNT}`}>@devtest222</a>, so be sure to <a className={link} target='_blank' href={FOLLOW_URL}>follow</a> the bot or bookmark the <a className={link} onClick={() => history.push('/')}><span className={nowrap}>Live Questions</span></a> page on this site to see the latest questions as soon as they become available.
       </Typography>
       <Typography className={heading} variant='headline'>
-        Hints 
+        Clues 
       </Typography>
       <Typography className={text} variant='subheading'>
         To help you guess the answers, there are 3 or 4 pieces of information provided as clues:
@@ -60,7 +60,7 @@ const HowToPlay = ({
         Here's a quick example...
         <br/>
         <blockquote className={quote}>
-        Question: "What 4 character answer means 'at last'?"
+        Question: What 4 character answer means "at last"?
         <br/>
         Hint: [_] [_] [≠や] [≠う]
         </blockquote>
@@ -71,7 +71,7 @@ const HowToPlay = ({
           Thus, the answer cannot be ようやく nor とうとう, both of which can also mean "at last".
         </p>
         <p>
-          This leaves fewer possible answers, helping you hone in on the correct one.
+          This leaves fewer possible answers, helping you home in on the correct one.
         </p>
         <p>
           For verbs, be sure to make good use of the context images when conjugating them.
@@ -85,7 +85,7 @@ const HowToPlay = ({
           To answer a question, click the "Submit Answer" link in the question tweet or on the <a className={link} onClick={() => history.push('/')}><span className={nowrap}>Live Questions</span></a> page here at the GameGogakuen site.
         </p>
         <p>
-          If you are logged in to Twitter, this will populate a direct message (DM) to the bot with the question's ID (QID...) and a separating space, leaving you to simply type your answer and hit Send.
+          If you are logged in to Twitter, this will populate a direct message (DM) to the bot with the question's ID (QID...) followed by a space, leaving you to simply type your answer and hit Send.
         </p>
         <p>
           You can also compose a guess manually by sending a DM to the bot with the question's ID (include "QID" before the number), a space, and then your answer.
@@ -119,10 +119,7 @@ const HowToPlay = ({
           If you guess an answer correctly within the first hour after a question is posted, you will be given the maximum of 24 points.
         </p>
         <p>
-          For each hour that passes after a question is tweeted, the number of points given for answering correctly will decrease by one.
-        </p>
-        <p>
-          If you guess correctly within the last hour of a question's active period, you will be given 1 point.
+          For each hour that passes after a question is tweeted, the number of points given for answering correctly will decrease by one until the answer is tweeted at the 24-hour mark.
         </p>
         <p>
           Points are not distributed until a question's answer is tweeted, so there is no way to know during a question's active period whether or not you guessed correctly.
@@ -133,10 +130,10 @@ const HowToPlay = ({
       </Typography>
       <Typography className={text} variant='subheading'>
         <p>
-          To view your weekly, monthly, and overall stats, click on the <a className={link} onClick={() => history.push('/stats')}>Leaderboard</a> link in the navigation menu.
+          To view your weekly, monthly, and overall stats, click on the <a className={link} onClick={() => history.push('/stats')}>Leaderboard</a> link in this site's navigation menu.
         </p>
         <p>
-          Players are ranked by points, but if multiple players have the same number of points, they will be ranked from lowest to highest average answer time.
+          Players are ranked by points, but if multiple players have the same number of points, those players will be ranked from lowest to highest average answer time.
         </p>
         <p>
           Questions left unanswered will not affect your average answer time, but both correct and incorrect answers will contribute to your average answer time.
@@ -155,7 +152,7 @@ const HowToPlay = ({
           <Error className={icon} /> While I do my best to leave only one possible correct answer, you may think of a word that is also possible given the criteria, yet is not counted as correct.
         </p>
         <p>          
-          In such a case, please let me know which possibilities I overlooked, and I'll add additional hints to that card in the database.
+          In such a case, please let me know which possibilities I overlooked by replying to the relevant answer tweet, and I'll add additional hints to that card in the database.
         </p>
         <p>
           Even though the opportunity to answer the question correctly will have passed, your feedback will help improve the cards, and it will benefit those studying the Anki flashcard decks that will eventually be available for download.
