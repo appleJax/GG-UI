@@ -4,10 +4,13 @@ const { imageDiv } = classes
 export default (theme) => ({
   imageDiv,
   cardAnswer: {
+    alignItems: 'center',
     background: 'rgba(255,255,255,0.2)',
     color: 'rgba(0,0,0,0.5)',
     display: 'flex',
     flexWrap: 'wrap',
+    height: '44px',
+    justifyContent: 'center',
     padding: '5px',
     width: '100%',
     '&:hover': {
