@@ -40,9 +40,6 @@ export default createMuiTheme({
         '&:hover': {
           background: 'rgba(74,179,244,0.1)',
         }
-      },
-      selected: {
-        background: 'rgba(74,179,244,0.5)'
       }
     },
     MuiTab: {

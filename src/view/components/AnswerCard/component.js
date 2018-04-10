@@ -36,8 +36,8 @@ const AnswerCard = ({
 }) => {
 
   const images = showAnswer
-    ? answerMediaUrls
-    : questionMediaUrls
+    ? answerMediaUrls || []
+    : questionMediaUrls || []
 
   const cardFooter = showAnswer
     ? (

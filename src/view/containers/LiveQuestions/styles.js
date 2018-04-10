@@ -42,7 +42,7 @@ export default (theme) => ({
     background: 'rgba(0,0,0,0.2)',
     color: 'rgba(255,255,255,0.7)',
     textAlign: 'center',
-    width: '240px'
+    width: '300px'
   },
   imageDiv,
   questionCard: {
