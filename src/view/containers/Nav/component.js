@@ -72,7 +72,7 @@ function Nav(props) {
               go(`/stats/${user.handle}`)
             }}
           >
-            <AccountCircle className={profileIcon} /> MY PROFILE
+            <AccountCircle className={profileIcon} /> My Profile
           </MenuItem>
         ) 
         : (
@@ -86,7 +86,7 @@ function Nav(props) {
               }}
             >
               <img className={signInIcon} src={'/images/twitter/Twitter_Logo_Blue.svg'} />
-              SIGN IN
+              Sign In
             </MenuItem>
           </a>
         )
@@ -95,31 +95,31 @@ function Nav(props) {
         disabled={location.pathname === '/'}
         onClick={() => go('/')}
       >
-        LIVE QUESTIONS
+        Live Questions
       </MenuItem>
       <MenuItem
         disabled={location.pathname === '/stats'}
         onClick={() => go('/stats')}
       >
-        LEADERBOARD
+        Leaderboard
       </MenuItem>
       <MenuItem
         disabled={location.pathname === '/decks'}
         onClick={() => go('/decks')}
       >
-        FLASHCARD DECKS
+        Flashcard Decks
       </MenuItem>
       <MenuItem
         disabled={location.pathname === '/how-to-play'}
         onClick={() => go('/how-to-play')}
       >
-        HOW TO PLAY
+        How to Play
       </MenuItem>
       { auth.state === LOGGED_IN &&
         <>
         <Divider className={divider} />
         <MenuItem onClick={() => requestLogout(history)}>
-          SIGN OUT
+          Sign Out
         </MenuItem>
         </>
       }

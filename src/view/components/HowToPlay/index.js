@@ -76,6 +76,12 @@ const HowToPlay = ({
         <p>
           For verbs, be sure to make good use of the context images when conjugating them.
         </p>
+        <p>
+          For questions where both a single kanji or a single kana are possible for a particular character within the answer (e.g. くっつく or くっ付く), I've added additional acceptable answers that allow you to get the answer correct no matter if you use the kanji or kana version, as long as the character count is the same.
+        </p>
+        <p>
+          I apologize if I miss an alternate answer resulting in you missing out on points, but if you alert me to the omission, I will gladly correct it in the database.
+        </p>
       </Typography>
       <Typography className={heading} variant='headline'>
         Answer Submission 

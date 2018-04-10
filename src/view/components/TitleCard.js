@@ -51,7 +51,7 @@ const styles = (theme) => ({
     textShadow: '1px 1px 2px #1F3195'
   },
   titleImg: {
-    maxHeight: '225px'
+    width: '300px'
   }
 })
 
@@ -84,7 +84,6 @@ const TitleCard = ({
         </Typography>
         <img
           className={titleImg}
-          width='300px'
           src={`/images/deckTitles/${slug}.png`}
           alt={`${fullTitle} Title Screen`}
         />
