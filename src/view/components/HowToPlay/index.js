@@ -36,7 +36,7 @@ const HowToPlay = ({
       </Typography>
       <Typography className={text} variant='subheading'>
         This is a language quiz game that asks you to fill in the blanks in Japanese text taken from video games.
-        The quiz questions are tweeted every 6 hours from <a className={link} target='_blank' href={`//twitter.com/${TWITTER_ACCOUNT}`}>@devtest222</a>, so be sure to <a className={link} target='_blank' href={FOLLOW_URL}>follow</a> the bot or bookmark the <a className={link} onClick={() => history.push('/')}><span className={nowrap}>Live Questions</span></a> page on this site to see the latest questions as soon as they become available.
+        The quiz questions are tweeted every 6 hours from <a className={link} target='_blank' href={`//twitter.com/${TWITTER_ACCOUNT}`}>@devtest222</a> (for the beta), so be sure to <a className={link} target='_blank' href={FOLLOW_URL}>follow</a> the bot or bookmark the <a className={link} onClick={() => history.push('/')}><span className={nowrap}>Live Questions</span></a> page on this site to see the latest questions as soon as they become available.
       </Typography>
       <Typography className={heading} variant='headline'>
         Clues 
@@ -65,7 +65,7 @@ const HowToPlay = ({
         Hint: [_] [_] [≠や] [≠う]
         </blockquote>
         <p>
-          That means the first and second characters of the answer could be anything, but the third character is not や, and the fourth character is not う.
+          This means the first and second characters of the answer could be anything, but the third character is not や, and the fourth character is not う.
         </p>
         <p>
           Thus, the answer cannot be ようやく nor とうとう, both of which can also mean "at last".
@@ -90,7 +90,7 @@ const HowToPlay = ({
         <p>
           You can also compose a guess manually by sending a DM to the bot with the question's ID (include "QID" before the number), a space, and then your answer.
         </p>
-        <blockquote class={quote}>
+        <blockquote className={quote}>
           <Info className={icon} /> Note that answering in romaji is not supported, so you will need a Japanese keyboard installed on your phone or PC in order to answer successfully.
         </blockquote>
       </Typography>
@@ -138,9 +138,6 @@ const HowToPlay = ({
         <p>
           Questions left unanswered will not affect your average answer time, but both correct and incorrect answers will contribute to your average answer time.
         </p>
-        <p>
-          Answer times are recorded based on DM timestamp and are accurate to the second.
-        </p>
       </Typography>
       <Typography className={heading} variant='headline'>
         Disclaimer
@@ -149,7 +146,7 @@ const HowToPlay = ({
         <blockquote className={quote}>
         
         <p>
-          <Error className={icon} /> While I do my best to leave only one possible correct answer, you may think of a word that is also possible given the criteria, yet is not counted as correct.
+          <Error className={icon} /> While I do my best to leave only one possible correct answer, you may think of a word that is also possible given the criteria, yet is not the word that appears in the game.
         </p>
         <p>          
           In such a case, please let me know which possibilities I overlooked by replying to the relevant answer tweet, and I'll add additional hints to that card in the database.

@@ -9,6 +9,9 @@ export default (theme) => ({
     height: '44px',
     width: '44px'
   },
+  beta: {
+    marginLeft: '5px'
+  },
   divider: {
     marginTop: '10px'
   },

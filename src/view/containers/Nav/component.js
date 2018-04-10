@@ -29,6 +29,7 @@ function Nav(props) {
     classes: {
       appBar,
       avatarRoot,
+      beta,
       divider,
       followButton,
       loggedInIcon,
@@ -155,7 +156,7 @@ function Nav(props) {
               className={logo}
               onClick={() => history.push('/')}
             >
-              GameGogakuen
+              GameGogakuen <span className={beta}>BETA</span>
             </ButtonBase>
             { !alreadyFollowing(auth) &&
               <Button

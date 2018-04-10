@@ -59,7 +59,7 @@ function DeckTitles({
           />
         </a>
         <Typography variant='caption'>
-          Flashcard decks require Anki (
+          Downloadable flashcard decks require Anki (
           <a href='https://apps.ankiweb.net/docs/beta.html'
              target='_blank'
           >2.1 recommended</a>)

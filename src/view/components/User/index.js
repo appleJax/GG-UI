@@ -106,10 +106,12 @@ function User({
                 </div>
                 <div className={classNames(answeredRatioDiv, stat)}>
                   <Typography variant='body1'>{formatRatio(stats)}</Typography>
+                  <Typography variant='caption'>Correct of</Typography>
                   <Typography variant='caption'>ANSWERED</Typography>
                 </div>
                 <div className={classNames(totalRatioDiv, stat)}>
                   <Typography variant='body1'>{formatRatio(stats, true)}</Typography>
+                  <Typography variant='caption'>Correct of</Typography>
                   <Typography variant='caption'>TOTAL</Typography>
                 </div>
                 <div className={classNames(avgTimeDiv, stat)}>
