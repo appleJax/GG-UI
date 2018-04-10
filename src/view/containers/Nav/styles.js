@@ -13,11 +13,12 @@ export default (theme) => ({
     marginLeft: '5px'
   },
   divider: {
+    background: 'rgba(20,112,169,0.2)',
     marginTop: '10px'
   },
   followButton: {
     height: '50px',
-    margin: '35px 0 0 -130px',
+    margin: '35px 0 0 -180px',
     position: 'absolute',
     width: '50px'
   },
@@ -46,6 +47,9 @@ export default (theme) => ({
     [theme.breakpoints.up('lg')]: {
       marginLeft: 'calc((100vw - 1230px) / 2)'
     }
+  },
+  navMenu: {
+    background: 'rgba(74,179,244,0.2)'
   },
   profileIcon: {
     margin: '0 5px 0 -10px'

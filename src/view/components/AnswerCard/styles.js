@@ -9,7 +9,10 @@ export default (theme) => ({
     display: 'flex',
     flexWrap: 'wrap',
     padding: '5px',
-    width: '100%'
+    width: '100%',
+    '&:hover': {
+      background: 'rgba(255,255,255,0.3)'
+    }
   },
   cardHeader: {
     color: 'white',
@@ -25,13 +28,13 @@ export default (theme) => ({
     background: 'rgb(90,125,139)',
     display: 'flex',
     flexDirection: 'column',
-    width: '240px'
+    width: '300px'
   },
   gameTitle: {
     background: 'rgba(0,0,0,0.2)',
     color: 'rgba(255,255,255,0.7)',
     textAlign: 'center',
-    width: '240px'
+    width: '300px'
   },
   green: {
     background: 'rgb(47,176,110)'

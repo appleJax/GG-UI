@@ -122,7 +122,7 @@ function LiveQuestions({
             { mediaUrls.map((mediaUrl, innerIndex) =>
                 <img
                   key={`${i}-${innerIndex}`}
-                  height='160'
+                  height='200'
                   src={mediaUrl.image}
                   alt={mediaUrl.altText}
                 />

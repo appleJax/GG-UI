@@ -26,6 +26,25 @@ export default createMuiTheme({
         width: '50px'
       }
     },
+    MuiListItem: {
+      disabled: {
+        background: 'aliceblue',
+        color: '#1DA1F2 !important',
+        opacity: '1'
+      }
+    },
+    MuiMenuItem: {
+      root: {
+        color: '#1470A9',
+        paddingLeft: '30px',
+        '&:hover': {
+          background: 'rgba(74,179,244,0.1)',
+        }
+      },
+      selected: {
+        background: 'rgba(74,179,244,0.5)'
+      }
+    },
     MuiTab: {
       label: {
         fontSize: '20px'

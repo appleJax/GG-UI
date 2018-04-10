@@ -35,7 +35,9 @@ function Nav(props) {
       loggedInIcon,
       logo,
       link,
+      menuItem,
       navContainer,
+      navMenu,
       profileIcon,
       signInIcon,
       userHandle
@@ -60,7 +62,7 @@ function Nav(props) {
   const user = auth.data
 
   const menuItems = (
-    <List>
+    <List className={navMenu}>
       { auth.state === LOGGED_IN
         ? (
           <MenuItem
@@ -70,7 +72,7 @@ function Nav(props) {
               go(`/stats/${user.handle}`)
             }}
           >
-            <AccountCircle className={profileIcon} /> My Profile
+            <AccountCircle className={profileIcon} /> MY PROFILE
           </MenuItem>
         ) 
         : (
@@ -84,7 +86,7 @@ function Nav(props) {
               }}
             >
               <img className={signInIcon} src={'/images/twitter/Twitter_Logo_Blue.svg'} />
-              Sign In
+              SIGN IN
             </MenuItem>
           </a>
         )
@@ -93,31 +95,31 @@ function Nav(props) {
         disabled={location.pathname === '/'}
         onClick={() => go('/')}
       >
-        Live Questions
+        LIVE QUESTIONS
       </MenuItem>
       <MenuItem
         disabled={location.pathname === '/stats'}
         onClick={() => go('/stats')}
       >
-        Leaderboard
+        LEADERBOARD
       </MenuItem>
       <MenuItem
         disabled={location.pathname === '/decks'}
         onClick={() => go('/decks')}
       >
-        Flashcard Decks
+        FLASHCARD DECKS
       </MenuItem>
       <MenuItem
         disabled={location.pathname === '/how-to-play'}
         onClick={() => go('/how-to-play')}
       >
-        How to Play
+        HOW TO PLAY
       </MenuItem>
       { auth.state === LOGGED_IN &&
         <>
         <Divider className={divider} />
         <MenuItem onClick={() => requestLogout(history)}>
-          Sign Out
+          SIGN OUT
         </MenuItem>
         </>
       }
