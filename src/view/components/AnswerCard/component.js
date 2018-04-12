@@ -15,6 +15,7 @@ const AnswerCard = ({
     cardAnswer,
     cardHeader,
     cardImage,
+    cardImageAlt,
     cardLink,
     imageCard,
     imageContainer,
@@ -71,7 +72,7 @@ const AnswerCard = ({
           { images.map((mediaUrl, i) =>
             <div key={i} className={imageContainer}>
               <img
-                className={cardImage}
+                className={classNames(cardImage, cardImageAlt)}
                 src={mediaUrl.image}
                 alt={mediaUrl.altText}
               />

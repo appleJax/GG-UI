@@ -1,5 +1,10 @@
 import { cardWidth, classes, fullWidth } from 'Styles/common'
-const { cardImage, imageContainer, imageDiv } = classes
+const {
+  cardImage,
+  cardImageAlt,
+  imageContainer,
+  imageDiv
+} = classes
 
 export default (theme) => ({
   imageDiv,
@@ -23,9 +28,13 @@ export default (theme) => ({
     textShadow: `1px 1px 3px rgba(0,0,0,0.3)`
   },
   cardImage,
+  cardImageAlt,
   cardLink: {
     margin: '10px 5px',
-    textDecoration: 'none'
+    textDecoration: 'none',
+    [theme.breakpoints.down('xs')]: {
+      margin: '10px 0'
+    }
   },
   imageCard: {
     alignItems: 'center',

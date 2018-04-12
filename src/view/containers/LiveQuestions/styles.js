@@ -1,5 +1,11 @@
-import { cardWidth, classes, fullWidth }   from 'Styles/common'
-const { cardImage, cardList, imageContainer, imageDiv } = classes
+import { cardWidth, classes, fullWidth } from 'Styles/common'
+const {
+  cardImage,
+  cardImageAlt,
+  cardList,
+  imageContainer,
+  imageDiv
+} = classes
 
 export default (theme) => ({
   answered: {
@@ -12,6 +18,7 @@ export default (theme) => ({
     width: '15px'
   },
   cardImage,
+  cardImageAlt,
   cardList,
   cardLink: {
     position: 'absolute',
@@ -56,7 +63,10 @@ export default (theme) => ({
     display: 'flex',
     flexDirection: 'column',
     margin: '10px 5px',
-    position: 'relative'
+    position: 'relative',
+    [theme.breakpoints.down('xs')]: {
+      margin: '10px 0'
+    }
   },
   submitAnswerBtn: {
     alignItems: 'center',

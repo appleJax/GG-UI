@@ -1,4 +1,5 @@
 import React         from 'react'
+import classNames    from 'classnames'
 import { object }    from 'prop-types'
 import payloadStates from 'Constants/PayloadStates'
 import CheckCircle   from 'Icons/CheckCircle'
@@ -30,6 +31,7 @@ function LiveQuestions({
     answered,
     answeredIcon,
     cardImage,
+    cardImageAlt,
     cardList,
     cardLink,
     captionText,
@@ -124,7 +126,7 @@ function LiveQuestions({
             { mediaUrls.map((mediaUrl, innerIndex) =>
               <div key={`${i}-${innerIndex}`} className={imageContainer}>
                 <img
-                  className={cardImage}
+                  className={classNames(cardImage, cardImageAlt)}
                   src={mediaUrl.image}
                   alt={mediaUrl.altText}
                 />

@@ -11,6 +11,9 @@ export const classes = {
     width: '100%',
     imageRendering: 'pixelated',
   },
+  cardImageAlt: {
+    imageRendering: 'crisp-edges'
+  },
   cardList: {
     alignItems: 'flex-end',
     display: 'flex',

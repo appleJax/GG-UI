@@ -12,10 +12,15 @@ import {
 } from 'Utils'
 import { classes } from 'Styles/common'
 
-const { cardImage, imageContainer } = classes
+const {
+  cardImage,
+  cardImageAlt,
+  imageContainer
+} = classes
 
 const styles = (theme) => ({
   cardImage,
+  cardImageAlt,
   cardLink: {
     background: '#3F51B5',
     display: 'flex',
@@ -61,6 +66,7 @@ const styles = (theme) => ({
 const TitleCard = ({
   classes: {
     cardImage,
+    cardImageAlt,
     cardLink,
     cardFooter,
     complete,
@@ -88,7 +94,7 @@ const TitleCard = ({
         </Typography>
         <div className={imageContainer}>
           <img
-            className={cardImage}
+            className={classNames(cardImage, cardImageAlt)}
             src={`/images/deckTitles/${slug}.png`}
             alt={`${fullTitle} Title Screen`}
           />
