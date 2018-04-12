@@ -114,7 +114,7 @@ function LiveQuestions({
               href={questionLink(questionId)}
               target='_blank'
             ></a>
-            <Typography className={captionText} color='secondary' variant='body2'>
+            <Typography className={captionText} color='secondary' variant='subheading'>
               { formatQuestionText(questionText) }
             </Typography>
             <Typography className={gameTitle} variant='body1'>
@@ -132,7 +132,7 @@ function LiveQuestions({
             )}
             </div>
             { answerButton }
-            <Typography className={timeLeftText} variant='caption'>
+            <Typography className={timeLeftText} variant='body1'>
               Time Remaining: {timeRemaining}
             </Typography>
           </Paper>

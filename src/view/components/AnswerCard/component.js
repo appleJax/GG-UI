@@ -61,7 +61,7 @@ const AnswerCard = ({
             { [red]:   status === 'incorrect' }
         )}
       >
-        <Typography className={cardHeader} variant='body1'>
+        <Typography className={cardHeader} variant='subheading'>
           {questionText}
         </Typography>
         <Typography className={gameTitle} variant='body1'>
@@ -81,7 +81,7 @@ const AnswerCard = ({
         </div>
         <Typography
           className={cardAnswer}
-          variant='caption'
+          variant='body1'
           onClick={(e) => {
             e.preventDefault()
             e.stopPropagation()

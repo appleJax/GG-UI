@@ -1,4 +1,4 @@
-import { cardWidth, classes }   from 'Styles/common'
+import { cardWidth, classes, fullWidth }   from 'Styles/common'
 const { cardImage, cardList, imageContainer, imageDiv } = classes
 
 export default (theme) => ({
@@ -43,7 +43,10 @@ export default (theme) => ({
     background: 'rgba(0,0,0,0.2)',
     color: 'rgba(255,255,255,0.7)',
     textAlign: 'center',
-    width: cardWidth
+    width: cardWidth,
+    [theme.breakpoints.down('xs')]: {
+      width: fullWidth
+    }
   },
   imageContainer,
   imageDiv,
