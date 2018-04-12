@@ -3,24 +3,13 @@ const { cardList } = classes
 
 export default (theme) => ({
   cardList,
-  cardAnswer: {
-    background: 'rgba(255,255,255,0.2)',
-    color: theme.palette.primary.dark,
-    marginTop: '-5px',
-    padding: '5px'
-  },
-  cardHeader: {
-    color: 'white',
-    padding: '5px',
-    textShadow: `1px 1px 3px ${theme.palette.primary.dark}`
-  },
   container: {
     width: '100%'
   },
-  imgCard: {
-    background: theme.palette.primary.light,
-    marginBottom: '20px',
-    width: '240px'
+  label: {
+    [theme.breakpoints.down('xs')]: {
+      display: 'none'
+    }
   },
   reviewer: {
     display: 'flex',
@@ -41,11 +30,6 @@ export default (theme) => ({
     background: theme.palette.primary.light,
     boxShadow: '0 2px 2px rgba(0,0,0,0.3)',
     fontSize: '20px'
-  },
-  label: {
-    [theme.breakpoints.down('xs')]: {
-      display: 'none'
-    }
   },
   title: {
     background: theme.palette.primary.main,

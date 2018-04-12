@@ -29,7 +29,7 @@ export default createMuiTheme({
     MuiListItem: {
       disabled: {
         background: 'aliceblue',
-        borderLeft: '3px solid #1DA1F2',
+        borderLeft: '4px solid #1DA1F2',
         color: '#1DA1F2 !important',
         opacity: '1'
       }

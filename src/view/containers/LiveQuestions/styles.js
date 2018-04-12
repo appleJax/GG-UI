@@ -1,5 +1,5 @@
-import { classes }   from 'Styles/common'
-const { cardList, imageDiv } = classes
+import { cardWidth, classes }   from 'Styles/common'
+const { cardImage, cardList, imageContainer, imageDiv } = classes
 
 export default (theme) => ({
   answered: {
@@ -11,6 +11,7 @@ export default (theme) => ({
     marginRight: '5px',
     width: '15px'
   },
+  cardImage,
   cardList,
   cardLink: {
     position: 'absolute',
@@ -42,8 +43,9 @@ export default (theme) => ({
     background: 'rgba(0,0,0,0.2)',
     color: 'rgba(255,255,255,0.7)',
     textAlign: 'center',
-    width: '300px'
+    width: cardWidth
   },
+  imageContainer,
   imageDiv,
   questionCard: {
     alignItems: 'center',

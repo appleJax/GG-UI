@@ -10,8 +10,12 @@ import {
   downloadUrl,
   formatGameTitle
 } from 'Utils'
+import { cardWidth, classes } from 'Styles/common'
+
+const { cardImage, imageContainer } = classes
 
 const styles = (theme) => ({
+  cardImage,
   cardLink: {
     background: '#3F51B5',
     display: 'flex',
@@ -28,6 +32,7 @@ const styles = (theme) => ({
     color: 'rgba(0,0,0,0.5)',
     display: 'flex',
     justifyContent: 'center',
+    padding: '5px',
     textDecoration: 'none',
   },
   complete: {
@@ -45,25 +50,24 @@ const styles = (theme) => ({
       color: 'rgba(0,0,0,0.8)'
     }
   },
+  imageContainer,
   label: {
     color: 'white',
     padding: '5px',
     textShadow: '1px 1px 2px #1F3195'
-  },
-  titleImg: {
-    width: '300px'
   }
 })
 
 const TitleCard = ({
   classes: {
+    cardImage,
     cardLink,
     cardFooter,
     complete,
     counts,
     downloadable,
-    label,
-    titleImg
+    imageContainer,
+    label
   },
   game,
   history
@@ -82,11 +86,13 @@ const TitleCard = ({
         <Typography className={label} variant='subheading'>
           { formatGameTitle(fullTitle) }
         </Typography>
-        <img
-          className={titleImg}
-          src={`/images/deckTitles/${slug}.png`}
-          alt={`${fullTitle} Title Screen`}
-        />
+        <div className={imageContainer}>
+          <img
+            className={cardImage}
+            src={`/images/deckTitles/${slug}.png`}
+            alt={`${fullTitle} Title Screen`}
+          />
+        </div>
       </div>
       <a className={classNames(
            cardFooter,

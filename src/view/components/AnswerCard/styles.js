@@ -1,5 +1,5 @@
-import { classes } from 'Styles/common'
-const { imageDiv } = classes
+import { cardWidth, classes } from 'Styles/common'
+const { cardImage, imageContainer, imageDiv } = classes
 
 export default (theme) => ({
   imageDiv,
@@ -22,22 +22,24 @@ export default (theme) => ({
     padding: '5px',
     textShadow: `1px 1px 3px rgba(0,0,0,0.3)`
   },
+  cardImage,
   cardLink: {
     margin: '10px 5px',
     textDecoration: 'none'
   },
-  imgCard: {
+  imageCard: {
     alignItems: 'center',
     background: 'rgb(90,125,139)',
     display: 'flex',
     flexDirection: 'column',
-    width: '300px'
+    width: cardWidth
   },
+  imageContainer,
   gameTitle: {
     background: 'rgba(0,0,0,0.2)',
     color: 'rgba(255,255,255,0.7)',
     textAlign: 'center',
-    width: '300px'
+    width: cardWidth
   },
   green: {
     background: 'rgb(47,176,110)'

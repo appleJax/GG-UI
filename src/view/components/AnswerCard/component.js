@@ -14,8 +14,10 @@ const AnswerCard = ({
   classes: {
     cardAnswer,
     cardHeader,
+    cardImage,
     cardLink,
-    imgCard,
+    imageCard,
+    imageContainer,
     imageDiv,
     gameTitle,
     green,
@@ -54,7 +56,7 @@ const AnswerCard = ({
     >
       <Paper
         className={classNames(
-            imgCard,
+            imageCard,
             { [green]: status === 'correct'   },
             { [red]:   status === 'incorrect' }
         )}
@@ -67,12 +69,13 @@ const AnswerCard = ({
         </Typography>
         <div className={imageDiv}>
           { images.map((mediaUrl, i) =>
+            <div key={i} className={imageContainer}>
               <img
-                key={i}
-                height='200'
+                className={cardImage}
                 src={mediaUrl.image}
                 alt={mediaUrl.altText}
               />
+            </div>
             )
           }
         </div>

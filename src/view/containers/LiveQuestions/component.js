@@ -29,10 +29,12 @@ function LiveQuestions({
   classes: {
     answered,
     answeredIcon,
+    cardImage,
     cardList,
     cardLink,
     captionText,
     container,
+    imageContainer,
     imageDiv,
     liveTitle,
     gameTitle,
@@ -120,12 +122,13 @@ function LiveQuestions({
             </Typography>
             <div className={imageDiv}>
             { mediaUrls.map((mediaUrl, innerIndex) =>
+              <div key={`${i}-${innerIndex}`} className={imageContainer}>
                 <img
-                  key={`${i}-${innerIndex}`}
-                  height='200'
+                  className={cardImage}
                   src={mediaUrl.image}
                   alt={mediaUrl.altText}
                 />
+              </div>
             )}
             </div>
             { answerButton }
