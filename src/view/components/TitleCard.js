@@ -10,7 +10,7 @@ import {
   downloadUrl,
   formatGameTitle
 } from 'Utils'
-import { cardWidth, classes } from 'Styles/common'
+import { classes } from 'Styles/common'
 
 const { cardImage, imageContainer } = classes
 

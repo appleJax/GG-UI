@@ -3,12 +3,13 @@ import theme from './muiTheme'
 
 export const navHeight = '88px'
 export const cardWidth = '320px'
+export const fullWidth = '100vw'
 
 export const classes = {
   cardImage: {
     height: 'auto',
     width: '100%',
-    imageRendering: 'pixelated'
+    imageRendering: 'pixelated',
   },
   cardList: {
     alignItems: 'flex-end',
@@ -18,7 +19,10 @@ export const classes = {
   },
   imageContainer: {
     marginBottom: '-5px',
-    width: cardWidth
+    width: cardWidth,
+    [theme.breakpoints.down('xs')]: {
+      width: fullWidth
+    }
   },
   imageDiv: {
     display: 'flex',

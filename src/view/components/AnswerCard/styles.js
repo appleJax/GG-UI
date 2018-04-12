@@ -1,4 +1,4 @@
-import { cardWidth, classes } from 'Styles/common'
+import { cardWidth, classes, fullWidth } from 'Styles/common'
 const { cardImage, imageContainer, imageDiv } = classes
 
 export default (theme) => ({
@@ -32,14 +32,20 @@ export default (theme) => ({
     background: 'rgb(90,125,139)',
     display: 'flex',
     flexDirection: 'column',
-    width: cardWidth
+    width: cardWidth,
+    [theme.breakpoints.down('xs')]: {
+      width: fullWidth
+    }
   },
   imageContainer,
   gameTitle: {
     background: 'rgba(0,0,0,0.2)',
     color: 'rgba(255,255,255,0.7)',
     textAlign: 'center',
-    width: cardWidth
+    width: cardWidth,
+    [theme.breakpoints.down('xs')]: {
+      width: fullWidth
+    }
   },
   green: {
     background: 'rgb(47,176,110)'
