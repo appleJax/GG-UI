@@ -29,7 +29,7 @@ export default (theme) => ({
     textDecoration: 'none'
   },
   captionText: {
-    margin: '5px',
+    padding: '8px',
     textShadow: `1px 1px 3px rgba(0,0,0,0.3)`
   },
   container: {
@@ -49,6 +49,7 @@ export default (theme) => ({
   gameTitle: {
     background: 'rgba(0,0,0,0.2)',
     color: 'rgba(255,255,255,0.7)',
+    padding: '5px',
     textAlign: 'center',
     width: cardWidth,
     [theme.breakpoints.down('xs')]: {
