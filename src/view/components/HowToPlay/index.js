@@ -74,6 +74,9 @@ const HowToPlay = ({
           This leaves fewer possible answers, helping you home in on the correct one.
         </p>
         <p>
+          If both a single kanji or a single kana are possible for a particular character within the answer (e.g. くっつく or くっ付く), I've added additional acceptable answers that allow you to get the answer correct no matter if you use the kanji or kana version, as long as the character count is the same.
+        </p>
+        <p>
           For verbs, be sure to make good use of the context images when conjugating them.
         </p>
       </Typography>
@@ -148,11 +151,8 @@ const HowToPlay = ({
         <p>
           <Error className={icon} /> While I do my best to leave only one possible correct answer, you may think of a word that is also possible given the criteria, yet is not the word that appears in the game.
         </p>
-        <p>
-          For questions where both a single kanji or a single kana are possible for a particular character within the answer (e.g. くっつく or くっ付く), I've added additional acceptable answers that allow you to get the answer correct no matter if you use the kanji or kana version, as long as the character count is the same.
-        </p>
         <p>          
-          If I omit an alternate answer resulting in you missing out on points, please let me know which possibilities I overlooked by replying to the relevant answer tweet, and I'll add additional hints to that card in the database.
+          In such a case, please let me know which possibilities I overlooked by replying to the relevant answer tweet, and I'll add additional hints to that card in the database.
         </p>
         <p>
           Even though the opportunity to answer the question correctly will have passed, your feedback will help improve the cards, and it will benefit those studying the Anki flashcard decks that will eventually be available for download.
