@@ -146,7 +146,7 @@ function Scoreboard({
               Average Time:
             </Typography>
             <Typography variant='caption'>
-              { formatHMS(user[scoreView].avgTimeToAnswer) }
+              { formatHMS(user[scoreView].avgAnswerTime) }
             </Typography>
           </div>
         </div>
