@@ -9,10 +9,14 @@ export const classes = {
   cardImage: {
     height: 'auto',
     width: '100%',
-    imageRendering: 'pixelated',
+    [theme.breakpoints.down('xs')]: {
+      imageRendering: 'pixelated'
+    }
   },
   cardImageAlt: {
-    imageRendering: 'crisp-edges'
+    [theme.breakpoints.down('xs')]: {
+      imageRendering: 'crisp-edges'
+    }
   },
   cardList: {
     alignItems: 'flex-end',
