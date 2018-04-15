@@ -4,6 +4,7 @@ import theme from './muiTheme'
 export const navHeight = '88px'
 export const cardWidth = '320px'
 export const fullWidth = '100vw'
+export const rowHeight = 82
 
 export const classes = {
   cardImage: {

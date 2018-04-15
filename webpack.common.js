@@ -42,7 +42,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new CopyWebpackPlugin([ { from: 'static' } ]),
+    new CopyWebpackPlugin([{ from: 'static' }]),
     new CleanWebpackPlugin(__dirname + '/dist'),
     new HtmlWebpackPlugin({
       template: __dirname + '/static/index.html',

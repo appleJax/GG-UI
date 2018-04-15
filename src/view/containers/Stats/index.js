@@ -37,6 +37,7 @@ const mapDispatchToProps = {
 }
 
 class Container extends Component {
+
   componentWillMount() {
     const {
       fetchFocusedUser,
@@ -60,9 +61,20 @@ class Container extends Component {
     } = this.props
 
     if (!handle)
-      return <Scoreboard users={users[this.props.scoreView]} {...props} />
+      return (
+        <Scoreboard
+          users={users[this.props.scoreView]}
+          {...props}
+        />
+      )
 
-    return <User user={userStats} handleParam={handle} {...props} />
+    return (
+      <User
+        user={userStats}
+        handleParam={handle}
+        {...props}
+      />
+    )
   }
 
 }

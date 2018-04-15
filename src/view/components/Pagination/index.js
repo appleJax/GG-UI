@@ -52,7 +52,7 @@ function Pagination({
     , 500
   )
 
-  const more = <MoreHoriz className={moreEllipsis} />
+  const more = ({ key }) => <MoreHoriz key={key} className={moreEllipsis} />
 
   const previousPage = (
     <Button
@@ -109,14 +109,14 @@ function Pagination({
     pageButtons = pageButtons.concat([
       numberedPage(1),
       numberedPage(2),
-      more,
+      more({ key: numPages + 2 }),
       numberedPage(numPages)
     ])
 
   } else if (page >= numPages - 1) {
     pageButtons = pageButtons.concat([
       numberedPage(1),
-      more,
+      more({ key: numPages + 2 }),
       numberedPage(numPages - 1),
       numberedPage(numPages)
     ])
@@ -124,9 +124,9 @@ function Pagination({
   } else {
     pageButtons = pageButtons.concat([
       numberedPage(1),
-      more,
+      more({ key: numPages + 2 }),
       numberedPage(page),
-      more,
+      more({ key: numPages + 3 }),
       numberedPage(numPages)
     ])
   }

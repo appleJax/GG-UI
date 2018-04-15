@@ -1,3 +1,5 @@
+import { rowHeight } from 'Styles/common'
+
 export default (theme) => ({
   root: {
     width: '100%',
@@ -86,7 +88,7 @@ export default (theme) => ({
     display: 'flex',
     flexDirection: 'row',
     maxWidth: '100vw',
-    minHeight: '82px',
+    minHeight: `${rowHeight}px`,
     overflow: 'hidden'
   },
   tabs: {

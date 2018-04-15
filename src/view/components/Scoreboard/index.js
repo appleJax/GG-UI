@@ -5,6 +5,7 @@ import SwipeableViews            from 'react-swipeable-views'
 import payloadStates             from 'Constants/PayloadStates'
 import { withStyles }            from 'UI/styles'
 import styles                    from './styles'
+import { rowHeight }             from 'Styles/common'
 import Avatar                    from 'UI/Avatar'
 import Input, { InputAdornment } from 'UI/Input';
 import Tabs, { Tab }             from 'UI/Tabs'
@@ -75,7 +76,7 @@ function Scoreboard({
   const tabValue =
       (scoreView === 'weeklyStats' ) ? 0
     : (scoreView === 'monthlyStats') ? 1
-    :                                       2
+    :                                  2
 
   const usersState = users.state
   let userScores
@@ -109,15 +110,19 @@ function Scoreboard({
         userId
       } = user
 
+      const isLoggedInUser = (
+        auth.state === LOGGED_IN &&
+        userId === auth.data.userId
+      )
+
       return (
         <div
-          key={userId}
+          key={i}
           className={classNames(
             hover,
             tableRow,
-            { [loggedInRow]: auth.state === LOGGED_IN &&
-                             userId === auth.data.userId,
-              [stripe]: i % 2 === 1
+            { [loggedInRow]: isLoggedInUser,
+              [stripe]: !isLoggedInUser && i % 2 === 1
             }
           )}
           onClick={() => {
@@ -166,12 +171,35 @@ function Scoreboard({
 
   const showPagination = users.total > SCORES_PER_PAGE
 
-  const SwipeableTab = () =>
-    <div className={tableBody}>
-      { showPagination && pagination }
-      { userScores }
-      { pagination }
-    </div>
+  const SwipeableTab = () => {
+    const ref = React.createRef()
+    const currentPage = users.page
+    const currentView = users.data[currentPage] || [] 
+    const loggedInUser = (user) => user.userId === auth.data.userId
+
+    if (
+      auth.state === LOGGED_IN &&
+      currentView.find(loggedInUser)
+    ) {
+      const rowsToScroll = currentView.findIndex(loggedInUser)
+      setTimeout(() => {
+        if (ref.current)
+          ref.current.scroll({
+            top: rowsToScroll * rowHeight,
+            left: 0,
+            behavior: 'smooth'
+          })
+      }, 300)
+    }
+  
+    return (
+      <div className={tableBody} ref={ref} >
+        { showPagination && pagination }
+        { userScores }
+        { pagination }
+      </div>
+    )
+  }
 
   return (
     <div className={container}>

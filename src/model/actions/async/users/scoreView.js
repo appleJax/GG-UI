@@ -1,7 +1,9 @@
 import { getScores } from './common'
+import payloadStates from 'Constants/PayloadStates'
 import syncActions   from 'Actions/sync'
 import { SCORES_PER_PAGE } from 'Utils'
 
+const { LOGGED_IN, RESOLVED } = payloadStates
 const { setScoreView } = syncActions
 
 export default ({
@@ -13,9 +15,20 @@ export default ({
 
     return (dispatch, getState) => {
       dispatch(setScoreView(view))
-      const { search, users } = getState()
+
+      const { auth, search, users } = getState()
+      let page = users[view].page
+
+      if (users[view].state !== RESOLVED && auth.state === LOGGED_IN) {
+        const loggedInRank = auth.data[view].rank
+
+        page = Math.ceil(
+          loggedInRank / SCORES_PER_PAGE
+        )
+      }
+
       const params = {
-        params: { page: users[view].page, search, view, pageSize: SCORES_PER_PAGE }
+        params: { page, search, view, pageSize: SCORES_PER_PAGE }
       }
       getScores(dispatch, params, view, search, users)
     }
