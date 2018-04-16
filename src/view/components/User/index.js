@@ -30,11 +30,14 @@ function User({
   classes: {
     answeredRatioDiv,
     answerTimeHeading,
+    answerTimeNum,
     answerTimeStat,
     avatarRoot,
     avgTimeDiv,
     banner,
     dataPoint,
+    handleClass,
+    nameClass,
     rankDiv,
     scoreDiv,
     stat,
@@ -95,8 +98,8 @@ function User({
             src={avatar.replace('_normal.', '_400x400.')}
           />
           <div className={userIdentity}>
-            <Typography variant='title'>{ name }</Typography>
-            <Typography variant='subheading'>{ `@${handle}` }</Typography>
+            <Typography variant='title' className={nameClass}>{ name }</Typography>
+            <Typography variant='subheading' className={handleClass}>{ `@${handle}` }</Typography>
             <FollowButton handle={handle} userId={userId} />
           </div>
         </div>
@@ -149,15 +152,15 @@ function User({
             let category = ''
             if (i === 0) {
               label = 'WEEKLY'
-              category = 'Weekly'
+              category = 'Week'
             }
             if (i === 1) {
               label = 'MONTHLY'
-              category = 'Monthly'
+              category = 'Month'
             }
 
-            let currentDescriptor = `Current ${category}`
-            let bestDescriptor = `Best ${category}`
+            let currentDescriptor = `This ${category}`
+            let bestDescriptor = 'Best'
             if (label === 'ALL TIME') {
               currentDescriptor = 'All Time'
               bestDescriptor = 'Best Daily'
@@ -199,17 +202,18 @@ function User({
                 </div>
                 <div className={classNames(avgTimeDiv, stat)}>
                   <Typography variant='caption' className={answerTimeHeading}>
+                    AVERAGE  
+                  </Typography>
+                  <Typography variant='caption' className={answerTimeHeading}>
                     ANSWER TIME
                   </Typography>
                   <div className={answerTimeStat}>
-                    <Typography variant='caption'>{ currentDescriptor }</Typography>
-                    <Typography variant='caption'>Average:</Typography>
-                    <Typography variant='caption'>{ avgAnswerTime }</Typography>
+                    <Typography variant='caption'>{ currentDescriptor }:</Typography>
+                    <Typography variant='caption' className={answerTimeNum}>{ avgAnswerTime }</Typography>
                   </div>
                   <div className={answerTimeStat}>
-                    <Typography variant='caption'>{ bestDescriptor }</Typography>
-                    <Typography variant='caption'>Average:</Typography>
-                    <Typography variant='caption'>{ lowestAvgAnswerTime }</Typography>
+                    <Typography variant='caption'>{ bestDescriptor }:</Typography>
+                    <Typography variant='caption' className={answerTimeNum}>{ lowestAvgAnswerTime }</Typography>
                   </div>
                 </div>
                 <Typography className={classNames(rankDiv, stat)} variant='body2'>

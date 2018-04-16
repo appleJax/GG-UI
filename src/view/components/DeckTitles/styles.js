@@ -13,6 +13,9 @@ export default (theme) => ({
   ankiImg: {
     marginBottom: '-5px'
   },
+  ankiInfo: {
+    color: '#555'
+  },
   cardList,
   container: {
     display: 'flex',

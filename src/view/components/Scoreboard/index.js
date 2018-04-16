@@ -42,6 +42,7 @@ function Scoreboard({
   classes: {
     avatarRoot,
     container,
+    handleClass,
     hover,
     headerCell,
     headerRow,
@@ -140,7 +141,7 @@ function Scoreboard({
                 classes={{root: avatarRoot}}
                 src={avatar}
               />
-              <Typography variant='subheading'>
+              <Typography variant='subheading' className={handleClass}>
                 @{handle}
               </Typography>
             </div>

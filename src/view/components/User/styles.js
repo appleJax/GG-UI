@@ -4,8 +4,8 @@ export default (theme) => ({
   answeredRatioDiv: {
     background: 'rgba(51,82,225,0.1)'
   },
-  answerTimeHeading: {
-    color: 'rgba(0,0,0,0.7)'
+  answerTimeNum: {
+    color: 'rgba(4,96,153,0.9)'
   },
   answerTimeStat: {
     margin: '8px 0'
@@ -23,6 +23,12 @@ export default (theme) => ({
   },
   dataPoint: {
     margin: '5px 0'
+  },
+  handleClass: {
+    color: '#444'
+  },
+  nameClass: {
+    color: '#222'
   },
   rankDiv: {
     background: 'rgba(51,82,225,0.2)'
@@ -50,7 +56,8 @@ export default (theme) => ({
   },
   streakBox: {
     alignItems: 'center',
-    background: 'rgba(74,179,244,0.1)',
+    background: 'rgba(150,180,255,0.1)',
+    // background: 'rgba(74,179,244,0.1)',
     display: 'flex',
     justifyContent: 'space-around',
     padding: '15px'

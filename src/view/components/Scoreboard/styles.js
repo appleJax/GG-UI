@@ -21,6 +21,9 @@ export default (theme) => ({
   loggedInRow: {
     background: '#BBDEFB'
   },
+  handleClass: {
+    color: '#235574'
+  },
   headerCell: {
     background: theme.palette.primary.main,
     padding: '15px 8% 15px'
@@ -53,6 +56,7 @@ export default (theme) => ({
   },
   rankNumber: {
     alignItems: 'center',
+    color: '#235574',
     display: 'flex',
     fontFamily: 'Roboto',
     fontSize: '1.2em',
@@ -66,6 +70,7 @@ export default (theme) => ({
     marginTop: '30px'
   },
   smallNumber: {
+    color: '#235574',
     fontFamily: 'Roboto',
     fontSize: '14px',
     fontWeight: 'bold'

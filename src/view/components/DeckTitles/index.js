@@ -17,6 +17,7 @@ function DeckTitles({
   classes: {
     anki,
     ankiImg,
+    ankiInfo,
     cardList,
     container,
     header,
@@ -58,7 +59,7 @@ function DeckTitles({
             alt='anki icon'
           />
         </a>
-        <Typography variant='caption'>
+        <Typography variant='caption' className={ankiInfo}>
           Downloadable flashcard decks require Anki (
           <a href='https://apps.ankiweb.net/docs/beta.html'
              target='_blank'

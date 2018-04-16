@@ -61,6 +61,20 @@ export default createMuiTheme({
       typeHead: {
         fontSize: '20px'
       }
+    },
+    MuiTypography: {
+      caption: {
+        color: 'rgba(20,112,169,0.8)'
+      },
+      body1: {
+        color: '#046099'
+      },
+      body2: {
+        color: '#046099'
+      },
+      subheading: {
+        color: '#046099'
+      }
     }
   }
 })
