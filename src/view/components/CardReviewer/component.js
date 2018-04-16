@@ -30,6 +30,7 @@ function CardReviewer({
     cardList,
     container,
     label,
+    noWrap,
     reviewer,
     reviewerHandle,
     row,
@@ -81,8 +82,8 @@ function CardReviewer({
     totalCards = focusedUser.stats.data.allTimeStats[cardView.view].length
 
   const scrollTop = (window.innerWidth < 600)
-    ? 760
-    : 580
+    ? 1050
+    : 875
 
   const pagination = (
     <Pagination
@@ -111,7 +112,8 @@ function CardReviewer({
     <div className={container}>
       <Subheader classes={{root: subHeader}} component='div'>
         <Typography className={title} variant='subheading'>
-        <span className={reviewerHandle}>{ `@${handle}'s` }</span> Flashcard Reviewer
+        <span className={reviewerHandle}>{ `@${handle}'s ` }</span>
+        <span className={noWrap}>Flashcard Reviewer</span>
         </Typography>
       <Tabs
         classes={{root: tabs}}

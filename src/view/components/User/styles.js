@@ -25,10 +25,10 @@ export default (theme) => ({
     margin: '5px 0'
   },
   handleClass: {
-    color: '#444'
+    color: 'rgba(0,0,0,0.5)'
   },
   nameClass: {
-    color: '#222'
+    color: 'rgba(50,50,50,0.9)'
   },
   rankDiv: {
     background: 'rgba(51,82,225,0.2)'

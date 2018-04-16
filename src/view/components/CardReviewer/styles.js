@@ -4,12 +4,16 @@ const { cardList } = classes
 export default (theme) => ({
   cardList,
   container: {
+    marginTop: '-1px',
     width: '100%'
   },
   label: {
     [theme.breakpoints.down('xs')]: {
       display: 'none'
     }
+  },
+  noWrap: {
+    whiteSpace: 'nowrap'
   },
   reviewer: {
     display: 'flex',
