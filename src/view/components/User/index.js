@@ -9,6 +9,7 @@ import CardReviewer   from 'Components/CardReviewer'
 import EmptyMessage   from 'Components/EmptyMessage'
 import FollowButton   from 'Components/FollowButton'
 import Spinner        from 'Components/Spinner'
+import FlashOn        from 'Icons/FlashOn'
 import styles         from './styles'
 import { object, string } from 'prop-types'
 import {
@@ -28,13 +29,23 @@ const {
 function User({
   classes: {
     answeredRatioDiv,
+    answerTimeHeading,
     avatarRoot,
     avgTimeDiv,
     banner,
+    dataPoint,
     rankDiv,
     scoreDiv,
-    statBox,
     stat,
+    statBox,
+    statBoxes,
+    streak,
+    streakBox,
+    streakHeader,
+    streakIcon,
+    streakSubheader,
+    streakText,
+    streakTitle,
     timePeriod,
     totalRatioDiv,
     userBar,
@@ -83,25 +94,89 @@ function User({
             src={avatar.replace('_normal.', '_400x400.')}
           />
           <div className={userIdentity}>
-            <Typography variant='title'>{name}</Typography>
-            <Typography variant='subheading'>{`@${handle}`}</Typography>
+            <Typography variant='title'>{ name }</Typography>
+            <Typography variant='subheading'>{ `@${handle}` }</Typography>
             <FollowButton handle={handle} userId={userId} />
           </div>
         </div>
         <div className={userStats}>
+          <div className={streakHeader}>
+            <Typography variant='title' className={streakTitle}>
+              <FlashOn className={streakIcon} /> Streaks
+            </Typography>
+          </div>
+          <div className={streakBox}>
+            <div className={streak}>
+              <Typography variant='body2' className={streakSubheader}>
+                CURRENT
+              </Typography>
+              <Typography variant='body1' className={streakText}>
+                Answered: { allTimeStats.currentAnswerStreak }
+              </Typography>
+              <Typography variant='body1' className={streakText}>
+                Correct: { allTimeStats.currentCorrectStreak }
+              </Typography>
+            </div>
+            <div className={streak}>
+              <Typography variant='body2' className={streakSubheader}>
+                RECORD
+              </Typography>
+              <Typography variant='body1' className={streakText}>
+                Answered: { allTimeStats.longestAnswerStreak }
+              </Typography>
+              <Typography variant='body1' className={streakText}>
+                Correct: { allTimeStats.longestCorrectStreak }
+              </Typography>
+            </div>
+          </div>
+          <div className={statBoxes}>
         {
           [weeklyStats, monthlyStats, allTimeStats].map((stats, i) => {
+            const rawLowestAvgAnswerTime = stats.lowestAvgAnswerTime
+              ? stats.lowestAvgAnswerTime.value
+              : dailyStats.lowestAvgAnswerTime.value
+
+            const lowestAvgAnswerTime = rawLowestAvgAnswerTime < 86400
+              ? formatHMS(rawLowestAvgAnswerTime)
+              : 'N/A'
+
+            const avgAnswerTime = stats.avgAnswerTime > 0
+              ? formatHMS(stats.avgAnswerTime)
+              : 'N/A' 
+            
             let label = 'ALL TIME'
-            if (i === 0) label = 'WEEKLY'
-            if (i === 1) label = 'MONTHLY'
+            let category = 'Daily'
+            if (i === 0) {
+              label = 'WEEKLY'
+              category = 'Weekly'
+            }
+            if (i === 1) {
+              label = 'MONTHLY'
+              category = 'Monthly'
+            }
+
             return (
               <div key={i} className={statBox}>
                 <Typography className={timePeriod} variant='subheading'>{label}</Typography>
                 <div className={classNames(scoreDiv, stat)}>
                   <Typography variant='subheading'>Score: {stats.score}</Typography>
                   { stats.average
-                    ? <Typography variant='caption'>Average: {stats.average.value || stats.score}</Typography>
-                    : <Typography variant='caption'>Daily Average: {dailyStats.average.value || stats.score}</Typography>
+                    ? <>
+                        <Typography variant='caption' className={dataPoint}>
+                          Average: {stats.average.value || stats.score}
+                        </Typography>
+                        <Typography variant='caption' className={dataPoint}>
+                          Highest: { stats.highestScore.value || 'N/A' }
+                        </Typography>
+                      </>
+                    : <>
+                        <Typography variant='caption' className={dataPoint}>
+                          Daily Average: {dailyStats.average.value || stats.score}
+                        </Typography>
+                        <Typography variant='caption' className={dataPoint}>
+                          Highest: { dailyStats.highestScore.value || 'N/A' }
+                        </Typography>
+                      </>
                   }
                 </div>
                 <div className={classNames(answeredRatioDiv, stat)}>
@@ -115,15 +190,26 @@ function User({
                   <Typography variant='caption'>TOTAL</Typography>
                 </div>
                 <div className={classNames(avgTimeDiv, stat)}>
-                  <Typography variant='caption'>Average</Typography>
-                  <Typography variant='caption'>Answer Time:</Typography>
-                  <Typography variant='caption'>{formatHMS(stats.avgAnswerTime)}</Typography>
+                  <Typography variant='caption' className={answerTimeHeading}>
+                    ANSWER TIME
+                  </Typography>
+                  <div className={dataPoint}>
+                    <Typography variant='caption'>Average:</Typography>
+                    <Typography variant='caption'>{ avgAnswerTime }</Typography>
+                  </div>
+                  <div className={dataPoint}>
+                    <Typography variant='caption'>{ `Best ${category}:` }</Typography>
+                    <Typography variant='caption'>{ lowestAvgAnswerTime }</Typography>
+                  </div>
                 </div>
-                <Typography className={classNames(rankDiv, stat)} variant='body2'>Rank: {stats.rank || 'N/A'}</Typography>
+                <Typography className={classNames(rankDiv, stat)} variant='body2'>
+                  Rank: {stats.rank || 'N/A'}
+                </Typography>
               </div>
             )
           })
         }
+          </div>
         </div>
       </div>
       <CardReviewer />

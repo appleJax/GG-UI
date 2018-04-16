@@ -31,6 +31,7 @@ function CardReviewer({
     container,
     label,
     reviewer,
+    reviewerHandle,
     row,
     subHeader,
     tabs,
@@ -42,6 +43,11 @@ function CardReviewer({
   fetchingCards,
   focusedUser,
   focusedUser: {
+    stats: {
+      data: {
+        handle
+      }
+    },
     cardView,
     correct,
     incorrect,
@@ -105,7 +111,7 @@ function CardReviewer({
     <div className={container}>
       <Subheader classes={{root: subHeader}} component='div'>
         <Typography className={title} variant='subheading'>
-          Flashcard Reviewer
+        <span className={reviewerHandle}>{ `@${handle}'s` }</span> Flashcard Reviewer
         </Typography>
       <Tabs
         classes={{root: tabs}}

@@ -17,6 +17,7 @@ export default ({
           page = Math.ceil(
             loggedInRank / SCORES_PER_PAGE
           )
+          page = Math.max(page, 1)
         }
 
         const params = {

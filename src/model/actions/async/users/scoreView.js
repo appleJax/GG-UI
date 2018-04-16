@@ -17,7 +17,7 @@ export default ({
       dispatch(setScoreView(view))
 
       const { auth, search, users } = getState()
-      let page = users[view].page
+      let page = users[view].page || 1
 
       if (users[view].state !== RESOLVED && auth.state === LOGGED_IN) {
         const loggedInRank = auth.data[view].rank

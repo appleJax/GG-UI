@@ -16,6 +16,9 @@ export default (theme) => ({
     flexDirection: 'column',
     minHeight: 'calc(100vh - 106px)',
   },
+  reviewerHandle: {
+    marginRight: '5px'
+  },
   row: {
     display: 'flex',
     flexWrap: 'wrap'
