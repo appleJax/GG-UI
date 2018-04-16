@@ -30,6 +30,7 @@ function User({
   classes: {
     answeredRatioDiv,
     answerTimeHeading,
+    answerTimeStat,
     avatarRoot,
     avgTimeDiv,
     banner,
@@ -119,7 +120,7 @@ function User({
             </div>
             <div className={streak}>
               <Typography variant='body2' className={streakSubheader}>
-                RECORD
+                LONGEST
               </Typography>
               <Typography variant='body1' className={streakText}>
                 Answered: { allTimeStats.longestAnswerStreak }
@@ -143,9 +144,9 @@ function User({
             const avgAnswerTime = stats.avgAnswerTime > 0
               ? formatHMS(stats.avgAnswerTime)
               : 'N/A' 
-            
+
             let label = 'ALL TIME'
-            let category = 'Daily'
+            let category = ''
             if (i === 0) {
               label = 'WEEKLY'
               category = 'Weekly'
@@ -153,6 +154,13 @@ function User({
             if (i === 1) {
               label = 'MONTHLY'
               category = 'Monthly'
+            }
+
+            let currentDescriptor = `Current ${category}`
+            let bestDescriptor = `Best ${category}`
+            if (label === 'ALL TIME') {
+              currentDescriptor = 'All Time'
+              bestDescriptor = 'Best Daily'
             }
 
             return (
@@ -193,12 +201,14 @@ function User({
                   <Typography variant='caption' className={answerTimeHeading}>
                     ANSWER TIME
                   </Typography>
-                  <div className={dataPoint}>
+                  <div className={answerTimeStat}>
+                    <Typography variant='caption'>{ currentDescriptor }</Typography>
                     <Typography variant='caption'>Average:</Typography>
                     <Typography variant='caption'>{ avgAnswerTime }</Typography>
                   </div>
-                  <div className={dataPoint}>
-                    <Typography variant='caption'>{ `Best ${category}:` }</Typography>
+                  <div className={answerTimeStat}>
+                    <Typography variant='caption'>{ bestDescriptor }</Typography>
+                    <Typography variant='caption'>Average:</Typography>
                     <Typography variant='caption'>{ lowestAvgAnswerTime }</Typography>
                   </div>
                 </div>

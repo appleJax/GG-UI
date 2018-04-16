@@ -7,6 +7,9 @@ export default (theme) => ({
   answerTimeHeading: {
     color: 'rgba(0,0,0,0.7)'
   },
+  answerTimeStat: {
+    margin: '8px 0'
+  },
   avatarRoot: {
     height: '200px',
     margin: `-125px 0 0 ${leftMargin}`,
