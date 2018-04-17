@@ -53,7 +53,8 @@ export default (theme) => ({
     }
   },
   navMenu: {
-    background: 'rgb(200,237,255)'
+    background: 'rgba(74,179,244,0.1)',
+    height: '100vh'
   },
   noHoverEffect: {
     '&:hover': {

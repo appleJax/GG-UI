@@ -63,7 +63,7 @@ function Nav(props) {
   const user = auth.data
 
   const menuItems = (
-    <List>
+    <List className={navMenu}>
       { auth.state === LOGGED_IN
         ? (
           <MenuItem
@@ -188,7 +188,6 @@ function Nav(props) {
             {  menuIcon }
           </IconButton>
           <Drawer
-            classes={{ paper: navMenu }}
             id='menu-appbar'
             anchor='right'
             open={isNavOptionsOpen}
