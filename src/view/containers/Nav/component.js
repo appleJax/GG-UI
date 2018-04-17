@@ -36,6 +36,7 @@ function Nav(props) {
       logo,
       link,
       menuItem,
+      noHoverEffect,
       navContainer,
       navMenu,
       profileIcon,
@@ -62,7 +63,7 @@ function Nav(props) {
   const user = auth.data
 
   const menuItems = (
-    <List className={navMenu}>
+    <List>
       { auth.state === LOGGED_IN
         ? (
           <MenuItem
@@ -177,6 +178,7 @@ function Nav(props) {
             }
           </div>
           <IconButton
+            classes={{ root: auth.state === LOGGED_IN && noHoverEffect }}
             aria-owns={isNavOptionsOpen ? 'menu-appbar' : null}
             aria-haspopup='true'
             color='inherit'
@@ -186,6 +188,7 @@ function Nav(props) {
             {  menuIcon }
           </IconButton>
           <Drawer
+            classes={{ paper: navMenu }}
             id='menu-appbar'
             anchor='right'
             open={isNavOptionsOpen}

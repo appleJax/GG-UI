@@ -24,6 +24,9 @@ export default (theme) => ({
   dataPoint: {
     margin: '5px 0'
   },
+  extraMargin: {
+    marginBottom: '5px'
+  },
   handleClass: {
     color: 'rgba(0,0,0,0.5)'
   },
@@ -37,15 +40,18 @@ export default (theme) => ({
     background: 'rgba(150,180,255,0.1)'
   },
   stat: {
-    padding: '8px 0'
+    padding: '8px 15px',
+    [theme.breakpoints.down('xs')]: {
+      padding: '8px 5px',
+    }
   },
   statBox: {
     textAlign: 'center',
-    width: '105px'
+    flexGrow: '1'
   },
   statBoxes: {
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'center'
   },
   streak: {
     alignItems: 'center',
@@ -57,7 +63,6 @@ export default (theme) => ({
   streakBox: {
     alignItems: 'center',
     background: 'rgba(150,180,255,0.1)',
-    // background: 'rgba(74,179,244,0.1)',
     display: 'flex',
     justifyContent: 'space-around',
     padding: '15px'
@@ -74,11 +79,11 @@ export default (theme) => ({
     borderRadius: '50%',
     boxShadow: '1px 1px 2px rgba(0,0,0,0.1)',
     color: theme.palette.primary.dark,
-    height: '30px',
+    height: '26px',
     margin: '0 5px -6px',
     padding: '3px',
     transform: 'rotate(25deg)',
-    width: '30px',
+    width: '26px',
   },
   streakSubheader: {
     color: theme.palette.primary.dark,
@@ -88,11 +93,13 @@ export default (theme) => ({
     color: theme.palette.primary.dark
   },
   streakTitle: {
-    color: 'white'
+    color: 'white',
+    fontSize: '20px'
   },
   timePeriod: {
     background: theme.palette.primary.main,
-    color: theme.palette.secondary.main
+    color: theme.palette.secondary.main,
+    fontSize: '20px'
   },
   totalRatioDiv: {
     background: 'rgba(150,180,255,0.1)'
@@ -114,7 +121,8 @@ export default (theme) => ({
     marginLeft: '25px',
     maxWidth: '100vw',
     [theme.breakpoints.down('xs')]: {
-      margin: '0 auto'
+      margin: '0 auto',
+      width: '100vw'
     }
   }
 })

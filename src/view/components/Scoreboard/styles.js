@@ -26,7 +26,11 @@ export default (theme) => ({
   },
   headerCell: {
     background: theme.palette.primary.main,
-    padding: '15px 8% 15px'
+    padding: '15px 8% 15px',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '12px',
+      padding: '15px 2px'
+    }
   },
   headerRow: {
     display: 'flex',
@@ -87,14 +91,22 @@ export default (theme) => ({
     overflowY: 'scroll'
   },
   tableCell: {
-    padding: '10px 8% 10px'
+    padding: '10px 8% 10px',
+    [theme.breakpoints.down('xs')]: {
+      padding: '10px 2%'
+    }
   },
   tableRow: {
     display: 'flex',
     flexDirection: 'row',
-    maxWidth: '100vw',
     minHeight: `${rowHeight}px`,
-    overflow: 'hidden'
+    overflow: 'hidden',
+    width: '100%'
+  },
+  tabLabel: {
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '18px'
+    }
   },
   tabs: {
     background: theme.palette.primary.light,

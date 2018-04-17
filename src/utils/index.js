@@ -135,7 +135,9 @@ export function formatRatio({ correct, attempts, totalPossible }, total) {
       )
     : 0
 
-  return `${correct}/${denominator} - ${percent}%`
+  return <>
+    {`${correct}/${denominator}`}<br/>{`(${percent}%)`}
+    </>
 }
 
 export function getCardIds(

@@ -31,7 +31,11 @@ export default (theme) => ({
     display: 'flex',
     flexDirection: 'column',
     position: 'absolute',
-    right: '0'
+    right: '0',
+    '&:hover': {
+      background: 'rgba(0,0,0,0.1)',
+      borderRadius: '2px'
+    }
   },
   logo: {
     borderRadius: '20px',
@@ -49,7 +53,12 @@ export default (theme) => ({
     }
   },
   navMenu: {
-    background: 'rgba(74,179,244,0.2)'
+    background: 'rgb(200,237,255)'
+  },
+  noHoverEffect: {
+    '&:hover': {
+      background: 'transparent'
+    }
   },
   profileIcon: {
     margin: '0 5px 0 -10px'

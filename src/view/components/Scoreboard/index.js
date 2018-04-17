@@ -61,6 +61,7 @@ function Scoreboard({
     tableBody,
     tableCell,
     tableRow,
+    tabLabel,
     tabs
   },
   auth,
@@ -141,7 +142,7 @@ function Scoreboard({
                 classes={{root: avatarRoot}}
                 src={avatar}
               />
-              <Typography variant='subheading' className={handleClass}>
+              <Typography variant='body1' className={handleClass}>
                 @{handle}
               </Typography>
             </div>
@@ -218,7 +219,7 @@ function Scoreboard({
       />
       <Paper className={root}>
         <Tabs
-          classes={{root: tabs}}
+          classes={{ root: tabs }}
           value={tabValue}
           onChange={(e, value) => setScoreView(value)}
           indicatorColor='secondary'
@@ -226,9 +227,9 @@ function Scoreboard({
           centered
           fullWidth
         >
-          <Tab label='WEEKLY' />
-          <Tab label='MONTHLY' />
-          <Tab label='ALL TIME' />
+          <Tab classes={{ label: tabLabel }} label='WEEKLY' />
+          <Tab classes={{ label: tabLabel }} label='MONTHLY' />
+          <Tab classes={{ label: tabLabel }} label='ALL TIME' />
         </Tabs>
         <div className={table}>
           <div className={headerRow}>

@@ -36,6 +36,7 @@ function User({
     avgTimeDiv,
     banner,
     dataPoint,
+    extraMargin,
     handleClass,
     nameClass,
     rankDiv,
@@ -104,6 +105,94 @@ function User({
           </div>
         </div>
         <div className={userStats}>
+          <div className={statBoxes}>
+        {
+          [weeklyStats, monthlyStats, allTimeStats].map((stats, i) => {
+            const rawLowestAvgAnswerTime = stats.lowestAvgAnswerTime
+              ? stats.lowestAvgAnswerTime.value
+              : dailyStats.lowestAvgAnswerTime.value
+
+            const lowestAvgAnswerTime = rawLowestAvgAnswerTime < 86400
+              ? formatHMS(rawLowestAvgAnswerTime)
+              : (stats.avgAnswerTime && formatHMS(stats.avgAnswerTime)) || 'N/A'
+
+            const avgAnswerTime = stats.avgAnswerTime > 0
+              ? formatHMS(stats.avgAnswerTime)
+              : 'N/A' 
+
+            let label = 'ALL TIME'
+            let category = ''
+            if (i === 0) {
+              label = 'WEEKLY'
+              category = 'Week'
+            }
+            if (i === 1) {
+              label = 'MONTHLY'
+              category = 'Month'
+            }
+
+            let currentDescriptor = `This ${category}`
+            let bestDescriptor = 'Best'
+            if (label === 'ALL TIME') {
+              currentDescriptor = 'All Time'
+              bestDescriptor = 'Best Day'
+            }
+
+            return (
+              <div key={i} className={statBox}>
+                <Typography className={timePeriod} variant='subheading'>{label}</Typography>
+                <div className={classNames(scoreDiv, stat)}>
+                  <Typography variant='subheading'>Score:<br/>{stats.score}</Typography>
+                  { stats.average
+                    ? <>
+                        <Typography variant='caption' className={dataPoint}>
+                          Average:<br/>{stats.average.value || stats.score}
+                        </Typography>
+                        <Typography variant='caption' className={dataPoint}>
+                          Highest:<br/>{ stats.highestScore.value || stats.score }
+                        </Typography>
+                      </>
+                    : <>
+                        <Typography variant='caption' className={dataPoint}>
+                          Daily Avg:<br/>{dailyStats.average.value || stats.score}
+                        </Typography>
+                        <Typography variant='caption' className={dataPoint}>
+                          Best Day:<br/>{ dailyStats.highestScore.value || dailyStats.score }
+                        </Typography>
+                      </>
+                  }
+                </div>
+                <div className={classNames(answeredRatioDiv, stat)}>
+                  <Typography variant='body1' className={extraMargin}>{formatRatio(stats)}</Typography>
+                  <Typography variant='caption'>Correct of</Typography>
+                  <Typography variant='caption'>ANSWERED</Typography>
+                </div>
+                <div className={classNames(totalRatioDiv, stat)}>
+                  <Typography variant='body1' className={extraMargin}>{formatRatio(stats, true)}</Typography>
+                  <Typography variant='caption'>Correct of</Typography>
+                  <Typography variant='caption'>TOTAL</Typography>
+                </div>
+                <div className={classNames(avgTimeDiv, stat)}>
+                  <Typography variant='caption' className={answerTimeHeading}>
+                    AVERAGE<br/>ANSWER<br/>TIME
+                  </Typography>
+                  <div className={answerTimeStat}>
+                    <Typography variant='caption'>{ currentDescriptor }:</Typography>
+                    <Typography variant='caption' className={answerTimeNum}>{ avgAnswerTime }</Typography>
+                  </div>
+                  <div className={answerTimeStat}>
+                    <Typography variant='caption'>{ bestDescriptor }:</Typography>
+                    <Typography variant='caption' className={answerTimeNum}>{ lowestAvgAnswerTime }</Typography>
+                  </div>
+                </div>
+                <Typography className={classNames(rankDiv, stat)} variant='body2'>
+                  Rank: {stats.rank || 'N/A'}
+                </Typography>
+              </div>
+            )
+          })
+        }
+          </div>
           <div className={streakHeader}>
             <Typography variant='title' className={streakTitle}>
               <FlashOn className={streakIcon} /> Streaks
@@ -132,97 +221,6 @@ function User({
                 Correct: { allTimeStats.longestCorrectStreak }
               </Typography>
             </div>
-          </div>
-          <div className={statBoxes}>
-        {
-          [weeklyStats, monthlyStats, allTimeStats].map((stats, i) => {
-            const rawLowestAvgAnswerTime = stats.lowestAvgAnswerTime
-              ? stats.lowestAvgAnswerTime.value
-              : dailyStats.lowestAvgAnswerTime.value
-
-            const lowestAvgAnswerTime = rawLowestAvgAnswerTime < 86400
-              ? formatHMS(rawLowestAvgAnswerTime)
-              : 'N/A'
-
-            const avgAnswerTime = stats.avgAnswerTime > 0
-              ? formatHMS(stats.avgAnswerTime)
-              : 'N/A' 
-
-            let label = 'ALL TIME'
-            let category = ''
-            if (i === 0) {
-              label = 'WEEKLY'
-              category = 'Week'
-            }
-            if (i === 1) {
-              label = 'MONTHLY'
-              category = 'Month'
-            }
-
-            let currentDescriptor = `This ${category}`
-            let bestDescriptor = 'Best'
-            if (label === 'ALL TIME') {
-              currentDescriptor = 'All Time'
-              bestDescriptor = 'Best Day'
-            }
-
-            return (
-              <div key={i} className={statBox}>
-                <Typography className={timePeriod} variant='subheading'>{label}</Typography>
-                <div className={classNames(scoreDiv, stat)}>
-                  <Typography variant='subheading'>Score: {stats.score}</Typography>
-                  { stats.average
-                    ? <>
-                        <Typography variant='caption' className={dataPoint}>
-                          Average: {stats.average.value || stats.score}
-                        </Typography>
-                        <Typography variant='caption' className={dataPoint}>
-                          Highest: { stats.highestScore.value || 'N/A' }
-                        </Typography>
-                      </>
-                    : <>
-                        <Typography variant='caption' className={dataPoint}>
-                          Daily Average: {dailyStats.average.value || stats.score}
-                        </Typography>
-                        <Typography variant='caption' className={dataPoint}>
-                          Highest: { dailyStats.highestScore.value || 'N/A' }
-                        </Typography>
-                      </>
-                  }
-                </div>
-                <div className={classNames(answeredRatioDiv, stat)}>
-                  <Typography variant='body1'>{formatRatio(stats)}</Typography>
-                  <Typography variant='caption'>Correct of</Typography>
-                  <Typography variant='caption'>ANSWERED</Typography>
-                </div>
-                <div className={classNames(totalRatioDiv, stat)}>
-                  <Typography variant='body1'>{formatRatio(stats, true)}</Typography>
-                  <Typography variant='caption'>Correct of</Typography>
-                  <Typography variant='caption'>TOTAL</Typography>
-                </div>
-                <div className={classNames(avgTimeDiv, stat)}>
-                  <Typography variant='caption' className={answerTimeHeading}>
-                    AVERAGE  
-                  </Typography>
-                  <Typography variant='caption' className={answerTimeHeading}>
-                    ANSWER TIME
-                  </Typography>
-                  <div className={answerTimeStat}>
-                    <Typography variant='caption'>{ currentDescriptor }:</Typography>
-                    <Typography variant='caption' className={answerTimeNum}>{ avgAnswerTime }</Typography>
-                  </div>
-                  <div className={answerTimeStat}>
-                    <Typography variant='caption'>{ bestDescriptor }:</Typography>
-                    <Typography variant='caption' className={answerTimeNum}>{ lowestAvgAnswerTime }</Typography>
-                  </div>
-                </div>
-                <Typography className={classNames(rankDiv, stat)} variant='body2'>
-                  Rank: {stats.rank || 'N/A'}
-                </Typography>
-              </div>
-            )
-          })
-        }
           </div>
         </div>
       </div>
