@@ -4,7 +4,7 @@ import { Provider }                from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { AppContainer }            from 'react-hot-loader'
 
-import Reboot                      from 'UI/Reboot'
+import CssBaseline                 from 'UI/CssBaseline'
 import { MuiThemeProvider }        from 'UI/styles'
 
 import configureStore              from 'Src/configureStore'
@@ -21,7 +21,7 @@ const render = (Component) =>
     <AppContainer>
       <Provider store={store}>
         <MuiThemeProvider theme={theme}>
-          <Reboot />
+          <CssBaseline />
           <Router>
             <Component />
           </Router>

@@ -1,10 +1,11 @@
-import React from 'react'
-import classNames from 'classnames'
+import React          from 'react'
+import classNames     from 'classnames'
 import { withStyles } from 'UI'
-import Typography from 'UI/Typography'
-import Error from 'Icons/Error'
-import Info from 'Icons/Info'
-import styles from './styles'
+import Typography     from 'UI/Typography'
+import ErrorOutline   from 'Icons/ErrorOutline'
+import Error          from 'Icons/Error'
+import Info           from 'Icons/Info'
+import styles         from './styles'
 
 const { FOLLOW_URL, TWITTER_ACCOUNT } = process.env
 
@@ -141,13 +142,17 @@ const HowToPlay = ({
         <p>
           Questions left unanswered will not affect your average answer time, but both correct and incorrect answers will contribute to your average answer time.
         </p>
+        <blockquote className={quote}>
+        <p>
+          <ErrorOutline className={icon} /> NOTE: Once the beta ends and Gamegogakuen officially launches, all stats will be reset.
+        </p>
+        </blockquote>
       </Typography>
       <Typography className={heading} variant='headline'>
         Disclaimer
       </Typography>
       <Typography className={text} variant='subheading'>
         <blockquote className={quote}>
-        
         <p>
           <Error className={icon} /> While I do my best to leave only one possible correct answer, you may think of a word that is also possible given the criteria, yet is not the word that appears in the game.
         </p>

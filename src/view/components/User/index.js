@@ -163,7 +163,7 @@ function User({
             let bestDescriptor = 'Best'
             if (label === 'ALL TIME') {
               currentDescriptor = 'All Time'
-              bestDescriptor = 'Best Daily'
+              bestDescriptor = 'Best Day'
             }
 
             return (
