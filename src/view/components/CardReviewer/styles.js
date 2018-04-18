@@ -42,6 +42,10 @@ export default (theme) => ({
     background: theme.palette.primary.main,
     color: '#fff',
     padding: '5px',
-    paddingLeft: '30px'
+    paddingLeft: '30px',
+    [theme.breakpoints.down('xs')]: {
+      padding: '5px',
+      textAlign: 'center'
+    }
   }
 })

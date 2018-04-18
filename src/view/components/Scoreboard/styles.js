@@ -93,7 +93,7 @@ export default (theme) => ({
   tableCell: {
     padding: '10px 8% 10px',
     [theme.breakpoints.down('xs')]: {
-      padding: '10px 2%'
+      padding: '10px 4%'
     }
   },
   tableRow: {

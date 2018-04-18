@@ -82,8 +82,8 @@ function CardReviewer({
     totalCards = focusedUser.stats.data.allTimeStats[cardView.view].length
 
   const scrollTop = (window.innerWidth < 600)
-    ? 1050
-    : 875
+    ? 1300
+    : 1120
 
   const pagination = (
     <Pagination
