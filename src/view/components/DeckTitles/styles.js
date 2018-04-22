@@ -14,7 +14,7 @@ export default (theme) => ({
     marginBottom: '-5px'
   },
   ankiInfo: {
-    color: '#555'
+    color: 'rgba(0,0,0,0.5)'
   },
   cardList,
   container: {

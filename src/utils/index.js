@@ -147,7 +147,7 @@ export function getCardIds(
   itemsPerPage = CARDS_PER_PAGE
 ) {
 
-  const cards = focusedUser.stats.data.allTimeStats[view] || []
+  const cards = (focusedUser.stats.data.allTimeStats[view] || []).slice().reverse()
   const startIndex = (page - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
   const visibleCards = cards.slice(startIndex, endIndex)

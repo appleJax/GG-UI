@@ -144,7 +144,7 @@ const HowToPlay = ({
         </p>
         <blockquote className={quote}>
         <p>
-          <ErrorOutline className={icon} /> NOTE: Once the beta ends and Gamegogakuen officially launches, all stats will be reset.
+          <ErrorOutline className={icon} /> NOTE: Once the beta ends and GameGogakuen officially launches, all stats will be reset.
         </p>
         </blockquote>
       </Typography>
