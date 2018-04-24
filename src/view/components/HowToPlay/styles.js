@@ -45,7 +45,7 @@ export default (theme) => ({
   },
   pageHeader: {
     alignItems: 'center',
-    background: 'rgba(74,179,244,0.1)',
+    background: 'rgba(20,112,169,0.1)',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -67,7 +67,7 @@ export default (theme) => ({
     margin: '20px 0'
   },
   title: {
-    color: theme.palette.primary.main,
+    color: theme.palette.primary.dark,
     textShadow: '1px 1px #fafafa'
   },
   welcomeMessage: {
