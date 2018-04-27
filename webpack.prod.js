@@ -3,13 +3,13 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
 const common = require('./webpack.common')
 const ENV = require('./.env');
-const { API_URL } = ENV.prod;
 const {
+  API_URL,
   DM_URL,
   FOLLOW_URL,
   TWITTER_ACCOUNT,
   TWITTER_ID
-} = ENV.common;
+} = ENV.prod;
 
 module.exports = merge(common, {
   entry: [

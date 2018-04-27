@@ -7,6 +7,7 @@
   "scripts": {
     "build": "webpack --config webpack.dev.js && npm start",
     "deploy": "webpack -p --config webpack.prod.js",
+    "stage": "webpack -p --config webpack.staging.js",
     "start": "node ./dist/server.js",
     "devstart": "webpack-dev-server --config webpack.dev.js --hot",
     "test": "jest --watch",
