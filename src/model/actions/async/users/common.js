@@ -8,12 +8,12 @@ const {
 } = syncActions
 
 
-export const getScores = (dispatch, params, view, search, users) => {
+export const getStats = (dispatch, params, view, search, users) => {
   if (users[view].search !== search)
     dispatch(fetchingStats(view, search))
 
   const { params: { page } } = params
-  ajax.get('/scores', params)
+  ajax.get('/stats', params)
       .then(({ users, total }) =>
         dispatch(setStats(page, search, total, users, view))
       )

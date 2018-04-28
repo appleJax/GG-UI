@@ -1,5 +1,5 @@
 import { debounce }  from 'Utils'
-import { getScores } from './common'
+import { getStats } from './common'
 import syncActions   from 'Actions/sync'
 
 const { setSearchQuery } = syncActions
@@ -21,7 +21,7 @@ function fetchQueryNaive(dispatch, getState) {
   const params = {
     params: { search, view }
   }
-  getScores(dispatch, params, view, search, users)
+  getStats(dispatch, params, view, search, users)
 }
 
 const delayExecution = true

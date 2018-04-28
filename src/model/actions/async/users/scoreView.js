@@ -1,4 +1,4 @@
-import { getScores } from './common'
+import { getStats } from './common'
 import payloadStates from 'Constants/PayloadStates'
 import syncActions   from 'Actions/sync'
 import { SCORES_PER_PAGE } from 'Utils'
@@ -30,7 +30,7 @@ export default ({
       const params = {
         params: { page, search, view, pageSize: SCORES_PER_PAGE }
       }
-      getScores(dispatch, params, view, search, users)
+      getStats(dispatch, params, view, search, users)
     }
   }
 
