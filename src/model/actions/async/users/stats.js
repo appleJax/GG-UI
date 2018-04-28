@@ -14,12 +14,12 @@ export default ({
 
         if (users[view].state !== RESOLVED && auth.state === LOGGED_IN) {
           const loggedInRank = auth.data[view].rank
-          loggedInUser = auth.data.userId
-
-          page = Math.ceil(
-            loggedInRank / SCORES_PER_PAGE
-          )
-          page = Math.max(page, 1)
+          if (loggedInRank) {
+            loggedInUser = auth.data.userId
+            page = Math.ceil(
+              loggedInRank / SCORES_PER_PAGE
+            )
+          }
         }
 
         const params = {
