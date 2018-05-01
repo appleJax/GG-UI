@@ -1,5 +1,6 @@
 {
   "lang": "en",
+  "name": "GameGogakuen",
   "background_color": "#1DA1F2",
   "description": "Language Quiz Bot for Video Game Text",
   "display": "standalone",
