@@ -9,12 +9,7 @@
   "icons": [
     {
       "src": "images/favicon.ico",
-      "sizes": "96x96"
-    },
-    {
-      "src": "images/gg-logo.png",
-      "type": "image/png",
-      "sizes": "128x128"
+      "sizes": "96x96 128x128"
     }
   ]
 }
