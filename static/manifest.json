@@ -1,10 +1,19 @@
 {
   "lang": "en",
-  "name": "GameGogakuen",
-  "short_name": "GameGogakuen",
   "background_color": "#1DA1F2",
-  "description": "Learn Japanese/English Through Gaming",
+  "description": "Language Quiz Bot for Video Game Text",
   "display": "standalone",
   "orientation": "portrait",
-  "theme_color": "#1DA1F2"
+  "theme_color": "#1DA1F2",
+  "icons": [
+    {
+      "src": "images/favicon.ico",
+      "sizes": "96x96"
+    },
+    {
+      "src": "images/gg-logo.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    }
+  ]
 }
