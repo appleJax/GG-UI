@@ -113,10 +113,10 @@ export function formatHMS(totalSeconds) {
   return `${hours}:${minutes}:${seconds}`
 }
 
-export const formatQuestionText = (questionText) =>
+export const formatQuestionText = (questionText, end = -4) =>
   questionText
     .split('\n')
-    .slice(0, -4)
+    .slice(0, end)
     .map((line, i) =>
       <p style={{margin: '0'}} key={i} >{line}</p>
     )

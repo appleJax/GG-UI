@@ -6,6 +6,7 @@ import Typography     from 'UI/Typography'
 import {
   formatAnswers,
   formatGameTitle,
+  formatQuestionText,
   pluralize,
   tweetLink
 }  from 'Utils'
@@ -63,7 +64,7 @@ const AnswerCard = ({
         )}
       >
         <Typography className={cardHeader} variant='subheading'>
-          {questionText}
+          { formatQuestionText(questionText, 2) }
         </Typography>
         <Typography className={gameTitle} variant='body1'>
           { formatGameTitle(game) }

@@ -8,7 +8,7 @@
   "theme_color": "#1DA1F2",
   "icons": [
     {
-      "src": "images/gg.png",
+      "src": "images/gg-logo.png",
       "type": "image/png",
       "sizes": "192x192"
     }
