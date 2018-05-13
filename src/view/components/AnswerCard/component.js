@@ -55,6 +55,7 @@ const AnswerCard = ({
     <a className={cardLink}
       href={tweetLink(cardId)}
       target='_blank'
+      rel='noopener'
     >
       <Paper
         className={classNames(

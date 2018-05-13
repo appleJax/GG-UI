@@ -57,6 +57,7 @@ function FollowButton({
       color='secondary'
       className={follow}
       href={`https://twitter.com/intent/follow?screen_name=${handle}`}
+      rel='noopener'
       target='_blank'
       size='small'
       variant='raised'

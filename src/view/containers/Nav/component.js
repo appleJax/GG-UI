@@ -165,6 +165,7 @@ function Nav(props) {
               <Button
                 className={followButton}
                 href={FOLLOW_URL}
+                rel='noopener'
                 target='_blank'
                 variant='fab'
               >

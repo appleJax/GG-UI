@@ -52,6 +52,7 @@ function DeckTitles({
       <footer className={anki}>
         <a href='https://apps.ankiweb.net'
            target='_blank'
+           rel='noopener'
         >
           <img
             className={ankiImg}
@@ -63,6 +64,7 @@ function DeckTitles({
           Downloadable flashcard decks require Anki (
           <a href='https://apps.ankiweb.net/docs/beta.html'
              target='_blank'
+             rel='noopener'
           >2.1 recommended</a>)
         </Typography>
       </footer>

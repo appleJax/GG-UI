@@ -79,6 +79,7 @@ function LiveQuestions({
         <Button
           className={submitAnswerBtn}
           href={dmLink(cardId)}
+          rel='noopener'
           size='small'
           target='_blank'
           variant='flat'
@@ -114,6 +115,7 @@ function LiveQuestions({
             <a
               className={cardLink}
               href={questionLink(questionId)}
+              rel='noopener'
               target='_blank'
             ></a>
             <Typography className={captionText} color='secondary' variant='subheading'>
