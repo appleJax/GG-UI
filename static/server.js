@@ -9,8 +9,7 @@ app.set('port', (process.env.PORT || 8080))
 app.use(express.static(path.resolve(__dirname)))
 
 app.get('*', (req, res) => {
-  console.log('Encrypted:', req.connection.encrypted);
-  if (!req.connection.encrypted) {
+  if (!req.secure) {
     res.redirect('https://' + req.headers.host + req.url)
   } else {
     res.sendFile(__dirname + '/public/index.html')
