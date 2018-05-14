@@ -29,7 +29,7 @@ const mapDispatchToProps = {
 }
 
 class Container extends Component {
-  componentWillMount() {
+  componentDidMount() {
     const {
       fetchCards,
       focusedUser,

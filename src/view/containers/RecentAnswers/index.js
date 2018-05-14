@@ -21,7 +21,7 @@ const mapDispatchToProps = {
 }
 
 class Container extends Component {
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.recentAnswers.state !== RESOLVED)
       this.props.fetchRecentAnswers()
   }

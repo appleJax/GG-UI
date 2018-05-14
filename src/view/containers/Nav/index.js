@@ -33,7 +33,7 @@ const [{
 
 
 class Container extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this._timer = setInterval(this.update.bind(this), 1000)
 
     if (this.props.auth.state !== LOGGED_IN)

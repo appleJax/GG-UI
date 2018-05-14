@@ -22,7 +22,7 @@ const mapDispatchToProps = {
 }
 
 class Container extends Component {
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.liveQuestions.state !== RESOLVED)
       this.props.fetchLiveQuestions()
   }
