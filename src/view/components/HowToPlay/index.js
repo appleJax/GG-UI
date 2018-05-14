@@ -37,7 +37,7 @@ const HowToPlay = ({
       </Typography>
       <Typography className={text} variant='subheading'>
         This is a language quiz game that asks you to fill in the blanks in Japanese text taken from video games.
-        The quiz questions are tweeted every 6 hours from <a className={link} rel='noopener' target='_blank' href={`//twitter.com/${TWITTER_ACCOUNT}`}>@GameGogakuenJP</a>, so be sure to <a className={link} rel='noopener' target='_blank' href={FOLLOW_URL}>follow</a> the bot or bookmark the <a className={link} onClick={() => history.push('/')}><span className={nowrap}>Live Questions</span></a> page on this site to see the latest questions as soon as they become available.
+        The quiz questions are tweeted every 6 hours from <a className={link} rel='noopener' target='_blank' href={`//twitter.com/${TWITTER_ACCOUNT}`}>@GameGogakuen_JP</a>, so be sure to <a className={link} rel='noopener' target='_blank' href={FOLLOW_URL}>follow</a> the bot or bookmark the <a className={link} onClick={() => history.push('/')}><span className={nowrap}>Live Questions</span></a> page on this site to see the latest questions as soon as they become available.
       </Typography>
       <Typography className={heading} variant='headline'>
         Clues 

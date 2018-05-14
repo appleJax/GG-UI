@@ -88,7 +88,7 @@ function Scoreboard({
     )
   else if (usersState === NOT_FOUND)
     userScores = (
-      <EmptyMessage message='No Leaders. Be the First!' />
+      <EmptyMessage message='No leaders. Be the first!' />
     )
   else if (usersState === FETCHING || usersState === INITIAL_STATE)
     userScores = (
