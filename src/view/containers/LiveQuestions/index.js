@@ -28,7 +28,6 @@ class Container extends Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log('Component Updated:', prevProps.countdown)
     if (prevProps.countdown % 10 === 0) {
       prevProps.fetchLiveQuestions()
     }
