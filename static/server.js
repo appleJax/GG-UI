@@ -20,11 +20,11 @@ app.use ((req, res, next) => {
   }
 });
 
-app.get('*', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html')
-})
-
 app.use(express.static(path.resolve(__dirname)))
+
+app.get('*', (req, res) => {
+  res.sendFile(__dirname + '/index.html')
+})
 
 app.listen(app.get('port'), () =>
   console.log('Listening on port', app.get('port'))
