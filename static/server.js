@@ -8,12 +8,16 @@ app.use(compression({ level: 4 }))
 app.set('port', (process.env.PORT || 8080))
 app.use(express.static(path.resolve(__dirname)))
 
-app.get('*', (req, res) => {
-  if (!req.secure) {
-    res.redirect('https://' + req.headers.host + req.url)
+app.use ((req, res, next) => {
+  if (req.secure) {
+    next()
   } else {
-    res.sendFile(__dirname + '/public/index.html')
+    res.redirect('https://' + req.headers.host + req.url)
   }
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html')
 })
 
 app.listen(app.get('port'), () =>

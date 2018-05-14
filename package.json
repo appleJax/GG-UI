@@ -6,8 +6,8 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack --config webpack.dev.js && npm start",
-    "deploy": "webpack -p --config webpack.prod.js && gcloud app deploy app.yaml --stop-previous-version",
-    "stage": "webpack -p --config webpack.staging.js && gcloud app deploy app_staging.yaml --stop-previous-version",
+    "deploy": "webpack -p --config webpack.prod.js && gcloud app deploy app.yaml --version=20180513t175439",
+    "stage": "webpack -p --config webpack.staging.js && gcloud app deploy app_staging.yaml --version=20180513t163506",
     "start": "node ./dist/server.js",
     "devstart": "webpack-dev-server --config webpack.dev.js --hot",
     "test": "jest --watch",
