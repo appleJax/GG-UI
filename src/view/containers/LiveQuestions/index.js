@@ -27,10 +27,13 @@ class Container extends Component {
       this.props.fetchLiveQuestions()
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.countdown % 10 === 0) {
-      nextProps.fetchLiveQuestions()
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log('Component Updated:', prevProps.countdown)
+    if (prevProps.countdown % 10 === 0) {
+      prevProps.fetchLiveQuestions()
     }
+
+    return null
   }
 
   render() {

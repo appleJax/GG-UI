@@ -35,15 +35,19 @@ class Container extends Component {
     if (game) fetchDeck(firstPage, game)
   }
 
-  componentWillReceiveProps({
-    decks,
-    fetchDeck,
-    match: { params: { game } }
-  }) {
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    const {
+      decks,
+      fetchDeck,
+      match: { params: { game } }
+    } = prevProps
+
     if (game && !decks[game]) {
       const firstPage = 1
       fetchDeck(firstPage, game)
     }
+
+    return null
   }
 
   render() {

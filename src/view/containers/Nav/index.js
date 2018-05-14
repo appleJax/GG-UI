@@ -44,14 +44,14 @@ class Container extends Component {
     clearInterval(this._timer)
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.countdown % 10 === 0) {
-      nextProps.fetchCountdown()
-      setTimeout(nextProps.fetchRecentAnswers, 4000)
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps.countdown % 10 === 0) {
+      prevProps.fetchCountdown()
+      setTimeout(prevProps.fetchRecentAnswers, 4000)
     }
 
-    if (isCacheInvalid(this.props, nextProps))
-      refreshCache(nextProps)
+    if (isCacheInvalid(this.props, prevProps))
+      refreshCache(prevProps)
   }
 
   update() {

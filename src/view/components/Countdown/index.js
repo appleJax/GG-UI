@@ -32,12 +32,11 @@ const styles = (theme) => ({
 
 class Container extends Component {
 
-  componentWillReceiveProps({
-    countdown,
-    fetchLiveQuestions
-  }) {
-    if (countdown === 0)
-      setTimeout(fetchLiveQuestions, 4000)
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    const { countdown, fetchLiveQuestions } = prevProps
+    if (countdown === 0) setTimeout(fetchLiveQuestions, 4000)
+
+    return null
   }
 
   render() {
