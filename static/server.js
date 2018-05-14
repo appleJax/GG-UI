@@ -6,7 +6,11 @@ const app = express()
 app.use(compression({ level: 4 }))
 
 app.set('port', (process.env.PORT || 8080))
-app.use(express.static(path.resolve(__dirname)))
+
+// Enable reverse proxy support in Express. This causes the
+// the "X-Forwarded-Proto" header field to be trusted so its
+// value can be used to determine the protocol.
+app.enable('trust proxy')
 
 app.use ((req, res, next) => {
   if (req.secure) {
@@ -19,6 +23,8 @@ app.use ((req, res, next) => {
 app.get('*', (req, res) => {
   res.sendFile(__dirname + '/public/index.html')
 })
+
+app.use(express.static(path.resolve(__dirname)))
 
 app.listen(app.get('port'), () =>
   console.log('Listening on port', app.get('port'))
