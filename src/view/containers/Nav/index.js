@@ -45,9 +45,15 @@ class Container extends Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (prevProps.countdown % 10 === 0) {
-      prevProps.fetchCountdown()
-      setTimeout(prevProps.fetchRecentAnswers, 4000)
+    const {
+      countdown,
+      fetchCountdown,
+      fetchRecentAnswers
+    } = this.props
+
+    if (countdown % 10 === 0) {
+      fetchCountdown()
+      setTimeout(fetchRecentAnswers, 4000)
     }
 
     if (isCacheInvalid(this.props, prevProps))

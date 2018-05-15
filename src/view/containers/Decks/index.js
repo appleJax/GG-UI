@@ -40,14 +40,12 @@ class Container extends Component {
       decks,
       fetchDeck,
       match: { params: { game } }
-    } = prevProps
+    } = this.props
 
     if (game && !decks[game]) {
       const firstPage = 1
       fetchDeck(firstPage, game)
     }
-
-    return null
   }
 
   render() {

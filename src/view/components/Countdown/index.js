@@ -33,7 +33,7 @@ const styles = (theme) => ({
 class Container extends Component {
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    const { countdown, fetchLiveQuestions } = prevProps
+    const { countdown, fetchLiveQuestions } = this.props
     if (countdown === 0) setTimeout(fetchLiveQuestions, 4000)
 
     return null

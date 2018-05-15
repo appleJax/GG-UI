@@ -28,11 +28,12 @@ class Container extends Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (prevProps.countdown % 10 === 0) {
-      prevProps.fetchLiveQuestions()
-    }
+    const {
+      countdown,
+      fetchLiveQuestions
+    } = this.props
 
-    return null
+    if (countdown % 10 === 0) fetchLiveQuestions()
   }
 
   render() {
