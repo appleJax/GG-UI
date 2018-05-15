@@ -20,10 +20,10 @@ module.exports = merge(common, {
     new UglifyJSPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
+        NODE_ENV:        JSON.stringify('production'),
         API_URL:         JSON.stringify(API_URL),
         DM_URL:          JSON.stringify(DM_URL),
         FOLLOW_URL:      JSON.stringify(FOLLOW_URL),
-        NODE_ENV:        JSON.stringify('production'),
         TWITTER_ACCOUNT: JSON.stringify(TWITTER_ACCOUNT),
         TWITTER_ID:      JSON.stringify(TWITTER_ID)
       }
