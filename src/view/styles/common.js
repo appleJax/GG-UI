@@ -9,6 +9,7 @@ export const rowHeight = 95
 export const classes = {
   cardImage: {
     height: 'auto',
+    minHeight: '200px',
     width: '100%',
     [theme.breakpoints.down('xs')]: {
       imageRendering: 'pixelated'
