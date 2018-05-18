@@ -154,7 +154,7 @@ const HowToPlay = ({
       <Typography className={text} variant='subheading'>
         <blockquote className={quote}>
         <p>
-          <Error className={icon} /> While I do my best to leave only one possible correct answer, you may think of a word that is also possible given the criteria, yet is not the word that appears in the game.
+          <Error className={icon} /> While I do my best to leave only one possible correct answer, you may answer with a word that is also possible given the context and criteria, yet is not the word that appears in the game.
         </p>
         <p>          
           In such a case, please let me know which possibilities I overlooked by replying to the relevant answer tweet, and I'll add additional hints to that card in the database.
