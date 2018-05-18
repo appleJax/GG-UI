@@ -39,6 +39,7 @@ export default (theme) => ({
   },
   logo: {
     borderRadius: '20px',
+    display: 'inline',
     font: '1.3em Cabin Sketch',
     marginLeft: '-15px',
     padding: '10px'
