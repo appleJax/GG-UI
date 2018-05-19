@@ -130,6 +130,7 @@ function CardReviewer({
       </Tabs>
       </Subheader>
       <SwipeableViews
+        containerStyle={{ willChange: 'initial' }}
         axis='x'
         index={tabValue}
         onChangeIndex={value => setCardView(value)}
