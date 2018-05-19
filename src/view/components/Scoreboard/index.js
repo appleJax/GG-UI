@@ -250,6 +250,7 @@ function Scoreboard({
             </div>
           </div>
           <SwipeableViews
+            containerStyle={{ willChange: 'initial' }}
             axis='x'
             index={tabValue}
             onChangeIndex={value => setScoreView(value)}
