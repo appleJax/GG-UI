@@ -14,8 +14,8 @@ export const getStats = (dispatch, params, view, search, users) => {
 
   const { params: { page } } = params
   ajax.get('/stats', params)
-      .then(({ users, total }) =>
-        dispatch(setStats(page, search, total, users, view))
+      .then(({ returnedUsers, total }) =>
+        dispatch(setStats(page, search, total, returnedUsers, view))
       )
       .catch(error =>
         dispatch(errorFetchingStats(error, view))

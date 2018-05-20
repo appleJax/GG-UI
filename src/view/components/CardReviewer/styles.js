@@ -4,7 +4,7 @@ const { cardList } = classes
 export default (theme) => ({
   cardList,
   container: {
-    marginTop: '-1px',
+    marginTop: '-3px',
     width: '100%'
   },
   label: {

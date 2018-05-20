@@ -65,13 +65,13 @@ function Scoreboard({
     tabs
   },
   auth,
-  setScoreView,
   fetchQuery,
   fetchStats,
   history,
   scoreView,
   search,
   setFocusedUser,
+  setScoreView,
   users
 }) {
 
