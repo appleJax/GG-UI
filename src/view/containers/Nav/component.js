@@ -15,6 +15,8 @@ import List               from 'UI/List'
 import Menu, { MenuItem } from 'UI/Menu'
 import Toolbar            from 'UI/Toolbar'
 import Typography         from 'UI/Typography'
+import KofiLink           from 'Components/KofiLink'
+import PatreonLink        from 'Components/PatreonLink'
 import { bool, func, object } from 'prop-types'
 import {
   alreadyFollowing
@@ -41,6 +43,7 @@ function Nav(props) {
       navMenu,
       profileIcon,
       signInIcon,
+      spacer,
       userHandle
     },
     auth,
@@ -124,6 +127,13 @@ function Nav(props) {
         </MenuItem>
         </>
       }
+      <div className={spacer} />
+      <MenuItem>
+        <PatreonLink ggTheme='true' />
+      </MenuItem>
+      <MenuItem>
+        <KofiLink ggTheme='true' />
+      </MenuItem>
     </List>
   )
 

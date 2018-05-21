@@ -55,6 +55,8 @@ export default (theme) => ({
   },
   navMenu: {
     background: 'rgba(74,179,244,0.2)',
+    display: 'flex',
+    flexDirection: 'column',
     height: '100vh'
   },
   noHoverEffect: {
@@ -69,6 +71,9 @@ export default (theme) => ({
     height: '25px',
     margin: '0 5px 0 -8px',
     width: '25px'
+  },
+  spacer: {
+    flexGrow: '10'
   },
   userHandle: {
     color: 'rgba(0,0,0,0.5)',

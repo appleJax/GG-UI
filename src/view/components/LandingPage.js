@@ -3,7 +3,7 @@ import { withStyles } from 'UI/styles'
 import CountDown     from 'Components/CountDown'
 import LiveQuestions from 'Containers/LiveQuestions'
 import RecentAnswers from 'Containers/RecentAnswers'
-import LandingFooter from 'Components/LandingFooter'
+import SupportUsFooter from 'Components/SupportUsFooter'
 import { navHeight } from 'Styles/common'
 
 const styles = () => ({
@@ -24,7 +24,7 @@ const LandingPage = ({ classes }) => (
     <LiveQuestions />
     <RecentAnswers />
     <Spacer />
-    <LandingFooter />
+    <SupportUsFooter />
   </div>
 )
 

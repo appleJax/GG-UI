@@ -6,6 +6,7 @@ import ErrorOutline   from 'Icons/ErrorOutline'
 import Error          from 'Icons/Error'
 import Info           from 'Icons/Info'
 import styles         from './styles'
+import SupportUsFooter from 'Components/SupportUsFooter'
 
 const { FOLLOW_URL, TWITTER_ACCOUNT } = process.env
 
@@ -171,6 +172,7 @@ const HowToPlay = ({
         </blockquote>
       </Typography>
     </div>
+    <SupportUsFooter />
   </div>
 )
 
