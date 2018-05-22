@@ -9,14 +9,14 @@ const styles = (theme) => ({
   footer: {
     background: '#ddd',
     marginTop: '15px',
-    padding: '10px',
+    padding: '10px 0 0 0',
     textAlign: 'center'
   },
   btn: {
     borderRadius: '3px',
     boxShadow: '1px 1px 1px rgba(0,0,0,0.3)',
     height: '40px',
-    margin: '0 10px',
+    margin: '0 10px 10px 10px',
     padding: '5px 15px',
   },
   kofiBtn: {
