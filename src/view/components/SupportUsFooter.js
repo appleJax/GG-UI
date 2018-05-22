@@ -8,19 +8,20 @@ import PatreonLink from 'Components/PatreonLink'
 const styles = (theme) => ({
   footer: {
     background: '#ddd',
-    marginTop: '10px',
+    marginTop: '15px',
     padding: '10px',
     textAlign: 'center'
   },
   btn: {
     borderRadius: '3px',
     boxShadow: '1px 1px 1px rgba(0,0,0,0.3)',
+    height: '40px',
     margin: '0 10px',
-    padding: '5px',
+    padding: '5px 15px',
   },
   kofiBtn: {
     background: theme.palette.primary.main,
-    paddingLeft: '9px',
+    paddingLeft: '18px',
     '&:hover': {
       background: theme.palette.primary.light
     }

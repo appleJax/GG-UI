@@ -75,6 +75,9 @@ export default (theme) => ({
   spacer: {
     flexGrow: '10'
   },
+  supportLink: {
+    paddingLeft: '20px'
+  },
   userHandle: {
     color: 'rgba(0,0,0,0.5)',
     marginTop: '5px',

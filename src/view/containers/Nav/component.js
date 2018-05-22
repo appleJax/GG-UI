@@ -44,6 +44,7 @@ function Nav(props) {
       profileIcon,
       signInIcon,
       spacer,
+      supportLink,
       userHandle
     },
     auth,
@@ -128,10 +129,10 @@ function Nav(props) {
         </>
       }
       <div className={spacer} />
-      <MenuItem>
+      <MenuItem className={supportLink}>
         <PatreonLink ggTheme='true' />
       </MenuItem>
-      <MenuItem>
+      <MenuItem className={supportLink}>
         <KofiLink ggTheme='true' />
       </MenuItem>
     </List>
