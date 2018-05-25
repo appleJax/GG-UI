@@ -1,10 +1,19 @@
 import React, { Component } from 'react'
+import Loadable             from 'react-loadable'
 import connect              from 'react-redux/es/connect/connect'
 import asyncActions         from 'Actions/async'
 import syncActions          from 'Actions/sync'
 import payloadStates        from 'Constants/PayloadStates'
-import Deck                 from 'Components/Deck'
-import DeckTitles           from 'Components/DeckTitles'
+import Spinner              from 'Components/Spinner'
+
+const Deck = Loadable({
+  loader: () => import('Components/Deck'),
+  loading: Spinner
+})
+const DeckTitles = Loadable({
+  loader: () => import('Components/DeckTitles'),
+  loading: Spinner
+})
 
 const { RESOLVED } = payloadStates
 const { fetchDeck, fetchDeckTitles } = asyncActions

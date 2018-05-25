@@ -2,13 +2,8 @@ import React          from 'react'
 import Loadable       from 'react-loadable'
 import { withStyles } from 'UI/styles'
 import { navHeight }  from 'Styles/common'
-// import Decks          from 'Containers/Decks'
 import Nav            from 'Containers/Nav'
-// import Stats          from 'Containers/Stats'
-// import HowToPlay      from 'Components/HowToPlay'
-// import LandingPage    from 'Components/LandingPage'
-// import NotFound404    from 'Components/NotFound404'
-import Spinner from 'Components/Spinner'
+import Spinner        from 'Components/Spinner'
 import {
   Link,
   Route,

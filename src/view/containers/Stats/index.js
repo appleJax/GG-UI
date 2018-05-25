@@ -1,9 +1,19 @@
 import React, { Component } from 'react'
+import Loadable             from 'react-loadable'
 import connect              from 'react-redux/es/connect/connect'
 import asyncActions         from 'Actions/async'
 import syncActions          from 'Actions/sync'
-import Scoreboard           from 'Components/Scoreboard'
-import User                 from 'Components/User'
+import Spinner              from 'Components/Spinner'
+
+const Scoreboard = Loadable({
+  loader: () => import('Components/Scoreboard'),
+  loading: Spinner
+})
+const User = Loadable({
+  loader: () => import('Components/User'),
+  loading: Spinner
+})
+
 
 const { setFocusedUser } = syncActions
 const {
