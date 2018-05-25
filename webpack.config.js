@@ -17,11 +17,13 @@ module.exports = merge(common, {
     'react-hot-loader/patch',
     './src/index.js'
   ],
+  mode: 'development',
   devtool: 'eval',
   devServer: {
     contentBase: './dist',
+    compress: true,
     historyApiFallback: true,
-    hot: true
+    port: 9000
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

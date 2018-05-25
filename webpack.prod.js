@@ -16,6 +16,7 @@ module.exports = merge(common, {
     '@babel/polyfill',
     './src/index.js'
   ],
+  mode: 'production',
   plugins: [
     new UglifyJSPlugin(),
     new webpack.DefinePlugin({

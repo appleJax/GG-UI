@@ -1,6 +1,7 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin  = require('copy-webpack-plugin');
 const HtmlWebpackPlugin  = require('html-webpack-plugin');
+const WebpackCdnPlugin = require('webpack-cdn-plugin');
 const path = require('path');
 
 module.exports = {
@@ -48,6 +49,21 @@ module.exports = {
       template: __dirname + '/static/index.html',
       inject: 'body',
       filename: 'index.html'
+    }),
+    new WebpackCdnPlugin({
+      modules: [
+        {
+          name: 'react',
+          var: 'React',
+          path: `umd/react.${process.env.NODE_ENV}.min.js`
+        },
+        {
+          name: 'react-dom',
+          var: 'ReactDOM',
+          path: `umd/react-dom.${process.env.NODE_ENV}.min.js`
+        }
+      ],
+      publicPath: '/node_modules'
     })
   ],
   output: {
