@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { connect }          from 'react-redux'
+import connect              from 'react-redux/es/connect/connect'
 import { withRouter }       from 'react-router-dom'
 import { withStyles }       from 'UI/styles'
 import { navHeight }        from 'Styles/common'

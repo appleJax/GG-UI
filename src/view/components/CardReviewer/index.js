@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM             from 'react-dom'
-import { connect }          from 'react-redux'
+import connect              from 'react-redux/es/connect/connect'
 import { withStyles }       from 'UI/styles'
 import payloadStates        from 'Constants/PayloadStates'
 import asyncActions         from 'Actions/async'

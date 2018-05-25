@@ -1,5 +1,5 @@
 import React         from 'react'
-import { connect }   from 'react-redux'
+import connect       from 'react-redux/es/connect/connect'
 import asyncActions  from 'Actions/async'
 import syncActions   from 'Actions/sync'
 import payloadStates from 'Constants/PayloadStates'

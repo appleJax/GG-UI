@@ -1,12 +1,24 @@
 {
-  presets: [
+  "presets": [
     "@babel/preset-react",
-    "@babel/preset-env"
+    [ "@babel/preset-env",
+      { "targets": {
+          "browsers": [ "last 2 versions" ]
+        },
+        "useBuiltIns": "usage"
+      }
+    ]
   ],
-  plugins: [
+  "plugins": [
     "react-hot-loader/babel",
     "@babel/plugin-transform-react-jsx",
     "@babel/plugin-proposal-object-rest-spread",
-    "@babel/plugin-proposal-class-properties"
+    "@babel/plugin-proposal-class-properties",
+    [ "transform-imports", {
+        "react-router-dom": {
+          "transform":  "react-router-dom/${member}",
+          "preventFullImport": true
+        }
+    }]
   ]
 }

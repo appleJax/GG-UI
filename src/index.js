@@ -1,8 +1,8 @@
 import React                       from 'react'
 import ReactDOM                    from 'react-dom'
-import { Provider }                from 'react-redux'
+import Provider                    from 'react-redux/es/components/Provider'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { AppContainer }            from 'react-hot-loader'
+import AppContainer                from 'react-hot-loader/lib/AppContainer'
 
 import CssBaseline                 from 'UI/CssBaseline'
 import { MuiThemeProvider }        from 'UI/styles'
