@@ -1,17 +1,40 @@
 import React          from 'react'
+import Loadable       from 'react-loadable'
 import { withStyles } from 'UI/styles'
 import { navHeight }  from 'Styles/common'
-import Decks          from 'Containers/Decks'
+// import Decks          from 'Containers/Decks'
 import Nav            from 'Containers/Nav'
-import Stats          from 'Containers/Stats'
-import HowToPlay      from 'Components/HowToPlay'
-import LandingPage    from 'Components/LandingPage'
-import NotFound404    from 'Components/NotFound404'
+// import Stats          from 'Containers/Stats'
+// import HowToPlay      from 'Components/HowToPlay'
+// import LandingPage    from 'Components/LandingPage'
+// import NotFound404    from 'Components/NotFound404'
+import Spinner from 'Components/Spinner'
 import {
   Link,
   Route,
   Switch
 } from 'react-router-dom'
+
+const Decks = Loadable({
+  loader: () => import('Containers/Decks'),
+  loading: Spinner
+})
+const HowToPlay = Loadable({
+  loader: () => import('Components/HowToPlay'),
+  loading: Spinner
+})
+const LandingPage = Loadable({
+  loader: () => import('Components/LandingPage'),
+  loading: Spinner
+})
+const Stats = Loadable({
+  loader: () => import('Containers/Stats'),
+  loading: Spinner
+})
+const NotFound404 = Loadable({
+  loader: () => import('Components/NotFound404'),
+  loading: Spinner
+})
 
 
 const styles = {
