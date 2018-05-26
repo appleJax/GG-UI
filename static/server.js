@@ -1,4 +1,6 @@
 const express     = require('express')
+const mime        = require('mime-types')
+const serveStatic = require('serve-static')
 const compression = require('compression')
 const path        = require('path')
 
@@ -18,9 +20,17 @@ app.use ((req, res, next) => {
   } else {
     res.redirect('https://' + req.headers.host + req.url)
   }
-});
+})
 
-app.use(express.static(path.resolve(__dirname)))
+app.use(serveStatic(__dirname, {
+  maxAge: '1y',
+  setHeaders: (res, path) => {
+    const mimeType = mime.lookup(path)
+    if (mimeType === 'text/html' || mimeType === 'application/json') {
+      res.setHeader('Cache-Control', 'public, max-age=0')
+    }
+  }
+}))
 
 app.get('*', (req, res) => {
   res.sendFile(__dirname + '/index.html')
