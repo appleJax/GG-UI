@@ -22,8 +22,7 @@ module.exports = merge(common, {
   devServer: {
     contentBase: './dist',
     compress: true,
-    historyApiFallback: true,
-    port: 9000
+    historyApiFallback: true
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -37,5 +36,8 @@ module.exports = merge(common, {
         TWITTER_ID:      JSON.stringify(TWITTER_ID)
       }
     })
-  ]
+  ],
+  output: {
+    filename: '[name].[hash].js'
+  }
 });

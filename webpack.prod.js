@@ -1,5 +1,5 @@
+const WebpackCdnPlugin = require('webpack-cdn-plugin');
 const merge = require('webpack-merge')
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
 const common = require('./webpack.common')
 const ENV = require('./.env');
@@ -18,7 +18,6 @@ module.exports = merge(common, {
   ],
   mode: 'production',
   plugins: [
-    new UglifyJSPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV:        JSON.stringify('production'),
@@ -28,6 +27,29 @@ module.exports = merge(common, {
         TWITTER_ACCOUNT: JSON.stringify(TWITTER_ACCOUNT),
         TWITTER_ID:      JSON.stringify(TWITTER_ID)
       }
+    }),
+    new WebpackCdnPlugin({
+      modules: [
+        {
+          name: 'react',
+          var: 'React',
+          path: `umd/react.${process.env.NODE_ENV}.min.js`
+        },
+        {
+          name: 'react-dom',
+          var: 'ReactDOM',
+          path: `umd/react-dom.${process.env.NODE_ENV}.min.js`
+        },
+        {
+          name: 'axios',
+          var: 'axios',
+          path: 'dist/axios.min.js'
+        }
+      ],
+      publicPath: '/node_modules'
     })
-  ]
+  ],
+  output: {
+    filename: '[name].[chunkhash].js'
+  }
 });
