@@ -1,19 +1,11 @@
 import React, { Component } from 'react'
-import Loadable             from 'react-loadable'
 import connect              from 'react-redux/es/connect/connect'
 import asyncActions         from 'Actions/async'
 import syncActions          from 'Actions/sync'
-import Spinner              from 'Components/Spinner'
+import LazyLoad             from 'Components/LazyLoad'
 
-const Scoreboard = Loadable({
-  loader: () => import('Components/Scoreboard'),
-  loading: Spinner
-})
-const User = Loadable({
-  loader: () => import('Components/User'),
-  loading: Spinner
-})
-
+const Scoreboard = LazyLoad({ loader: () => import('Components/Scoreboard') })
+const User       = LazyLoad({ loader: () => import('Components/User') })
 
 const { setFocusedUser } = syncActions
 const {

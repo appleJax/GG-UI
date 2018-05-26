@@ -1,36 +1,19 @@
 import React          from 'react'
-import Loadable       from 'react-loadable'
 import { withStyles } from 'UI/styles'
 import { navHeight }  from 'Styles/common'
 import Nav            from 'Containers/Nav'
-import Spinner        from 'Components/Spinner'
+import LazyLoad       from 'Components/LazyLoad'
 import {
   Link,
   Route,
   Switch
 } from 'react-router-dom'
 
-const Decks = Loadable({
-  loader: () => import('Containers/Decks'),
-  loading: Spinner
-})
-const HowToPlay = Loadable({
-  loader: () => import('Components/HowToPlay'),
-  loading: Spinner
-})
-const LandingPage = Loadable({
-  loader: () => import('Components/LandingPage'),
-  loading: Spinner
-})
-const Stats = Loadable({
-  loader: () => import('Containers/Stats'),
-  loading: Spinner
-})
-const NotFound404 = Loadable({
-  loader: () => import('Components/NotFound404'),
-  loading: Spinner
-})
-
+const Decks       = LazyLoad({ loader: () => import('Containers/Decks') })
+const HowToPlay   = LazyLoad({ loader: () => import('Components/HowToPlay') })
+const LandingPage = LazyLoad({ loader: () => import('Components/LandingPage') })
+const Stats       = LazyLoad({ loader: () => import('Containers/Stats') })
+const NotFound404 = LazyLoad({ loader: () => import('Components/NotFound404') })
 
 const styles = {
   appContainer: {
