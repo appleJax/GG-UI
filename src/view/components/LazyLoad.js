@@ -4,6 +4,5 @@ import Spinner  from 'Components/Spinner'
 export default (opts) =>
   Loadable({
     loading: Spinner,
-    delay: 400,
     ...opts
   })

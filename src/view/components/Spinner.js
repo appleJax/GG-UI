@@ -36,8 +36,9 @@ const Spinner = ({
     deck,
     live
   },
+  pastDelay = true,
   color
-}) =>
+}) => !pastDelay ? null :
   <div
     className={
       classNames(
