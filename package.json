@@ -5,11 +5,11 @@
   "author": "appleJax <appleJax@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "build": "NODE_ENV=development webpack --mode development --config webpack.config.js && npm start",
-    "deploy": "NODE_ENV=production webpack --mode production --config webpack.prod.js && gcloud app deploy app.yaml --project=gamegogakuen-jp --stop-previous-version",
-    "stage": "NODE_ENV=production webpack --mode production --config webpack.staging.js && gcloud app deploy app_staging.yaml --project=gamegogakuen-jp-staging --stop-previous-version",
-    "start": "node ./dist/server.js",
-    "devstart": "webpack-dev-server",
+    "build:dev": "NODE_ENV=development webpack --mode development --config webpack.config.js && npm run copy-assets",
+    "build:staging": "NODE_ENV=production webpack --mode production --config webpack.staging.js && npm run copy-assets",
+    "build:prod": "NODE_ENV=production webpack --mode production --config webpack.prod.js && npm run copy-assets",
+    "copy-assets": "cp -r dist/* ../GG-JP/dist/public/",
+    "start": "webpack-dev-server",
     "test": "jest --watch",
     "testOnce": "jest"
   },

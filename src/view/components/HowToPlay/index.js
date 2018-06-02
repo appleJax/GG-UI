@@ -143,11 +143,6 @@ const HowToPlay = ({
         <p>
           Questions left unanswered will not affect your average answer time, but both correct and incorrect answers will contribute to your average answer time.
         </p>
-        <blockquote className={quote}>
-        <p>
-          <ErrorOutline className={icon} /> NOTE: Once the beta ends and GameGogakuen officially launches, all stats will be reset.
-        </p>
-        </blockquote>
       </Typography>
       <Typography className={heading} variant='headline'>
         Disclaimer

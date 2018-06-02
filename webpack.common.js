@@ -51,9 +51,9 @@ module.exports = {
     new CopyWebpackPlugin([{ from: 'static' }]),
     new CleanWebpackPlugin(__dirname + '/dist'),
     new HtmlWebpackPlugin({
-      template: __dirname + '/static/index.html',
+      template: __dirname + '/static/main.html',
       inject: 'body',
-      filename: 'index.html'
+      filename: 'main.html'
     })
   ],
   output: {

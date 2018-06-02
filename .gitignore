@@ -3,6 +3,7 @@
 .env.js
 *.yaml
 node_modules
+devServer.js
 dist
 Procfile
 stats.json
