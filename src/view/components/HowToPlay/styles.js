@@ -10,20 +10,6 @@ export default (theme) => ({
     padding: '0 15px 15px',
     width: '100vw'
   },
-  heading: {
-    background: 'rgba(20,112,169,0.1)',
-    borderLeft: '5px solid rgb(20,112,169)',
-    color: 'rgb(20,112,169)',
-    margin: '30px auto 15px',
-    maxWidth: '100vw',
-    padding: '10px 50px',
-    textAlign: 'center',
-    textShadow: '0 3px 15px rgba(0,0,0,0.3)',
-    [theme.breakpoints.down('sm')]: {
-      margin: '30px -15px 15px',
-      width: 'calc(100% + 30px)'
-    }
-  },
   icon: {
     marginBottom: '-6px'
   },

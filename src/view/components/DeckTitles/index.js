@@ -39,7 +39,7 @@ function DeckTitles({
   return (
     <>
     <div className={container}>
-      <PageTitle color='darkPurple'>
+      <PageTitle color='decks'>
         Flashcard Decks
       </PageTitle>
       <div className={cardList}>

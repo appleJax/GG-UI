@@ -7,6 +7,7 @@ import Error          from 'Icons/Error'
 import Info           from 'Icons/Info'
 import styles         from './styles'
 import PageTitle      from 'Components/PageTitle'
+import Heading        from 'Components/Heading'
 import SupportUsFooter from 'Components/SupportUsFooter'
 
 const { FOLLOW_URL, TWITTER_ACCOUNT } = process.env
@@ -26,7 +27,7 @@ const HowToPlay = ({
   history
 }) => (
   <div>
-    <PageTitle color='themeDark'>
+    <PageTitle>
       How To Play
     </PageTitle>
     <div className={container}>
@@ -37,9 +38,9 @@ const HowToPlay = ({
         This is a language quiz game that asks you to fill in the blanks in Japanese text taken from video games.
         The quiz questions are tweeted every 6 hours from <a className={link} rel='noopener' target='_blank' href={`//twitter.com/${TWITTER_ACCOUNT}`}>@GameGogakuen_JP</a>, so be sure to <a className={link} rel='noopener' target='_blank' href={FOLLOW_URL}>follow</a> the bot or bookmark the <a className={link} onClick={() => history.push('/')}><span className={nowrap}>Live Questions</span></a> page on this site to see the latest questions as soon as they become available.
       </Typography>
-      <Typography className={heading} variant='headline'>
+      <Heading>
         Clues 
-      </Typography>
+      </Heading>
       <Typography className={text} variant='subheading'>
         To help you guess the answers, there are 3 or 4 pieces of information provided as clues:
         <ul className={list}>
@@ -79,9 +80,9 @@ const HowToPlay = ({
           For verbs, be sure to make good use of the context images when conjugating them.
         </p>
       </Typography>
-      <Typography className={heading} variant='headline'>
+      <Heading>
         Answer Submission 
-      </Typography>
+      </Heading>
       <Typography className={text} variant='subheading'>
         <p>
           To answer a question, click the "Submit Answer" link in the question tweet or on the <a className={link} onClick={() => history.push('/')}><span className={nowrap}>Live Questions</span></a> page here at the GameGogakuen site.
@@ -110,9 +111,9 @@ const HowToPlay = ({
           Since tweet replies will not be counted as answers, feel free to use a question's reply thread to discuss it before making your official guess via DM.
         </p>
       </Typography>
-      <Typography className={heading} variant='headline'>
+      <Heading>
         Scoring 
-      </Typography>
+      </Heading>
       <Typography className={text} variant='subheading'>
         <p>
           Once a question's answer is tweeted, anywhere from 1 to 24 points will be given for correct guesses depending on how quickly the guess was received.
@@ -127,9 +128,9 @@ const HowToPlay = ({
           Points are not distributed until a question's answer is tweeted, so there is no way to know during a question's active period whether or not you guessed correctly.
         </p>
       </Typography>
-      <Typography className={heading} variant='headline'>
+      <Heading>
         Stats / Ranking 
-      </Typography>
+      </Heading>
       <Typography className={text} variant='subheading'>
         <p>
           To view your weekly, monthly, and overall stats, click on the <a className={link} onClick={() => history.push('/stats')}>Leaderboard</a> link in this site's navigation menu.
@@ -141,9 +142,9 @@ const HowToPlay = ({
           Questions left unanswered will not affect your average answer time, but both correct and incorrect answers will contribute to your average answer time.
         </p>
       </Typography>
-      <Typography className={heading} variant='headline'>
+      <Heading>
         Disclaimer
-      </Typography>
+      </Heading>
       <Typography className={text} variant='subheading'>
         <blockquote className={quote}>
         <p>

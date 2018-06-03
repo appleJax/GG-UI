@@ -6,6 +6,7 @@ import Paper          from 'UI/Paper'
 import Typography     from 'UI/Typography'
 import AnswerCard     from 'Components/AnswerCard'
 import EmptyMessage   from 'Components/EmptyMessage'
+import Heading        from 'Components/Heading'
 import Spinner        from 'Components/Spinner'
 
 const {
@@ -20,8 +21,7 @@ const {
 function RecentAnswers({
   classes: {
     cardList,
-    container,
-    title
+    container
   },
   auth,
   recentAnswers
@@ -56,9 +56,9 @@ function RecentAnswers({
 
   return (
     <div className={container}>
-      <Typography className={title} variant='display1'>
+      <Heading color='recentAnswers'>
         Recent Answers
-      </Typography>
+      </Heading>
 
       <div className={cardList}>
         { cardDisplay }

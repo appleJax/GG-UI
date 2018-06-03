@@ -37,15 +37,6 @@ export default (theme) => ({
     display: 'flex',
     flexDirection: 'column'
   },
-  liveTitle: {
-    background: 'rgba(51,82,225,0.1)',
-    borderLeft: '5px solid rgb(51,82,225)',
-    color: 'rgb(51,82,225)',
-    margin: '30px 0 15px',
-    maxWidth: '100vw',
-    padding: '10px 50px',
-    textShadow: '0 3px 15px rgba(0,0,0,0.3)'
-  },
   gameTitle: {
     background: 'rgba(0,0,0,0.2)',
     color: 'rgba(255,255,255,0.7)',

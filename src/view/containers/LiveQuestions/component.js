@@ -7,6 +7,7 @@ import Button        from 'UI/Button'
 import Paper         from 'UI/Paper'
 import Typography    from 'UI/Typography'
 import EmptyMessage  from 'Components/EmptyMessage'
+import Heading       from 'Components/Heading'
 import Spinner       from 'Components/Spinner'
 import {
   calculateTimeRemaining,
@@ -38,7 +39,6 @@ function LiveQuestions({
     container,
     imageContainer,
     imageDiv,
-    liveTitle,
     gameTitle,
     questionCard,
     submitAnswerBtn,
@@ -152,9 +152,9 @@ function LiveQuestions({
 
   return (
     <div className={container}>
-      <Typography className={liveTitle} variant='display1'>
+      <Heading color='liveQuestions'>
         { allAnswered } Live Questions
-      </Typography>
+      </Heading>
 
       <div className={cardList}>
         { cardDisplay }
