@@ -2,6 +2,7 @@ import React          from 'react'
 import { withStyles } from 'UI/styles'
 import payloadStates  from 'Constants/PayloadStates'
 import EmptyMessage   from 'Components/EmptyMessage'
+import PageTitle      from 'Components/PageTitle'
 import Typography     from 'UI/Typography'
 import TitleCard      from 'Components/TitleCard'
 import Spinner        from 'Components/Spinner'
@@ -20,8 +21,6 @@ function DeckTitles({
     ankiInfo,
     cardList,
     container,
-    header,
-    pageTitle,
     spacer
   },
   deckTitles
@@ -40,11 +39,9 @@ function DeckTitles({
   return (
     <>
     <div className={container}>
-      <div className={header}>
-        <Typography className={pageTitle} variant='display1'>
-          Flashcard Decks
-        </Typography>
-      </div>
+      <PageTitle color='darkPurple'>
+        Flashcard Decks
+      </PageTitle>
       <div className={cardList}>
         { titleDisplay }
       </div>

@@ -1,3 +1,4 @@
+const HtmlWebpackPlugin  = require('html-webpack-plugin');
 const merge   = require('webpack-merge');
 const webpack = require('webpack');
 const common  = require('./webpack.common');
@@ -35,6 +36,11 @@ module.exports = merge(common, {
         TWITTER_ACCOUNT: JSON.stringify(TWITTER_ACCOUNT),
         TWITTER_ID:      JSON.stringify(TWITTER_ID)
       }
+    }),
+    new HtmlWebpackPlugin({
+      template: __dirname + '/static/main.html',
+      inject: 'body',
+      filename: 'index.html'
     })
   ],
   output: {

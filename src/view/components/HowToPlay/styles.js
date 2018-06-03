@@ -43,15 +43,6 @@ export default (theme) => ({
   nowrap: {
     whiteSpace: 'nowrap'
   },
-  pageHeader: {
-    alignItems: 'center',
-    background: 'rgba(20,112,169,0.1)',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    marginBottom: '15px',
-    padding: '20px 0 10px'
-  },
   quote: {
     background: 'rgba(74,179,244,0.1)',
     opacity: '0.9',
@@ -65,10 +56,6 @@ export default (theme) => ({
     color: theme.palette.primary.dark,
     lineHeight: '2.5em',
     margin: '20px 0'
-  },
-  title: {
-    color: theme.palette.primary.dark,
-    textShadow: '1px 1px #fafafa'
   },
   welcomeMessage: {
     background: theme.palette.primary.dark,

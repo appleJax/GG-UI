@@ -6,6 +6,7 @@ import ErrorOutline   from 'Icons/ErrorOutline'
 import Error          from 'Icons/Error'
 import Info           from 'Icons/Info'
 import styles         from './styles'
+import PageTitle      from 'Components/PageTitle'
 import SupportUsFooter from 'Components/SupportUsFooter'
 
 const { FOLLOW_URL, TWITTER_ACCOUNT } = process.env
@@ -18,20 +19,16 @@ const HowToPlay = ({
     link,
     list,
     nowrap,
-    pageHeader,
     quote,
     text,
-    title,
     welcomeMessage
   },
   history
 }) => (
   <div>
-    <div className={pageHeader}>
-      <Typography className={title} variant='display1'>
-        How to Play
-      </Typography>
-    </div>
+    <PageTitle color='themeDark'>
+      How To Play
+    </PageTitle>
     <div className={container}>
       <Typography className={classNames(heading, welcomeMessage)} variant='title'>
         Welcome to GameGogakuen, the Game Language Learning Academy!
