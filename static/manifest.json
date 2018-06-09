@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "name": "GameGogakuen",
-  "short_name": "GG",
+  "short_name": "GameGogakuen",
   "background_color": "#1DA1F2",
   "description": "Language Quiz Bot for Video Game Text",
   "display": "standalone",
@@ -11,7 +11,7 @@
     {
       "src": "images/gg-logo.png",
       "type": "image/png",
-      "sizes": "640x640"
+      "sizes": "300x300"
     }
   ]
 }

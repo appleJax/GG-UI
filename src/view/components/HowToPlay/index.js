@@ -1,6 +1,6 @@
 import React          from 'react'
 import classNames     from 'classnames'
-import { withStyles } from 'UI'
+import { withStyles } from 'UI/styles'
 import Typography     from 'UI/Typography'
 import ErrorOutline   from 'Icons/ErrorOutline'
 import Error          from 'Icons/Error'
@@ -94,7 +94,7 @@ const HowToPlay = ({
           You can also compose a guess manually by sending a DM to the bot with the question's ID (include "QID" before the number), a space, and then your answer.
         </p>
         <blockquote className={quote}>
-          <Info className={icon} /> Note that answering in romaji is not supported, so you will need a Japanese keyboard installed on your phone or PC in order to answer successfully.
+          <Info className={icon} /> NOTE: Answering in romaji is not supported, so you will need a Japanese keyboard installed on your phone or PC in order to answer successfully.
         </blockquote>
       </Typography>
       <Typography className={text} variant='subheading'>
