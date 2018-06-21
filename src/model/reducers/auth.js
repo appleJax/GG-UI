@@ -10,7 +10,10 @@ const [{
   AUTH_TRANSITION,
   LOGIN,
   LOGIN_ERROR,
-  LOGOUT
+  LOGOUT,
+  REQUESTING_TOGGLE_PRIVACY,
+  TOGGLE_PRIVACY,
+  ERROR_TOGGLE_PRIVACY
 }] = [ payloadStates, actionTypes ]
 
 const LOGGED_OUT_USER = {
@@ -52,6 +55,25 @@ export default (state = init(), action) => {
 
       case LOGOUT:
         return LOGGED_OUT_USER
+
+      case REQUESTING_TOGGLE_PRIVACY:
+        return {
+          ...state,
+          requestingTogglePrivacy: true
+        }
+
+      case TOGGLE_PRIVACY:
+        return {
+          ...state,
+          data: action.user,
+          requestingTogglePrivacy: false
+        }
+
+      case ERROR_TOGGLE_PRIVACY:
+        return {
+          ...state,
+          requestingTogglePrivacy: false
+        }
 
       default:
         return state

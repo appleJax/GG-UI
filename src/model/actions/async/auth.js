@@ -8,7 +8,10 @@ const {
   closeNavOptions,
   loginSuccess,
   loginError,
-  logout
+  logout,
+  requestingTogglePrivacy,
+  togglePrivacy,
+  errorTogglePrivacy
 } = syncActions
 
 
@@ -23,17 +26,17 @@ export default ({
       }
 
       ajax.get('/session/user', { withCredentials: true })
-          .then(user => {
-            if (user) {
-              dispatch(loginSuccess(user))
-              localStorage.setItem('gg-user', JSON.stringify(user))
-            } else {
-              dispatch(logout())
-            }
-          })
-          .catch(error =>
-            dispatch(loginError(error))
-          )
+        .then(user => {
+          if (user) {
+            dispatch(loginSuccess(user))
+            localStorage.setItem('gg-user', JSON.stringify(user))
+          } else {
+            dispatch(logout())
+          }
+        })
+        .catch(error =>
+          dispatch(loginError(error))
+        )
       },
 
   updateUserDetails: () =>
@@ -41,22 +44,51 @@ export default ({
       const { auth } = getState()
       if (auth.state === LOGGED_IN)
         ajax.get(`/user/${auth.data.userId}`)
-            .then(user => {
-              if (user) {
-                dispatch(loginSuccess(user))
-                localStorage.setItem('gg-user', JSON.stringify(user))
-              }
-            })
-            .catch(console.error)
+          .then(user => {
+            if (user) {
+              dispatch(loginSuccess(user))
+              localStorage.setItem('gg-user', JSON.stringify(user))
+            }
+          })
+          .catch(err => {
+            dispatch(loginError(err))
+            console.error(err)
+          })
+    },
+
+  requestTogglePrivacy: () =>
+    (dispatch, getState) => {
+      const { auth } = getState()
+      if (auth.state === LOGGED_IN) {
+        dispatch(requestingTogglePrivacy())
+
+        ajax.post(`/togglePrivacy`)
+          .then(user => {
+            if (user) {
+              dispatch(togglePrivacy(user))
+              localStorage.setItem('gg-user', JSON.stringify(user))
+            } else {
+              dispatch(errorTogglePrivacy())
+            }
+          })
+          .catch((err) => {
+            dispatch(errorTogglePrivacy())
+            console.error(err)
+          })
+      }
     },
 
   requestLogout: (history) =>
     dispatch => {
       dispatch(closeNavOptions())
       dispatch(authTransition())
-      localStorage.removeItem('gg-user')
-      setTimeout(() => dispatch(logout()), 500)
-      history.push('/')
+      ajax.post('/logout')
+        .then(() => {
+          localStorage.removeItem('gg-user')
+          dispatch(logout())
+          history.push('/')
+        })
+        .catch(console.error)
     }
 
 })

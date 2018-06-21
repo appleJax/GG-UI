@@ -78,6 +78,7 @@ function User({
     avatar,
     dailyStats,
     handle,
+    isPrivate,
     monthlyStats,
     name,
     profileBanner,
@@ -186,7 +187,7 @@ function User({
                   </div>
                 </div>
                 <Typography className={classNames(rankDiv, stat)} variant='body2'>
-                  Rank: {stats.rank || 'N/A'}
+                  Rank: {isPrivate ? 'N/A' : stats.rank || 'N/A'}
                 </Typography>
               </div>
             )

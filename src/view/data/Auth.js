@@ -8,6 +8,7 @@ const { LOGGED_IN } = payloadStates
 const [{
   fetchCurrentUser,
   requestLogout,
+  requestTogglePrivacy,
   updateUserDetails
 }, {
   authTransition
@@ -23,6 +24,7 @@ const mapDispatchToProps = {
   authTransition,
   fetchCurrentUser,
   requestLogout,
+  requestTogglePrivacy,
   updateUserDetails
 }
 

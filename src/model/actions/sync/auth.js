@@ -5,6 +5,9 @@ const {
   LOGIN,
   LOGIN_ERROR,
   LOGOUT,
+  REQUESTING_TOGGLE_PRIVACY,
+  TOGGLE_PRIVACY,
+  ERROR_TOGGLE_PRIVACY
 } = actionTypes
 
 
@@ -34,6 +37,19 @@ export default ({
   logout: () => {
     document.body.classList.remove('no-scroll')
     return { type: LOGOUT }
-  }
+  },
+
+  requestingTogglePrivacy: () => ({
+    type: REQUESTING_TOGGLE_PRIVACY
+  }),
+
+  togglePrivacy: (user) => ({
+    type: TOGGLE_PRIVACY,
+    user
+  }),
+
+  errorTogglePrivacy: () => ({
+    type: ERROR_TOGGLE_PRIVACY
+  })
 
 })

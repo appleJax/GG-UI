@@ -5,6 +5,10 @@ export default ({
   LOGIN_ERROR:                     'LOGIN_ERROR',
   LOGOUT:                          'LOGOUT',
 
+  TOGGLE_PRIVACY:                  'TOGGLE_PRIVACY',
+  REQUESTING_TOGGLE_PRIVACY:       'REQUESTING_TOGGLE_PRIVACY',
+  ERROR_TOGGLE_PRIVACY:            'ERROR_TOGGLE_PRIVACY',
+
   DECREMENT_COUNTDOWN:             'DECREMENT_COUNTDOWN',
   RESET_COUNTDOWN:                 'RESET_COUNTDOWN',
 
