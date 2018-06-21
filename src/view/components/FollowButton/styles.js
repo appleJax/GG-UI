@@ -16,7 +16,7 @@
     fontFamily: 'Roboto',
     justifyContent: 'center',
     margin: '8px 0',
-    padding: '5px 10px 5px 8px',
+    padding: '5px 12px 5px 8px',
     width: 'fit-content'
   },
   followImage: {

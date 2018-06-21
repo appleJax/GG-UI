@@ -10,6 +10,7 @@ const {
   loginError,
   logout,
   requestingTogglePrivacy,
+  setFocusedUser,
   togglePrivacy,
   errorTogglePrivacy
 } = syncActions
@@ -66,6 +67,7 @@ export default ({
           .then(user => {
             if (user) {
               dispatch(togglePrivacy(user))
+              dispatch(setFocusedUser(user))
               localStorage.setItem('gg-user', JSON.stringify(user))
             } else {
               dispatch(errorTogglePrivacy())
