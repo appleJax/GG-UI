@@ -36,7 +36,6 @@ export default (state = init(), action) => {
           state: FETCHING
         }
 
-
       case LOGIN:
         return {
           state: LOGGED_IN,
