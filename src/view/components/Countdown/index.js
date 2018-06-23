@@ -3,9 +3,8 @@ import connect              from 'react-redux/es/connect/connect'
 import { withStyles }       from 'UI/styles'
 import asyncActions         from 'Actions/async'
 import Countdown            from './component'
-import { TWEET_INTERVAL }   from 'Utils'
 
-const { fetchLiveQuestions, fetchRecentAnswers } = asyncActions
+const { fetchLiveQuestions } = asyncActions
 
 const styles = (theme) => ({
   container: {
@@ -29,12 +28,12 @@ const styles = (theme) => ({
   }
 })
 
-
 class Container extends Component {
-
   componentDidUpdate(prevProps, prevState, snapshot) {
     const { countdown, fetchLiveQuestions } = this.props
-    if (countdown === 0) setTimeout(fetchLiveQuestions, 4000)
+    if (countdown === 0) {
+      setTimeout(fetchLiveQuestions, 4000)
+    }
 
     return null
   }
@@ -47,7 +46,6 @@ class Container extends Component {
 
     return <Countdown {...props} />
   }
-
 }
 
 const mapDispatchToProps = {

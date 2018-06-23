@@ -10,23 +10,22 @@ const {
   errorFetchingFocusedUser
 } = syncActions
 
-
 export default ({
-
   fetchFocusedUser: (handle) =>
     (dispatch, getState) => {
       const { focusedUser } = getState()
-      if (focusedUser.stats.data === RESOLVED && handle !== focusedUser.stats.data.handle)
-        dispatch(fetchingFocusedUser())
+      if (
+        focusedUser.stats.data === RESOLVED &&
+        handle !== focusedUser.stats.data.handle
+      ) { dispatch(fetchingFocusedUser()) }
 
       ajax.get(`/userStats/${handle}`)
-          .then(user =>
-            user
+        .then(user =>
+          user
             ? dispatch(setFocusedUser(user))
             : dispatch(notFoundFocusedUser())
-          ).catch(error =>
-            dispatch(errorFetchingFocusedUser())
-          )
+        ).catch(error =>
+          dispatch(errorFetchingFocusedUser(error))
+        )
     }
-
 })

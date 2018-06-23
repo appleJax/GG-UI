@@ -19,29 +19,29 @@ const init = {
  }
 
 export default (state = init, action) => {
-    switch (action.type) {
-      case FETCHING_DECK_TITLES:
-        return {
-          state: FETCHING,
-          data: [],
-          error: null
-        }
+  switch (action.type) {
+    case FETCHING_DECK_TITLES:
+      return {
+        state: FETCHING,
+        data: [],
+        error: null
+      }
 
-      case SET_DECK_TITLES:
-        return {
-          state: RESOLVED,
-          data: action.titles,
-          error: null
-        }
+    case SET_DECK_TITLES:
+      return {
+        state: RESOLVED,
+        data: action.titles,
+        error: null
+      }
 
-      case ERROR_FETCHING_DECK_TITLES:
-        return {
-          state: ERROR_FETCHING,
-          data: [],
-          error: action.message
-        }
+    case ERROR_FETCHING_DECK_TITLES:
+      return {
+        state: ERROR_FETCHING,
+        data: [],
+        error: action.message
+      }
 
-      default:
-        return state
-    }
+    default:
+      return state
   }
+}

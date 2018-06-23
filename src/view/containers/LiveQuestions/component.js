@@ -20,10 +20,8 @@ import {
 
 const {
   LOGGED_IN,
-  INITIAL_STATE,
   FETCHING,
   NOT_FOUND,
-  RESOLVED,
   ERROR_FETCHING
 } = payloadStates
 
@@ -47,20 +45,18 @@ function LiveQuestions({
   auth,
   liveQuestions
 }) {
-
   const liveCards = liveQuestions.data
   let cardDisplay
 
-  if (liveQuestions.state === FETCHING)
+  if (liveQuestions.state === FETCHING) {
     cardDisplay = <Spinner color='live' />
-  else if (liveQuestions.state === ERROR_FETCHING)
-    cardDisplay = <EmptyMessage error={true} />
-  else if (liveQuestions.state === NOT_FOUND)
+  } else if (liveQuestions.state === ERROR_FETCHING) {
+    cardDisplay = <EmptyMessage error />
+  } else if (liveQuestions.state === NOT_FOUND) {
     cardDisplay = <EmptyMessage message='No live questions. Check back soon!' />
-  else
+  } else {
     cardDisplay = liveCards.map((question, i) => {
       const {
-        alreadyAnswered,
         cardId,
         game,
         mediaUrls,
@@ -73,7 +69,7 @@ function LiveQuestions({
       if (
         auth.state === LOGGED_IN &&
         userHasAnswered(auth.data)(question)
-      ) userAnswered = true
+      )  { userAnswered = true }
 
       const promptToAnswer = (
         <Button
@@ -103,28 +99,28 @@ function LiveQuestions({
       const answerButton = userAnswered
         ? didAnswer
         : promptToAnswer
-        
 
       const timeRemaining = calculateTimeRemaining(questionPostedAt)
+
       return (
-          <Paper
-            key={i}
-            className={ userAnswered ? answered : '' }
-            classes={{root: questionCard}}
-          >
-            <a
-              className={cardLink}
-              href={questionLink(questionId)}
-              rel='noopener'
-              target='_blank'
-            ></a>
-            <Typography className={captionText} color='secondary' variant='subheading'>
-              { formatQuestionText(questionText) }
-            </Typography>
-            <Typography className={gameTitle} variant='body1'>
-              { formatGameTitle(game) }
-            </Typography>
-            <div className={imageDiv}>
+        <Paper
+          key={i}
+          className={userAnswered ? answered : ''}
+          classes={{root: questionCard}}
+        >
+          <a
+            className={cardLink}
+            href={questionLink(questionId)}
+            rel='noopener'
+            target='_blank'
+          />
+          <Typography className={captionText} color='secondary' variant='subheading'>
+            { formatQuestionText(questionText) }
+          </Typography>
+          <Typography className={gameTitle} variant='body1'>
+            { formatGameTitle(game) }
+          </Typography>
+          <div className={imageDiv}>
             { mediaUrls.map((mediaUrl, innerIndex) =>
               <div key={`${i}-${innerIndex}`} className={imageContainer}>
                 <img
@@ -134,21 +130,22 @@ function LiveQuestions({
                 />
               </div>
             )}
-            </div>
-            { answerButton }
-            <Typography className={timeLeftText} variant='body1'>
-              Time Remaining: {timeRemaining}
-            </Typography>
-          </Paper>
+          </div>
+          { answerButton }
+          <Typography className={timeLeftText} variant='body1'>
+            Time Remaining: {timeRemaining}
+          </Typography>
+        </Paper>
       )
     })
+  }
 
   let allAnswered
   if (
-    liveCards.length > 0     &&
+    liveCards.length > 0 &&
     auth.state === LOGGED_IN &&
     liveCards.every(userHasAnswered(auth.data))
-  ) allAnswered = <CheckCircle />
+  ) { allAnswered = <CheckCircle /> }
 
   return (
     <div className={container}>
@@ -164,6 +161,7 @@ function LiveQuestions({
 }
 
 LiveQuestions.propTypes = {
+  auth:          object.isRequired,
   classes:       object.isRequired,
   liveQuestions: object.isRequired
 }

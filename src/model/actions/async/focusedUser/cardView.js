@@ -4,7 +4,6 @@ import syncActions   from 'Actions/sync'
 const { setCardView } = syncActions
 
 export default ({
-
   setCardView: (view = 'correct', page = 1) => {
     if (view === 0) view = 'correct'
     if (view === 1) view = 'incorrect'
@@ -15,5 +14,4 @@ export default ({
       getCards(dispatch, getState, view)
     }
   }
-
 })

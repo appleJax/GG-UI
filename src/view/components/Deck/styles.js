@@ -17,7 +17,7 @@ export default (theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
     marginBottom: '15px',
-    padding: '25px 0 10px',
+    padding: '25px 0 10px'
   },
   titleScreen: {
     boxShadow: '0 0 15px rgba(0,0,0,0.7)'

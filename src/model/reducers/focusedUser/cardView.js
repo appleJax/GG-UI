@@ -8,7 +8,6 @@ const init = {
 }
 
 export default (state = init, action) => {
-
   switch (action.type) {
     case SET_CARD_VIEW:
       return {
@@ -18,6 +17,5 @@ export default (state = init, action) => {
 
     default:
       return state
-
   }
 }

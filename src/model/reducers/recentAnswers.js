@@ -21,36 +21,36 @@ const init = {
  }
 
 export default (state = init, action) => {
-    switch (action.type) {
-      case FETCHING_RECENT_ANSWERS:
-        return {
-          state: FETCHING,
-          data: [],
-          error: null
-        }
+  switch (action.type) {
+    case FETCHING_RECENT_ANSWERS:
+      return {
+        state: FETCHING,
+        data: [],
+        error: null
+      }
 
-      case SET_RECENT_ANSWERS:
-        return {
-          state: RESOLVED,
-          data: action.recentAnswers,
-          error: null
-        }
+    case SET_RECENT_ANSWERS:
+      return {
+        state: RESOLVED,
+        data: action.recentAnswers,
+        error: null
+      }
 
-      case NOT_FOUND_RECENT_ANSWERS:
-        return {
-          state: NOT_FOUND,
-          data: [],
-          error: null
-        }
+    case NOT_FOUND_RECENT_ANSWERS:
+      return {
+        state: NOT_FOUND,
+        data: [],
+        error: null
+      }
 
-      case ERROR_FETCHING_RECENT_ANSWERS:
-        return {
-          state: ERROR_FETCHING,
-          data: [],
-          error: action.message
-        }
+    case ERROR_FETCHING_RECENT_ANSWERS:
+      return {
+        state: ERROR_FETCHING,
+        data: [],
+        error: action.message
+      }
 
-      default:
-        return state
-    }
+    default:
+      return state
   }
+}

@@ -31,7 +31,7 @@ const focusedUser = {
         correct: [
           { cardId: '1', points: 24 },
           { cardId: '2', points: 12 },
-          { cardId: '3', points: 4  }
+          { cardId: '3', points: 4 }
         ],
         incorrect: ['4', '5']
       }
@@ -40,7 +40,6 @@ const focusedUser = {
 }
 
 describe('getCardIds paginates focusedUser cards correctly', () => {
-
   test('single page', () => {
     const view = 'correct'
     const page = 1
@@ -51,5 +50,4 @@ describe('getCardIds paginates focusedUser cards correctly', () => {
       cardIds
     ).toEqual(['1', '2', '3'])
   })
-
 })

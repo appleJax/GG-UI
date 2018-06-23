@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import connect              from 'react-redux/es/connect/connect'
 import { withRouter }       from 'react-router-dom'
 import { withStyles }       from 'UI/styles'
-import { navHeight }        from 'Styles/common'
 import asyncActions         from 'Actions/async'
 import syncActions          from 'Actions/sync'
 import payloadStates        from 'Constants/PayloadStates'
@@ -13,7 +12,7 @@ import {
   refreshCache
 } from 'Utils/cache'
 
-const { LOGGED_IN, RESOLVED } = payloadStates
+const { LOGGED_IN } = payloadStates
 const [{
   fetchCountdown,
   fetchCurrentUser,
@@ -31,13 +30,13 @@ const [{
   setFocusedUser
 }] = [ asyncActions, syncActions ]
 
-
 class Container extends Component {
   componentDidMount() {
     this._timer = setInterval(this.update.bind(this), 1000)
 
-    if (this.props.auth.state !== LOGGED_IN)
+    if (this.props.auth.state !== LOGGED_IN) {
       this.props.fetchCurrentUser()
+    }
   }
 
   componentWillUnmount() {
@@ -56,8 +55,9 @@ class Container extends Component {
       setTimeout(fetchRecentAnswers, 4000)
     }
 
-    if (isCacheInvalid(this.props, prevProps))
+    if (isCacheInvalid(this.props, prevProps)) {
       refreshCache(prevProps)
+    }
   }
 
   update() {

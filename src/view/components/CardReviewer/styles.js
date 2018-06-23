@@ -18,7 +18,7 @@ export default (theme) => ({
   reviewer: {
     display: 'flex',
     flexDirection: 'column',
-    minHeight: 'calc(100vh - 106px)',
+    minHeight: 'calc(100vh - 106px)'
   },
   reviewerHandle: {
     marginRight: '5px'

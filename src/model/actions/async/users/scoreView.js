@@ -7,7 +7,6 @@ const { LOGGED_IN, RESOLVED } = payloadStates
 const { setScoreView } = syncActions
 
 export default ({
-
   setScoreView: (view) => {
     if (view === 0) view = 'weeklyStats'
     if (view === 1) view = 'monthlyStats'
@@ -35,5 +34,4 @@ export default ({
       getStats(dispatch, params, view, search, users)
     }
   }
-
 })

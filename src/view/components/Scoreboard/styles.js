@@ -7,7 +7,7 @@ export default (theme) => ({
     overflowX: 'auto',
     [theme.breakpoints.up('md')]: {
       width: '60%'
-    },
+    }
   },
   avatarRoot: {
     height: '48px',

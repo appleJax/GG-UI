@@ -1,5 +1,4 @@
 import React                     from 'react'
-import { Redirect }              from 'react-router-dom'
 import classNames                from 'classnames'
 import SwipeableViews            from 'react-swipeable-views'
 import payloadStates             from 'Constants/PayloadStates'
@@ -7,7 +6,7 @@ import { withStyles }            from 'UI/styles'
 import styles                    from './styles'
 import { rowHeight }             from 'Styles/common'
 import Avatar                    from 'UI/Avatar'
-import Input, { InputAdornment } from 'UI/Input';
+import Input, { InputAdornment } from 'UI/Input'
 import Tabs, { Tab }             from 'UI/Tabs'
 import Typography                from 'UI/Typography'
 import Paper                     from 'UI/Paper'
@@ -22,9 +21,7 @@ import {
 } from 'Utils'
 
 import {
-  array,
   func,
-  number,
   object,
   string
 } from 'prop-types'
@@ -74,36 +71,34 @@ function Scoreboard({
   setScoreView,
   users
 }) {
-
   const tabValue =
-      (scoreView === 'weeklyStats' ) ? 0
+      (scoreView === 'weeklyStats')  ? 0
     : (scoreView === 'monthlyStats') ? 1
     :                                  2
 
   const usersState = users.state
   let userScores
-  if (usersState === NOT_FOUND && search.length > 0)
+  if (usersState === NOT_FOUND && search.length > 0) {
     userScores = (
       <EmptyMessage message='Not Found' />
     )
-  else if (usersState === NOT_FOUND)
+  } else if (usersState === NOT_FOUND) {
     userScores = (
       <EmptyMessage message='No leaders. Be the first!' />
     )
-  else if (usersState === FETCHING || usersState === INITIAL_STATE)
+  } else if (usersState === FETCHING || usersState === INITIAL_STATE) {
     userScores = (
       <div>
         <Spinner />
       </div>
     )
-  else if (usersState === ERROR_FETCHING)
+  } else if (usersState === ERROR_FETCHING) {
     userScores = (
       <div style={{padding: 'none'}}>
-        <EmptyMessage error={true} />
+        <EmptyMessage error />
       </div>
     )
-
-  else if (usersState === RESOLVED)
+  } else if (usersState === RESOLVED) {
     userScores =  users.data[users.page].map((user, i) => {
       const {
         avatar,
@@ -159,6 +154,7 @@ function Scoreboard({
         </div>
       )
     })
+  }
 
   const pagination = (
     <div style={{height: '50px'}}>
@@ -176,7 +172,7 @@ function Scoreboard({
   const SwipeableTab = () => {
     const ref = React.createRef()
     const currentPage = users.page
-    const currentView = users.data[currentPage] || [] 
+    const currentView = users.data[currentPage] || []
     const loggedInUser = (user) => user.userId === auth.data.userId
 
     if (
@@ -185,15 +181,16 @@ function Scoreboard({
     ) {
       const rowsToScroll = currentView.findIndex(loggedInUser)
       setTimeout(() => {
-        if (ref.current)
+        if (ref.current) {
           ref.current.scroll({
             top: rowsToScroll * rowHeight,
             left: 0,
             behavior: 'smooth'
           })
+        }
       }, 300)
     }
-  
+
     return (
       <div className={tableBody} ref={ref} >
         { showPagination && pagination }
@@ -212,7 +209,7 @@ function Scoreboard({
         classes={{root: searchInput}}
         onChange={(e) => fetchQuery(e.target.value)}
         startAdornment={
-          <InputAdornment position="start">
+          <InputAdornment position='start'>
             <SearchIcon color='disabled' />
           </InputAdornment>
         }

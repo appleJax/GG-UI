@@ -27,55 +27,55 @@ const init = () => {
 
   const user = JSON.parse(localStorage.getItem('gg-user'))
   return user
-  ? { state: LOGGED_IN,  data: user, error: null }
-  : LOGGED_OUT_USER
+    ? { state: LOGGED_IN, data: user, error: null }
+    : LOGGED_OUT_USER
 }
 
 export default (state = init(), action) => {
-    switch (action.type) {
-      case AUTH_TRANSITION:
-        return {
-          ...state,
-          state: FETCHING
-        }
+  switch (action.type) {
+    case AUTH_TRANSITION:
+      return {
+        ...state,
+        state: FETCHING
+      }
 
-      case LOGIN:
-        return {
-          state: LOGGED_IN,
-          data: action.user,
-          error: null
-        }
+    case LOGIN:
+      return {
+        state: LOGGED_IN,
+        data: action.user,
+        error: null
+      }
 
-      case LOGIN_ERROR:
-        return {
-          state: ERROR,
-          data: null,
-          error: action.message
-        }
+    case LOGIN_ERROR:
+      return {
+        state: ERROR,
+        data: null,
+        error: action.message
+      }
 
-      case LOGOUT:
-        return LOGGED_OUT_USER
+    case LOGOUT:
+      return LOGGED_OUT_USER
 
-      case REQUESTING_TOGGLE_PRIVACY:
-        return {
-          ...state,
-          requestingTogglePrivacy: true
-        }
+    case REQUESTING_TOGGLE_PRIVACY:
+      return {
+        ...state,
+        requestingTogglePrivacy: true
+      }
 
-      case TOGGLE_PRIVACY:
-        return {
-          ...state,
-          data: action.user,
-          requestingTogglePrivacy: false
-        }
+    case TOGGLE_PRIVACY:
+      return {
+        ...state,
+        data: action.user,
+        requestingTogglePrivacy: false
+      }
 
-      case ERROR_TOGGLE_PRIVACY:
-        return {
-          ...state,
-          requestingTogglePrivacy: false
-        }
+    case ERROR_TOGGLE_PRIVACY:
+      return {
+        ...state,
+        requestingTogglePrivacy: false
+      }
 
-      default:
-        return state
-    }
+    default:
+      return state
   }
+}

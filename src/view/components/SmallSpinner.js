@@ -11,7 +11,7 @@ const styles = (theme) => ({
     width: '18px'
   },
   '@keyframes spin': {
-    from: { transform: 'rotate(0deg)'   },
+    from: { transform: 'rotate(0deg)' },
     to:   { transform: 'rotate(360deg)' }
   }
 })

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ReactDOM             from 'react-dom'
 import connect              from 'react-redux/es/connect/connect'
 import { withStyles }       from 'UI/styles'
 import payloadStates        from 'Constants/PayloadStates'
@@ -38,8 +37,9 @@ class Container extends Component {
       }
     } = this.props
 
-    if (focusedUser[cardView.view].state !== RESOLVED)
+    if (focusedUser[cardView.view].state !== RESOLVED) {
       fetchCards(1, cardView.view)
+    }
   }
 
   render() {

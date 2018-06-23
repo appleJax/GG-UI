@@ -6,7 +6,7 @@ export default createMuiTheme({
       main: '#1DA1F2'
     },
     secondary: {
-      main: '#fff',
+      main: '#fff'
     },
     background: {
       default: 'aliceblue'
@@ -39,7 +39,7 @@ export default createMuiTheme({
         color: '#1470A9',
         paddingLeft: '30px',
         '&:hover': {
-          background: 'rgba(74,179,244,0.1)',
+          background: 'rgba(74,179,244,0.1)'
         }
       }
     },

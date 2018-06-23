@@ -24,7 +24,7 @@ const styles = (theme) => ({
     borderTop:    `8px solid rgba(121,75,196,0.7)`
   },
   '@keyframes spin': {
-    from: { transform: 'rotate(0deg)'   },
+    from: { transform: 'rotate(0deg)' },
     to:   { transform: 'rotate(360deg)' }
   }
 })
@@ -38,17 +38,15 @@ const Spinner = ({
   },
   pastDelay = true,
   color
-}) => !pastDelay ? null :
-  <div
-    className={
-      classNames(
-        spinner,
-        blue,
-        {[live]: color === 'live'},
-        {[deck]: color === 'deck'}
-      )
-    }
+}) => !pastDelay
+  ? null
+  : <div className={
+    classNames(
+      spinner,
+      blue,
+      {[live]: color === 'live'},
+      {[deck]: color === 'deck'}
+    )}
   />
-
 
 export default withStyles(styles)(Spinner)

@@ -21,36 +21,36 @@ const init = {
  }
 
 export default (state = init, action) => {
-    switch (action.type) {
-      case FETCHING_LIVE_QUESTIONS:
-        return {
-          state: FETCHING,
-          data: state.data,
-          error: null
-        }
+  switch (action.type) {
+    case FETCHING_LIVE_QUESTIONS:
+      return {
+        state: FETCHING,
+        data: state.data,
+        error: null
+      }
 
-      case SET_LIVE_QUESTIONS:
-        return {
-          state: RESOLVED,
-          data: action.liveQuestions,
-          error: null
-        }
+    case SET_LIVE_QUESTIONS:
+      return {
+        state: RESOLVED,
+        data: action.liveQuestions,
+        error: null
+      }
 
-      case NOT_FOUND_LIVE_QUESTIONS:
-        return {
-          state: NOT_FOUND,
-          data: [],
-          error: null
-        }
+    case NOT_FOUND_LIVE_QUESTIONS:
+      return {
+        state: NOT_FOUND,
+        data: [],
+        error: null
+      }
 
-      case ERROR_FETCHING_LIVE_QUESTIONS:
-        return {
-          state: ERROR_FETCHING,
-          data: [],
-          error: action.message
-        }
+    case ERROR_FETCHING_LIVE_QUESTIONS:
+      return {
+        state: ERROR_FETCHING,
+        data: [],
+        error: action.message
+      }
 
-      default:
-        return state
-    }
+    default:
+      return state
   }
+}

@@ -4,11 +4,10 @@ const {
   FETCHING_FOCUSED_USER,
   SET_FOCUSED_USER,
   NOT_FOUND_FOCUSED_USER,
-  ERROR_FETCHING_FOCUSED_USER,
+  ERROR_FETCHING_FOCUSED_USER
 } = actionTypes
 
 export default ({
-
   fetchingFocusedUser: () => ({
     type: FETCHING_FOCUSED_USER
   }),
@@ -26,5 +25,4 @@ export default ({
     type: ERROR_FETCHING_FOCUSED_USER,
     message
   })
-
 })

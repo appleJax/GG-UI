@@ -2,7 +2,6 @@ import payloadStates from 'Constants/PayloadStates'
 import actionTypes   from 'Constants/ActionTypes'
 
 const [{
-  INITIAL_STATE,
   FETCHING,
   RESOLVED,
   NOT_FOUND,
@@ -12,16 +11,14 @@ const [{
   SET_DECK_PAGE,
   FETCHING_DECK,
   NOT_FOUND_DECK,
-  ERROR_FETCHING_DECK,
+  ERROR_FETCHING_DECK
 }] = [ payloadStates, actionTypes ]
-
 
 export default (state = {}, action) => {
   const oldDeck = state[action.game] || { data: {} }
   const oldCards = oldDeck.data || {}
 
   switch (action.type) {
-
     case ADD_DECK_CARDS:
       return {
         ...state,
@@ -67,7 +64,7 @@ export default (state = {}, action) => {
         ...state,
         [action.game]: {
           state: NOT_FOUND,
-          data:  {},
+          data: {},
           error: null
         }
       }

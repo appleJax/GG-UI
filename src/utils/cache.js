@@ -2,12 +2,10 @@ import payloadStates from 'Constants/PayloadStates'
 
 const { LOGGED_IN, RESOLVED } = payloadStates
 
-
 export function isCacheInvalid(
   { recentAnswers },
   { recentAnswers: nextRecentAnswers }
 ) {
-
   if (
     recentAnswers.state     !== RESOLVED &&
     nextRecentAnswers.state === RESOLVED
@@ -20,7 +18,6 @@ export function isCacheInvalid(
   ) return true
 
   return false
-
 }
 
 export function refreshCache({
@@ -36,27 +33,28 @@ export function refreshCache({
   fetchStats,
   updateUserDetails
 }) {
-
-  if (auth.state === LOGGED_IN)
+  if (auth.state === LOGGED_IN) {
     updateUserDetails()
+  }
 
-  if (focusedUser.stats.state === RESOLVED)
+  if (focusedUser.stats.state === RESOLVED) {
     fetchFocusedUser(focusedUser.stats.data.handle)
+  }
 
   if (allTimeStats.state === RESOLVED) {
     fetchStats(allTimeStats.page, 'allTimeStats')
   }
 
-  if (monthlyStats.state === RESOLVED)
+  if (monthlyStats.state === RESOLVED) {
     fetchStats(monthlyStats.page, 'monthlyStats')
+  }
 
-  if (weeklyStats.state === RESOLVED)
+  if (weeklyStats.state === RESOLVED) {
     fetchStats(weeklyStats.page, 'weeklyStats')
+  }
 
   fetchLiveQuestions()
-
 }
-
 
 // private
 

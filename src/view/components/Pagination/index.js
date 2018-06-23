@@ -3,7 +3,6 @@ import { withStyles }     from 'UI/styles'
 import MoreHoriz          from 'Icons/MoreHoriz'
 import NavigateBefore     from 'Icons/NavigateBefore'
 import NavigateNext       from 'Icons/NavigateNext'
-import Typography         from 'UI/Typography'
 import Button             from './Button'
 import { func, number, object } from 'prop-types'
 
@@ -35,9 +34,9 @@ function Pagination({
   page,
   scrollTop
 }) {
-
-  if (numItems < 1)
+  if (numItems < 1) {
     return null
+  }
 
   const numPages = Math.ceil(
     numItems / itemsPerPage
@@ -58,7 +57,7 @@ function Pagination({
   const previousPage = (
     <Button
       key={0}
-      disabled={ page === 1 }
+      disabled={page === 1}
       onClick={() => {
         if (page !== 1) {
           resetScroll()
@@ -73,7 +72,7 @@ function Pagination({
   const numberedPage = (num) => (
     <Button
       key={num}
-      active={ page === num }
+      active={page === num}
       onClick={() => {
         if (page !== num) {
           resetScroll()
@@ -88,7 +87,7 @@ function Pagination({
   const nextPage = (
     <Button
       key={numPages + 1}
-      disabled={ page === numPages }
+      disabled={page === numPages}
       onClick={() => {
         if (page !== numPages) {
           resetScroll()
@@ -103,9 +102,9 @@ function Pagination({
   let pageButtons = [ previousPage ]
 
   if (numPages <= 5) {
-    for (let i = 1; i <= numPages; i++)
+    for (let i = 1; i <= numPages; i++) {
       pageButtons.push(numberedPage(i))
-
+    }
   } else if (page < 3) {
     pageButtons = pageButtons.concat([
       numberedPage(1),
@@ -113,7 +112,6 @@ function Pagination({
       more({ key: numPages + 2 }),
       numberedPage(numPages)
     ])
-
   } else if (page >= numPages - 1) {
     pageButtons = pageButtons.concat([
       numberedPage(1),
@@ -121,7 +119,6 @@ function Pagination({
       numberedPage(numPages - 1),
       numberedPage(numPages)
     ])
-
   } else {
     pageButtons = pageButtons.concat([
       numberedPage(1),

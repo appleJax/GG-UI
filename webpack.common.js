@@ -13,7 +13,7 @@ module.exports = {
       Data:       path.resolve(__dirname, 'src/view/data'),
       Images:     path.resolve(__dirname, 'src/static/images'),
       Reducers:   path.resolve(__dirname, 'src/model/reducers'),
-      Root:       __dirname,
+      Root:       path.resolve(__dirname),
       Styles:     path.resolve(__dirname, 'src/view/styles'),
       Src:        path.resolve(__dirname, 'src'),
       Utils:      path.resolve(__dirname, 'src/utils'),
@@ -49,9 +49,9 @@ module.exports = {
   },
   plugins: [
     new CopyWebpackPlugin([{ from: 'static' }]),
-    new CleanWebpackPlugin(__dirname + '/dist'),
+    new CleanWebpackPlugin(path.resolve(__dirname, 'dist')),
     new HtmlWebpackPlugin({
-      template: __dirname + '/static/main.html',
+      template: path.resolve(__dirname, 'static/main.html'),
       inject: 'body',
       filename: 'main.html'
     })

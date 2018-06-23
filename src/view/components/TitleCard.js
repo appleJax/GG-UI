@@ -38,7 +38,7 @@ const styles = (theme) => ({
     display: 'flex',
     justifyContent: 'center',
     padding: '5px',
-    textDecoration: 'none',
+    textDecoration: 'none'
   },
   complete: {
     color: 'rgba(0,0,0,0.5)',
@@ -88,7 +88,7 @@ const TitleCard = ({
     <Paper
       className={cardLink}
     >
-      <div onClick={ goToDeck }>
+      <div onClick={goToDeck}>
         <Typography className={label} variant='subheading'>
           { formatGameTitle(fullTitle) }
         </Typography>
@@ -100,14 +100,15 @@ const TitleCard = ({
           />
         </div>
       </div>
-      <a className={classNames(
-           cardFooter,
-           { [downloadable]: tweetedCards < 0 }
-         )}
-         href={ tweetedCards < 0 ? downloadUrl(fullTitle) : undefined }
-         onClick={ tweetedCards >= 0 ? goToDeck : undefined }
-         download
-         disabled={ tweetedCards === 0 }
+      <a
+        className={classNames(
+          cardFooter,
+          { [downloadable]: tweetedCards < 0 }
+        )}
+        href={tweetedCards < 0 ? downloadUrl(fullTitle) : undefined}
+        onClick={tweetedCards >= 0 ? goToDeck : undefined}
+        download
+        disabled={tweetedCards === 0}
       >
         { tweetedCards < 0 && <CloudDownload /> }
         <Typography className={counts}>

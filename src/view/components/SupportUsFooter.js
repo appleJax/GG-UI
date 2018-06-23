@@ -17,7 +17,7 @@ const styles = (theme) => ({
     boxShadow: '1px 1px 1px rgba(0,0,0,0.3)',
     height: '40px',
     margin: '0 10px 10px 10px',
-    padding: '5px 15px',
+    padding: '5px 15px'
   },
   kofiBtn: {
     background: theme.palette.primary.main,

@@ -14,7 +14,6 @@ const [{
   ERROR_FETCHING_MONTHLY_STATS
 }] = [ payloadStates, actionTypes ]
 
-
 const init = {
   state: INITIAL_STATE,
   data: {},

@@ -1,4 +1,3 @@
-import React         from 'react'
 import connect       from 'react-redux/es/connect/connect'
 import asyncActions  from 'Actions/async'
 import syncActions   from 'Actions/sync'
@@ -38,7 +37,6 @@ function Auth(allProps) {
   return (allProps.auth.state === LOGGED_IN)
     ? renderLoggedIn(props)
     : renderLoggedOut(props)
-
 }
 
 export default connect(

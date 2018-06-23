@@ -2,7 +2,6 @@ import React          from 'react'
 import classNames     from 'classnames'
 import { withStyles } from 'UI/styles'
 import Typography     from 'UI/Typography'
-import ErrorOutline   from 'Icons/ErrorOutline'
 import Error          from 'Icons/Error'
 import Info           from 'Icons/Info'
 import styles         from './styles'
@@ -39,7 +38,7 @@ const HowToPlay = ({
         The quiz questions are tweeted every 6 hours from <a className={link} rel='noopener' target='_blank' href={`//twitter.com/${TWITTER_ACCOUNT}`}>@GameGogakuen_JP</a>, so be sure to <a className={link} rel='noopener' target='_blank' href={FOLLOW_URL}>follow</a> the bot or bookmark the <a className={link} onClick={() => history.push('/')}><span className={nowrap}>Live Questions</span></a> page on this site to see the latest questions as soon as they become available.
       </Typography>
       <Heading>
-        Clues 
+        Clues
       </Heading>
       <Typography className={text} variant='subheading'>
         To help you guess the answers, there are 3 or 4 pieces of information provided as clues:
@@ -58,11 +57,11 @@ const HowToPlay = ({
           </li>
         </ul>
         Here's a quick example...
-        <br/>
+        <br />
         <blockquote className={quote}>
-        Question: What 4 character answer means "at last"?
-        <br/>
-        Hint: [_] [_] [≠や] [≠う]
+          Question: What 4 character answer means "at last"?
+          <br />
+          Hint: [_] [_] [≠や] [≠う]
         </blockquote>
         <p>
           This means the first and second characters of the answer could be anything, but the third character is not や, and the fourth character is not う.
@@ -81,7 +80,7 @@ const HowToPlay = ({
         </p>
       </Typography>
       <Heading>
-        Answer Submission 
+        Answer Submission
       </Heading>
       <Typography className={text} variant='subheading'>
         <p>
@@ -112,7 +111,7 @@ const HowToPlay = ({
         </p>
       </Typography>
       <Heading>
-        Scoring 
+        Scoring
       </Heading>
       <Typography className={text} variant='subheading'>
         <p>
@@ -129,7 +128,7 @@ const HowToPlay = ({
         </p>
       </Typography>
       <Heading>
-        Stats / Ranking 
+        Stats / Ranking
       </Heading>
       <Typography className={text} variant='subheading'>
         <p>
@@ -147,21 +146,21 @@ const HowToPlay = ({
       </Heading>
       <Typography className={text} variant='subheading'>
         <blockquote className={quote}>
-        <p>
-          <Error className={icon} /> While I do my best to leave only one possible correct answer, you may answer with a word that is also possible given the context and criteria, yet is not the word that appears in the game.
-        </p>
-        <p>          
-          In such a case, please let me know which possibilities I overlooked by replying to the relevant answer tweet, and I'll add additional hints to that card in the database.
-        </p>
-        <p>
-          Even though the opportunity to answer the question correctly will have passed, your feedback will help improve the cards, and it will benefit those studying the Anki flashcard decks that will eventually be available for download.
-        </p>
-        <p>
-          Please understand that in such cases, points will not be assigned manually after the fact.
-        </p>
-        <p>
-          Just make your best guess, and have fun! There is no prize or money at stake.
-        </p>
+          <p>
+            <Error className={icon} /> While I do my best to leave only one possible correct answer, you may answer with a word that is also possible given the context and criteria, yet is not the word that appears in the game.
+          </p>
+          <p>
+            In such a case, please let me know which possibilities I overlooked by replying to the relevant answer tweet, and I'll add additional hints to that card in the database.
+          </p>
+          <p>
+            Even though the opportunity to answer the question correctly will have passed, your feedback will help improve the cards, and it will benefit those studying the Anki flashcard decks that will eventually be available for download.
+          </p>
+          <p>
+            Please understand that in such cases, points will not be assigned manually after the fact.
+          </p>
+          <p>
+            Just make your best guess, and have fun! There is no prize or money at stake.
+          </p>
         </blockquote>
       </Typography>
     </div>

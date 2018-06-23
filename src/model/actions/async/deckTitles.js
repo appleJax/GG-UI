@@ -9,16 +9,14 @@ const {
 } = syncActions
 
 export default ({
-
   fetchDeckTitles: () =>
     dispatch => {
       dispatch(fetchingDeckTitles())
       ajax.get('/decks')
-          .then(deckTitles =>
-            dispatch(setDeckTitles(deckTitles))
-          ).catch(error =>
-            dispatch(errorFetchingDeckTitles(error))
-          )
+        .then(deckTitles =>
+          dispatch(setDeckTitles(deckTitles))
+        ).catch(error =>
+          dispatch(errorFetchingDeckTitles(error))
+        )
     }
-
 })

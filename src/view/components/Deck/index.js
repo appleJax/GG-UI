@@ -57,13 +57,13 @@ const Deck = ({
 
   const deckPage = deck && deck.data && deck.data.deckPage || 1
 
-  if (!deck || deck.state === FETCHING)
+  if (!deck || deck.state === FETCHING) {
     cardDisplay = <Spinner />
-  else if (deck.state === ERROR_FETCHING)
+  } else if (deck.state === ERROR_FETCHING) {
     cardDisplay = <EmptyMessage error={true} />
-  else if (deck.state === NOT_FOUND || !deck.data)
+  } else if (deck.state === NOT_FOUND || !deck.data) {
     cardDisplay = <EmptyMessage message='No answers tweeted yet' />
-  else {
+  } else {
     const cards = deck.data[deckPage] || []
     cardDisplay = cards.map((card, i) =>
       <AnswerCard
@@ -73,7 +73,6 @@ const Deck = ({
       />
     )
   }
-
 
   pagination = (
     <Pagination

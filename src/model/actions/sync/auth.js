@@ -10,9 +10,7 @@ const {
   ERROR_TOGGLE_PRIVACY
 } = actionTypes
 
-
 export default ({
-
   authTransition: () => {
     document.body.classList.add('no-scroll')
     return { type: AUTH_TRANSITION }
@@ -51,5 +49,4 @@ export default ({
   errorTogglePrivacy: () => ({
     type: ERROR_TOGGLE_PRIVACY
   })
-
 })

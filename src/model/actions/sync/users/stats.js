@@ -18,17 +18,19 @@ const {
 } = actionTypes
 
 export default ({
-
   fetchingStats: (view, search) => {
     let type
-    if (view === 'weeklyStats')
+    if (view === 'weeklyStats') {
       type = FETCHING_WEEKLY_STATS
+    }
 
-    if (view === 'monthlyStats')
+    if (view === 'monthlyStats') {
       type = FETCHING_MONTHLY_STATS
+    }
 
-    if (view === 'allTimeStats')
+    if (view === 'allTimeStats') {
       type = FETCHING_ALLTIME_STATS
+    }
 
     return { type, search }
   },
@@ -36,20 +38,23 @@ export default ({
   setStats: (page, search, total, users, view) => {
     const hasUsers = users && users.length > 0
     let type
-    if (view === 'weeklyStats')
+    if (view === 'weeklyStats') {
       type = (hasUsers)
         ? SET_WEEKLY_STATS
         : NOT_FOUND_WEEKLY_STATS
+    }
 
-    if (view === 'monthlyStats')
+    if (view === 'monthlyStats') {
       type = (hasUsers)
         ? SET_MONTHLY_STATS
         : NOT_FOUND_MONTHLY_STATS
+    }
 
-    if (view === 'allTimeStats')
+    if (view === 'allTimeStats') {
       type = (hasUsers)
         ? SET_ALLTIME_STATS
         : NOT_FOUND_ALLTIME_STATS
+    }
 
     return {
       type,
@@ -62,16 +67,18 @@ export default ({
 
   errorFetchingStats: (message, view) => {
     let type
-    if (view === 'weeklyStats')
+    if (view === 'weeklyStats') {
       type = ERROR_FETCHING_WEEKLY_STATS
+    }
 
-    if (view === 'monthlyStats')
+    if (view === 'monthlyStats') {
       type = ERROR_FETCHING_MONTHLY_STATS
+    }
 
-    if (view === 'allTimeStats')
+    if (view === 'allTimeStats') {
       type = ERROR_FETCHING_ALLTIME_STATS
+    }
 
     return { type, message }
   }
-
 })

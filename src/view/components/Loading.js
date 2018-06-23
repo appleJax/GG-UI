@@ -1,6 +1,5 @@
 import React          from 'react'
 import { withStyles } from 'UI/styles'
-import Spinner        from 'Components/Spinner'
 
 const styles = {
   backdrop: {

@@ -6,9 +6,7 @@ const {
   ERROR_FETCHING_DECK_TITLES
 } = actionTypes
 
-
 export default ({
-
   fetchingDeckTitles: () => ({
     type: FETCHING_DECK_TITLES
   }),
@@ -22,5 +20,4 @@ export default ({
     type: ERROR_FETCHING_DECK_TITLES,
     message
   })
-
 })

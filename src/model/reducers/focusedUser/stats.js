@@ -11,7 +11,7 @@ const [{
   FETCHING_FOCUSED_USER,
   SET_FOCUSED_USER,
   NOT_FOUND_FOCUSED_USER,
-  ERROR_FETCHING_FOCUSED_USER,
+  ERROR_FETCHING_FOCUSED_USER
 }] = [ payloadStates, actionTypes ]
 
 const init = {
@@ -21,39 +21,36 @@ const init = {
 }
 
 export default (state = init, action) => {
-    switch (action.type) {
+  switch (action.type) {
+    case FETCHING_FOCUSED_USER:
+      return {
+        state: FETCHING,
+        data: { handle: false },
+        error: null
+      }
 
-      case FETCHING_FOCUSED_USER:
-        return {
-          state: FETCHING,
-          data: { handle: false },
-          error: null
-        }
+    case SET_FOCUSED_USER:
+      return {
+        state: RESOLVED,
+        data: action.user,
+        error: null
+      }
 
-      case SET_FOCUSED_USER:
-        return {
-          state: RESOLVED,
-          data: action.user,
-          error: null
-        }
+    case NOT_FOUND_FOCUSED_USER:
+      return {
+        state: NOT_FOUND,
+        data: null,
+        error: null
+      }
 
-      case NOT_FOUND_FOCUSED_USER:
-        return {
-          state: NOT_FOUND,
-          data: null,
-          error: null
-        }
+    case ERROR_FETCHING_FOCUSED_USER:
+      return {
+        state: ERROR_FETCHING,
+        data: null,
+        error: action.message
+      }
 
-      case ERROR_FETCHING_FOCUSED_USER:
-        return {
-          state: ERROR_FETCHING,
-          data: null,
-          error: action.message
-        }
-
-      default:
-        return state
-
+    default:
+      return state
   }
-
 }

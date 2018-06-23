@@ -3,8 +3,6 @@ import { bool, object } from 'prop-types'
 import classNames       from 'classnames'
 import { withStyles }   from 'UI/styles'
 import ButtonBase       from 'UI/ButtonBase'
-import Typography       from 'UI/Typography'
-
 
 const styles = (theme) => ({
   activeClass: {
@@ -21,7 +19,7 @@ const styles = (theme) => ({
     font: 'bold 1.3em Roboto, sans-serif',
     justifyContent: 'center',
     height: '44px',
-    width: '44px',
+    width: '44px'
   },
   clickable: {
     background: '#fff',
@@ -43,7 +41,7 @@ const styles = (theme) => ({
     '&:hover': {
       cursor: 'default'
     }
-  },
+  }
 })
 
 function Button({
@@ -59,7 +57,6 @@ function Button({
   disabled,
   onClick
 }) {
-
   return (
     <ButtonBase
       className={classNames(

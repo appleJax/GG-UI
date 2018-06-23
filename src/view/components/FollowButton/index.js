@@ -5,7 +5,6 @@ import Button         from 'UI/Button'
 import SmallSpinner   from 'Components/SmallSpinner'
 import styles         from './styles'
 
-
 function FollowButton({
   classes: {
     follow,
@@ -17,11 +16,10 @@ function FollowButton({
   handle,
   userId
 }) {
-
   const PrivacyButton = ({ auth, requestTogglePrivacy }) => {
     const privacyLabel = auth.requestingTogglePrivacy
       ? <SmallSpinner />
-      : `Make Account ${ auth.data.isPrivate ? 'Public' : 'Private' }`
+      : `Make Account ${auth.data.isPrivate ? 'Public' : 'Private'}`
 
     return (
       <Button
@@ -62,7 +60,7 @@ function FollowButton({
       return <PrivacyButton {...props} />
     }
 
-    if (props.auth.data.following.find(id => id === userId))
+    if (props.auth.data.following.find(id => id === userId)) {
       return (
         <div className={following}>
           <img
@@ -71,10 +69,11 @@ function FollowButton({
             height='25'
             width='25'
             src='/images/twitter/Twitter_Logo_Blue.svg'
-        />
+          />
           Following
         </div>
       )
+    }
 
     return <LoggedOutFollow />
   }

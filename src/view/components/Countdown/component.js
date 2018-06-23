@@ -10,7 +10,6 @@ export default function Countdown({
   },
   countdown
 }) {
-
   return (
     <div className={container}>
       <Typography className={label} variant='button'>

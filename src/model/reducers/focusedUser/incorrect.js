@@ -14,7 +14,6 @@ const [{
   ERROR_FETCHING_INCORRECT_CARDS
 }] = [ payloadStates, actionTypes ]
 
-
 const init = {
   state: INITIAL_STATE,
   data: [],
@@ -22,36 +21,35 @@ const init = {
 }
 
 export default (state = init, action) => {
-    switch (action.type) {
+  switch (action.type) {
+    case FETCHING_INCORRECT_CARDS:
+      return {
+        ...state,
+        state: FETCHING
+      }
 
-      case FETCHING_INCORRECT_CARDS:
-        return {
-          ...state,
-          state: FETCHING
-        }
+    case SET_INCORRECT_CARDS:
+      return {
+        state: RESOLVED,
+        data: action.cards,
+        error: null
+      }
 
-      case SET_INCORRECT_CARDS:
-        return {
-          state: RESOLVED,
-          data: action.cards,
-          error: null
-        }
+    case NOT_FOUND_INCORRECT_CARDS:
+      return {
+        state: NOT_FOUND,
+        data: [],
+        error: null
+      }
 
-      case NOT_FOUND_INCORRECT_CARDS:
-        return {
-          state: NOT_FOUND,
-          data: [],
-          error: null
-        }
+    case ERROR_FETCHING_INCORRECT_CARDS:
+      return {
+        state: ERROR_FETCHING,
+        data: [],
+        error: action.message
+      }
 
-      case ERROR_FETCHING_INCORRECT_CARDS:
-        return {
-          state: ERROR_FETCHING,
-          data: [],
-          error: action.message
-        }
-
-      default:
-        return state
-    }
+    default:
+      return state
   }
+}

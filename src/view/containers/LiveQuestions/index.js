@@ -23,8 +23,9 @@ const mapDispatchToProps = {
 
 class Container extends Component {
   componentDidMount() {
-    if (this.props.liveQuestions.state !== RESOLVED)
+    if (this.props.liveQuestions.state !== RESOLVED) {
       this.props.fetchLiveQuestions()
+    }
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {

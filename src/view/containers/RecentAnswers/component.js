@@ -2,8 +2,6 @@ import React          from 'react'
 import { object }     from 'prop-types'
 import { cardStatus } from 'Utils'
 import payloadStates  from 'Constants/PayloadStates'
-import Paper          from 'UI/Paper'
-import Typography     from 'UI/Typography'
 import AnswerCard     from 'Components/AnswerCard'
 import EmptyMessage   from 'Components/EmptyMessage'
 import Heading        from 'Components/Heading'
@@ -11,10 +9,8 @@ import Spinner        from 'Components/Spinner'
 
 const {
   LOGGED_IN,
-  INITIAL_STATE,
   FETCHING,
   NOT_FOUND,
-  RESOLVED,
   ERROR_FETCHING
 } = payloadStates
 
@@ -27,14 +23,17 @@ function RecentAnswers({
   recentAnswers
 }) {
   let cardDisplay
-  if (recentAnswers.state === ERROR_FETCHING)
+  if (recentAnswers.state === ERROR_FETCHING) {
     cardDisplay = <EmptyMessage error={true} />
+  }
 
-  if (recentAnswers.state === NOT_FOUND)
+  if (recentAnswers.state === NOT_FOUND) {
     cardDisplay = <EmptyMessage message='No recent answers. Check back soon!' />
+  }
 
-  if (recentAnswers.state === FETCHING)
+  if (recentAnswers.state === FETCHING) {
     cardDisplay = <Spinner />
+  }
 
   if (recentAnswers.data.length > 0) {
     let userAnswers = { correct: [], incorrect: [] }

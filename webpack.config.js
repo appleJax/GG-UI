@@ -2,6 +2,7 @@ const HtmlWebpackPlugin  = require('html-webpack-plugin');
 const merge   = require('webpack-merge');
 const webpack = require('webpack');
 const common  = require('./webpack.common');
+const path    = require('path');
 const ENV     = require('./.env');
 const { API_URL } = ENV.dev;
 const {
@@ -10,7 +11,6 @@ const {
   TWITTER_ACCOUNT,
   TWITTER_ID
 } = ENV.staging;
-
 
 module.exports = merge(common, {
   entry: [
@@ -38,7 +38,7 @@ module.exports = merge(common, {
       }
     }),
     new HtmlWebpackPlugin({
-      template: __dirname + '/static/main.html',
+      template: path.resolve(__dirname , 'static/main.html'),
       inject: 'body',
       filename: 'index.html'
     })

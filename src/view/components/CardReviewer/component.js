@@ -1,9 +1,7 @@
 import React                    from 'react'
-import { func, object, string } from 'prop-types'
-import classNames               from 'classnames'
+import { func, object } from 'prop-types'
 import payloadStates            from 'Constants/PayloadStates'
 import SwipeableViews           from 'react-swipeable-views'
-import Paper                    from 'UI/Paper'
 import Subheader                from 'UI/List/ListSubheader'
 import Tabs, { Tab }            from 'UI/Tabs'
 import Typography               from 'UI/Typography'
@@ -23,7 +21,6 @@ const {
   RESOLVED,
   ERROR_FETCHING
 } = payloadStates
-
 
 function CardReviewer({
   classes: {
@@ -55,11 +52,10 @@ function CardReviewer({
     unanswered
   }
 }) {
-
   const tabValue =
-      (cardView.view === 'correct' )  ? 0
+      (cardView.view === 'correct')   ? 0
     : (cardView.view === 'incorrect') ? 1
-    :                              2
+    :                                   2
 
   const cards = focusedUser[cardView.view].data
   const cardsState = focusedUser[cardView.view].state
@@ -67,7 +63,7 @@ function CardReviewer({
   if (cardsState === FETCHING || cardsState === INITIAL_STATE) {
     cardDisplay = <Spinner />
   } else if (cardsState === ERROR_FETCHING) {
-    cardDisplay = <EmptyMessage error={true} />
+    cardDisplay = <EmptyMessage error />
   } else if (cardsState === NOT_FOUND) {
     cardDisplay = <EmptyMessage message='N/A' />
   } else {
@@ -78,8 +74,9 @@ function CardReviewer({
   }
   let totalCards = 0
 
-  if (focusedUser.stats.state === RESOLVED)
+  if (focusedUser.stats.state === RESOLVED) {
     totalCards = focusedUser.stats.data.allTimeStats[cardView.view].length
+  }
 
   const scrollTop = (window.innerWidth < 600)
     ? 1300
@@ -115,22 +112,22 @@ function CardReviewer({
         <span className={reviewerHandle}>{ `@${handle}'s ` }</span>
         <span className={noWrap}>Flashcard Reviewer</span>
         </Typography>
-      <Tabs
-        classes={{root: tabs}}
-        value={tabValue}
-        onChange={(e, value) => setCardView(value)}
-        indicatorColor='secondary'
-        textColor='secondary'
-        centered
-        fullWidth
-      >
-        <Tab classes={{label}} label='Correct'    icon={<CheckBox />} />
-        <Tab classes={{label}} label='Incorrect'  icon={<IndeterminateCheckBox />} />
-        <Tab classes={{label}} label='Unanswered' icon={<CheckBoxOutlineBlank />} />
-      </Tabs>
+        <Tabs
+          classes={{root: tabs}}
+          value={tabValue}
+          onChange={(e, value) => setCardView(value)}
+          indicatorColor='secondary'
+          textColor='secondary'
+          centered
+          fullWidth
+        >
+          <Tab classes={{label}} label='Correct'    icon={<CheckBox />} />
+          <Tab classes={{label}} label='Incorrect'  icon={<IndeterminateCheckBox />} />
+          <Tab classes={{label}} label='Unanswered' icon={<CheckBoxOutlineBlank />} />
+        </Tabs>
       </Subheader>
       <SwipeableViews
-        containerStyle={{ willChange: 'initial' }}
+        containerStyle={{willChange: 'initial'}}
         axis='x'
         index={tabValue}
         onChangeIndex={value => setCardView(value)}
@@ -142,7 +139,6 @@ function CardReviewer({
     </div>
   )
 }
-
 
 CardReviewer.propTypes = {
   auth:        object.isRequired,

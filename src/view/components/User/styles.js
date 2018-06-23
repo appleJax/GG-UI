@@ -83,7 +83,7 @@ export default (theme) => ({
     margin: '0 5px -6px',
     padding: '3px',
     transform: 'rotate(25deg)',
-    width: '26px',
+    width: '26px'
   },
   streakSubheader: {
     color: theme.palette.primary.dark,

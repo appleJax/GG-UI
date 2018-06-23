@@ -5,16 +5,13 @@ const {
   RESET_COUNTDOWN,
 } = actionTypes
 
-
 export default ({
-
   decrementCountdown: () => ({
-    type: DECREMENT_COUNTDOWN,
+    type: DECREMENT_COUNTDOWN
   }),
 
   resetCountdown: (seconds) => ({
     type: RESET_COUNTDOWN,
     seconds
   })
-
 })

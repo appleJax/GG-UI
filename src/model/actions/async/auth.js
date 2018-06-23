@@ -15,9 +15,7 @@ const {
   errorTogglePrivacy
 } = syncActions
 
-
 export default ({
-
   fetchCurrentUser: () =>
     (dispatch, getState) => {
       const { auth } = getState()
@@ -38,12 +36,12 @@ export default ({
         .catch(error =>
           dispatch(loginError(error))
         )
-      },
+    },
 
   updateUserDetails: () =>
     (dispatch, getState) => {
       const { auth } = getState()
-      if (auth.state === LOGGED_IN)
+      if (auth.state === LOGGED_IN) {
         ajax.get(`/user/${auth.data.userId}`)
           .then(user => {
             if (user) {
@@ -55,6 +53,7 @@ export default ({
             dispatch(loginError(err))
             console.error(err)
           })
+      }
     },
 
   requestTogglePrivacy: () =>
@@ -92,5 +91,4 @@ export default ({
         })
         .catch(console.error)
     }
-
 })

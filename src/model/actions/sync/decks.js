@@ -8,9 +8,7 @@ const {
   ERROR_FETCHING_DECK
 } = actionTypes
 
-
 export default ({
-
   addDeckCards: (game, page, cards, total) => ({
     type: ADD_DECK_CARDS,
     game,
@@ -40,5 +38,4 @@ export default ({
     game,
     message
   })
-
 })

@@ -25,45 +25,45 @@ const init = {
 
 // users.allTimeStats reducer
 export default (state = init, action) => {
-    switch (action.type) {
-      case FETCHING_ALLTIME_STATS:
-        return {
-          ...state,
-          state: FETCHING
-        }
+  switch (action.type) {
+    case FETCHING_ALLTIME_STATS:
+      return {
+        ...state,
+        state: FETCHING
+      }
 
-      case SET_ALLTIME_STATS:
-        return {
-          state: RESOLVED,
-          page: action.page,
-          search: action.search,
-          total: action.total,
-          data: {
-            ...state.data,
-            [action.page]: action.users
-          },
-          error: null
-        }
+    case SET_ALLTIME_STATS:
+      return {
+        state: RESOLVED,
+        page: action.page,
+        search: action.search,
+        total: action.total,
+        data: {
+          ...state.data,
+          [action.page]: action.users
+        },
+        error: null
+      }
 
-      case NOT_FOUND_ALLTIME_STATS:
-        return {
-          ...state,
-          page: 1,
-          total: 0,
-          state: NOT_FOUND,
-          error: null
-        }
+    case NOT_FOUND_ALLTIME_STATS:
+      return {
+        ...state,
+        page: 1,
+        total: 0,
+        state: NOT_FOUND,
+        error: null
+      }
 
-      case ERROR_FETCHING_ALLTIME_STATS:
-        return {
-          ...state,
-          page: 1,
-          total: 0,
-          state: ERROR_FETCHING,
-          error: action.message
-        }
+    case ERROR_FETCHING_ALLTIME_STATS:
+      return {
+        ...state,
+        page: 1,
+        total: 0,
+        state: ERROR_FETCHING,
+        error: action.message
+      }
 
-      default:
-        return state
-    }
+    default:
+      return state
   }
+}

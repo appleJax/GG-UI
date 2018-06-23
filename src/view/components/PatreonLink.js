@@ -10,7 +10,7 @@ const styles = (theme) => ({
   },
   btnTheme: {
     color: 'white',
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
   ggTheme: {
     color: theme.palette.primary.dark
@@ -33,29 +33,29 @@ function PatreonLink({ classes, ggTheme }) {
     >
       <svg
         className={classes.patreonIcon}
-        width="15px"
-        height="14px"
-        viewBox="0 0 569 546"
-        version="1.1"
-        xmlns="http://www.w3.org/2000/svg"
+        width='15px'
+        height='14px'
+        viewBox='0 0 569 546'
+        version='1.1'
+        xmlns='http://www.w3.org/2000/svg'
       >
         <title>Patreon logo</title>
         <g>
           <circle
-            fill={ ggTheme ? '#F96854' : '#fff' }
-            id="Oval"
-            cx="362.589996"
-            cy="204.589996"
-            r="204.589996"
-          ></circle>
+            fill={ggTheme ? '#F96854' : '#fff'}
+            id='Oval'
+            cx='362.589996'
+            cy='204.589996'
+            r='204.589996'
+          />
           <rect
             fill='#052D49'
-            id="Rectangle"
-            x="0"
-            y="0"
-            width="100"
-            height="545.799988"
-          ></rect>
+            id='Rectangle'
+            x='0'
+            y='0'
+            width='100'
+            height='545.799988'
+          />
         </g>
       </svg>
       Become a Patron
