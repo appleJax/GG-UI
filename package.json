@@ -9,7 +9,7 @@
     "build:staging": "NODE_ENV=production webpack --mode production --config webpack.staging.js && npm run copy-assets",
     "build:prod": "NODE_ENV=production webpack --mode production --config webpack.prod.js && npm run copy-assets",
     "copy-assets": "cp -r dist/* ../GG-JP/dist/public/",
-    "standard": "standard",
+    "standard": "standard || exit 0",
     "start": "webpack-dev-server",
     "test": "jest --watch",
     "testOnce": "jest"
