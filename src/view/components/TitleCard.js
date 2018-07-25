@@ -26,9 +26,14 @@ const styles = (theme) => ({
     display: 'flex',
     flexDirection: 'column',
     margin: '10px',
+    maxWidth: '320px',
     textAlign: 'center',
     '&:hover': {
       cursor: 'pointer'
+    },
+    [theme.breakpoints.down('xs')]: {
+      maxWidth: '100vw',
+      width: '100vw'
     }
   },
   cardFooter: {
