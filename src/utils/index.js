@@ -15,6 +15,8 @@ const axiosObject = axios.create({
   baseURL: API_URL
 })
 
+export const DECK_DOWNLOAD_URL = 'https://www.dropbox.com/sh/mhx88xmp6zfmzl9/AACUxX_I8C6mmoOXCUqFeo5Ma?dl=0'
+
 export const HOURS = 3600000
 
 export const CARDS_PER_PAGE = 12
@@ -76,12 +78,6 @@ export function debounce(fn, wait, isDelayed) {
 
 export const dmLink = (cardId) =>
   `${DM_URL}${cardId}%20`
-
-export const downloadUrl = (title) => {
-  const gameTitle = title.replace(/\s/g, '_')
-                         .replace(/'/g, '')
-  return `https://www.googleapis.com/storage/v1/b/gamegogakuen-jp/o/${gameTitle}.apkg?alt=media`
-}
 
 export const formatAnswers = (answers) => {
   return answers.map((answer, i, origArr) =>

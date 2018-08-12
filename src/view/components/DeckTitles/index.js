@@ -5,11 +5,11 @@ import EmptyMessage   from 'Components/EmptyMessage'
 import PageTitle      from 'Components/PageTitle'
 import Typography     from 'UI/Typography'
 import TitleCard      from 'Components/TitleCard'
+import DownloadDeck   from 'Components/DownloadDeck'
 import Spinner        from 'Components/Spinner'
 import styles         from './styles'
 
 const {
-  FETCHING,
   RESOLVED,
   ERROR_FETCHING
 } = payloadStates
@@ -25,7 +25,7 @@ function DeckTitles({
   },
   deckTitles
 }) {
-
+  console.log('deckTitles component pre-render')
   let titleDisplay
   if (deckTitles.state === ERROR_FETCHING)
     titleDisplay = <EmptyMessage error={true} />
@@ -36,6 +36,7 @@ function DeckTitles({
       <TitleCard key={i} game={title} />
     )
 
+  console.log('rendering deckTitles component')
   return (
     <>
     <div className={container}>
@@ -46,6 +47,7 @@ function DeckTitles({
         { titleDisplay }
       </div>
       <div className={spacer} />
+      <DownloadDeck />
       <footer className={anki}>
         <a href='https://apps.ankiweb.net'
            target='_blank'

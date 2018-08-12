@@ -4,7 +4,6 @@ import { navHeight }  from 'Styles/common'
 import Nav            from 'Containers/Nav'
 import LazyLoad       from 'Components/LazyLoad'
 import {
-  Link,
   Route,
   Switch
 } from 'react-router-dom'
