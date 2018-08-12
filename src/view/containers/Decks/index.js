@@ -72,7 +72,6 @@ class Container extends Component {
       return <Deck deck={decks[game]} game={titleScreen || dummyGame} {...props} />
     }
 
-    console.log('rendering deckTitles container')
     return <DeckTitles deckTitles={deckTitles} {...props} />
   }
 }

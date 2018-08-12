@@ -16,6 +16,6 @@ const styles = (theme) => ({
   }
 })
 
-export default withStyles(styles)(({ classes }) =>
-  <div className={classes.spinner} />
+export default withStyles(styles)(({ classes, style }) =>
+  <div style={style} className={classes.spinner} />
 )

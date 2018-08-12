@@ -15,7 +15,7 @@ const axiosObject = axios.create({
   baseURL: API_URL
 })
 
-export const DECK_DOWNLOAD_URL = 'https://www.dropbox.com/sh/mhx88xmp6zfmzl9/AACUxX_I8C6mmoOXCUqFeo5Ma?dl=0'
+export const DECK_DOWNLOAD_URL = 'https://www.dropbox.com/sh/mhx88xmp6zfmzl9/AACUxX_I8C6mmoOXCUqFeo5Ma?dl=1'
 
 export const HOURS = 3600000
 
@@ -90,6 +90,10 @@ export const formatAnswers = (answers) => {
         : answer + ','
     }</span>
   )
+}
+
+export function formatDate(milliseconds) {
+  return new Date(milliseconds).toDateString()
 }
 
 export const formatGameTitle = (title) =>

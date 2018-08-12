@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 import auth             from 'Reducers/auth'
 import countdown        from 'Reducers/countdown'
 import decks            from 'Reducers/decks'
+import downloadLastUpdated from 'Reducers/downloadLastUpdated'
 import focusedUser      from 'Reducers/focusedUser'
 import deckTitles       from 'Reducers/deckTitles'
 import liveQuestions    from 'Reducers/liveQuestions'
@@ -15,6 +16,7 @@ export default combineReducers({
   auth,
   countdown,
   decks,
+  downloadLastUpdated,
   focusedUser,
   deckTitles,
   liveQuestions,

@@ -7,11 +7,13 @@ import liveQuestions from './liveQuestions'
 import navOptions    from './navOptions'
 import recentAnswers from './recentAnswers'
 import users         from './users'
+import downloadLastUpdated from './downloadLastUpdated'
 
 export default ({
   ...auth,
   ...countdown,
   ...decks,
+  ...downloadLastUpdated,
   ...focusedUser,
   ...deckTitles,
   ...liveQuestions,

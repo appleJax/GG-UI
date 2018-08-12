@@ -25,7 +25,6 @@ function DeckTitles({
   },
   deckTitles
 }) {
-  console.log('deckTitles component pre-render')
   let titleDisplay
   if (deckTitles.state === ERROR_FETCHING)
     titleDisplay = <EmptyMessage error={true} />
@@ -36,7 +35,6 @@ function DeckTitles({
       <TitleCard key={i} game={title} />
     )
 
-  console.log('rendering deckTitles component')
   return (
     <>
     <div className={container}>
