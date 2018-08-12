@@ -73,7 +73,6 @@ class Container extends Component {
     }
 
     console.log('rendering deckTitles container')
-    return <DeckTitles />
     return <DeckTitles deckTitles={deckTitles} {...props} />
   }
 }
