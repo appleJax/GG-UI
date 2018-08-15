@@ -10,7 +10,8 @@ import asyncActions    from 'Actions/async'
 import payloadStates   from 'Constants/PayloadStates'
 import {
   DECK_DOWNLOAD_URL,
-  formatDate
+  formatDate,
+  logDownload
 } from 'Utils'
 
 const { fetchDownloadLastUpdated } = asyncActions
@@ -104,13 +105,17 @@ class DownloadDeck extends Component {
         break
 
     }
+    // href={DECK_DOWNLOAD_URL}
 
     return (
       <div className={classNames(container, column)}>
         <a
           className={link}
-          href={DECK_DOWNLOAD_URL}
           rel='noopener'
+          onClick={() => {
+            logDownload()
+            location.href = DECK_DOWNLOAD_URL
+          }}
         >
           <ButtonBase className={classNames(container, downloadButton)}>
             <CloudDownload className={downloadIcon} />

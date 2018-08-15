@@ -163,6 +163,10 @@ export function getTimeTilNextTweet() {
   return Math.floor(millisUntilTweet / 1000)
 }
 
+export function logDownload() {
+  ajax.post('/logDownload')
+}
+
 export const pluralize = (arr, word) =>
   arr.length < 2
     ? word
