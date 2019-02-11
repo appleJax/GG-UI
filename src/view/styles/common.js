@@ -20,7 +20,7 @@ export const classes = {
     }
   },
   cardList: {
-    alignItems: 'flex-end',
+    alignItems: 'flex-start',
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center'
