@@ -15,7 +15,7 @@ export default (theme) => ({
   },
   followButton: {
     height: '50px',
-    margin: '35px 0 0 -180px',
+    margin: '35px 0 0 -127px',
     position: 'absolute',
     width: '50px'
   },
