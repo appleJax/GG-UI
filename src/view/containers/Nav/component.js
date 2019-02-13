@@ -31,7 +31,6 @@ function Nav(props) {
     classes: {
       appBar,
       avatarRoot,
-      beta,
       divider,
       followButton,
       loggedInIcon,
@@ -79,7 +78,7 @@ function Nav(props) {
           >
             <AccountCircle className={profileIcon} /> My Profile
           </MenuItem>
-        ) 
+        )
         : (
           <a href={`${API_URL}/login`}
              className={link}
@@ -170,7 +169,7 @@ function Nav(props) {
               className={logo}
               onClick={() => history.push('/')}
             >
-              GameGogakuen <span className={beta}>BETA</span>
+              GameGogakuen
             </ButtonBase>
             { !alreadyFollowing(auth) &&
               <Button
