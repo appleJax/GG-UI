@@ -15,6 +15,7 @@ export default (theme) => ({
     display: 'flex',
     flexWrap: 'wrap',
     height: '44px',
+    minHeight: 'fit-content',
     justifyContent: 'center',
     padding: '5px',
     width: '100%',
