@@ -14,7 +14,6 @@ const {
 
 module.exports = merge(common, {
   entry: [
-    '@babel/polyfill',
     'react-hot-loader/patch',
     './src/index.js'
   ],

@@ -17,8 +17,8 @@ module.exports = {
       Styles:     path.resolve(__dirname, 'src/view/styles'),
       Src:        path.resolve(__dirname, 'src'),
       Utils:      path.resolve(__dirname, 'src/utils'),
-      Icons:      'material-ui-icons',
-      UI:         'material-ui'
+      Icons:      '@material-ui/icons',
+      UI:         '@material-ui/core'
     }
   },
   module: {

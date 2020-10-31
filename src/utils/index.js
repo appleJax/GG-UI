@@ -92,6 +92,11 @@ export const formatAnswers = (answers) => {
   )
 }
 
+export const downloadUrl = (title) => {
+  const gameTitle = title.replace(/\s/g, '_')
+  return `https://www.googleapis.com/storage/v1/b/gamegogakuen-jp/o/${gameTitle}.apkg?alt=media`
+}
+
 export function formatDate(milliseconds) {
   return new Date(milliseconds).toDateString()
 }
@@ -195,7 +200,6 @@ export const userHasAnswered = ({ userId }) => (liveQuestion) =>
   liveQuestion.alreadyAnswered
     ? liveQuestion.alreadyAnswered.find(id => id === userId)
     : false
-
 
 // private functions
 

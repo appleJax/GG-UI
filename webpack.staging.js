@@ -13,7 +13,6 @@ const {
 
 module.exports = merge(common, {
   entry: [
-    '@babel/polyfill',
     './src/index.js'
   ],
   mode: 'production',

@@ -12,7 +12,8 @@ import Divider            from 'UI/Divider'
 import Drawer             from 'UI/Drawer'
 import IconButton         from 'UI/IconButton'
 import List               from 'UI/List'
-import Menu, { MenuItem } from 'UI/Menu'
+import Menu               from 'UI/Menu'
+import MenuItem           from 'UI/MenuItem'
 import Toolbar            from 'UI/Toolbar'
 import Typography         from 'UI/Typography'
 import KofiLink           from 'Components/KofiLink'
@@ -81,7 +82,7 @@ function Nav(props) {
         )
         : (
           <a href={`${API_URL}/login`}
-             className={link}
+            className={link}
           >
             <MenuItem
               onClick={() => {
